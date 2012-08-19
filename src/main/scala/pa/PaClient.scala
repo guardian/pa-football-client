@@ -14,12 +14,11 @@ trait PaClient { self: Http =>
     case Response(status, _, reason) => throw new PaClientException(status + " " + reason)
   }
 
-}
+  def footballMatch(id: String): Match = GET(base + "/api/football/match/events/%s/%s/json".format(apiKey, id)) match {
+      case Response(200, body, _) =>  parseMatch(body)
+      case Response(status, _, reason) => throw new PaClientException(status + " " + reason)
+    }
 
-case class Response(status: Int, body: String, statusLine: String)
-
-trait Http {
-  def GET(url: String): Response
 }
 
 class PaClientException(msg: String) extends RuntimeException(msg)
