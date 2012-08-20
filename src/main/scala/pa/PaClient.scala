@@ -14,7 +14,7 @@ trait PaClient { self: Http =>
     case Response(status, _, reason) => throw new PaClientException(status + " " + reason)
   }
 
-  def matchEvents(id: String): Match = GET(base + "/api/football/match/events/%s/%s/json".format(apiKey, id)) match {
+  def matchEvents(id: String): MatchEvents = GET(base + "/api/football/match/events/%s/%s/json".format(apiKey, id)) match {
     case Response(200, body, _) =>  parseMatchEvents(body)
     case Response(status, _, reason) => throw new PaClientException(status + " " + reason)
   }

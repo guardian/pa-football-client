@@ -34,7 +34,7 @@ object Parser {
   def parseMatchEvents(s: String) = {
     val json = parse(JsonCleaner(s))
 
-    Match(
+    MatchEvents(
       (json \\ "homeTeam").transform{text2name}.extract[Team],
       (json \\ "awayTeam").transform{text2name}.extract[Team],
       (json \\ "events" \ "event").children
