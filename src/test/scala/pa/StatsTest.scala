@@ -12,5 +12,7 @@ class StatsTest extends FlatSpec with ShouldMatchers {
     stats.homeTeam.corners should be(9)
 
     stats.awayTeam.shotsOnTarget should be(7)
+
+    stats.awayPossession should be (51)
   }
 }

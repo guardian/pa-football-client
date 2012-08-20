@@ -44,9 +44,9 @@ object Parser {
   }
 
   def parseMatchStats(s: String) = {
-    val json = parse(JsonCleaner(s))
-    println((json \ "matchStats"))
+    val json = parse(JsonCleaner(s)).transform{string2int}
     MatchStats(
+    (json \\ "possession").extract[Int],
     (json \\ "homeTeam").transform{string2int}.extract[TeamStats],
     (json \\ "awayTeam").transform{string2int}.extract[TeamStats]
     )
