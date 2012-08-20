@@ -3,11 +3,11 @@ package pa
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
 
-class MatchTest extends FlatSpec with ShouldMatchers {
+class EventsTest extends FlatSpec with ShouldMatchers {
 
   "PaClient" should "load a match" in {
 
-    val theMatch = StubClient.footballMatch("3507403")
+    val theMatch = StubClient.matchEvents("3507403")
 
     theMatch.homeTeam should be (Team("9", "Liverpool"))
     theMatch.awayTeam should be (Team("4", "Chelsea"))

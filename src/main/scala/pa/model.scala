@@ -40,3 +40,15 @@ case class Event(
   val isGoal = outcome.map(_ == "Goal").getOrElse(false)
 
 }
+
+case class MatchStats(homeTeam: TeamStats, awayTeam: TeamStats)
+
+case class TeamStats(
+  bookings: Int,
+  dismissals: Int,
+  corners: Int,
+  offsides: Int,
+  fouls: Int,
+  shotsOnTarget: Int,
+  shotsOffTarget: Int
+)

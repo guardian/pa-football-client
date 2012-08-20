@@ -1,0 +1,23 @@
+{"matchStats":{
+    "possession":"49",
+    "dominance":"-5",
+    "hotSpot":"Away Right Channel",
+    "homeTeam":{
+        "bookings":"1",
+        "dismissals":"0",
+        "corners":"9",
+        "offsides":"2",
+        "fouls":"15",
+        "shotsOnTarget":"10",
+        "shotsOffTarget":"4"
+    },
+    "awayTeam":{
+        "bookings":"2",
+        "dismissals":"0",
+        "corners":"2",
+        "offsides":"0",
+        "fouls":"9",
+        "shotsOnTarget":"7",
+        "shotsOffTarget":"3"
+    }
+}}

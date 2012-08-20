@@ -4,7 +4,6 @@ import net.liftweb.json._
 import ext.JodaTimeSerializers
 import java.util.Date
 import java.text.SimpleDateFormat
-import javax.swing.JList
 
 //There is always a certain amount of ugliness in parsing a feed.
 //keep it all in one place
@@ -32,7 +31,7 @@ object Parser {
 
   def parseCompetitions(s: String) = ((parse(JsonCleaner(s)) \\ "season").children).map(_.extract[Season])
 
-  def parseMatch(s: String) = {
+  def parseMatchEvents(s: String) = {
     val json = parse(JsonCleaner(s))
 
     Match(
@@ -43,12 +42,23 @@ object Parser {
         .map{_.extract[Event]}
     )
   }
+
+  def parseMatchStats(s: String) = {
+    val json = parse(JsonCleaner(s))
+    println((json \ "matchStats"))
+    MatchStats(
+    (json \\ "homeTeam").transform{string2int}.extract[TeamStats],
+    (json \\ "awayTeam").transform{string2int}.extract[TeamStats]
+    )
+  }
 }
 
 
 //PA feed converts from XML and you get some weirdness such as attributes get an @
 object JsonCleaner {
   def apply(s: String) = s.replace("\"@", "\"").replace("\"#", "\"")
+
+  val IntPattern = """(\d*)""".r
 
   //these rename fields, once again due to XML conversion you can get a #text where you want a
   //decent name
@@ -60,5 +70,9 @@ object JsonCleaner {
     case JField(("players"), JObject(List(JField("player1", player1), JField("player2", player2)))) =>
       val players = List(player1, player2).filter(p => (p \ "playerID").values.asInstanceOf[String] != "")
       JField("players", JArray(players))
+  }
+
+  def string2int: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
+    case JField(name, JString(IntPattern(value))) => JField(name, JInt(value.toInt))
   }
 }
