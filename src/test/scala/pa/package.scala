@@ -9,6 +9,5 @@ object StubClient extends PaClient with Http {
 
   override def GET(url: String): Response = Response(200, load(url.replaceFirst("/", "")), "")
 
-  def load(path: String ) = Source.fromInputStream(getClass.getClassLoader.getResourceAsStream(path)).mkString
-
+  private def load(path: String ) = Source.fromInputStream(getClass.getClassLoader.getResourceAsStream(path)).mkString
 }
