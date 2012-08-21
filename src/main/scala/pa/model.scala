@@ -1,6 +1,6 @@
 package pa
 
-import org.joda.time.DateMidnight
+import org.joda.time.{DateTime, DateMidnight}
 
 case class Season(competitionID: String, name: String, startDate: DateMidnight, endDate: DateMidnight)
 
@@ -54,3 +54,43 @@ case class TeamStats(
   shotsOnTarget: Int,
   shotsOffTarget: Int
 )
+
+case class Official(id: String, name: String)
+case class Venue(venueID: String, name: String)
+
+case class MatchDayTeam(
+  teamID: String,
+  teamName: String,
+  score: Int,
+  htScore: Int,
+  aggregateScore: Option[Int],
+  scorers: Option[String]
+)
+
+case class MatchDay(
+  matchID: String,
+  date: DateMidnight,
+  koTime: String,
+  roundNumber: String,
+  leg: String,
+  liveMatch: Boolean,
+  result: Boolean,
+  previewAvailable: Boolean,
+  reportAvailable: Boolean,
+  lineupsAvailable: Boolean,
+  matchStatus: String,
+  attendance: String,
+  homeTeam: MatchDayTeam,
+  awayTeam: MatchDayTeam,
+  referee: Official,
+  venue: Venue
+) {
+  import Formats._
+  lazy val kickOffTime: DateTime = koTime match {
+    case HoursMinutes(hours, minutes) => new DateTime(date).plusHours(hours.toInt).plusMinutes(minutes.toInt)
+  }
+}
+
+private object Formats {
+  val HoursMinutes = """^(\d*):(\d*)$""".r
+}

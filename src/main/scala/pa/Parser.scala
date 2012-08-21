@@ -13,9 +13,12 @@ object Parser {
 
   implicit val formats = new DefaultFormats{
 
-    val DateOnly = """^(\d\d/\d\d/\d\d\d\d)$""".r
+    private val DateOnly = """^(\d\d/\d\d/\d\d\d\d)$""".r
 
-    val dateOnlyFormat =  new SimpleDateFormat("dd/MM/yyyy")
+    //turns out SimpleDateFormat is not thread safe
+    //http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4228335
+    //do not convert this to a val...
+    private def dateOnlyFormat =  new SimpleDateFormat("dd/MM/yyyy")
 
     override val dateFormat = new DateFormat {
       override def parse(s: String): Option[Date] =
@@ -51,6 +54,17 @@ object Parser {
     (json \\ "awayTeam").transform{string2int}.extract[TeamStats]
     )
   }
+
+  def parseMatchDay(s: String) = {
+    val json = (parse(JsonCleaner(s)).transform{string2int} \\ "match").children
+    json.map{
+      _.transform{round2roundNumber}
+       .transform{yesNo2boolean}
+       .transform{text2name}
+       .transform{refereeId2id}
+       .extract[MatchDay]
+    }
+  }
 }
 
 
@@ -58,7 +72,7 @@ object Parser {
 object JsonCleaner {
   def apply(s: String) = s.replace("\"@", "\"").replace("\"#", "\"")
 
-  val IntPattern = """(\d*)""".r
+  val IntPattern = """^(\d*)$""".r
 
   //these rename fields, once again due to XML conversion you can get a #text where you want a
   //decent name
@@ -74,5 +88,18 @@ object JsonCleaner {
 
   def string2int: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
     case JField(name, JString(IntPattern(value))) => JField(name, JInt(value.toInt))
+  }
+
+  def round2roundNumber: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
+    case JField("round", JObject(List(roundNumber))) => roundNumber
+  }
+
+  def refereeId2id: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
+    case JField("refereeID", value) => JField("id", value)
+  }
+
+  def yesNo2boolean:  PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
+    case JField(name, JString("Yes")) => JField(name, JBool(true))
+    case JField(name, JString("No")) => JField(name, JBool(false))
   }
 }

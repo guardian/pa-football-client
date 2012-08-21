@@ -2,6 +2,7 @@ package pa
 
 
 import Parser._
+import org.joda.time.DateMidnight
 
 trait PaClient { self: Http =>
 
@@ -22,6 +23,13 @@ trait PaClient { self: Http =>
   def matchStats(id: String): MatchStats = GET(base + "/api/football/match/stats/%s/%s/json".format(apiKey, id)) match {
     case Response(200, body, _) =>  parseMatchStats(body)
     case Response(status, _, reason) => throw new PaClientException(status + " " + reason)
+  }
+
+  def matchDay(competitionId: String, date: DateMidnight): Seq[MatchDay] =GET(
+    base + "/api/football/competition/matchDay/%s/%s/%s/json".format(apiKey, competitionId, date.toString("yyyyMMdd"))
+  ) match {
+      case Response(200, body, _) =>  parseMatchDay(body)
+      case Response(status, _, reason) => throw new PaClientException(status + " " + reason)
   }
 
 }
