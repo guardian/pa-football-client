@@ -32,53 +32,48 @@ object Parser {
   } ++ JodaTimeSerializers.all
 
 
-  def parseCompetitions(s: String) = ((parse(JsonCleaner(s)) \\ "season").children).map(_.extract[Season])
+  def parseCompetitions(s: String): List[Season] = (parse(JsonCleaner(s)) \\ "season").extract[List[Season]]
 
-  def parseMatchEvents(s: String) = {
-    val json = parse(JsonCleaner(s))
+  private val text2Name: Map[String, String] = Map("text" -> "name")
 
+  def parseMatchEvents(s: String): MatchEvents = {
+    val json = parse(JsonCleaner(s, text2Name))
     MatchEvents(
-      (json \\ "homeTeam").transform{text2name}.extract[Team],
-      (json \\ "awayTeam").transform{text2name}.extract[Team],
-      (json \\ "events" \ "event").children
-        .map{_.transform{players2player}.transform{text2name}}
-        .map{_.extract[Event]}
+      (json \\ "homeTeam").extract[Team],
+      (json \\ "awayTeam").extract[Team],
+      (json \\ "event").transform{players2player}.extract[List[Event]]
     )
   }
 
-  def parseMatchStats(s: String) = {
-    val json = parse(JsonCleaner(s)).transform{string2int}
-    MatchStats(
-    (json \\ "possession").extract[Int],
-    (json \\ "homeTeam").transform{string2int}.extract[TeamStats],
-    (json \\ "awayTeam").transform{string2int}.extract[TeamStats]
-    )
+  private val statsMapping: Map[String, String] = text2Name + ("possession" -> "homePossession")
+
+  def parseMatchStats(s: String): MatchStats = {
+    val json = parse(JsonCleaner(s, statsMapping)).children.head
+    json.transform{string2int}.extract[MatchStats]
   }
 
-  def parseMatchDay(s: String) = {
-    val json = (parse(JsonCleaner(s)).transform{string2int} \\ "match").children
-    json.map{
-      _.transform{round2roundNumber}
-       .transform{yesNo2boolean}
-       .transform{text2name}
-       .transform{refereeId2id}
-       .extract[MatchDay]
-    }
+  private val matchDayMapping: Map[String, String] = text2Name + ("refereeID" -> "id")
+
+  def parseMatchDay(s: String): List[MatchDay] = {
+    val json = parse(JsonCleaner(s, matchDayMapping)).transform{string2int}.transform{round2roundNumber}
+      .transform{yesNo2boolean}
+    (json \\ "match").extract[List[MatchDay]]
   }
 }
 
 
 //PA feed converts from XML and you get some weirdness such as attributes get an @
 object JsonCleaner {
-  def apply(s: String) = s.replace("\"@", "\"").replace("\"#", "\"")
 
-  val IntPattern = """^(\d*)$""".r
+  /**
+   * Strips out '@' and '#' symbols and replaces specified keys with alternatives (e.g. changes 'for' to 'goalsFor').
+   */
+  def apply(s: String, mappings: Map[String, String] = Map.empty): String =
+    mappings.foldLeft(s.replace("\"@", "\"").replace("\"#", "\"")) { case (z, (k, v)) =>
+      z.replaceAllLiterally("\"%s\"" format k, "\"%s\"" format v)
+    }
 
-  //these rename fields, once again due to XML conversion you can get a #text where you want a
-  //decent name
-  def text2name: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
-    case JField("text", JString(x)) => JField("name", JString(x))
-  }
+  val IntPattern = """^(\d+)$""".r
 
   def players2player: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
     case JField(("players"), JObject(List(JField("player1", player1), JField("player2", player2)))) =>
@@ -92,10 +87,6 @@ object JsonCleaner {
 
   def round2roundNumber: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
     case JField("round", JObject(List(roundNumber))) => roundNumber
-  }
-
-  def refereeId2id: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
-    case JField("refereeID", value) => JField("id", value)
   }
 
   def yesNo2boolean:  PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
