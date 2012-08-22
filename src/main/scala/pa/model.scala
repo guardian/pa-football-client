@@ -4,7 +4,7 @@ import org.joda.time.{DateTime, DateMidnight}
 
 case class Season(competitionID: String, name: String, startDate: DateMidnight, endDate: DateMidnight)
 
-case class MatchEvents(homeTeam: Team, awayTeam: Team, events: Seq[Event]) {
+case class MatchEvents(homeTeam: Team, awayTeam: Team, events: List[Event]) {
 
   val goals = events.filter(_.isGoal)
 
@@ -42,7 +42,7 @@ case class Event(
 }
 
 case class MatchStats(homePossession: Int, homeTeam: TeamStats, awayTeam: TeamStats) {
-  lazy val awayPossession = 100 - homePossession
+  lazy val awayPossession: Int = 100 - homePossession
 }
 
 case class TeamStats(

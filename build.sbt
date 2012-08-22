@@ -4,9 +4,7 @@ organization := "com.gu"
 
 version := "1.4-SNAPSHOT"
 
-crossScalaVersions := Seq("2.9.1", "2.9.2")
-
-resolvers += "xuwei-k repo" at "http://xuwei-k.github.com/mvn"
+scalaVersion := "2.9.1"
 
 libraryDependencies ++= Seq(
     "net.liftweb" %% "lift-json" % "2.4",
