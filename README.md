@@ -8,7 +8,13 @@ Usage...
         val apiKey = "YOUR_API_KEY"
     }
 
+    //list all competitions
     Client.competitions.foreach(println)
 
-    val theMatch = Client.footballMatch("1234")
+    //events in a match
+    val theMatch = Client.matchEvents("3507403")
     println(theMatch.homeTeam.name)
+
+    //matches for a specific day in a specific competition
+    val matches = Client.matchDay("100", new DateMidnight(2011, 8, 27))
+    matches.foreach(println)
