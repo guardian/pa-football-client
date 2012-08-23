@@ -59,6 +59,14 @@ object Parser {
       .transform{yesNo2boolean}
     (json \\ "match").extract[List[MatchDay]]
   }
+
+  private val leagueMapping = Map("for" -> "goalsFor", "against" -> "goalsAgainst")
+
+  def parseLeagueTable(s: String): List[LeagueTableEntry] = {
+    val json = parse(JsonCleaner(s, leagueMapping)).transform{string2int}.transform{round2roundNumber}
+    (json \\ "tableEntry").extract[List[LeagueTableEntry]]
+  }
+
 }
 
 

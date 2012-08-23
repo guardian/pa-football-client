@@ -91,6 +91,22 @@ case class MatchDay(
   }
 }
 
+case class LeagueTableEntry(stageNumber: String, roundNumber: String, team: LeagueTeam)
+
+case class LeagueTeam(
+  teamID: String,
+  teamName: String,
+  rank: String,
+  played: String,
+  won: String,
+  drawn: String,
+  lost: String,
+  goalsFor: String,
+  goalsAgainst: String,
+  goalDifference: String,
+  points: String
+)
+
 private object Formats {
   val HoursMinutes = """^(\d*):(\d*)$""".r
 }
