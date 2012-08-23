@@ -55,27 +55,19 @@ object Parser {
 
   private val matchDayMapping: Map[String, String] = text2Name + ("refereeID" -> "id")
 
-  def parseMatchDay(s: String) = {
-    val json = parse(JsonCleaner(s)).transform { string2int } \\ "match" match {
-      //handles days with only a single match
-      case obj: JObject => JArray(List(obj))
-      case array => array
-    }
-
-    //the no data found error lives under matches
-    //so filter out any empty children
-    json.children.filterNot(_.children.isEmpty).map{
-       _.transform{yesNo2boolean}
-       .transform{text2name}
-       .transform{refereeId2id}
-       .extract[MatchDay]
+  def parseMatchDay(s: String): List[MatchDay] = {
+    val json = parse(JsonCleaner(s, matchDayMapping)).transform { string2int }.transform{yesNo2boolean}
+    json \\ "match" match {
+      case JObject(Nil) => Nil
+      case obj: JObject => List(obj.extract[MatchDay]) // Handles single match
+      case array => array.extract[List[MatchDay]] // Handles days with multiple matches
     }
   }
 
   private val leagueMapping = Map("for" -> "goalsFor", "against" -> "goalsAgainst")
 
   def parseLeagueTable(s: String): List[LeagueTableEntry] = {
-    val json = parse(JsonCleaner(s, leagueMapping)).transform{string2int}.transform{round2roundNumber}
+    val json = parse(JsonCleaner(s, leagueMapping)).transform{string2int}
     (json \\ "tableEntry").extract[List[LeagueTableEntry]]
   }
 
@@ -103,14 +95,6 @@ object JsonCleaner {
 
   def string2int: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
     case JField(name, JString(IntPattern(value))) => JField(name, JInt(value.toInt))
-  }
-
-  def round2roundNumber: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
-    case JField("round", JObject(List(roundNumber))) => roundNumber
-  }
-
-  def refereeId2id: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
-    case JField("refereeID", value) => JField("id", value)
   }
 
   def yesNo2boolean:  PartialFunction[JsonAST.JValue, JsonAST.JValue] = {

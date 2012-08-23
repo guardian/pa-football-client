@@ -92,20 +92,20 @@ case class MatchDay(
   }
 }
 
-case class LeagueTableEntry(stageNumber: String, roundNumber: String, team: LeagueTeam)
+case class LeagueTableEntry(stageNumber: String, round: Option[Round], team: LeagueTeam)
 
 case class LeagueTeam(
   teamID: String,
   teamName: String,
-  rank: String,
-  played: String,
-  won: String,
-  drawn: String,
-  lost: String,
-  goalsFor: String,
-  goalsAgainst: String,
-  goalDifference: String,
-  points: String
+  rank: Int,
+  played: Int,
+  won: Int,
+  drawn: Int,
+  lost: Int,
+  goalsFor: Int,
+  goalsAgainst: Int,
+  goalDifference: Int,
+  points: Int
 )
 
 private object Formats {
