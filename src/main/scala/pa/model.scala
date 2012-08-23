@@ -57,12 +57,13 @@ case class TeamStats(
 
 case class Official(id: String, name: String)
 case class Venue(venueID: String, name: String)
+case class Round(roundNumber: String, name: String)
 
 case class MatchDayTeam(
   teamID: String,
   teamName: String,
-  score: Int,
-  htScore: Int,
+  score: Option[Int],
+  htScore: Option[Int],
   aggregateScore: Option[Int],
   scorers: Option[String]
 )
@@ -71,7 +72,7 @@ case class MatchDay(
   matchID: String,
   date: DateMidnight,
   koTime: String,
-  roundNumber: String,
+  round: Option[Round],
   leg: String,
   liveMatch: Boolean,
   result: Boolean,
@@ -82,8 +83,8 @@ case class MatchDay(
   attendance: String,
   homeTeam: MatchDayTeam,
   awayTeam: MatchDayTeam,
-  referee: Official,
-  venue: Venue
+  referee: Option[Official],
+  venue: Option[Venue]
 ) {
   import Formats._
   lazy val kickOffTime: DateTime = koTime match {

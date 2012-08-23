@@ -1,0 +1,168 @@
+{"matches":{
+    "match":[
+        {
+            "@matchID":"3304257",
+            "@date":"16/04/2011",
+            "@koTime":"14:00",
+            "round":{
+                "@roundNumber":"1"
+            },
+            "leg":"1",
+            "liveMatch":"No",
+            "result":"No",
+            "previewAvailable":"No",
+            "reportAvailable":"No",
+            "lineupsAvailable":"Yes",
+            "matchStatus":"-",
+            "attendance":null,
+            "referee":{
+                "@refereeID":"358628",
+                "#text":"Harry Lekitlane"
+            },
+            "venue":{
+                "@venueID":"1123",
+                "#text":"Moses Mabhida Stadium"
+            },
+            "homeTeam":{
+                "@teamID":"47445",
+                "teamName":"AmaZulu",
+                "score":null,
+                "htScore":null,
+                "aggregateScore":null,
+                "scorers":null
+            },
+            "awayTeam":{
+                "@teamID":"41617",
+                "teamName":"Mamelodi Sundowns",
+                "score":null,
+                "htScore":null,
+                "aggregateScore":null,
+                "scorers":null
+            },
+            "comments":null
+        },
+        {
+            "@matchID":"3304258",
+            "@date":"16/04/2011",
+            "@koTime":"14:00",
+            "round":{
+                "@roundNumber":"1"
+            },
+            "leg":"1",
+            "liveMatch":"No",
+            "result":"Yes",
+            "previewAvailable":"No",
+            "reportAvailable":"No",
+            "lineupsAvailable":"Yes",
+            "matchStatus":"FT",
+            "attendance":"1000",
+            "referee":{
+                "@refereeID":"448918",
+                "#text":"Victor Hlungwane"
+            },
+            "venue":{
+                "@venueID":"1034",
+                "#text":"Dobsonville Stadium"
+            },
+            "homeTeam":{
+                "@teamID":"44722",
+                "teamName":"Moroka Swallows",
+                "score":"3",
+                "htScore":"1",
+                "aggregateScore":null,
+                "scorers":"Cheick Cisse (34),Siyabonga Nomvethe (68 Pen),Bradley Ritson (81)"
+            },
+            "awayTeam":{
+                "@teamID":"57222",
+                "teamName":"Vasco Da Gama",
+                "score":"2",
+                "htScore":"2",
+                "aggregateScore":null,
+                "scorers":"Jerome Ramathlakwana (14),Sibusiso Zuma (31 Pen)"
+            },
+            "comments":null
+        },
+        {
+            "@matchID":"3304259",
+            "@date":"16/04/2011",
+            "@koTime":"19:15",
+            "round":{
+                "@roundNumber":"1"
+            },
+            "leg":"1",
+            "liveMatch":"No",
+            "result":"Yes",
+            "previewAvailable":"No",
+            "reportAvailable":"No",
+            "lineupsAvailable":"Yes",
+            "matchStatus":"FT",
+            "attendance":"16000",
+            "referee":{
+                "@refereeID":"345468",
+                "#text":"Robert Sithole"
+            },
+            "venue":{
+                "@venueID":"943",
+                "#text":"Peter Mokaba Stadium"
+            },
+            "homeTeam":{
+                "@teamID":"27759",
+                "teamName":"Kaizer Chiefs",
+                "score":"2",
+                "htScore":"0",
+                "aggregateScore":null,
+                "scorers":"Jimmy Tau (73),Knowledge Musona (90 +1:09)"
+            },
+            "awayTeam":{
+                "@teamID":"52403",
+                "teamName":"Black Aces",
+                "score":"0",
+                "htScore":"0",
+                "aggregateScore":null,
+                "scorers":null
+            },
+            "comments":null
+        },
+        {
+            "@matchID":"3304260",
+            "@date":"16/04/2011",
+            "@koTime":"19:15",
+            "round":{
+                "@roundNumber":"1"
+            },
+            "leg":"1",
+            "liveMatch":"No",
+            "result":"Yes",
+            "previewAvailable":"No",
+            "reportAvailable":"No",
+            "lineupsAvailable":"Yes",
+            "matchStatus":"FT",
+            "attendance":"1000",
+            "referee":{
+                "@refereeID":"347453",
+                "#text":"Zolile Mthetho"
+            },
+            "venue":{
+                "@venueID":"1393",
+                "#text":"Lucas Moripe Stadium"
+            },
+            "homeTeam":{
+                "@teamID":"44725",
+                "teamName":"SuperSport United",
+                "score":"5",
+                "htScore":"2",
+                "aggregateScore":null,
+                "scorers":"Anthony Laffor (14),Glen Salmon (45 +0:40),Anthony Laffor (65),Ashley Hartog (79),Anthony Laffor (90 +2:33)"
+            },
+            "awayTeam":{
+                "@teamID":"44723",
+                "teamName":"Santos",
+                "score":"2",
+                "htScore":"2",
+                "aggregateScore":null,
+                "scorers":"Erwin Isaacs (14),Vuyisile Wana (34)"
+            },
+            "comments":null
+        }
+    ]
+}}
