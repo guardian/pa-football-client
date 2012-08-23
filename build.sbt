@@ -2,7 +2,7 @@ name := "pa-client"
 
 organization := "com.gu"
 
-version := "1.2-SNAPSHOT"
+version := "1.4-SNAPSHOT"
 
 crossScalaVersions := Seq("2.9.1", "2.9.2")
 

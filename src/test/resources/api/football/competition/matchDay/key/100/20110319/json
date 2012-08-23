@@ -1,0 +1,331 @@
+{"matches":{
+    "match":[
+        {
+            "@matchID":"3284723",
+            "@date":"19/03/2011",
+            "@koTime":"12:45",
+            "round":{
+                "@roundNumber":"1"
+            },
+            "leg":"1",
+            "liveMatch":"No",
+            "result":"Yes",
+            "previewAvailable":"Yes",
+            "reportAvailable":"Yes",
+            "lineupsAvailable":"Yes",
+            "matchStatus":"FT",
+            "attendance":"36010",
+            "referee":{
+                "@refereeID":"100924",
+                "#text":"Mike Dean"
+            },
+            "venue":{
+                "@venueID":""
+            },
+            "homeTeam":{
+                "@teamID":"19",
+                "teamName":"Tottenham",
+                "score":"0",
+                "htScore":"0",
+                "aggregateScore":null,
+                "scorers":null
+            },
+            "awayTeam":{
+                "@teamID":"43",
+                "teamName":"West Ham",
+                "score":"0",
+                "htScore":"0",
+                "aggregateScore":null,
+                "scorers":null
+            },
+            "comments":null
+        },
+        {
+            "@matchID":"3284724",
+            "@date":"19/03/2011",
+            "@koTime":"15:00",
+            "round":{
+                "@roundNumber":"1"
+            },
+            "leg":"1",
+            "liveMatch":"No",
+            "result":"Yes",
+            "previewAvailable":"Yes",
+            "reportAvailable":"Yes",
+            "lineupsAvailable":"Yes",
+            "matchStatus":"FT",
+            "attendance":"25729",
+            "referee":{
+                "@refereeID":"371546",
+                "#text":"Stuart Attwell"
+            },
+            "venue":{
+                "@venueID":"5",
+                "#text":"The Hawthorns"
+            },
+            "homeTeam":{
+                "@teamID":"42",
+                "teamName":"West Brom",
+                "score":"2",
+                "htScore":"1",
+                "aggregateScore":null,
+                "scorers":"Steven Reid (3),Peter Odemwingie (58)"
+            },
+            "awayTeam":{
+                "@teamID":"1006",
+                "teamName":"Arsenal",
+                "score":"2",
+                "htScore":"0",
+                "aggregateScore":null,
+                "scorers":"Andrey Arshavin (70),Robin van Persie (78)"
+            },
+            "comments":null
+        },
+        {
+            "@matchID":"3284725",
+            "@date":"19/03/2011",
+            "@koTime":"15:00",
+            "round":{
+                "@roundNumber":"1"
+            },
+            "leg":"1",
+            "liveMatch":"No",
+            "result":"Yes",
+            "previewAvailable":"Yes",
+            "reportAvailable":"Yes",
+            "lineupsAvailable":"Yes",
+            "matchStatus":"FT",
+            "attendance":"16421",
+            "referee":{
+                "@refereeID":"48050",
+                "#text":"Lee Probert"
+            },
+            "venue":{
+                "@venueID":"1043",
+                "#text":"The DW Stadium"
+            },
+            "homeTeam":{
+                "@teamID":"68",
+                "teamName":"Wigan",
+                "score":"2",
+                "htScore":"1",
+                "aggregateScore":null,
+                "scorers":"Tom Cleverley (25),Maynor Figueroa (90 +1:48)"
+            },
+            "awayTeam":{
+                "@teamID":"45",
+                "teamName":"Birmingham",
+                "score":"1",
+                "htScore":"1",
+                "aggregateScore":null,
+                "scorers":"Liam Ridgewell (6)"
+            },
+            "comments":null
+        },
+        {
+            "@matchID":"3284716",
+            "@date":"19/03/2011",
+            "@koTime":"15:00",
+            "round":{
+                "@roundNumber":"1"
+            },
+            "leg":"1",
+            "liveMatch":"No",
+            "result":"Yes",
+            "previewAvailable":"Yes",
+            "reportAvailable":"Yes",
+            "lineupsAvailable":"Yes",
+            "matchStatus":"FT",
+            "attendance":"38965",
+            "referee":{
+                "@refereeID":"101020",
+                "#text":"Phil Dowd"
+            },
+            "venue":{
+                "@venueID":"377",
+                "#text":"Villa Park"
+            },
+            "homeTeam":{
+                "@teamID":"2",
+                "teamName":"Aston Villa",
+                "score":"0",
+                "htScore":"0",
+                "aggregateScore":null,
+                "scorers":null
+            },
+            "awayTeam":{
+                "@teamID":"44",
+                "teamName":"Wolverhampton",
+                "score":"1",
+                "htScore":"1",
+                "aggregateScore":null,
+                "scorers":"Matthew Jarvis (38)"
+            },
+            "comments":null
+        },
+        {
+            "@matchID":"3284717",
+            "@date":"19/03/2011",
+            "@koTime":"15:00",
+            "round":{
+                "@roundNumber":"1"
+            },
+            "leg":"1",
+            "liveMatch":"No",
+            "result":"Yes",
+            "previewAvailable":"Yes",
+            "reportAvailable":"Yes",
+            "lineupsAvailable":"Yes",
+            "matchStatus":"FT",
+            "attendance":"27209",
+            "referee":{
+                "@refereeID":"280461",
+                "#text":"Howard Webb"
+            },
+            "venue":{
+                "@venueID":"6",
+                "#text":"Bloomfield Road"
+            },
+            "homeTeam":{
+                "@teamID":"22",
+                "teamName":"Blackburn",
+                "score":"2",
+                "htScore":"0",
+                "aggregateScore":null,
+                "scorers":"Christopher Samba (49),David Hoilett (90 +2:43)"
+            },
+            "awayTeam":{
+                "@teamID":"46",
+                "teamName":"Blackpool",
+                "score":"2",
+                "htScore":"2",
+                "aggregateScore":null,
+                "scorers":"Charlie Adam (25 Pen),Charlie Adam (29)"
+            },
+            "comments":null
+        },
+        {
+            "@matchID":"3284720",
+            "@date":"19/03/2011",
+            "@koTime":"15:00",
+            "round":{
+                "@roundNumber":"1"
+            },
+            "leg":"1",
+            "liveMatch":"No",
+            "result":"Yes",
+            "previewAvailable":"Yes",
+            "reportAvailable":"Yes",
+            "lineupsAvailable":"Yes",
+            "matchStatus":"FT",
+            "attendance":"75486",
+            "referee":{
+                "@refereeID":"186049",
+                "#text":"Andre Marriner"
+            },
+            "venue":{
+                "@venueID":"114",
+                "#text":"Old Trafford"
+            },
+            "homeTeam":{
+                "@teamID":"12",
+                "teamName":"Man Utd",
+                "score":"1",
+                "htScore":"0",
+                "aggregateScore":null,
+                "scorers":"Dimitar Berbatov (88)"
+            },
+            "awayTeam":{
+                "@teamID":"47",
+                "teamName":"Bolton",
+                "score":"0",
+                "htScore":"0",
+                "aggregateScore":null,
+                "scorers":null
+            },
+            "comments":null
+        },
+        {
+            "@matchID":"3284721",
+            "@date":"19/03/2011",
+            "@koTime":"15:00",
+            "round":{
+                "@roundNumber":"1"
+            },
+            "leg":"1",
+            "liveMatch":"No",
+            "result":"Yes",
+            "previewAvailable":"Yes",
+            "reportAvailable":"Yes",
+            "lineupsAvailable":"Yes",
+            "matchStatus":"FT",
+            "attendance":"27505",
+            "referee":{
+                "@refereeID":"182780",
+                "#text":"Lee Mason"
+            },
+            "venue":{
+                "@venueID":"51",
+                "#text":"Britannia Stadium"
+            },
+            "homeTeam":{
+                "@teamID":"38",
+                "teamName":"Stoke",
+                "score":"4",
+                "htScore":"1",
+                "aggregateScore":null,
+                "scorers":"Jonathan Walters (28),Jermaine Pennant (46),Danny Higginbotham (49),Ricardo Fuller (90 +1:35)"
+            },
+            "awayTeam":{
+                "@teamID":"31",
+                "teamName":"Newcastle",
+                "score":"0",
+                "htScore":"0",
+                "aggregateScore":null,
+                "scorers":null
+            },
+            "comments":null
+        },
+        {
+            "@matchID":"3284719",
+            "@date":"19/03/2011",
+            "@koTime":"17:30",
+            "round":{
+                "@roundNumber":"1"
+            },
+            "leg":"1",
+            "liveMatch":"No",
+            "result":"Yes",
+            "previewAvailable":"Yes",
+            "reportAvailable":"Yes",
+            "lineupsAvailable":"Yes",
+            "matchStatus":"FT",
+            "attendance":"33239",
+            "referee":{
+                "@refereeID":"384554",
+                "#text":"Michael Oliver"
+            },
+            "venue":{
+                "@venueID":"71",
+                "#text":"Goodison Park"
+            },
+            "homeTeam":{
+                "@teamID":"8",
+                "teamName":"Everton",
+                "score":"2",
+                "htScore":"1",
+                "aggregateScore":null,
+                "scorers":"Seamus Coleman (36),Louis Saha (49)"
+            },
+            "awayTeam":{
+                "@teamID":"55",
+                "teamName":"Fulham",
+                "score":"1",
+                "htScore":"0",
+                "aggregateScore":null,
+                "scorers":"Clint Dempsey (62)"
+            },
+            "comments":null
+        }
+    ]
+}}

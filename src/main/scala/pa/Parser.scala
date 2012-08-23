@@ -1,9 +1,10 @@
 package pa
 
 import net.liftweb.json._
-import ext.JodaTimeSerializers
+import net.liftweb.json.ext.JodaTimeSerializers
 import java.util.Date
 import java.text.SimpleDateFormat
+import scala.Some
 
 //There is always a certain amount of ugliness in parsing a feed.
 //keep it all in one place
@@ -55,11 +56,18 @@ object Parser {
     )
   }
 
+
   def parseMatchDay(s: String) = {
-    val json = (parse(JsonCleaner(s)).transform{string2int} \\ "match").children
-    json.map{
-      _.transform{round2roundNumber}
-       .transform{yesNo2boolean}
+    val json = parse(JsonCleaner(s)).transform { string2int } \\ "match" match {
+      //handles days with only a single match
+      case obj: JObject => JArray(List(obj))
+      case array => array
+    }
+
+    //the no data found error lives under matches
+    //so filter out any empty children
+    json.children.filterNot(_.children.isEmpty).map{
+       _.transform{yesNo2boolean}
        .transform{text2name}
        .transform{refereeId2id}
        .extract[MatchDay]
@@ -72,7 +80,7 @@ object Parser {
 object JsonCleaner {
   def apply(s: String) = s.replace("\"@", "\"").replace("\"#", "\"")
 
-  val IntPattern = """^(\d*)$""".r
+  val IntPattern = """^(\d+)$""".r
 
   //these rename fields, once again due to XML conversion you can get a #text where you want a
   //decent name
@@ -88,10 +96,6 @@ object JsonCleaner {
 
   def string2int: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
     case JField(name, JString(IntPattern(value))) => JField(name, JInt(value.toInt))
-  }
-
-  def round2roundNumber: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
-    case JField("round", JObject(List(roundNumber))) => roundNumber
   }
 
   def refereeId2id: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
