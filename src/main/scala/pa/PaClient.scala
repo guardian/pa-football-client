@@ -19,6 +19,10 @@ trait PaClient { self: Http =>
   def matchDay(competitionId: String, date: DateMidnight): List[MatchDay] =
     parseMatchDay(get("/api/football/competition/matchDay/%s/%s/%s/json".format(apiKey, competitionId, date.toString("yyyyMMdd"))))
 
+
+  def leagueTable(competitionId: String, date: DateMidnight): List[LeagueTableEntry] =
+    parseLeagueTable(get("/api/football/competition/leagueTable/%s/%s/%s/json".format(apiKey, competitionId, date.toString("yyyyMMdd"))))
+
   protected def get(suffix: String): String = GET(base + suffix) match {
     case Response(200, body, _) =>  body
     case Response(status, _, reason) => throw new PaClientException(status + " " + reason)
