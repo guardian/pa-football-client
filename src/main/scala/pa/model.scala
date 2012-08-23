@@ -4,7 +4,7 @@ import org.joda.time.{DateTime, DateMidnight}
 
 case class Season(competitionID: String, name: String, startDate: DateMidnight, endDate: DateMidnight)
 
-case class MatchEvents(homeTeam: Team, awayTeam: Team, events: Seq[Event]) {
+case class MatchEvents(homeTeam: Team, awayTeam: Team, events: List[Event]) {
 
   val goals = events.filter(_.isGoal)
 
@@ -42,7 +42,7 @@ case class Event(
 }
 
 case class MatchStats(homePossession: Int, homeTeam: TeamStats, awayTeam: TeamStats) {
-  lazy val awayPossession = 100 - homePossession
+  lazy val awayPossession: Int = 100 - homePossession
 }
 
 case class TeamStats(
@@ -91,6 +91,22 @@ case class MatchDay(
     case HoursMinutes(hours, minutes) => new DateTime(date).plusHours(hours.toInt).plusMinutes(minutes.toInt)
   }
 }
+
+case class LeagueTableEntry(stageNumber: String, round: Option[Round], team: LeagueTeam)
+
+case class LeagueTeam(
+  teamID: String,
+  teamName: String,
+  rank: Int,
+  played: Int,
+  won: Int,
+  drawn: Int,
+  lost: Int,
+  goalsFor: Int,
+  goalsAgainst: Int,
+  goalDifference: Int,
+  points: Int
+)
 
 private object Formats {
   val HoursMinutes = """^(\d*):(\d*)$""".r
