@@ -85,7 +85,7 @@ object JsonCleaner {
       z.replaceAllLiterally("\"%s\"" format k, "\"%s\"" format v)
     }
 
-  val IntPattern = """^(\d+)$""".r
+  val IntPattern = """^(-?\d+)$""".r
 
   def players2player: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
     case JField(("players"), JObject(List(JField("player1", player1), JField("player2", player2)))) =>

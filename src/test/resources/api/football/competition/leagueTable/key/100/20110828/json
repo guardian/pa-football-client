@@ -1,0 +1,39 @@
+{"table":{"tableEntry":[
+{
+    "stageNumber":"1",
+    "round":{
+        "@roundNumber":"1"
+    },
+    "team":{
+        "@teamID":"12",
+        "@teamName":"Man Utd",
+        "rank":"1",
+        "lastRank":"1",
+        "battleLine":"Yes",
+        "played":"31",
+        "won":"24",
+        "drawn":"4",
+        "lost":"3",
+        "for":"22",
+        "against":"27",
+        "goalDifference":"-5",
+        "points":"76",
+        "home":{
+            "played":"15",
+            "won":"12",
+            "drawn":"1",
+            "lost":"2",
+            "for":"40",
+            "against":"15"
+        },
+        "away":{
+            "played":"16",
+            "won":"12",
+            "drawn":"3",
+            "lost":"1",
+            "for":"36",
+            "against":"12"
+        }
+    }
+}
+]}}
