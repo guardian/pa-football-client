@@ -5,7 +5,7 @@ import net.liftweb.json.ext.JodaTimeSerializers
 import java.util.Date
 import java.text.SimpleDateFormat
 import scala.Some
-import xml.XML
+import xml.{NodeSeq, XML}
 import net.liftweb.json.DateFormat
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.DateMidnight
@@ -43,8 +43,6 @@ object Parser {
     }
   } ++ JodaTimeSerializers.all
 
-
-
   def parseCompetitions(s: String): Seq[Season] = (XML.loadString(s) \\ "season") map { season =>
     Season(
       season \@ "competitionID",
@@ -57,11 +55,37 @@ object Parser {
   private val text2Name: Map[String, String] = Map("text" -> "name")
 
   def parseMatchEvents(s: String): MatchEvents = {
-    val json = parse(JsonCleaner(s, text2Name))
+
+    val xml = XML.loadString(s)
+
+    def parseTeam(team: NodeSeq) = Team(
+      team \@ "teamID",
+      team.text
+    )
+
+    def parsePlayer(player: NodeSeq): Option[Player] = (player \@ "playerID") map {
+        Player(_, player \@ "teamID", player.text)
+    }
+
+    def parseEvent(event: NodeSeq) = Event(
+      event \@ "eventID",
+      event \@ "teamID",
+      event \> "eventType",
+      event \> "matchTime",
+      event \> "eventTime",
+      ((event \\ "player1") ++ (event \\ "player2")) flatMap { parsePlayer },
+      event \> "reason",
+      event \> "how",
+      event \> "whereFrom",
+      event \> "whereTo",
+      event \> "distance",
+      event \> "outcome"
+    )
+
     MatchEvents(
-      (json \\ "homeTeam").extract[Team],
-      (json \\ "awayTeam").extract[Team],
-      (json \\ "event").transform{players2player}.extract[Seq[Event]]
+      (xml \\ "homeTeam").map{ parseTeam }.head,
+      (xml \\ "awayTeam").map { parseTeam }.head,
+      (xml \ "events" \\ "event") map { parseEvent }
     )
   }
 

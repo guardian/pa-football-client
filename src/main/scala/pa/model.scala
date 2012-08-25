@@ -8,36 +8,35 @@ case class MatchEvents(homeTeam: Team, awayTeam: Team, events: Seq[Event]) {
 
   val goals = events.filter(_.isGoal)
 
-  val homeTeamGoals = goals.filter(_.teamID == homeTeam.teamID)
+  val homeTeamGoals = goals.filter(_.teamID == Some(homeTeam.id))
 
-  val awayTeamGoals = goals.filter(_.teamID == awayTeam.teamID)
+  val awayTeamGoals = goals.filter(_.teamID == Some(awayTeam.id))
 
   val homeTeamScore = homeTeamGoals.size
 
   val awayTeamScore = awayTeamGoals.size
 }
 
-case class Team(teamID: String, name: String)
+case class Team(id: String, name: String)
 
-case class Player(playerID: String, teamID: String, name: String)
+case class Player(id: String, teamID: String, name: String)
 
-//TODO some of these are nullable and need converions to Option
 case class Event(
-  teamID: String,
-  eventID: String,
+  id: Option[String],
+  teamID: Option[String],
   eventType: String,
-  matchTime: String,
-  eventTime: String,
+  matchTime: Option[String],
+  eventTime: Option[String],
   players: Seq[Player],
   reason: Option[String],
-  how: String,
-  whereFrom: String,
-  whereTo: String,
-  distance: String,
+  how: Option[String],
+  whereFrom: Option[String],
+  whereTo: Option[String],
+  distance: Option[String],
   outcome: Option[String]
 ) {
 
-  val isGoal = outcome.map(_ == "Goal").getOrElse(false)
+  val isGoal = outcome map (_ == "Goal") getOrElse false
 
 }
 
@@ -60,7 +59,7 @@ case class Venue(venueID: String, name: String)
 case class Round(roundNumber: String, name: String)
 
 case class MatchDayTeam(
-  teamID: String,
+  id: String,
   teamName: String,
   score: Option[Int],
   htScore: Option[Int],
@@ -69,7 +68,7 @@ case class MatchDayTeam(
 )
 
 case class MatchDay(
-  matchID: String,
+  id: String,
   date: DateMidnight,
   koTime: String,
   round: Option[Round],
@@ -95,7 +94,7 @@ case class MatchDay(
 case class LeagueTableEntry(stageNumber: String, round: Option[Round], team: LeagueTeam)
 
 case class LeagueTeam(
-  teamID: String,
+  id: String,
   teamName: String,
   rank: Int,
   played: Int,

@@ -11,7 +11,7 @@ class LeagueTableTest extends FlatSpec with ShouldMatchers{
 
     first.stageNumber should be("1")
     first.round should be(None)
-    val manUtd = LeagueTeam(teamID = "12", teamName = "Man Utd",
+    val manUtd = LeagueTeam(id = "12", teamName = "Man Utd",
       rank = 1, played = 31, won = 24, drawn = 4,
       lost = 3, goalsFor = 76, goalsAgainst = 27,
       goalDifference = 49, points = 76

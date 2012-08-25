@@ -12,6 +12,9 @@ class EventsTest extends FlatSpec with ShouldMatchers {
     theMatch.homeTeam should be (Team("9", "Liverpool"))
     theMatch.awayTeam should be (Team("4", "Chelsea"))
 
+    println(theMatch.goals)
+
+
     theMatch.homeTeamScore should be (3)
 
     theMatch.awayTeamScore should be (1)

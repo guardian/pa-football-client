@@ -41,7 +41,7 @@ class MatchDayTest extends FlatSpec with ShouldMatchers {
 
     matches.size should be (1)
 
-    matches(0).matchID should be ("3293494")
+    matches(0).id should be ("3293494")
   }
 
   it should "handle days with no data" in {
