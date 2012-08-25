@@ -10,17 +10,17 @@ trait PaClient { self: Http =>
 
   lazy val base: String = "http://pads2.pa-sport.com"
 
-  def competitions: List[Season] = parseCompetitions(get("/api/football/competitions/%s/json" format apiKey))
+  def competitions: Seq[Season] = parseCompetitions(get("/api/football/competitions/%s" format apiKey))
 
   def matchEvents(id: String): MatchEvents = parseMatchEvents(get("/api/football/match/events/%s/%s/json".format(apiKey, id)))
 
   def matchStats(id: String): MatchStats = parseMatchStats(get("/api/football/match/stats/%s/%s/json".format(apiKey, id)))
 
-  def matchDay(competitionId: String, date: DateMidnight): List[MatchDay] =
+  def matchDay(competitionId: String, date: DateMidnight): Seq[MatchDay] =
     parseMatchDay(get("/api/football/competition/matchDay/%s/%s/%s/json".format(apiKey, competitionId, date.toString("yyyyMMdd"))))
 
 
-  def leagueTable(competitionId: String, date: DateMidnight): List[LeagueTableEntry] =
+  def leagueTable(competitionId: String, date: DateMidnight): Seq[LeagueTableEntry] =
     parseLeagueTable(get("/api/football/competition/leagueTable/%s/%s/%s/json".format(apiKey, competitionId, date.toString("yyyyMMdd"))))
 
   protected def get(suffix: String): String = GET(base + suffix) match {

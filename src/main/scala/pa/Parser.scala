@@ -5,12 +5,23 @@ import net.liftweb.json.ext.JodaTimeSerializers
 import java.util.Date
 import java.text.SimpleDateFormat
 import scala.Some
+import xml.XML
+import net.liftweb.json.DateFormat
+import org.joda.time.format.DateTimeFormat
+import org.joda.time.DateMidnight
 
 //There is always a certain amount of ugliness in parsing a feed.
 //keep it all in one place
 object Parser {
 
   import JsonCleaner._
+
+  object Date {
+    private val DateParser = DateTimeFormat.forPattern("dd/MM/yyyy")
+    def apply(s: String): DateMidnight = DateParser.parseDateTime(s)
+  }
+
+
 
   implicit val formats = new DefaultFormats{
 
@@ -33,7 +44,15 @@ object Parser {
   } ++ JodaTimeSerializers.all
 
 
-  def parseCompetitions(s: String): List[Season] = (parse(JsonCleaner(s)) \\ "season").extract[List[Season]]
+
+  def parseCompetitions(s: String): Seq[Season] = (XML.loadString(s) \\ "season") map { season =>
+    Season(
+      season \@ "competitionID",
+      season \> "name",
+      Date(season \> "startDate"),
+      Date(season \> "endDate")
+    )
+  }
 
   private val text2Name: Map[String, String] = Map("text" -> "name")
 
@@ -42,7 +61,7 @@ object Parser {
     MatchEvents(
       (json \\ "homeTeam").extract[Team],
       (json \\ "awayTeam").extract[Team],
-      (json \\ "event").transform{players2player}.extract[List[Event]]
+      (json \\ "event").transform{players2player}.extract[Seq[Event]]
     )
   }
 
@@ -55,7 +74,7 @@ object Parser {
 
   private val matchDayMapping: Map[String, String] = text2Name + ("refereeID" -> "id")
 
-  def parseMatchDay(s: String): List[MatchDay] = {
+  def parseMatchDay(s: String): Seq[MatchDay] = {
     val json = parse(JsonCleaner(s, matchDayMapping)).transform { string2int }.transform{yesNo2boolean}
     json \\ "match" match {
       case JObject(Nil) => Nil

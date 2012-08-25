@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<seasons xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://pads2.pa-sport.com/API/Schemas/Football/Competitions/competitions.xsd">
+    <season competitionID="100">
+        <name>Barclays Premier League 10/11</name>
+        <startDate>01/08/2010</startDate>
+        <endDate>31/05/2011</endDate>
+    </season>
+    <season competitionID="101">
+        <name>Npower Championship 10/11</name>
+        <startDate>01/08/2010</startDate>
+        <endDate>31/05/2011</endDate>
+    </season>
+    <season competitionID="102">
+        <name>Npower League One 10/11</name>
+        <startDate>01/08/2010</startDate>
+        <endDate>31/05/2011</endDate>
+    </season>
+    <season competitionID="103">
+        <name>Npower League Two 10/11</name>
+        <startDate>01/08/2010</startDate>
+        <endDate>31/05/2011</endDate>
+    </season>
+    <season competitionID="104">
+        <name>Blue Square Premier 10/11</name>
+        <startDate>01/08/2010</startDate>
+        <endDate>31/05/2011</endDate>
+    </season>
+    <season competitionID="120">
+        <name>Clydesdale Bank Premier League 10/11</name>
+        <startDate>01/08/2010</startDate>
+        <endDate>31/05/2011</endDate>
+    </season>
+    <season competitionID="121">
+        <name>Irn-Bru Scottish First Division 10/11</name>
+        <startDate>01/08/2010</startDate>
+        <endDate>31/05/2011</endDate>
+    </season>
+    <season competitionID="122">
+        <name>Irn-Bru Scottish Second Division 10/11</name>
+        <startDate>01/08/2010</startDate>
+        <endDate>31/05/2011</endDate>
+    </season>
+    <season competitionID="123">
+        <name>Irn-Bru Scottish Third Division 10/11</name>
+        <startDate>01/08/2010</startDate>
+        <endDate>31/05/2011</endDate>
+    </season>
+    <season competitionID="300">
+        <name>The FA Cup sponsored by E.ON 10/11</name>
+        <startDate>01/08/2010</startDate>
+        <endDate>31/05/2011</endDate>
+    </season>
+    <season competitionID="301">
+        <name>The Carling Cup 10/11</name>
+        <startDate>01/08/2010</startDate>
+        <endDate>31/05/2011</endDate>
+    </season>
+    <season competitionID="500">
+        <name>UEFA Champions League 10/11</name>
+        <startDate>01/08/2010</startDate>
+        <endDate>31/05/2011</endDate>
+    </season>
+    <season competitionID="510">
+        <name>UEFA Europa League 10/11</name>
+        <startDate>01/08/2010</startDate>
+        <endDate>31/05/2011</endDate>
+    </season>
+    <season competitionID="794">
+        <name>ABSA Premier League 10/11</name>
+        <startDate>01/08/2010</startDate>
+        <endDate>31/05/2011</endDate>
+    </season>
+</seasons>
