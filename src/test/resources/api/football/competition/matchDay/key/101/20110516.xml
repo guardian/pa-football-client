@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<matches xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://pads2.pa-sport.com/API/Schemas/Football/Competition/matches.xsd">
+    <match matchID="3401097" date="16/05/2011" koTime="19:45">
+        <round roundNumber="1">Play-Offs Semi-Final</round>
+        <leg>2</leg>
+        <liveMatch>No</liveMatch>
+        <result>Yes</result>
+        <previewAvailable>Yes</previewAvailable>
+        <reportAvailable>Yes</reportAvailable>
+        <lineupsAvailable>Yes</lineupsAvailable>
+        <matchStatus>FT</matchStatus>
+        <attendance>19816</attendance>
+        <referee refereeID="186049">Andre Marriner</referee>
+        <venue venueID="79">Liberty Stadium</venue>
+        <homeTeam teamID="65">
+            <teamName>Swansea</teamName>
+            <score>3</score>
+            <htScore>2</htScore>
+            <aggregateScore>3</aggregateScore>
+            <scorers>Leon Britton (28),Stephen Dobbie (33),Darren Pratley (90 +2:09)</scorers>
+        </homeTeam>
+        <awayTeam teamID="15">
+            <teamName>Nottm Forest</teamName>
+            <score>1</score>
+            <htScore>0</htScore>
+            <aggregateScore>1</aggregateScore>
+            <scorers>Robert Earnshaw (80)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </match>
+</matches>

@@ -14,25 +14,24 @@ class MatchDayTest extends FlatSpec with ShouldMatchers {
     matches(3) should be(
       MatchDay(
         "3407349",
-        new DateMidnight(2011, 8, 27),
-        "15:00",
-        None,
-        "1",
-        false,
-        true,
-        true,
-        true,
-        true,
-        "FT",
-        "41765"
-        ,MatchDayTeam("4","Chelsea",Some(3),Some(1),None,Some("Jose Bosingwa (6),Frank Lampard (82 Pen),Juan Mata (90 +10:03)"))
-        ,MatchDayTeam("14","Norwich",Some(1),Some(0),None,Some("Grant Holt (63)")),
-        Some(Official("410888", "Mike Jones")),
-        Some(Venue("511", "Stamford Bridge"))
+        new DateTime(2011, 8, 27, 15, 0, 0, 0),
+        Some(Round("1", None)),
+        Some("1"),
+        liveMatch = false,
+        result = true,
+        previewAvailable = true,
+        reportAvailable = true,
+        lineupsAvailable = true,
+        matchStatus = "FT",
+        attendance = Some("41765"),
+        homeTeam = MatchDayTeam(
+          "4", "Chelsea", Some(3), Some(1), None, Some("Jose Bosingwa (6),Frank Lampard (82 Pen),Juan Mata (90 +10:03)")
+        ),
+        awayTeam = MatchDayTeam("14", "Norwich", Some(1), Some(0), None, Some("Grant Holt (63)")),
+        referee = Some(Official("410888", "Mike Jones")),
+        venue = Some(Venue("511", "Stamford Bridge"))
       )
     )
-
-    matches(3).kickOffTime should be (new DateTime(2011, 8, 27, 15, 0, 0, 0))
   }
 
   it should "parse a day that only has a single game" in {
@@ -69,7 +68,7 @@ class MatchDayTest extends FlatSpec with ShouldMatchers {
 
     val matches = StubClient.matchDay("101", new DateMidnight(2011, 5, 16))
 
-    matches(0).round should be (Some(Round("1", "Play-Offs Semi-Final")))
+    matches(0).round should be (Some(Round("1", Some("Play-Offs Semi-Final"))))
   }
 
   it should "parse match without half time score" in {
@@ -78,12 +77,21 @@ class MatchDayTest extends FlatSpec with ShouldMatchers {
 
     matches(4).awayTeam.htScore should be (None)
     matches(4).awayTeam.aggregateScore should be (None)
+
   }
+
+  it should "parse match without attendance" in {
+
+    val matches = StubClient.matchDay("102", new DateMidnight(2010, 11, 02))
+
+    matches(4).attendance should be (None)
+  }
+
 
   it should "parse match without score" in {
 
-      val matches = StubClient.matchDay("794", new DateMidnight(2011, 4, 16))
+    val matches = StubClient.matchDay("794", new DateMidnight(2011, 4, 16))
 
-      matches(0).homeTeam.score should be (None)
-    }
+    matches(0).homeTeam.score should be (None)
+  }
 }

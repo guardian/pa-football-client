@@ -56,7 +56,7 @@ case class TeamStats(
 
 case class Official(id: String, name: String)
 case class Venue(venueID: String, name: String)
-case class Round(roundNumber: String, name: String)
+case class Round(roundNumber: String, name: Option[String])
 
 case class MatchDayTeam(
   id: String,
@@ -70,7 +70,6 @@ case class MatchDayTeam(
 case class MatchDay(
   id: String,
   date: DateMidnight,
-  koTime: String,
   round: Option[Round],
   leg: String,
   liveMatch: Boolean,
@@ -79,17 +78,12 @@ case class MatchDay(
   reportAvailable: Boolean,
   lineupsAvailable: Boolean,
   matchStatus: String,
-  attendance: String,
+  attendance: Option[String],
   homeTeam: MatchDayTeam,
   awayTeam: MatchDayTeam,
   referee: Option[Official],
   venue: Option[Venue]
-) {
-  import Formats._
-  lazy val kickOffTime: DateTime = koTime match {
-    case HoursMinutes(hours, minutes) => new DateTime(date).plusHours(hours.toInt).plusMinutes(minutes.toInt)
-  }
-}
+)
 
 case class LeagueTableEntry(stageNumber: String, round: Option[Round], team: LeagueTeam)
 

@@ -34,4 +34,10 @@ object `package` {
 
   implicit def optionString2String(s: Option[String]) = s.get
 
+  implicit def optionString2boolean(s: Option[String]) = s match {
+    case Some("Yes") => true
+    case Some("No") => false
+    case _ => throw new RuntimeException("Unexpected value for boolean: " + s)
+  }
+
 }

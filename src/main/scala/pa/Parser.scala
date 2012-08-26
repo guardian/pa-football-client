@@ -16,9 +16,26 @@ object Parser {
 
   import JsonCleaner._
 
-  object Date {
+  private object EmptyToOption {
+    def apply(s: String): Option[String] = s match {
+      case null => None
+      case "" => None
+      case _ => Some(s)
+    }
+  }
+
+  private object Date {
+
+    val DateOnly = """(\d\d/\d\d/\d\d\d\d)""".r
+    val DateWithTime = """(\d\d/\d\d/\d\d\d\d \d\d:\d\d)""".r
+
     private val DateParser = DateTimeFormat.forPattern("dd/MM/yyyy")
-    def apply(s: String): DateMidnight = DateParser.parseDateTime(s)
+    private val DateTimeParser = DateTimeFormat.forPattern("ddd/MM/yyyy HH:mm")
+
+    def apply(s: String): DateMidnight = s match {
+      case DateOnly(date) => DateParser.parseDateTime(date)
+      case DateWithTime(date) => DateTimeParser.parseDateTime(date)
+    }
   }
 
 
@@ -96,14 +113,48 @@ object Parser {
     json.transform{string2int}.extract[MatchStats]
   }
 
-  private val matchDayMapping: Map[String, String] = text2Name + ("refereeID" -> "id")
 
-  def parseMatchDay(s: String): Seq[MatchDay] = {
-    val json = parse(JsonCleaner(s, matchDayMapping)).transform { string2int }.transform{yesNo2boolean}
-    json \\ "match" match {
-      case JObject(Nil) => Nil
-      case obj: JObject => List(obj.extract[MatchDay]) // Handles single match
-      case array => array.extract[List[MatchDay]] // Handles days with multiple matches
+  def parseMatchDay(s: String) = {
+
+    def parseTeam(team: NodeSeq): MatchDayTeam = MatchDayTeam(
+      team \@ "teamID",
+      team \> "teamName",
+      (team \> "score") map (_.toInt),
+      (team \> "htScore") map (_.toInt),
+      (team \> "aggregateScore") map (_.toInt),
+      team \> "scorers"
+    )
+
+    def parseReferee(official: NodeSeq) = (official \@ "refereeID") flatMap { id =>
+      if (official.text == "") None else Some(Official(id, official.text))
+    }
+
+    def parseVenue(venue: NodeSeq) = (venue \@ "venueID") map { id =>
+      Venue(id, venue.text)
+    }
+
+    def parseRound(round: NodeSeq) = (round \@ "roundNumber") map { number =>
+      Round(number, EmptyToOption(round.text))
+    }
+
+    XML.loadString(s) \ "match" map { aMatch =>
+      MatchDay(
+        aMatch \@ "matchID",
+        Date((aMatch \@ "date") + " " + (aMatch \@ "koTime").getOrElse("")),
+        (aMatch \ "round") flatMap { parseRound } headOption,
+        aMatch \> "leg",
+        aMatch \> "liveMatch",
+        aMatch \> "result",
+        aMatch \> "previewAvailable",
+        aMatch \> "reportAvailable",
+        aMatch \> "lineupsAvailable",
+        aMatch \> "matchStatus",
+        aMatch \> "attendance",
+        (aMatch \ "homeTeam") map { parseTeam } head,
+        (aMatch \ "awayTeam") map { parseTeam } head,
+        (aMatch \ "referee") flatMap { parseReferee } headOption,
+        (aMatch \ "venue") flatMap { parseVenue } headOption
+      )
     }
   }
 

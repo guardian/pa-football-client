@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<matches xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://pads2.pa-sport.com/API/Schemas/Football/Competition/matches.xsd">
+    <match matchID="3304257" date="16/04/2011" koTime="14:00">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <liveMatch>No</liveMatch>
+        <result>No</result>
+        <previewAvailable>No</previewAvailable>
+        <reportAvailable>No</reportAvailable>
+        <lineupsAvailable>Yes</lineupsAvailable>
+        <matchStatus>-</matchStatus>
+        <attendance></attendance>
+        <referee refereeID="358628">Harry Lekitlane</referee>
+        <venue venueID="1123">Moses Mabhida Stadium</venue>
+        <homeTeam teamID="47445">
+            <teamName>AmaZulu</teamName>
+            <score></score>
+            <htScore></htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </homeTeam>
+        <awayTeam teamID="41617">
+            <teamName>Mamelodi Sundowns</teamName>
+            <score></score>
+            <htScore></htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </awayTeam>
+        <comments></comments>
+    </match>
+    <match matchID="3304258" date="16/04/2011" koTime="14:00">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <liveMatch>No</liveMatch>
+        <result>Yes</result>
+        <previewAvailable>No</previewAvailable>
+        <reportAvailable>No</reportAvailable>
+        <lineupsAvailable>Yes</lineupsAvailable>
+        <matchStatus>FT</matchStatus>
+        <attendance>1000</attendance>
+        <referee refereeID="448918">Victor Hlungwane</referee>
+        <venue venueID="1034">Dobsonville Stadium</venue>
+        <homeTeam teamID="44722">
+            <teamName>Moroka Swallows</teamName>
+            <score>3</score>
+            <htScore>1</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Cheick Cisse (34),Siyabonga Nomvethe (68 Pen),Bradley Ritson (81)</scorers>
+        </homeTeam>
+        <awayTeam teamID="57222">
+            <teamName>Vasco Da Gama</teamName>
+            <score>2</score>
+            <htScore>2</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Jerome Ramathlakwana (14),Sibusiso Zuma (31 Pen)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </match>
+    <match matchID="3304259" date="16/04/2011" koTime="19:15">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <liveMatch>No</liveMatch>
+        <result>Yes</result>
+        <previewAvailable>No</previewAvailable>
+        <reportAvailable>No</reportAvailable>
+        <lineupsAvailable>Yes</lineupsAvailable>
+        <matchStatus>FT</matchStatus>
+        <attendance>16000</attendance>
+        <referee refereeID="345468">Robert Sithole</referee>
+        <venue venueID="943">Peter Mokaba Stadium</venue>
+        <homeTeam teamID="27759">
+            <teamName>Kaizer Chiefs</teamName>
+            <score>2</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Jimmy Tau (73),Knowledge Musona (90 +1:09)</scorers>
+        </homeTeam>
+        <awayTeam teamID="52403">
+            <teamName>Black Aces</teamName>
+            <score>0</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </awayTeam>
+        <comments></comments>
+    </match>
+    <match matchID="3304260" date="16/04/2011" koTime="19:15">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <liveMatch>No</liveMatch>
+        <result>Yes</result>
+        <previewAvailable>No</previewAvailable>
+        <reportAvailable>No</reportAvailable>
+        <lineupsAvailable>Yes</lineupsAvailable>
+        <matchStatus>FT</matchStatus>
+        <attendance>1000</attendance>
+        <referee refereeID="347453">Zolile Mthetho</referee>
+        <venue venueID="1393">Lucas Moripe Stadium</venue>
+        <homeTeam teamID="44725">
+            <teamName>SuperSport United</teamName>
+            <score>5</score>
+            <htScore>2</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Anthony Laffor (14),Glen Salmon (45 +0:40),Anthony Laffor (65),Ashley Hartog (79),Anthony Laffor
+                (90 +2:33)
+            </scorers>
+        </homeTeam>
+        <awayTeam teamID="44723">
+            <teamName>Santos</teamName>
+            <score>2</score>
+            <htScore>2</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Erwin Isaacs (14),Vuyisile Wana (34)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </match>
+</matches>

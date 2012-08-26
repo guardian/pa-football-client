@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<matches xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://pads2.pa-sport.com/API/Schemas/Football/Competition/matches.xsd">
+    <match matchID="3289241" date="07/11/2010" koTime="13:10">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <liveMatch>No</liveMatch>
+        <result>Yes</result>
+        <previewAvailable>Yes</previewAvailable>
+        <reportAvailable>Yes</reportAvailable>
+        <lineupsAvailable>Yes</lineupsAvailable>
+        <matchStatus>FT</matchStatus>
+        <attendance>26049</attendance>
+        <referee refereeID="326245"></referee>
+        <venue venueID="1035">Cardiff City Stadium</venue>
+        <homeTeam teamID="52">
+            <teamName>Cardiff</teamName>
+            <score>0</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </homeTeam>
+        <awayTeam teamID="65">
+            <teamName>Swansea</teamName>
+            <score>1</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Marvin Emnes (75)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </match>
+</matches>
