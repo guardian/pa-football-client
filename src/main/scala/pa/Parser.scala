@@ -40,8 +40,6 @@ object Parser {
     )
   }
 
-  private val text2Name: Map[String, String] = Map("text" -> "name")
-
   def parseMatchEvents(s: String): MatchEvents = {
 
     val xml = XML.loadString(s)
@@ -71,17 +69,30 @@ object Parser {
     )
 
     MatchEvents(
-      (xml \\ "homeTeam").map{ parseTeam }.head,
-      (xml \\ "awayTeam").map { parseTeam }.head,
+      parseTeam(xml \\ "homeTeam"),
+      parseTeam(xml \\ "awayTeam"),
       (xml \ "events" \\ "event") map { parseEvent }
     )
   }
 
   def parseMatchStats(s: String): MatchStats = {
-//    val json = parse(JsonCleaner(s, statsMapping)).children.head
-//    json.transform{string2int}.extract[MatchStats]
+    val matchStats = XML.loadString(s)
 
-    null
+    def parseTeam(team: NodeSeq) = TeamStats(
+      team \> "bookings" toInt,
+      team \> "dismissals" toInt,
+      team \> "corners" toInt,
+      team \> "offsides" toInt,
+      team \> "fouls" toInt,
+      team \> "shotsOnTarget" toInt,
+      team \> "shotsOffTarget" toInt
+    )
+
+    MatchStats(
+      matchStats \> "possession" toInt,
+      parseTeam(matchStats \ "homeTeam"),
+      parseTeam(matchStats \ "awayTeam")
+    )
   }
 
 
@@ -112,7 +123,7 @@ object Parser {
       MatchDay(
         aMatch \@ "matchID",
         Date((aMatch \@ "date") + " " + (aMatch \@ "koTime").getOrElse("")),
-        (aMatch \ "round") flatMap { parseRound } headOption,
+        parseRound(aMatch \ "round"),
         aMatch \> "leg",
         aMatch \> "liveMatch",
         aMatch \> "result",
@@ -121,10 +132,10 @@ object Parser {
         aMatch \> "lineupsAvailable",
         aMatch \> "matchStatus",
         aMatch \> "attendance",
-        (aMatch \ "homeTeam") map { parseTeam } head,
-        (aMatch \ "awayTeam") map { parseTeam } head,
-        (aMatch \ "referee") flatMap { parseReferee } headOption,
-        (aMatch \ "venue") flatMap { parseVenue } headOption
+        parseTeam(aMatch \ "homeTeam"),
+        parseTeam(aMatch \ "awayTeam"),
+        parseReferee(aMatch \ "referee"),
+        parseVenue(aMatch \ "venue")
       )
     }
   }
@@ -141,7 +152,7 @@ object Parser {
 
       LeagueTableEntry(
         entry \> "stageNumber",
-        (entry \ "round") flatMap { parseRound } headOption,
+        parseRound(entry \ "round"),
         LeagueTeam(
           team \@ "teamID",
           team \@ "teamName",
