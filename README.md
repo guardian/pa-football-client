@@ -6,7 +6,7 @@ Sbt dependencies
 
     resolvers += "Guardian Github Releases" at "http://guardian.github.com/maven/repo-releases"
 
-    libraryDependencies += "com.gu" %% "pa-client" % "1.3"
+    libraryDependencies += "com.gu" %% "pa-client" % "1.6"
 
 Usage
 
