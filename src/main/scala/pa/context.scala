@@ -1,7 +1,7 @@
 package pa
 
 import xml.NodeSeq
-import org.joda.time.DateTime
+import org.joda.time.{DateMidnight, DateTime}
 
 
 object `package` {
@@ -16,28 +16,25 @@ object `package` {
       case s => Some(s)
     }
 
-    //directly gets the text value of an attribute as an option
-    //def \@<(attributeName: String) = Option((\@(attributeName)))
-
     //directly gets the text value of an element
     def \>(elementsName: String) = (node \ elementsName).text match {
       case null => None
       case "" => None
       case s => Some(s)
     }
-
-    //directly gets the text value of an element as an Option[String]
-    //def \<(elementsName: String) = Option(\>(elementsName))
   }
 
-  implicit def date2midnight(date: DateTime) = date.toDateMidnight
+  implicit def date2midnight(date: DateTime): DateMidnight = date.toDateMidnight
 
-  implicit def optionString2String(s: Option[String]) = s.get
+  implicit def optionString2String(s: Option[String]): String = s.get
 
-  implicit def optionString2boolean(s: Option[String]) = s match {
+  implicit def optionString2boolean(s: Option[String]): Boolean = s match {
     case Some("Yes") => true
     case Some("No") => false
     case _ => throw new RuntimeException("Unexpected value for boolean: " + s)
   }
 
+  implicit def optionString2int(s: Option[String]) = new {
+    lazy val toInt = s.get.toInt
+  }
 }

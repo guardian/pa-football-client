@@ -7,14 +7,22 @@ import org.joda.time.DateMidnight
 class LeagueTableTest extends FlatSpec with ShouldMatchers{
 
   "PaClient" should "load a League Table" in {
-    val List(first, second) = StubClient.leagueTable("100", new DateMidnight(2011, 8, 27))
+    val List(first, second) = StubClient.leagueTable("100", new DateMidnight(2011, 8, 27)) take 2
 
     first.stageNumber should be("1")
-    first.round should be(None)
-    val manUtd = LeagueTeam(id = "12", teamName = "Man Utd",
-      rank = 1, played = 31, won = 24, drawn = 4,
-      lost = 3, goalsFor = 76, goalsAgainst = 27,
-      goalDifference = 49, points = 76
+    first.round should be(Some(Round("1",None)))
+    val manUtd = LeagueTeam(
+      id = "12",
+      teamName = "Man Utd",
+      rank = 1,
+      played = 3,
+      won = 3,
+      drawn = 0,
+      lost = 0,
+      goalsFor = 13,
+      goalsAgainst = 3,
+      goalDifference = 10,
+      points = 9
     )
     first.team should be(manUtd)
     second.team.teamName should be("Man City")
@@ -22,7 +30,7 @@ class LeagueTableTest extends FlatSpec with ShouldMatchers{
   }
 
   it should "load a League Table with negative Goal Difference" in {
-    val List(entry) = StubClient.leagueTable("100", new DateMidnight(2011, 8, 28))
+    val List(entry) = StubClient.leagueTable("100", new DateMidnight(2011, 8, 28)) filter (_.team.teamName == "QPR") take 1
 
     entry.team.goalDifference should be(-5)
   }

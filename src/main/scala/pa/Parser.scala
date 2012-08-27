@@ -1,20 +1,13 @@
 package pa
 
-import net.liftweb.json._
-import net.liftweb.json.ext.JodaTimeSerializers
-import java.util.Date
-import java.text.SimpleDateFormat
 import scala.Some
 import xml.{NodeSeq, XML}
-import net.liftweb.json.DateFormat
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.DateMidnight
 
 //There is always a certain amount of ugliness in parsing a feed.
 //keep it all in one place
 object Parser {
-
-  import JsonCleaner._
 
   private object EmptyToOption {
     def apply(s: String): Option[String] = s match {
@@ -37,28 +30,6 @@ object Parser {
       case DateWithTime(date) => DateTimeParser.parseDateTime(date)
     }
   }
-
-
-
-  implicit val formats = new DefaultFormats{
-
-    private val DateOnly = """^(\d\d/\d\d/\d\d\d\d)$""".r
-
-    //turns out SimpleDateFormat is not thread safe
-    //http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4228335
-    //do not convert this to a val...
-    private def dateOnlyFormat =  new SimpleDateFormat("dd/MM/yyyy")
-
-    override val dateFormat = new DateFormat {
-      override def parse(s: String): Option[Date] =
-        s match {
-          case DateOnly(_) => Some(dateOnlyFormat.parse(s))
-          case _ => None
-        }
-
-      override def format(d: Date): String = throw new RuntimeException("not expecting to output dates")
-    }
-  } ++ JodaTimeSerializers.all
 
   def parseCompetitions(s: String): Seq[Season] = (XML.loadString(s) \\ "season") map { season =>
     Season(
@@ -106,11 +77,11 @@ object Parser {
     )
   }
 
-  private val statsMapping: Map[String, String] = text2Name + ("possession" -> "homePossession")
-
   def parseMatchStats(s: String): MatchStats = {
-    val json = parse(JsonCleaner(s, statsMapping)).children.head
-    json.transform{string2int}.extract[MatchStats]
+//    val json = parse(JsonCleaner(s, statsMapping)).children.head
+//    json.transform{string2int}.extract[MatchStats]
+
+    null
   }
 
 
@@ -158,41 +129,33 @@ object Parser {
     }
   }
 
-  private val leagueMapping = Map("for" -> "goalsFor", "against" -> "goalsAgainst")
+  def parseLeagueTable(s: String): Seq[LeagueTableEntry] = {
 
-  def parseLeagueTable(s: String): List[LeagueTableEntry] = {
-    val json = parse(JsonCleaner(s, leagueMapping)).transform{string2int}
-    (json \\ "tableEntry").extract[List[LeagueTableEntry]]
-  }
-
-}
-
-
-//PA feed converts from XML and you get some weirdness such as attributes get an @
-object JsonCleaner {
-
-  /**
-   * Strips out '@' and '#' symbols and replaces specified keys with alternatives (e.g. changes 'for' to 'goalsFor').
-   */
-  def apply(s: String, mappings: Map[String, String] = Map.empty): String =
-    mappings.foldLeft(s.replace("\"@", "\"").replace("\"#", "\"")) { case (z, (k, v)) =>
-      z.replaceAllLiterally("\"%s\"" format k, "\"%s\"" format v)
+    def parseRound(round: NodeSeq) = (round \@ "roundNumber") map { number =>
+      Round(number, EmptyToOption(round.text))
     }
 
-  val IntPattern = """^(-?\d+)$""".r
+    (XML.loadString(s) \ "tableEntry") map { entry =>
 
-  def players2player: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
-    case JField(("players"), JObject(List(JField("player1", player1), JField("player2", player2)))) =>
-      val players = List(player1, player2).filter(p => (p \ "playerID").values.asInstanceOf[String] != "")
-      JField("players", JArray(players))
-  }
+      val team = entry \ "team"
 
-  def string2int: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
-    case JField(name, JString(IntPattern(value))) => JField(name, JInt(value.toInt))
-  }
-
-  def yesNo2boolean:  PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
-    case JField(name, JString("Yes")) => JField(name, JBool(true))
-    case JField(name, JString("No")) => JField(name, JBool(false))
+      LeagueTableEntry(
+        entry \> "stageNumber",
+        (entry \ "round") flatMap { parseRound } headOption,
+        LeagueTeam(
+          team \@ "teamID",
+          team \@ "teamName",
+          team \> "rank" toInt,
+          team \> "played" toInt,
+          team \> "won" toInt,
+          team \> "drawn" toInt,
+          team \> "lost" toInt,
+          team \> "for" toInt,
+          team \> "against" toInt,
+          team \> "goalDifference" toInt,
+          team \> "points" toInt
+        )
+      )
+    }
   }
 }

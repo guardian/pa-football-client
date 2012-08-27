@@ -23,7 +23,9 @@ trait PaClient { self: Http =>
 
 
   def leagueTable(competitionId: String, date: DateMidnight): Seq[LeagueTableEntry] =
-    parseLeagueTable(get("/api/football/competition/leagueTable/%s/%s/%s/json".format(apiKey, competitionId, date.toString("yyyyMMdd"))))
+    parseLeagueTable(
+      get("/api/football/competition/leagueTable/%s/%s/%s".format(apiKey, competitionId, date.toString("yyyyMMdd")))
+    )
 
   protected def get(suffix: String): String = GET(base + suffix) match {
     case Response(200, body, _) =>  body
