@@ -40,7 +40,7 @@ object Parser {
     )
   }
 
-  def parseMatchEvents(s: String): MatchEvents = {
+  def parseMatchEvents(s: String): Option[MatchEvents] = {
 
     val xml = XML.loadString(s)
 
@@ -68,11 +68,17 @@ object Parser {
       event \> "outcome"
     )
 
-    MatchEvents(
-      parseTeam(xml \\ "homeTeam"),
-      parseTeam(xml \\ "awayTeam"),
-      (xml \ "events" \\ "event") map { parseEvent }
+    //annoyingly there are some matches with no events
+    //marked up in a weird way
+    if (xml \ "teams" \> "homeTeam" isDefined) Some(
+      MatchEvents(
+        parseTeam(xml \\ "homeTeam"),
+        parseTeam(xml \\ "awayTeam"),
+        (xml \ "events" \\ "event") map { parseEvent }
+      )
     )
+    else
+      None
   }
 
   def parseMatchStats(s: String): Option[MatchStats] = {

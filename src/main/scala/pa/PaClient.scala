@@ -12,7 +12,7 @@ trait PaClient { self: Http =>
 
   def competitions: Seq[Season] = parseCompetitions(get("/api/football/competitions/%s" format apiKey))
 
-  def matchEvents(id: String): MatchEvents = parseMatchEvents(
+  def matchEvents(id: String): Option[MatchEvents] = parseMatchEvents(
     get("/api/football/match/events/%s/%s".format(apiKey, id))
   )
 
