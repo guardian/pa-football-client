@@ -55,12 +55,12 @@ case class TeamStats(
 )
 
 case class Official(id: String, name: String)
-case class Venue(venueID: String, name: String)
+case class Venue(id: String, name: String)
 case class Round(roundNumber: String, name: Option[String])
 
 case class MatchDayTeam(
   id: String,
-  teamName: String,
+  name: String,
   score: Option[Int],
   htScore: Option[Int],
   aggregateScore: Option[Int],
@@ -89,7 +89,7 @@ case class LeagueTableEntry(stageNumber: String, round: Option[Round], team: Lea
 
 case class LeagueTeam(
   id: String,
-  teamName: String,
+  name: String,
   rank: Int,
   played: Int,
   won: Int,

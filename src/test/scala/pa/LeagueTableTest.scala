@@ -13,7 +13,7 @@ class LeagueTableTest extends FlatSpec with ShouldMatchers{
     first.round should be(Some(Round("1",None)))
     val manUtd = LeagueTeam(
       id = "12",
-      teamName = "Man Utd",
+      name = "Man Utd",
       rank = 1,
       played = 3,
       won = 3,
@@ -25,12 +25,12 @@ class LeagueTableTest extends FlatSpec with ShouldMatchers{
       points = 9
     )
     first.team should be(manUtd)
-    second.team.teamName should be("Man City")
+    second.team.name should be("Man City")
 
   }
 
   it should "load a League Table with negative Goal Difference" in {
-    val List(entry) = StubClient.leagueTable("100", new DateMidnight(2011, 8, 28)) filter (_.team.teamName == "QPR") take 1
+    val List(entry) = StubClient.leagueTable("100", new DateMidnight(2011, 8, 28)) filter (_.team.name == "QPR") take 1
 
     entry.team.goalDifference should be(-5)
   }
