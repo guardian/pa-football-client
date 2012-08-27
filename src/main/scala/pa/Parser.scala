@@ -1,104 +1,183 @@
 package pa
 
-import net.liftweb.json._
-import net.liftweb.json.ext.JodaTimeSerializers
-import java.util.Date
-import java.text.SimpleDateFormat
 import scala.Some
+import xml.{NodeSeq, XML}
+import org.joda.time.format.DateTimeFormat
+import org.joda.time.DateMidnight
 
 //There is always a certain amount of ugliness in parsing a feed.
 //keep it all in one place
 object Parser {
 
-  import JsonCleaner._
-
-  implicit val formats = new DefaultFormats{
-
-    private val DateOnly = """^(\d\d/\d\d/\d\d\d\d)$""".r
-
-    //turns out SimpleDateFormat is not thread safe
-    //http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4228335
-    //do not convert this to a val...
-    private def dateOnlyFormat =  new SimpleDateFormat("dd/MM/yyyy")
-
-    override val dateFormat = new DateFormat {
-      override def parse(s: String): Option[Date] =
-        s match {
-          case DateOnly(_) => Some(dateOnlyFormat.parse(s))
-          case _ => None
-        }
-
-      override def format(d: Date): String = throw new RuntimeException("not expecting to output dates")
+  private object EmptyToOption {
+    def apply(s: String): Option[String] = s match {
+      case null => None
+      case "" => None
+      case _ => Some(s)
     }
-  } ++ JodaTimeSerializers.all
+  }
 
+  private object Date {
 
-  def parseCompetitions(s: String): List[Season] = (parse(JsonCleaner(s)) \\ "season").extract[List[Season]]
+    val DateOnly = """(\d\d/\d\d/\d\d\d\d)""".r
+    val DateWithTime = """(\d\d/\d\d/\d\d\d\d \d\d:\d\d)""".r
 
-  private val text2Name: Map[String, String] = Map("text" -> "name")
+    private val DateParser = DateTimeFormat.forPattern("dd/MM/yyyy")
+    private val DateTimeParser = DateTimeFormat.forPattern("ddd/MM/yyyy HH:mm")
 
-  def parseMatchEvents(s: String): MatchEvents = {
-    val json = parse(JsonCleaner(s, text2Name))
-    MatchEvents(
-      (json \\ "homeTeam").extract[Team],
-      (json \\ "awayTeam").extract[Team],
-      (json \\ "event").transform{players2player}.extract[List[Event]]
+    def apply(s: String): DateMidnight = s match {
+      case DateOnly(date) => DateParser.parseDateTime(date)
+      case DateWithTime(date) => DateTimeParser.parseDateTime(date)
+    }
+  }
+
+  def parseCompetitions(s: String): Seq[Season] = (XML.loadString(s) \\ "season") map { season =>
+    Season(
+      season \@ "competitionID",
+      season \> "name",
+      Date(season \> "startDate"),
+      Date(season \> "endDate")
     )
   }
 
-  private val statsMapping: Map[String, String] = text2Name + ("possession" -> "homePossession")
+  def parseMatchEvents(s: String): Option[MatchEvents] = {
 
-  def parseMatchStats(s: String): MatchStats = {
-    val json = parse(JsonCleaner(s, statsMapping)).children.head
-    json.transform{string2int}.extract[MatchStats]
+    val xml = XML.loadString(s)
+
+    def parseTeam(team: NodeSeq) = Team(
+      team \@ "teamID",
+      team.text
+    )
+
+    def parsePlayer(player: NodeSeq): Option[Player] = (player \@ "playerID") map {
+        Player(_, player \@ "teamID", player.text)
+    }
+
+    def parseEvent(event: NodeSeq) = Event(
+      event \@ "eventID",
+      event \@ "teamID",
+      event \> "eventType",
+      event \> "matchTime",
+      event \> "eventTime",
+      ((event \\ "player1") ++ (event \\ "player2")) flatMap { parsePlayer },
+      event \> "reason",
+      event \> "how",
+      event \> "whereFrom",
+      event \> "whereTo",
+      event \> "distance",
+      event \> "outcome"
+    )
+
+    //annoyingly there are some matches with no events
+    //marked up in a weird way
+    if (xml \ "teams" \> "homeTeam" isDefined) Some(
+      MatchEvents(
+        parseTeam(xml \\ "homeTeam"),
+        parseTeam(xml \\ "awayTeam"),
+        (xml \ "events" \\ "event") map { parseEvent }
+      )
+    )
+    else
+      None
   }
 
-  private val matchDayMapping: Map[String, String] = text2Name + ("refereeID" -> "id")
+  def parseMatchStats(s: String): Option[MatchStats] = {
+    val matchStats = XML.loadString(s)
 
-  def parseMatchDay(s: String): List[MatchDay] = {
-    val json = parse(JsonCleaner(s, matchDayMapping)).transform { string2int }.transform{yesNo2boolean}
-    json \\ "match" match {
-      case JObject(Nil) => Nil
-      case obj: JObject => List(obj.extract[MatchDay]) // Handles single match
-      case array => array.extract[List[MatchDay]] // Handles days with multiple matches
+    def parseTeam(team: NodeSeq) = TeamStats(
+      team \> "bookings" toInt,
+      team \> "dismissals" toInt,
+      team \> "corners" toInt,
+      team \> "offsides" toInt,
+      team \> "fouls" toInt,
+      team \> "shotsOnTarget" toInt,
+      team \> "shotsOffTarget" toInt
+    )
+
+    if ((matchStats \ "errors").size > 0)
+      None
+    else
+      Some(
+        MatchStats(
+          matchStats \> "possession" toInt,
+          parseTeam(matchStats \ "homeTeam"),
+          parseTeam(matchStats \ "awayTeam")
+        )
+      )
+  }
+
+
+  def parseMatchDay(s: String) = {
+
+    def parseTeam(team: NodeSeq): MatchDayTeam = MatchDayTeam(
+      team \@ "teamID",
+      team \> "teamName",
+      (team \> "score") map (_.toInt),
+      (team \> "htScore") map (_.toInt),
+      (team \> "aggregateScore") map (_.toInt),
+      team \> "scorers"
+    )
+
+    def parseReferee(official: NodeSeq) = (official \@ "refereeID") flatMap { id =>
+      if (official.text == "") None else Some(Official(id, official.text))
+    }
+
+    def parseVenue(venue: NodeSeq) = (venue \@ "venueID") map { id =>
+      Venue(id, venue.text)
+    }
+
+    def parseRound(round: NodeSeq) = (round \@ "roundNumber") map { number =>
+      Round(number, EmptyToOption(round.text))
+    }
+
+    XML.loadString(s) \ "match" map { aMatch =>
+      MatchDay(
+        aMatch \@ "matchID",
+        Date((aMatch \@ "date") + " " + (aMatch \@ "koTime").getOrElse("")),
+        parseRound(aMatch \ "round"),
+        aMatch \> "leg",
+        aMatch \> "liveMatch",
+        aMatch \> "result",
+        aMatch \> "previewAvailable",
+        aMatch \> "reportAvailable",
+        aMatch \> "lineupsAvailable",
+        aMatch \> "matchStatus",
+        aMatch \> "attendance",
+        parseTeam(aMatch \ "homeTeam"),
+        parseTeam(aMatch \ "awayTeam"),
+        parseReferee(aMatch \ "referee"),
+        parseVenue(aMatch \ "venue")
+      )
     }
   }
 
-  private val leagueMapping = Map("for" -> "goalsFor", "against" -> "goalsAgainst")
+  def parseLeagueTable(s: String): Seq[LeagueTableEntry] = {
 
-  def parseLeagueTable(s: String): List[LeagueTableEntry] = {
-    val json = parse(JsonCleaner(s, leagueMapping)).transform{string2int}
-    (json \\ "tableEntry").extract[List[LeagueTableEntry]]
-  }
-
-}
-
-
-//PA feed converts from XML and you get some weirdness such as attributes get an @
-object JsonCleaner {
-
-  /**
-   * Strips out '@' and '#' symbols and replaces specified keys with alternatives (e.g. changes 'for' to 'goalsFor').
-   */
-  def apply(s: String, mappings: Map[String, String] = Map.empty): String =
-    mappings.foldLeft(s.replace("\"@", "\"").replace("\"#", "\"")) { case (z, (k, v)) =>
-      z.replaceAllLiterally("\"%s\"" format k, "\"%s\"" format v)
+    def parseRound(round: NodeSeq) = (round \@ "roundNumber") map { number =>
+      Round(number, EmptyToOption(round.text))
     }
 
-  val IntPattern = """^(-?\d+)$""".r
+    (XML.loadString(s) \ "tableEntry") map { entry =>
 
-  def players2player: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
-    case JField(("players"), JObject(List(JField("player1", player1), JField("player2", player2)))) =>
-      val players = List(player1, player2).filter(p => (p \ "playerID").values.asInstanceOf[String] != "")
-      JField("players", JArray(players))
-  }
+      val team = entry \ "team"
 
-  def string2int: PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
-    case JField(name, JString(IntPattern(value))) => JField(name, JInt(value.toInt))
-  }
-
-  def yesNo2boolean:  PartialFunction[JsonAST.JValue, JsonAST.JValue] = {
-    case JField(name, JString("Yes")) => JField(name, JBool(true))
-    case JField(name, JString("No")) => JField(name, JBool(false))
+      LeagueTableEntry(
+        entry \> "stageNumber",
+        parseRound(entry \ "round"),
+        LeagueTeam(
+          team \@ "teamID",
+          team \@ "teamName",
+          team \> "rank" toInt,
+          team \> "played" toInt,
+          team \> "won" toInt,
+          team \> "drawn" toInt,
+          team \> "lost" toInt,
+          team \> "for" toInt,
+          team \> "against" toInt,
+          team \> "goalDifference" toInt,
+          team \> "points" toInt
+        )
+      )
+    }
   }
 }

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<matches xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://pads2.pa-sport.com/API/Schemas/Football/Competition/matches.xsd">
+    <match matchID="3407347" date="27/08/2011" koTime="12:05">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <liveMatch>No</liveMatch>
+        <result>Yes</result>
+        <previewAvailable>Yes</previewAvailable>
+        <reportAvailable>Yes</reportAvailable>
+        <lineupsAvailable>Yes</lineupsAvailable>
+        <matchStatus>FT</matchStatus>
+        <attendance>30776</attendance>
+        <referee refereeID="275268">Martin Atkinson</referee>
+        <venue venueID="377">Villa Park</venue>
+        <homeTeam teamID="2">
+            <teamName>Aston Villa</teamName>
+            <score>0</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </homeTeam>
+        <awayTeam teamID="44">
+            <teamName>Wolverhampton</teamName>
+            <score>0</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </awayTeam>
+        <comments></comments>
+    </match>
+    <match matchID="3407356" date="27/08/2011" koTime="12:30">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <liveMatch>No</liveMatch>
+        <result>Yes</result>
+        <previewAvailable>Yes</previewAvailable>
+        <reportAvailable>Yes</reportAvailable>
+        <lineupsAvailable>Yes</lineupsAvailable>
+        <matchStatus>FT</matchStatus>
+        <attendance>17225</attendance>
+        <referee refereeID="384554">Michael Oliver</referee>
+        <venue venueID="1043">The DW Stadium</venue>
+        <homeTeam teamID="68">
+            <teamName>Wigan</teamName>
+            <score>2</score>
+            <htScore>1</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Franco Di Santo (41),Franco Di Santo (66)</scorers>
+        </homeTeam>
+        <awayTeam teamID="16">
+            <teamName>QPR</teamName>
+            <score>0</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </awayTeam>
+        <comments></comments>
+    </match>
+    <match matchID="3407348" date="27/08/2011" koTime="15:00">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <liveMatch>No</liveMatch>
+        <result>Yes</result>
+        <previewAvailable>Yes</previewAvailable>
+        <reportAvailable>Yes</reportAvailable>
+        <lineupsAvailable>Yes</lineupsAvailable>
+        <matchStatus>FT</matchStatus>
+        <attendance>22826</attendance>
+        <referee refereeID="182780">Lee Mason</referee>
+        <venue venueID="59">Ewood Park</venue>
+        <homeTeam teamID="22">
+            <teamName>Blackburn</teamName>
+            <score>0</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </homeTeam>
+        <awayTeam teamID="8">
+            <teamName>Everton</teamName>
+            <score>1</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Mikel Arteta (90 +1:53 Pen)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </match>
+    <match matchID="3407349" date="27/08/2011" koTime="15:00">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <liveMatch>No</liveMatch>
+        <result>Yes</result>
+        <previewAvailable>Yes</previewAvailable>
+        <reportAvailable>Yes</reportAvailable>
+        <lineupsAvailable>Yes</lineupsAvailable>
+        <matchStatus>FT</matchStatus>
+        <attendance>41765</attendance>
+        <referee refereeID="410888">Mike Jones</referee>
+        <venue venueID="511">Stamford Bridge</venue>
+        <homeTeam teamID="4">
+            <teamName>Chelsea</teamName>
+            <score>3</score>
+            <htScore>1</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Jose Bosingwa (6),Frank Lampard (82 Pen),Juan Mata (90 +10:03)</scorers>
+        </homeTeam>
+        <awayTeam teamID="14">
+            <teamName>Norwich</teamName>
+            <score>1</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Grant Holt (63)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </match>
+    <match matchID="3407353" date="27/08/2011" koTime="15:00">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <liveMatch>No</liveMatch>
+        <result>Yes</result>
+        <previewAvailable>Yes</previewAvailable>
+        <reportAvailable>Yes</reportAvailable>
+        <lineupsAvailable>Yes</lineupsAvailable>
+        <matchStatus>FT</matchStatus>
+        <attendance>19938</attendance>
+        <referee refereeID="100658">Mark Halsey</referee>
+        <venue venueID="79">Liberty Stadium</venue>
+        <homeTeam teamID="65">
+            <teamName>Swansea</teamName>
+            <score>0</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </homeTeam>
+        <awayTeam teamID="39">
+            <teamName>Sunderland</teamName>
+            <score>0</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </awayTeam>
+        <comments></comments>
+    </match>
+    <match matchID="3407350" date="27/08/2011" koTime="17:30">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <liveMatch>No</liveMatch>
+        <result>Yes</result>
+        <previewAvailable>Yes</previewAvailable>
+        <reportAvailable>Yes</reportAvailable>
+        <lineupsAvailable>Yes</lineupsAvailable>
+        <matchStatus>FT</matchStatus>
+        <attendance>44725</attendance>
+        <referee refereeID="48050">Lee Probert</referee>
+        <venue venueID="46">Anfield</venue>
+        <homeTeam teamID="9">
+            <teamName>Liverpool</teamName>
+            <score>3</score>
+            <htScore>1</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Jordan Henderson (15),Martin Skrtel (52),Charlie Adam (53)</scorers>
+        </homeTeam>
+        <awayTeam teamID="47">
+            <teamName>Bolton</teamName>
+            <score>1</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Ivan Klasnic (90 +1:10)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </match>
+</matches>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<matches xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://pads2.pa-sport.com/API/Schemas/Football/Competition/matches.xsd">
+    <errors>
+        <error>No data available</error>
+    </errors>
+</matches>

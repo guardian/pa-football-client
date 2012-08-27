@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<matchEvents xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:noNamespaceSchemaLocation="http://pads2.pa-sport.com/API/Schemas/Football/Match/events.xsd">
+    <matchMinutes></matchMinutes>
+    <isResult></isResult>
+    <teams>
+        <homeTeam teamID=""></homeTeam>
+        <awayTeam teamID=""></awayTeam>
+    </teams>
+    <events>
+        <event teamID="" eventID="">
+            <eventType></eventType>
+            <matchTime></matchTime>
+            <eventTime></eventTime>
+            <players>
+                <player1 playerID="" teamID="" teamName=""></player1>
+                <player2 playerID="" teamID="" teamName=""></player2>
+            </players>
+            <reason></reason>
+            <how></how>
+            <whereFrom></whereFrom>
+            <whereTo></whereTo>
+            <type></type>
+            <distance></distance>
+            <outcome></outcome>
+        </event>
+    </events>
+</matchEvents>

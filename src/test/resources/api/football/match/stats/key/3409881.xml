@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<matchStats xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="http://pads2.pa-sport.com/API/Schemas/Football/Match/stats.xsd">
+    <possession>49</possession>
+    <dominance>-5</dominance>
+    <hotSpot>Away Right Channel</hotSpot>
+    <homeTeam>
+        <bookings>1</bookings>
+        <dismissals>0</dismissals>
+        <corners>9</corners>
+        <offsides>2</offsides>
+        <fouls>15</fouls>
+        <shotsOnTarget>10</shotsOnTarget>
+        <shotsOffTarget>4</shotsOffTarget>
+    </homeTeam>
+    <awayTeam>
+        <bookings>2</bookings>
+        <dismissals>0</dismissals>
+        <corners>2</corners>
+        <offsides>0</offsides>
+        <fouls>9</fouls>
+        <shotsOnTarget>7</shotsOnTarget>
+        <shotsOffTarget>3</shotsOffTarget>
+    </awayTeam>
+</matchStats>
