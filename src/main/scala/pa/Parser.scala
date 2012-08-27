@@ -75,7 +75,7 @@ object Parser {
     )
   }
 
-  def parseMatchStats(s: String): MatchStats = {
+  def parseMatchStats(s: String): Option[MatchStats] = {
     val matchStats = XML.loadString(s)
 
     def parseTeam(team: NodeSeq) = TeamStats(
@@ -88,11 +88,16 @@ object Parser {
       team \> "shotsOffTarget" toInt
     )
 
-    MatchStats(
-      matchStats \> "possession" toInt,
-      parseTeam(matchStats \ "homeTeam"),
-      parseTeam(matchStats \ "awayTeam")
-    )
+    if ((matchStats \ "errors").size > 0)
+      None
+    else
+      Some(
+        MatchStats(
+          matchStats \> "possession" toInt,
+          parseTeam(matchStats \ "homeTeam"),
+          parseTeam(matchStats \ "awayTeam")
+        )
+      )
   }
 
 
