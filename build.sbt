@@ -1,4 +1,4 @@
-name := "pa-client"
+name := "com.gu.pa-client"
 
 organization := "com.gu"
 

@@ -1,4 +1,4 @@
-package pa
+package com.gu.pa
 
 import io.Source
 

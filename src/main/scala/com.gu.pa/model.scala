@@ -1,10 +1,10 @@
-package pa
+package com.gu.pa
 
 import org.joda.time.{DateTime, DateMidnight}
 
 case class Season(id: String, name: String, startDate: DateMidnight, endDate: DateMidnight)
 
-case class MatchEvents(homeTeam: Team, awayTeam: Team, events: Seq[Event]) {
+case class MatchEvents(homeTeam: Team, awayTeam: Team, events: List[Event]) {
 
   val goals = events.filter(_.isGoal)
 
@@ -27,7 +27,7 @@ case class Event(
   eventType: String,
   matchTime: Option[String],
   eventTime: Option[String],
-  players: Seq[Player],
+  players: List[Player],
   reason: Option[String],
   how: Option[String],
   whereFrom: Option[String],

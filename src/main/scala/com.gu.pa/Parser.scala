@@ -1,4 +1,4 @@
-package pa
+package com.gu.pa
 
 import scala.Some
 import xml.{NodeSeq, XML}
@@ -9,18 +9,10 @@ import org.joda.time.DateMidnight
 //keep it all in one place
 object Parser {
 
-  private object EmptyToOption {
-    def apply(s: String): Option[String] = s match {
-      case null => None
-      case "" => None
-      case _ => Some(s)
-    }
-  }
-
   private object Date {
 
-    val DateOnly = """(\d\d/\d\d/\d\d\d\d)""".r
-    val DateWithTime = """(\d\d/\d\d/\d\d\d\d \d\d:\d\d)""".r
+    val DateOnly = """^(\d\d/\d\d/\d\d\d\d)$""".r
+    val DateWithTime = """^(\d\d/\d\d/\d\d\d\d \d\d:\d\d)$""".r
 
     private val DateParser = DateTimeFormat.forPattern("dd/MM/yyyy")
     private val DateTimeParser = DateTimeFormat.forPattern("ddd/MM/yyyy HH:mm")
@@ -31,7 +23,7 @@ object Parser {
     }
   }
 
-  def parseCompetitions(s: String): Seq[Season] = (XML.loadString(s) \\ "season") map { season =>
+  def parseCompetitions(s: String): List[Season] = (XML.loadString(s) \\ "season") map { season =>
     Season(
       season \@ "competitionID",
       season \> "name",
@@ -70,15 +62,18 @@ object Parser {
 
     //annoyingly there are some matches with no events
     //marked up in a weird way
-    if (xml \ "teams" \> "homeTeam" isDefined) Some(
-      MatchEvents(
-        parseTeam(xml \\ "homeTeam"),
-        parseTeam(xml \\ "awayTeam"),
-        (xml \ "events" \\ "event") map { parseEvent }
-      )
-    )
-    else
-      None
+    xml \ "teams" \> "homeTeam" match {
+      case Some(homeTeam) =>
+        Some(
+          MatchEvents(
+            parseTeam(xml \\ "homeTeam"),
+            parseTeam(xml \\ "awayTeam"),
+            (xml \ "events" \\ "event") map { parseEvent }
+          )
+        )
+
+      case None => None
+    }
   }
 
   def parseMatchStats(s: String): Option[MatchStats] = {
@@ -127,7 +122,7 @@ object Parser {
     }
 
     def parseRound(round: NodeSeq) = (round \@ "roundNumber") map { number =>
-      Round(number, EmptyToOption(round.text))
+      Round(number, round.text)
     }
 
     XML.loadString(s) \ "match" map { aMatch =>
@@ -151,10 +146,10 @@ object Parser {
     }
   }
 
-  def parseLeagueTable(s: String): Seq[LeagueTableEntry] = {
+  def parseLeagueTable(s: String): List[LeagueTableEntry] = {
 
     def parseRound(round: NodeSeq) = (round \@ "roundNumber") map { number =>
-      Round(number, EmptyToOption(round.text))
+      Round(number, round.text)
     }
 
     (XML.loadString(s) \ "tableEntry") map { entry =>

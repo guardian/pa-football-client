@@ -1,27 +1,26 @@
-package pa
+package com.gu
 
 import xml.NodeSeq
 import org.joda.time.{DateMidnight, DateTime}
 
+package object pa{
 
-object `package` {
+  implicit def seq2List[A](s: Seq[A]) = s.toList
+
+  implicit def string2Option (s: String): Option[String] = s match {
+    case null => None
+    case "" => None
+    case _ => Some(s)
+  }
 
   //some shortcuts to avoid the whole (node \ "@competitonId").text thing
   implicit def nodeSeq2rich(node: NodeSeq) = new {
 
     //directly gets the text value of an attribute
-    def \@(attributeName: String) = (node \ ("@" + attributeName)).text match {
-      case null => None
-      case "" => None
-      case s => Some(s)
-    }
+    def \@(attributeName: String): Option[String] = (node \ ("@" + attributeName)).text
 
     //directly gets the text value of an element
-    def \>(elementsName: String) = (node \ elementsName).text match {
-      case null => None
-      case "" => None
-      case s => Some(s)
-    }
+    def \>(elementsName: String): Option[String] = (node \ elementsName).text
   }
 
   implicit def date2midnight(date: DateTime): DateMidnight = date.toDateMidnight

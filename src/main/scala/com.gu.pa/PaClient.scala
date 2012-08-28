@@ -1,4 +1,4 @@
-package pa
+package com.gu.pa
 
 
 import Parser._
@@ -8,9 +8,9 @@ trait PaClient { self: Http =>
 
   def apiKey: String
 
-  lazy val base: String = "http://pads2.pa-sport.com"
+  lazy val base: String = "http://pads2.com.gu.pa-sport.com"
 
-  def competitions: Seq[Season] = parseCompetitions(get("/api/football/competitions/%s" format apiKey))
+  def competitions: List[Season] = parseCompetitions(get("/api/football/competitions/%s" format apiKey))
 
   def matchEvents(id: String): Option[MatchEvents] = parseMatchEvents(
     get("/api/football/match/events/%s/%s".format(apiKey, id))
@@ -18,13 +18,13 @@ trait PaClient { self: Http =>
 
   def matchStats(id: String): Option[MatchStats] = parseMatchStats(get("/api/football/match/stats/%s/%s".format(apiKey, id)))
 
-  def matchDay(competitionId: String, date: DateMidnight): Seq[MatchDay] =
+  def matchDay(competitionId: String, date: DateMidnight): List[MatchDay] =
     parseMatchDay(
       get("/api/football/competition/matchDay/%s/%s/%s".format(apiKey, competitionId, date.toString("yyyyMMdd")))
     )
 
 
-  def leagueTable(competitionId: String, date: DateMidnight): Seq[LeagueTableEntry] =
+  def leagueTable(competitionId: String, date: DateMidnight): List[LeagueTableEntry] =
     parseLeagueTable(
       get("/api/football/competition/leagueTable/%s/%s/%s".format(apiKey, competitionId, date.toString("yyyyMMdd")))
     )
