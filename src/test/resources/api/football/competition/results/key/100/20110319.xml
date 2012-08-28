@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://pads2.pa-sport.com/API/Schemas/Football/Competition/matches.xsd">
+    <result matchID="3284723" date="19/03/2011" koTime="12:45">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <reportAvailable>Yes</reportAvailable>
+        <attendance>36010</attendance>
+        <referee refereeID="100924">Mike Dean</referee>
+        <venue venueID=""></venue>
+        <homeTeam teamID="19">
+            <teamName>Tottenham</teamName>
+            <score>0</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </homeTeam>
+        <awayTeam teamID="43">
+            <teamName>West Ham</teamName>
+            <score>0</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </awayTeam>
+        <comments></comments>
+    </result>
+    <result matchID="3284724" date="19/03/2011" koTime="15:00">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <reportAvailable>Yes</reportAvailable>
+        <attendance>25729</attendance>
+        <referee refereeID="371546">Stuart Attwell</referee>
+        <venue venueID="5">The Hawthorns</venue>
+        <homeTeam teamID="42">
+            <teamName>West Brom</teamName>
+            <score>2</score>
+            <htScore>1</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Steven Reid (3),Peter Odemwingie (58)</scorers>
+        </homeTeam>
+        <awayTeam teamID="1006">
+            <teamName>Arsenal</teamName>
+            <score>2</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Andrey Arshavin (70),Robin van Persie (78)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </result>
+    <result matchID="3284725" date="19/03/2011" koTime="15:00">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <reportAvailable>Yes</reportAvailable>
+        <attendance>16421</attendance>
+        <referee refereeID="48050">Lee Probert</referee>
+        <venue venueID="1043">The DW Stadium</venue>
+        <homeTeam teamID="68">
+            <teamName>Wigan</teamName>
+            <score>2</score>
+            <htScore>1</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Tom Cleverley (25),Maynor Figueroa (90 +1:48)</scorers>
+        </homeTeam>
+        <awayTeam teamID="45">
+            <teamName>Birmingham</teamName>
+            <score>1</score>
+            <htScore>1</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Liam Ridgewell (6)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </result>
+    <result matchID="3284716" date="19/03/2011" koTime="15:00">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <reportAvailable>Yes</reportAvailable>
+        <attendance>38965</attendance>
+        <referee refereeID="101020">Phil Dowd</referee>
+        <venue venueID="377">Villa Park</venue>
+        <homeTeam teamID="2">
+            <teamName>Aston Villa</teamName>
+            <score>0</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </homeTeam>
+        <awayTeam teamID="44">
+            <teamName>Wolverhampton</teamName>
+            <score>1</score>
+            <htScore>1</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Matthew Jarvis (38)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </result>
+    <result matchID="3284717" date="19/03/2011" koTime="15:00">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <reportAvailable>Yes</reportAvailable>
+        <attendance>27209</attendance>
+        <referee refereeID="280461">Howard Webb</referee>
+        <venue venueID="6">Bloomfield Road</venue>
+        <homeTeam teamID="22">
+            <teamName>Blackburn</teamName>
+            <score>2</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Christopher Samba (49),David Hoilett (90 +2:43)</scorers>
+        </homeTeam>
+        <awayTeam teamID="46">
+            <teamName>Blackpool</teamName>
+            <score>2</score>
+            <htScore>2</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Charlie Adam (25 Pen),Charlie Adam (29)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </result>
+    <result matchID="3284720" date="19/03/2011" koTime="15:00">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <reportAvailable>Yes</reportAvailable>
+        <attendance>75486</attendance>
+        <referee refereeID="186049">Andre Marriner</referee>
+        <venue venueID="114">Old Trafford</venue>
+        <homeTeam teamID="12">
+            <teamName>Man Utd</teamName>
+            <score>1</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Dimitar Berbatov (88)</scorers>
+        </homeTeam>
+        <awayTeam teamID="47">
+            <teamName>Bolton</teamName>
+            <score>0</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </awayTeam>
+        <comments></comments>
+    </result>
+    <result matchID="3284721" date="19/03/2011" koTime="15:00">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <reportAvailable>Yes</reportAvailable>
+        <attendance>27505</attendance>
+        <referee refereeID="182780">Lee Mason</referee>
+        <venue venueID="51">Britannia Stadium</venue>
+        <homeTeam teamID="38">
+            <teamName>Stoke</teamName>
+            <score>4</score>
+            <htScore>1</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Jonathan Walters (28),Jermaine Pennant (46),Danny Higginbotham (49),Ricardo Fuller (90 +1:35)
+            </scorers>
+        </homeTeam>
+        <awayTeam teamID="31">
+            <teamName>Newcastle</teamName>
+            <score>0</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </awayTeam>
+        <comments></comments>
+    </result>
+    <result matchID="3284719" date="19/03/2011" koTime="17:30">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <reportAvailable>Yes</reportAvailable>
+        <attendance>33239</attendance>
+        <referee refereeID="384554">Michael Oliver</referee>
+        <venue venueID="71">Goodison Park</venue>
+        <homeTeam teamID="8">
+            <teamName>Everton</teamName>
+            <score>2</score>
+            <htScore>1</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Seamus Coleman (36),Louis Saha (49)</scorers>
+        </homeTeam>
+        <awayTeam teamID="55">
+            <teamName>Fulham</teamName>
+            <score>1</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Clint Dempsey (62)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </result>
+</results>

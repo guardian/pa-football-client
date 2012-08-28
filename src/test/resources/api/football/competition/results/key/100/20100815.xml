@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://pads2.pa-sport.com/API/Schemas/Football/Competition/matches.xsd">
+    <result matchID="3293494" date="15/08/2010" koTime="16:00">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <reportAvailable>Yes</reportAvailable>
+        <attendance>44722</attendance>
+        <referee refereeID="275268">Martin Atkinson</referee>
+        <venue venueID="46">Anfield</venue>
+        <homeTeam teamID="9">
+            <teamName>Liverpool</teamName>
+            <score>1</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>David Ngog (46)</scorers>
+        </homeTeam>
+        <awayTeam teamID="1006">
+            <teamName>Arsenal</teamName>
+            <score>1</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Jose Reina (90 +0:39 o.g.)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </result>
+</results>

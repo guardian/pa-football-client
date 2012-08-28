@@ -9,6 +9,8 @@ object StubClient extends PaClient with Http {
 
   override def GET(url: String): Response = Response(200, load(url.replaceFirst("/", "")), "")
 
-  private def load(path: String ) =
-    Source.fromInputStream(getClass.getClassLoader.getResourceAsStream(path + ".xml")).mkString
+  private def load(path: String ) = {
+    val resource = getClass.getClassLoader.getResourceAsStream(path + ".xml")
+    Source.fromInputStream(resource).mkString
+  }
 }

@@ -1,6 +1,6 @@
 package com.gu.pa
 
-import org.joda.time.{DateTime, DateMidnight}
+import org.joda.time.{LocalTime, DateTime, DateMidnight}
 
 case class Season(id: String, name: String, startDate: DateMidnight, endDate: DateMidnight)
 
@@ -70,6 +70,7 @@ case class MatchDayTeam(
 case class MatchDay(
   id: String,
   date: DateMidnight,
+  kickOff: Option[String],
   round: Option[Round],
   leg: String,
   liveMatch: Boolean,
@@ -101,6 +102,21 @@ case class LeagueTeam(
   points: Int
 )
 
+// Looks a lot like a MatchDay
+case class Result(
+  id: String,
+  date: DateMidnight,
+  kickoff: Option[String],
+  round: Option[Round],
+  leg: String,
+  reportAvailable: Boolean,
+  attendance: Option[String],
+  homeTeam: MatchDayTeam,
+  awayTeam: MatchDayTeam,
+  referee: Option[Official],
+  venue: Option[Venue]
+)
+
 private object Formats {
-  val HoursMinutes = """^(\d*):(\d*)$""".r
+  val HoursMinutes = """^(\d+):(\d+)$""".r
 }
