@@ -1,8 +1,10 @@
 package pa
 
-import org.joda.time.{DateTime, DateMidnight}
+import org.joda.time.{Interval, DateTime, DateMidnight}
 
-case class Season(id: String, name: String, startDate: DateMidnight, endDate: DateMidnight)
+case class Season(id: String, name: String, startDate: DateMidnight, endDate: DateMidnight){
+  lazy val interval: Interval = new Interval(startDate, endDate)
+}
 
 case class MatchEvents(homeTeam: Team, awayTeam: Team, events: List[Event]) {
 
