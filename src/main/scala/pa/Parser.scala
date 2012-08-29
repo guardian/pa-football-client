@@ -3,7 +3,7 @@ package pa
 import scala.Some
 import xml.{NodeSeq, XML}
 import org.joda.time.format.DateTimeFormat
-import org.joda.time.{DateTime, DateMidnight, LocalTime}
+import org.joda.time.DateTime
 
 //There is always a certain amount of ugliness in parsing a feed.
 //keep it all in one place

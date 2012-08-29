@@ -1,8 +1,6 @@
 package pa
 
-import org.joda.time.{LocalTime, DateTime, DateMidnight}
-import java.text.DateFormat
-import javax.swing.text.DateFormatter
+import org.joda.time.{DateTime, DateMidnight}
 
 case class Season(id: String, name: String, startDate: DateMidnight, endDate: DateMidnight)
 
