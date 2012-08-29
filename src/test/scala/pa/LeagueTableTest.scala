@@ -1,4 +1,4 @@
-package com.gu.pa
+package pa
 
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers

@@ -1,4 +1,4 @@
-package com.gu.pa
+package pa
 
 import com.ning.http.client.{AsyncHttpClient, ProxyServer, AsyncHttpClientConfig}
 import com.ning.http.client.providers.netty.{NettyAsyncHttpProvider, NettyConnectionsPool}

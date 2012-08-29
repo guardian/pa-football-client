@@ -1,9 +1,9 @@
-package com.gu.pa
+package pa
 
 import scala.Some
 import xml.{NodeSeq, XML}
 import org.joda.time.format.DateTimeFormat
-import org.joda.time.{DateTime, DateMidnight, LocalTime}
+import org.joda.time.DateTime
 
 //There is always a certain amount of ugliness in parsing a feed.
 //keep it all in one place
@@ -11,16 +11,12 @@ object Parser {
 
   private object Date {
 
-    val DateOnly = """^(\d\d/\d\d/\d\d\d\d)$""".r
-    val DateWithTime = """^(\d\d/\d\d/\d\d\d\d \d\d:\d\d)$""".r
-
     private val DateParser = DateTimeFormat.forPattern("dd/MM/yyyy")
     private val DateTimeParser = DateTimeFormat.forPattern("ddd/MM/yyyy HH:mm")
 
-    def apply(s: String): DateTime = s match {
-      case DateOnly(date) => DateParser.parseDateTime(date)
-      case DateWithTime(date) => DateTimeParser.parseDateTime(date)
-    }
+    def apply(date: String): DateTime = DateParser.parseDateTime(date)
+
+    def apply(date: String, time: String) = DateTimeParser.parseDateTime("%s %s".format(date, time))
   }
 
   def parseCompetitions(s: String): List[Season] = (XML.loadString(s) \\ "season") map { season =>
@@ -100,8 +96,7 @@ object Parser {
     XML.loadString(s) \ "match" map { aMatch =>
       MatchDay(
         aMatch \@ "matchID",
-        Date( aMatch \@ "date" ),
-        aMatch \@ "koTime",
+        Date(aMatch \@ "date", aMatch \@ "koTime"),
         parseRound(aMatch \ "round"),
         aMatch \> "leg",
         aMatch \> "liveMatch",
@@ -123,8 +118,7 @@ object Parser {
     XML.loadString(s) \ "result" map { result =>
       Result(
         result \@ "matchID",
-        Date( result \@ "date" ),
-        result \@ "koTime",
+        Date(result \@ "date", result \@ "koTime"),
         parseRound(result \ "round"),
         result \> "leg",
         result \> "reportAvailable",

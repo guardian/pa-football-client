@@ -1,5 +1,3 @@
-package com.gu
-
 import xml.NodeSeq
 import org.joda.time.{DateMidnight, DateTime}
 
