@@ -1,4 +1,4 @@
-package com.gu.pa
+package pa
 
 import org.joda.time.{LocalTime, DateTime, DateMidnight}
 import java.text.DateFormat

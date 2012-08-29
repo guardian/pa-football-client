@@ -1,4 +1,4 @@
-package com.gu.pa
+package pa
 
 import scala.Some
 import xml.{NodeSeq, XML}
