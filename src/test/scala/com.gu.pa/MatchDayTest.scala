@@ -14,8 +14,7 @@ class MatchDayTest extends FlatSpec with ShouldMatchers {
     matches(3) should be(
       MatchDay(
         "3407349",
-        new DateMidnight(2011, 8, 27),
-        "15:00",
+        new DateTime(2011, 8, 27, 15, 0, 0, 0),
         Some(Round("1", None)),
         Some("1"),
         liveMatch = false,

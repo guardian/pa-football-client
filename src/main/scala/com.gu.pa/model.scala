@@ -1,6 +1,8 @@
 package com.gu.pa
 
 import org.joda.time.{LocalTime, DateTime, DateMidnight}
+import java.text.DateFormat
+import javax.swing.text.DateFormatter
 
 case class Season(id: String, name: String, startDate: DateMidnight, endDate: DateMidnight)
 
@@ -69,8 +71,7 @@ case class MatchDayTeam(
 
 case class MatchDay(
   id: String,
-  date: DateMidnight,
-  kickOff: Option[String],
+  date: DateTime,
   round: Option[Round],
   leg: String,
   liveMatch: Boolean,
@@ -105,8 +106,7 @@ case class LeagueTeam(
 // Looks a lot like a MatchDay
 case class Result(
   id: String,
-  date: DateMidnight,
-  kickoff: Option[String],
+  date: DateTime,
   round: Option[Round],
   leg: String,
   reportAvailable: Boolean,
