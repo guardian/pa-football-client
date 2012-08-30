@@ -20,9 +20,9 @@ class ResultsTest extends FlatSpec with ShouldMatchers {
         reportAvailable = true,
         attendance = Some("41765"),
         homeTeam = MatchDayTeam(
-          "4", "Chelsea", Some(3), Some(1), None, Some("Jose Bosingwa (6),Frank Lampard (82 Pen),Juan Mata (90 +10:03)")
+          "4", Some("Chelsea"), Some(3), Some(1), None, Some("Jose Bosingwa (6),Frank Lampard (82 Pen),Juan Mata (90 +10:03)")
         ),
-        awayTeam = MatchDayTeam("14", "Norwich", Some(1), Some(0), None, Some("Grant Holt (63)")),
+        awayTeam = MatchDayTeam("14", Some("Norwich"), Some(1), Some(0), None, Some("Grant Holt (63)")),
         referee = Some(Official("410888", "Mike Jones")),
         venue = Some(Venue("511", "Stamford Bridge"))
       )
@@ -88,5 +88,11 @@ class ResultsTest extends FlatSpec with ShouldMatchers {
     val matches = StubClient.results("794", new DateMidnight(2011, 4, 16))
 
     matches(0).homeTeam.score should be(None)
+  }
+
+  it should "parse results when a team has no name" in {
+    val matches = StubClient.results("100", new DateMidnight(2012, 8, 23), Some(new DateMidnight(2012, 9, 1)))
+
+    matches(0).homeTeam.name should be (None)
   }
 }

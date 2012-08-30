@@ -2,7 +2,7 @@ name := "com.gu.pa-client"
 
 organization := "com.gu"
 
-version := "1.9-SNAPSHOT"
+version := "1.10-SNAPSHOT"
 
 scalaVersion := "2.9.1"
 

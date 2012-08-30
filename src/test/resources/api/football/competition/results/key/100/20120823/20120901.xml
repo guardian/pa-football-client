@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://pads2.pa-sport.com/API/Schemas/Football/Competition/results.xsd">
+    <result matchID="3528300" date="26/08/2012" koTime="16:00">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <venue venueID="46">Anfield</venue>
+        <referee refereeID="186049">Andre Marriner</referee>
+        <attendance>44942</attendance>
+        <reportAvailable>Yes</reportAvailable>
+        <homeTeam teamID="9">
+            <name>Liverpool</name>
+            <score>2</score>
+            <htScore>1</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Martin Skrtel (34),Luis Suarez (66)</scorers>
+        </homeTeam>
+        <awayTeam teamID="11">
+            <name>Man City</name>
+            <score>2</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Yaya Toure (63),Carlos Tevez (80)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </result>
+    <result matchID="3528299" date="26/08/2012" koTime="13:30">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <venue venueID="51">Britannia Stadium</venue>
+        <referee refereeID="182780">Lee Mason</referee>
+        <attendance>27072</attendance>
+        <reportAvailable>Yes</reportAvailable>
+        <homeTeam teamID="38">
+            <name>Stoke</name>
+            <score>0</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </homeTeam>
+        <awayTeam teamID="1006">
+            <name>Arsenal</name>
+            <score>0</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </awayTeam>
+        <comments></comments>
+    </result>
+    <result matchID="3517764" date="25/08/2012" koTime="17:30">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <venue venueID="511">Stamford Bridge</venue>
+        <referee refereeID="101020">Phil Dowd</referee>
+        <attendance>41718</attendance>
+        <reportAvailable>Yes</reportAvailable>
+        <homeTeam teamID="4">
+            <name>Chelsea</name>
+            <score>2</score>
+            <htScore>2</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Eden Hazard (22 Pen),Fernando Torres (45 +2:17)</scorers>
+        </homeTeam>
+        <awayTeam teamID="31">
+            <name>Newcastle</name>
+            <score>0</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </awayTeam>
+        <comments></comments>
+    </result>
+    <result matchID="3517772" date="25/08/2012" koTime="15:00">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <venue venueID="61">White Hart Lane</venue>
+        <referee refereeID="100924">Mike Dean</referee>
+        <attendance>36166</attendance>
+        <reportAvailable>Yes</reportAvailable>
+        <homeTeam teamID="19">
+            <name>Tottenham</name>
+            <score>1</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Benoit Assou-Ekotto (74)</scorers>
+        </homeTeam>
+        <awayTeam teamID="42">
+            <name>West Brom</name>
+            <score>1</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>James Morrison (90 +0:21)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </result>
+    <result matchID="3517768" date="25/08/2012" koTime="15:00">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <venue venueID="78">St. Mary's Stadium</venue>
+        <referee refereeID="164505">Anthony Taylor</referee>
+        <attendance>29604</attendance>
+        <reportAvailable>Yes</reportAvailable>
+        <homeTeam teamID="18">
+            <name>Southampton</name>
+            <score>0</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </homeTeam>
+        <awayTeam teamID="68">
+            <name>Wigan</name>
+            <score>2</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Franco Di Santo (51),Arouna Kone (89)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </result>
+    <result matchID="3517767" date="25/08/2012" koTime="15:00">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <venue venueID="75">Carrow Road</venue>
+        <referee refereeID="186005">Mark Clattenburg</referee>
+        <attendance>26317</attendance>
+        <reportAvailable>Yes</reportAvailable>
+        <homeTeam teamID="14">
+            <name>Norwich</name>
+            <score>1</score>
+            <htScore>1</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Simeon Jackson (11)</scorers>
+        </homeTeam>
+        <awayTeam teamID="16">
+            <name>QPR</name>
+            <score>1</score>
+            <htScore>1</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Bobby Zamora (19)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </result>
+    <result matchID="3517766" date="25/08/2012" koTime="15:00">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <venue venueID="114">Old Trafford</venue>
+        <referee refereeID="233470">Kevin Friend</referee>
+        <attendance>75352</attendance>
+        <reportAvailable>Yes</reportAvailable>
+        <homeTeam teamID="12">
+            <name>Man Utd</name>
+            <score>3</score>
+            <htScore>3</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Robin van Persie (10),Shinji Kagawa (35),Rafael Da Silva (41)</scorers>
+        </homeTeam>
+        <awayTeam teamID="55">
+            <name>Fulham</name>
+            <score>2</score>
+            <htScore>1</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Damien Duff (3),Nemanja Vidic (64 o.g.)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </result>
+    <result matchID="3517763" date="25/08/2012" koTime="15:00">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <venue venueID="377">Villa Park</venue>
+        <referee refereeID="384554">Michael Oliver</referee>
+        <attendance>36565</attendance>
+        <reportAvailable>Yes</reportAvailable>
+        <homeTeam teamID="2">
+            <name>Aston Villa</name>
+            <score>1</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Karim El Ahmadi (74)</scorers>
+        </homeTeam>
+        <awayTeam teamID="8">
+            <name>Everton</name>
+            <score>3</score>
+            <htScore>3</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Steven Pienaar (3),Marouane Fellaini (31),Nikica Jelavic (43)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </result>
+    <result matchID="3517771" date="25/08/2012" koTime="12:45">
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <venue venueID="79">Liberty Stadium</venue>
+        <referee refereeID="275268">Martin Atkinson</referee>
+        <attendance>20424</attendance>
+        <reportAvailable>Yes</reportAvailable>
+        <homeTeam teamID="65">
+            <name>Swansea</name>
+            <score>3</score>
+            <htScore>2</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Angel Rangel (20),Miguel Michu (29),Danny Graham (64)</scorers>
+        </homeTeam>
+        <awayTeam teamID="43">
+            <name>West Ham</name>
+            <score>0</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </awayTeam>
+        <comments></comments>
+    </result>
+</results>
