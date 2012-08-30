@@ -93,6 +93,16 @@ object Parser {
   }
 
   def parseMatchDay(s: String) = {
+
+    def parseTeam(team: NodeSeq): MatchDayTeam = MatchDayTeam(
+      team \@ "teamID",
+      team \> "teamName",
+      (team \> "score") map (_.toInt),
+      (team \> "htScore") map (_.toInt),
+      (team \> "aggregateScore") map (_.toInt),
+      team \> "scorers"
+    )
+
     XML.loadString(s) \ "match" map { aMatch =>
       MatchDay(
         aMatch \@ "matchID",
@@ -106,8 +116,8 @@ object Parser {
         aMatch \> "lineupsAvailable",
         aMatch \> "matchStatus",
         aMatch \> "attendance",
-        parseMatchDayTeam(aMatch \ "homeTeam"),
-        parseMatchDayTeam(aMatch \ "awayTeam"),
+        parseTeam(aMatch \ "homeTeam"),
+        parseTeam(aMatch \ "awayTeam"),
         parseReferee(aMatch \ "referee"),
         parseVenue(aMatch \ "venue")
       )
@@ -115,6 +125,16 @@ object Parser {
   }
 
   def parseResults(s: String): List[Result] = {
+
+    def parseTeam(team: NodeSeq): MatchDayTeam = MatchDayTeam(
+      team \@ "teamID",
+      team \> "name",
+      (team \> "score") map (_.toInt),
+      (team \> "htScore") map (_.toInt),
+      (team \> "aggregateScore") map (_.toInt),
+      team \> "scorers"
+    )
+
     XML.loadString(s) \ "result" map { result =>
       Result(
         result \@ "matchID",
@@ -123,8 +143,8 @@ object Parser {
         result \> "leg",
         result \> "reportAvailable",
         result \> "attendance",
-        parseMatchDayTeam(result \ "homeTeam"),
-        parseMatchDayTeam(result \ "awayTeam"),
+        parseTeam(result \ "homeTeam"),
+        parseTeam(result \ "awayTeam"),
         parseReferee(result \ "referee"),
         parseVenue(result \ "venue")
       )
@@ -160,16 +180,6 @@ object Parser {
   protected def parseReferee(official: NodeSeq) = (official \@ "refereeID") flatMap { id =>
     if (official.text == "") None else Some(Official(id, official.text))
   }
-
-  protected def parseMatchDayTeam(team: NodeSeq): MatchDayTeam = MatchDayTeam(
-    team \@ "teamID",
-    team \> "teamName",
-    (team \> "score") map (_.toInt),
-    (team \> "htScore") map (_.toInt),
-    (team \> "aggregateScore") map (_.toInt),
-    team \> "scorers"
-  )
-
 
   protected def parseRound(round: NodeSeq) = (round \@ "roundNumber") map { number =>
     Round(number, round.text)

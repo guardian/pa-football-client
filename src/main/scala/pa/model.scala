@@ -62,7 +62,7 @@ case class Round(roundNumber: String, name: Option[String])
 
 case class MatchDayTeam(
   id: String,
-  name: Option[String],
+  name: String,
   score: Option[Int],
   htScore: Option[Int],
   aggregateScore: Option[Int],

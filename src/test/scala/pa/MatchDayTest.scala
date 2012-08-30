@@ -25,9 +25,9 @@ class MatchDayTest extends FlatSpec with ShouldMatchers {
         matchStatus = "FT",
         attendance = Some("41765"),
         homeTeam = MatchDayTeam(
-          "4", Some("Chelsea"), Some(3), Some(1), None, Some("Jose Bosingwa (6),Frank Lampard (82 Pen),Juan Mata (90 +10:03)")
+          "4", "Chelsea", Some(3), Some(1), None, Some("Jose Bosingwa (6),Frank Lampard (82 Pen),Juan Mata (90 +10:03)")
         ),
-        awayTeam = MatchDayTeam("14", Some("Norwich"), Some(1), Some(0), None, Some("Grant Holt (63)")),
+        awayTeam = MatchDayTeam("14", "Norwich", Some(1), Some(0), None, Some("Grant Holt (63)")),
         referee = Some(Official("410888", "Mike Jones")),
         venue = Some(Venue("511", "Stamford Bridge"))
       )
