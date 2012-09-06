@@ -16,7 +16,7 @@ class ResultsTest extends FlatSpec with ShouldMatchers {
         "3517772",
         new DateTime(2012, 8, 25, 15, 0, 0, 0),
         Some(Round("1", None)),
-        Some("1"),
+        "1",
         reportAvailable = true,
         attendance = Some("36166"),
         homeTeam = MatchDayTeam(
