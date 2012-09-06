@@ -117,6 +117,37 @@ case class Result(
   venue: Option[Venue]
 )
 
+case class Fixture(fixtureId: String,
+                   fixtureDate: DateTime,
+                   stage: Stage,
+                   fixtureRound: Option[Round],
+                   fixtureLeg: String,
+                   fixtureHomeTeam: MatchDayTeam,
+                   fixtureAwayTeam: MatchDayTeam,
+                   fixtureVenue: Option[Venue])
+  extends MatchDay(
+            fixtureId,
+            fixtureDate,
+            fixtureRound,
+            fixtureLeg,
+            liveMatch         = false,
+            result            = false,
+            previewAvailable  = false,
+            reportAvailable   = false,
+            lineupsAvailable  = false,
+            matchStatus       = "FUT",
+            attendance        = None,
+            homeTeam          = fixtureHomeTeam,
+            awayTeam          = fixtureAwayTeam,
+            referee           = None,
+            venue             = fixtureVenue
+)
+
+case class Stage(
+    stageNumber: String
+)
+
+
 private object Formats {
   val HoursMinutes = """^(\d+):(\d+)$""".r
 }
