@@ -188,10 +188,15 @@ object Parser {
       scorers        = None
     )
 
+    def parseStage(stage: NodeSeq): Stage = Stage (
+      stageNumber = stage \@ "stageNumber"
+    )
+
     (XML.loadString(s) \\ "fixtures" \ "fixture") map { fixture =>
       Fixture(
         fixtureId                = fixture \@ "matchID",
         fixtureDate              = Date(fixture \@ "date", fixture \@ "koTime"),
+        stage                    = parseStage(fixture \ "stage"),
         fixtureRound             = parseRound(fixture \ "round"),
         fixtureLeg               = fixture \> "leg",
         fixtureHomeTeam          = parseTeam(fixture \ "homeTeam"),

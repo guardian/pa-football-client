@@ -119,6 +119,7 @@ case class Result(
 
 case class Fixture(fixtureId: String,
                    fixtureDate: DateTime,
+                   stage: Stage,
                    fixtureRound: Option[Round],
                    fixtureLeg: String,
                    fixtureHomeTeam: MatchDayTeam,
@@ -140,6 +141,10 @@ case class Fixture(fixtureId: String,
             awayTeam          = fixtureAwayTeam,
             referee           = None,
             venue             = fixtureVenue
+)
+
+case class Stage(
+    stageNumber: String
 )
 
 

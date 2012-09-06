@@ -71,4 +71,9 @@ class ParserTest extends FunSuite with ShouldMatchers {
     matchFixtureOne.attendance should be (None)
     matchFixtureOne.referee should be (None)
   }
+
+  test("Test MatchDay fixture stage") {
+    matchFixtureOne.stage.stageNumber should be ("1")
+    matchFixtureTwo.stage.stageNumber should be ("1")
+  }
 }
