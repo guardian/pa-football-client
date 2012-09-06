@@ -15,15 +15,27 @@ package object pa{
   implicit def nodeSeq2rich(node: NodeSeq) = new {
 
     //directly gets the text value of an attribute
-    def \@(attributeName: String): Option[String] = (node \ ("@" + attributeName)).text
+    def \@(attributeName: String): String = (node \ ("@" + attributeName)).text
+
+    def \@@(attributeName: String): Option[String] = {
+      (node \ ("@" + attributeName)).text match {
+        case s if s.length > 0  => Some(s)
+        case _                  => None
+      }
+    }
 
     //directly gets the text value of an element
-    def \>(elementsName: String): Option[String] = (node \ elementsName).text
+    def \>(elementsName: String): String = (node \ elementsName).text
+
+    def \>>(elementsName: String): Option[String] = {
+      (node \ elementsName).text match {
+        case s if s.length > 0  => Some(s)
+        case _                  => None
+      }
+    }
   }
 
   implicit def date2midnight(date: DateTime): DateMidnight = date.toDateMidnight
-
-  implicit def optionString2String(s: Option[String]): String = s.get
 
   implicit def optionString2boolean(s: Option[String]): Boolean = s match {
     case Some("Yes") => true

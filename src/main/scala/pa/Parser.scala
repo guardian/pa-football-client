@@ -37,7 +37,7 @@ object Parser {
       team.text
     )
 
-    def parsePlayer(player: NodeSeq): Option[Player] = (player \@ "playerID") map {
+    def parsePlayer(player: NodeSeq): Option[Player] = (player \@@ "playerID") map {
         Player(_, player \@ "teamID", player.text)
     }
 
@@ -58,7 +58,7 @@ object Parser {
 
     //annoyingly there are some matches with no events
     //marked up in a weird way
-    xml \ "teams" \> "homeTeam" map { homeTeam =>
+    xml \ "teams" \>> "homeTeam" map { homeTeam =>
       MatchEvents(
         parseTeam(xml \\ "homeTeam"),
         parseTeam(xml \\ "awayTeam"),
@@ -97,9 +97,9 @@ object Parser {
     def parseTeam(team: NodeSeq): MatchDayTeam = MatchDayTeam(
       team \@ "teamID",
       team \> "teamName",
-      (team \> "score") map (_.toInt),
-      (team \> "htScore") map (_.toInt),
-      (team \> "aggregateScore") map (_.toInt),
+      (team \>> "score") map (_.toInt),
+      (team \>> "htScore") map (_.toInt),
+      (team \>> "aggregateScore") map (_.toInt),
       team \> "scorers"
     )
 
@@ -109,11 +109,11 @@ object Parser {
         Date(aMatch \@ "date", aMatch \@ "koTime"),
         parseRound(aMatch \ "round"),
         aMatch \> "leg",
-        aMatch \> "liveMatch",
-        aMatch \> "result",
-        aMatch \> "previewAvailable",
-        aMatch \> "reportAvailable",
-        aMatch \> "lineupsAvailable",
+        aMatch \>> "liveMatch",
+        aMatch \>> "result",
+        aMatch \>> "previewAvailable",
+        aMatch \>> "reportAvailable",
+        aMatch \>> "lineupsAvailable",
         aMatch \> "matchStatus",
         aMatch \> "attendance",
         parseTeam(aMatch \ "homeTeam"),
@@ -129,9 +129,9 @@ object Parser {
     def parseTeam(team: NodeSeq): MatchDayTeam = MatchDayTeam(
       team \@ "teamID",
       team \> "name",
-      (team \> "score") map (_.toInt),
-      (team \> "htScore") map (_.toInt),
-      (team \> "aggregateScore") map (_.toInt),
+      (team \>> "score") map (_.toInt),
+      (team \>> "htScore") map (_.toInt),
+      (team \>> "aggregateScore") map (_.toInt),
       team \> "scorers"
     )
 
@@ -141,7 +141,7 @@ object Parser {
         Date(result \@ "date", result \@ "koTime"),
         parseRound(result \ "round"),
         result \> "leg",
-        result \> "reportAvailable",
+        result \>> "reportAvailable",
         result \> "attendance",
         parseTeam(result \ "homeTeam"),
         parseTeam(result \ "awayTeam"),
@@ -206,15 +206,15 @@ object Parser {
     }
   }
 
-  protected def parseReferee(official: NodeSeq) = (official \@ "refereeID") flatMap { id =>
+  protected def parseReferee(official: NodeSeq) = (official \@@ "refereeID") flatMap { id =>
     if (official.text == "") None else Some(Official(id, official.text))
   }
 
-  protected def parseRound(round: NodeSeq) = (round \@ "roundNumber") map { number =>
+  protected def parseRound(round: NodeSeq) = (round \@@ "roundNumber") map { number =>
     Round(number, round.text)
   }
 
-  protected def parseVenue(venue: NodeSeq) = (venue \@ "venueID") map { id =>
+  protected def parseVenue(venue: NodeSeq) = (venue \@@ "venueID") map { id =>
     Venue(id, venue.text)
   }
 
