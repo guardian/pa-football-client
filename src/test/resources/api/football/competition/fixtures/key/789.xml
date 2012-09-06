@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fixtures>
+    <fixture matchID="3407177" date="13/08/2011" koTime="15:00">
+        <stage stageNumber="1" />
+        <round roundNumber="1"></round>
+        <leg>1</leg>
+        <homeTeam teamID="22">Blackburn</homeTeam>
+        <awayTeam teamID="44">Wolverhampton</awayTeam>
+        <venue venueID="59">Ewood Park</venue>
+    </fixture>
+    <fixture matchID="3407178" date="13/08/2011" koTime="15:00">
+        <stage stageNumber="1" />
+        <round roundNumber="7">round</round>
+        <leg>7</leg>
+        <homeTeam teamID="55">Fulham</homeTeam>
+        <awayTeam teamID="2">Aston Villa</awayTeam>
+        <venue venueID="60">Craven Cottage</venue>
+    </fixture>
+</fixtures>

@@ -40,6 +40,10 @@ trait PaClient { self: Http =>
       get("/api/football/competition/leagueTable/%s/%s/%s".format(apiKey, competitionId, date.toString("yyyyMMdd")))
     )
 
+  def fixtures(competitionId: String): List[Fixture] = {
+    parseFixtures(get("/api/football/competition/fixtures/%s/%s" format (apiKey, competitionId)))
+  }
+
   protected def get(suffix: String): String = GET(base + suffix) match {
     case Response(200, body, _) =>  body
     case Response(status, _, reason) => throw new PaClientException(status + " " + reason)

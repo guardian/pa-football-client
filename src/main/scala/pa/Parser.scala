@@ -177,6 +177,30 @@ object Parser {
     }
   }
 
+  def parseFixtures(s: String): List[Fixture] = {
+
+    def parseTeam(team: NodeSeq): MatchDayTeam = MatchDayTeam(
+      team \@ "teamID",
+      team.text,
+      score          = None,
+      htScore        = None,
+      aggregateScore = None,
+      scorers        = None
+    )
+
+    (XML.loadString(s) \\ "fixtures" \ "fixture") map { fixture =>
+      Fixture(
+        fixtureId                = fixture \@ "matchID",
+        fixtureDate              = Date(fixture \@ "date", fixture \@ "koTime"),
+        fixtureRound             = parseRound(fixture \ "round"),
+        fixtureLeg               = fixture \> "leg",
+        fixtureHomeTeam          = parseTeam(fixture \ "homeTeam"),
+        fixtureAwayTeam          = parseTeam(fixture \ "awayTeam"),
+        fixtureVenue             = parseVenue(fixture \ "venue")
+      )
+    }
+  }
+
   protected def parseReferee(official: NodeSeq) = (official \@ "refereeID") flatMap { id =>
     if (official.text == "") None else Some(Official(id, official.text))
   }
