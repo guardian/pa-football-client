@@ -30,10 +30,10 @@ class ParserTest extends FunSuite with ShouldMatchers {
   }
 
   test("Test MatchDay fixture round") {
-    matchFixtureOne.round.flatMap(_.roundNumber).getOrElse("") should be ("1")
+    matchFixtureOne.round.map(_.roundNumber).getOrElse("") should be ("1")
     matchFixtureOne.round.flatMap(_.name).getOrElse("nothing") should be ("nothing")
 
-    matchFixtureTwo.round.flatMap(_.roundNumber).getOrElse("") should be ("7")
+    matchFixtureTwo.round.map(_.roundNumber).getOrElse("") should be ("7")
     matchFixtureTwo.round.flatMap(_.name).getOrElse("") should be ("round")
   }
 
