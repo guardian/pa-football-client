@@ -76,4 +76,10 @@ class ParserTest extends FunSuite with ShouldMatchers {
     matchFixtureOne.stage.stageNumber should be ("1")
     matchFixtureTwo.stage.stageNumber should be ("1")
   }
+  
+  test("Test can get all Fixtures across all competitions") {
+    val fixtures = stubClient.fixtures()
+    fixtures(0).id should be ("3407177")
+    fixtures(1).id should be ("3407178")
+  }
 }
