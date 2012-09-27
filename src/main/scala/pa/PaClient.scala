@@ -8,9 +8,9 @@ trait PaClient { self: Http =>
 
   def apiKey: String
 
-  lazy val base: String = "http://pads2.pa-sport.com"
+  lazy val base: String = "http://pads6.pa-sport.com"
 
-  def competitions: List[Season] = parseCompetitions(get("/api/football/competitions/%s" format apiKey))
+  def competitions: List[Season] = parseCompetitions(get("/api/football/competitions/competitions/%s" format apiKey))
 
   def matchEvents(id: String): Option[MatchEvents] = parseMatchEvents(
     get("/api/football/match/events/%s/%s".format(apiKey, id))
