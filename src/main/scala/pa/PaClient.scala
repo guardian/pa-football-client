@@ -56,6 +56,10 @@ trait PaClient { self: Http =>
       get("/api/football/competition/leagueTable/%s/%s/%s".format(apiKey, competitionId, date.toString("yyyyMMdd")))
     )
 
+  def fixtures(): List[Fixture] = {
+    parseFixtures(get("/api/football/competitions/fixtures/%s" format (apiKey)))
+  }
+  
   def fixtures(competitionId: String): List[Fixture] = {
     parseFixtures(get("/api/football/competition/fixtures/%s/%s" format (apiKey, competitionId)))
   }

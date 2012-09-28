@@ -201,15 +201,21 @@ object Parser {
         fixtureLeg               = fixture \> "leg",
         fixtureHomeTeam          = parseTeam(fixture \ "homeTeam"),
         fixtureAwayTeam          = parseTeam(fixture \ "awayTeam"),
-        fixtureVenue             = parseVenue(fixture \ "venue")
+        fixtureVenue             = parseVenue(fixture \ "venue"),
+        competition				 = parseCompetition(fixture \ "competition")
       )
     }
   }
+  
 
   protected def parseReferee(official: NodeSeq) = (official \@@ "refereeID") flatMap { id =>
     if (official.text == "") None else Some(Official(id, official.text))
   }
 
+  protected def parseCompetition(competition: NodeSeq) = (competition \@@ "competitionID") map { id =>
+  	Competition(id, competition.text)
+  }
+  
   protected def parseRound(round: NodeSeq) = (round \@@ "roundNumber") map { number =>
     Round(number, round.text)
   }
