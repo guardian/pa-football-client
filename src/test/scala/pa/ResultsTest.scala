@@ -34,4 +34,23 @@ class ResultsTest extends FlatSpec with ShouldMatchers {
 
     matches(0).homeTeam.name should be ("Liverpool")
   }
+  
+  it should "get results across all competitions from a start date" in {
+    val results = StubClient.results(new DateMidnight(2012, 8, 23))
+    
+    results.size should be (2)
+    
+    results(0).id should be ("3555270")
+    results(1).id should be ("3553709")
+  }
+  
+    it should "get results across all competitions from a start date to an end date" in {
+    val results = StubClient.results(new DateMidnight(2012, 8, 23), new DateMidnight(2012, 9, 23))
+    
+    results.size should be (2)
+    
+    results(0).id should be ("3518024")
+    results(1).id should be ("3518028")
+  }
+  
 }
