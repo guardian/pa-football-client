@@ -94,4 +94,12 @@ class MatchDayTest extends FlatSpec with ShouldMatchers {
 
     matches(0).homeTeam.score should be (None)
   }
+  
+  it should "load all match days" in {
+
+    val matches = StubClient.matchDay(new DateMidnight(2012, 9, 29))
+    
+    matches.size should be (2)
+  }
+    
 }

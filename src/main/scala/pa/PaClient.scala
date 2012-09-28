@@ -18,6 +18,11 @@ trait PaClient { self: Http =>
 
   def matchStats(id: String): Option[MatchStats] = parseMatchStats(get("/api/football/match/stats/%s/%s".format(apiKey, id)))
 
+  def matchDay(date: DateMidnight): List[MatchDay] =
+    parseMatchDay(
+      get("/api/football/competitions/matchDay/%s/%s".format(apiKey, date.toString("yyyyMMdd")))
+    )
+    
   def matchDay(competitionId: String, date: DateMidnight): List[MatchDay] =
     parseMatchDay(
       get("/api/football/competition/matchDay/%s/%s/%s".format(apiKey, competitionId, date.toString("yyyyMMdd")))
