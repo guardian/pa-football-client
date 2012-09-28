@@ -6,6 +6,8 @@ case class Season(id: String, name: String, startDate: DateMidnight, endDate: Da
   lazy val interval: Interval = new Interval(startDate, endDate)
 }
 
+case class Competition(id: String, name: String)
+
 case class MatchEvents(homeTeam: Team, awayTeam: Team, events: List[Event]) {
 
   val goals = events.filter(_.isGoal)
@@ -124,7 +126,8 @@ case class Fixture(fixtureId: String,
                    fixtureLeg: String,
                    fixtureHomeTeam: MatchDayTeam,
                    fixtureAwayTeam: MatchDayTeam,
-                   fixtureVenue: Option[Venue])
+                   fixtureVenue: Option[Venue],
+                   competition: Option[Competition])
   extends MatchDay(
             fixtureId,
             fixtureDate,

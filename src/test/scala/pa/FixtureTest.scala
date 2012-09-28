@@ -2,6 +2,7 @@ package pa
 
 import org.scalatest.{OneInstancePerTest, FunSuite}
 import org.scalatest.matchers.ShouldMatchers
+import org.joda.time.DateMidnight
 
 class ParserTest extends FunSuite with ShouldMatchers {
 
@@ -76,4 +77,22 @@ class ParserTest extends FunSuite with ShouldMatchers {
     matchFixtureOne.stage.stageNumber should be ("1")
     matchFixtureTwo.stage.stageNumber should be ("1")
   }
+  
+  val fixtures = stubClient.fixtures()
+
+  test("Test can get all Fixtures across all competitions") {
+    fixtures(0).id should be ("3407177")
+    fixtures(1).id should be ("3407178")
+  }
+  
+  test("Test Fixture with a competition") {
+    fixtures(0).competition.map(_.id).getOrElse("") should be ("100")
+    fixtures(0).competition.map(_.name).getOrElse("") should be ("Barclays Premier League 11/12")
+  }
+  
+  test("Test Fixture without a competition") {
+    fixtures(1).competition should be (None)
+  }
+  
+  
 }
