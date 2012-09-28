@@ -22,6 +22,17 @@ trait PaClient { self: Http =>
     parseMatchDay(
       get("/api/football/competition/matchDay/%s/%s/%s".format(apiKey, competitionId, date.toString("yyyyMMdd")))
     )
+    
+  def results(start: DateMidnight): List[Result] = resultsAll(start, None)
+
+  def results(start: DateMidnight, end: DateMidnight): List[Result] = resultsAll(start, Some(end))
+
+  private def resultsAll(start: DateMidnight, end: Option[DateMidnight] = None): List[Result] = {
+    val dateStr = start.toString("yyyyMMdd") + (end map { "/" + _.toString("yyyyMMdd")} getOrElse "")
+    parseResults(
+      get("/api/football/competitions/results/%s/%s".format(apiKey, dateStr))
+    )
+  }
 
   def results(competitionId: String, start: DateMidnight): List[Result] = results(competitionId, start, None)
 
