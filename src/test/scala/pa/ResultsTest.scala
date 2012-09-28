@@ -24,7 +24,8 @@ class ResultsTest extends FlatSpec with ShouldMatchers {
         ),
         awayTeam = MatchDayTeam("42", "West Brom", Some(1), Some(0), None, Some("James Morrison (90 +0:21)")),
         referee = Some(Official("100924", "Mike Dean")),
-        venue = Some(Venue("61", "White Hart Lane"))
+        venue = Some(Venue("61", "White Hart Lane")),
+        None
       )
     )
   }
@@ -51,6 +52,15 @@ class ResultsTest extends FlatSpec with ShouldMatchers {
     
     results(0).id should be ("3518024")
     results(1).id should be ("3518028")
+  }
+  
+  it should "have parent competition if applicable" in {
+    val results = StubClient.results(new DateMidnight(2012, 8, 23))
+    
+    results.size should be (2)
+    
+    results(0).competition should be (Some(Competition("301", "Capital One Cup")))
+    results(1).competition should be (Some(Competition("301", "Capital One Cup")))
   }
   
 }

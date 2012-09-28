@@ -116,7 +116,8 @@ case class Result(
   homeTeam: MatchDayTeam,
   awayTeam: MatchDayTeam,
   referee: Option[Official],
-  venue: Option[Venue]
+  venue: Option[Venue],
+  competition: Option[Competition]
 )
 
 case class Fixture(fixtureId: String,
