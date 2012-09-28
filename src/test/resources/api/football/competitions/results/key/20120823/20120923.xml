@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://pads6.pa-sport.com/API/Schemas/Football/Competitions/results.xsd">
+	<result matchID="3518024" date="22/09/2012" koTime="15:00">
+		<competition competitionID="100" seasonID="203">Barclays Premier
+			League 12/13</competition>
+		<stage stageNumber="1" stageType="League"></stage>
+		<round roundNumber="1"></round>
+		<leg>1</leg>
+		<venue venueID="511">Stamford Bridge</venue>
+		<referee refereeID="384554">Michael Oliver</referee>
+		<attendance>41112</attendance>
+		<reportAvailable>Yes</reportAvailable>
+		<homeTeam teamID="4">
+			<name>Chelsea</name>
+			<score>1</score>
+			<htScore>0</htScore>
+			<aggregateScore></aggregateScore>
+			<scorers>Ashley Cole (85)</scorers>
+		</homeTeam>
+		<awayTeam teamID="38">
+			<name>Stoke</name>
+			<score>0</score>
+			<htScore>0</htScore>
+			<aggregateScore></aggregateScore>
+			<scorers></scorers>
+		</awayTeam>
+		<comments></comments>
+	</result>
+	<result matchID="3518028" date="22/09/2012" koTime="15:00">
+		<competition competitionID="100" seasonID="203">Barclays Premier
+			League 12/13</competition>
+		<stage stageNumber="1" stageType="League"></stage>
+		<round roundNumber="1"></round>
+		<leg>1</leg>
+		<venue venueID="78">St. Mary's Stadium</venue>
+		<referee refereeID="42371">Jon Moss</referee>
+		<attendance>30713</attendance>
+		<reportAvailable>Yes</reportAvailable>
+		<homeTeam teamID="18">
+			<name>Southampton</name>
+			<score>4</score>
+			<htScore>0</htScore>
+			<aggregateScore></aggregateScore>
+			<scorers>Rickie Lambert (58),Nathaniel Clyne (63),Ciaran Clark (72
+				o.g.),Rickie Lambert (90 +4:17 Pen)</scorers>
+		</homeTeam>
+		<awayTeam teamID="2">
+			<name>Aston Villa</name>
+			<score>1</score>
+			<htScore>1</htScore>
+			<aggregateScore></aggregateScore>
+			<scorers>Darren Bent (36)</scorers>
+		</awayTeam>
+		<comments></comments>
+	</result>
+</results>

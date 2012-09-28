@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://pads6.pa-sport.com/API/Schemas/Football/Competitions/results.xsd">
+	<result matchID="3555270" date="26/09/2012" koTime="20:00">
+		<competition competitionID="301" seasonID="211">Capital One Cup</competition>
+		<stage stageNumber="1" stageType="Knockout"></stage>
+		<round roundNumber="4">Third Round</round>
+		<leg>1</leg>
+		<venue venueID="5">The Hawthorns</venue>
+		<referee refereeID="384554">Michael Oliver</referee>
+		<attendance>21164</attendance>
+		<reportAvailable>Yes</reportAvailable>
+		<homeTeam teamID="42">
+			<name>West Brom</name>
+			<score>1</score>
+			<htScore>1</htScore>
+			<aggregateScore></aggregateScore>
+			<scorers>Gabriel Tamas (3)</scorers>
+		</homeTeam>
+		<awayTeam teamID="9">
+			<name>Liverpool</name>
+			<score>2</score>
+			<htScore>1</htScore>
+			<aggregateScore></aggregateScore>
+			<scorers>Nuri Sahin (17),Nuri Sahin (82)</scorers>
+		</awayTeam>
+		<comments></comments>
+	</result>
+	<result matchID="3553709" date="26/09/2012" koTime="19:45">
+		<competition competitionID="301" seasonID="211">Capital One Cup</competition>
+		<stage stageNumber="1" stageType="Knockout"></stage>
+		<round roundNumber="4">Third Round</round>
+		<leg>1</leg>
+		<venue venueID="114">Old Trafford</venue>
+		<referee refereeID="164505">Anthony Taylor</referee>
+		<attendance>46358</attendance>
+		<reportAvailable>Yes</reportAvailable>
+		<homeTeam teamID="12">
+			<name>Man Utd</name>
+			<score>2</score>
+			<htScore>1</htScore>
+			<aggregateScore></aggregateScore>
+			<scorers>Oliveira Anderson (44),Tom Cleverley (58)</scorers>
+		</homeTeam>
+		<awayTeam teamID="31">
+			<name>Newcastle</name>
+			<score>1</score>
+			<htScore>0</htScore>
+			<aggregateScore></aggregateScore>
+			<scorers>Papiss Cisse (62)</scorers>
+		</awayTeam>
+		<comments></comments>
+	</result>
+</results>
