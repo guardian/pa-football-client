@@ -68,10 +68,6 @@ trait PaClient { self: Http =>
     parseLiveMatches(get("/api/football/competition/liveGames/%s/%s" format (apiKey, competitionId)))
   }
 
-  def liveGames(competitionId: String): List[LiveMatch] = {
-    Nil
-  }
-
   protected def get(suffix: String): String = GET(base + suffix) match {
     case Response(200, body, _) =>  body
     case Response(status, _, reason) => throw new PaClientException(status + " " + reason)
