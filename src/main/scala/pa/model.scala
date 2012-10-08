@@ -96,7 +96,6 @@ trait FootballMatch {
   def id: String
   def date: DateTime
   def round: Option[Round]
-  def leg: String
   def homeTeam: MatchDayTeam
   def awayTeam: MatchDayTeam
   def venue: Option[Venue]
@@ -148,13 +147,13 @@ case class LiveMatch(
   id: String,
   date: DateTime,
   round: Option[Round],
-  leg: String,
-  reportAvailable: Boolean,
   attendance: Option[String],
   homeTeam: MatchDayTeam,
   awayTeam: MatchDayTeam,
   referee: Option[Official],
-  venue: Option[Venue]
+  venue: Option[Venue],
+  status: String,
+  comments: Option[String]
 ) extends FootballMatch
 
 case class Stage(

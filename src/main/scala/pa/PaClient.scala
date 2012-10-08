@@ -64,6 +64,10 @@ trait PaClient { self: Http =>
     parseFixtures(get("/api/football/competition/fixtures/%s/%s" format (apiKey, competitionId)))
   }
 
+  def liveMatches(competitionId: String): List[LiveMatch] = {
+    parseLiveMatches(get("/api/football/competition/liveGames/%s/%s" format (apiKey, competitionId)))
+  }
+
   def liveGames(competitionId: String): List[LiveMatch] = {
     Nil
   }

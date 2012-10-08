@@ -151,6 +151,33 @@ object Parser {
     }
   }
 
+  def parseLiveMatches(s: String): List[LiveMatch] = {
+
+    def parseTeam(team: NodeSeq): MatchDayTeam = MatchDayTeam(
+      team \@ "teamID",
+      team \> "name",
+      (team \>> "score") map (_.toInt),
+      (team \>> "htScore") map (_.toInt),
+      (team \>> "aggregateScore") map (_.toInt),
+      team \> "scorers"
+    )
+
+    XML.loadString(s) \ "match" map { aMatch =>
+      LiveMatch(
+        aMatch \@ "matchID",
+        Date(aMatch \@ "date", aMatch \@ "koTime"),
+        parseRound(aMatch \ "round"),
+        aMatch \> "attendance",
+        parseTeam(aMatch \ "homeTeam"),
+        parseTeam(aMatch \ "awayTeam"),
+        parseReferee(aMatch \ "referee"),
+        parseVenue(aMatch \ "venue"),
+        aMatch \> "matchStatus",
+        aMatch \> "comments"
+      )
+    }
+  }
+
   def parseLeagueTable(s: String): List[LeagueTableEntry] = {
 
     (XML.loadString(s) \ "tableEntry") map { entry =>
@@ -223,5 +250,4 @@ object Parser {
   protected def parseVenue(venue: NodeSeq) = (venue \@@ "venueID") map { id =>
     Venue(id, venue.text)
   }
-
 }
