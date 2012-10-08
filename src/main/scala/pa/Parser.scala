@@ -194,14 +194,14 @@ object Parser {
 
     (XML.loadString(s) \\ "fixtures" \ "fixture") map { fixture =>
       Fixture(
-        fixtureId                = fixture \@ "matchID",
-        fixtureDate              = Date(fixture \@ "date", fixture \@ "koTime"),
+        id                = fixture \@ "matchID",
+        date              = Date(fixture \@ "date", fixture \@ "koTime"),
         stage                    = parseStage(fixture \ "stage"),
-        fixtureRound             = parseRound(fixture \ "round"),
-        fixtureLeg               = fixture \> "leg",
-        fixtureHomeTeam          = parseTeam(fixture \ "homeTeam"),
-        fixtureAwayTeam          = parseTeam(fixture \ "awayTeam"),
-        fixtureVenue             = parseVenue(fixture \ "venue"),
+        round             = parseRound(fixture \ "round"),
+        leg               = fixture \> "leg",
+        homeTeam          = parseTeam(fixture \ "homeTeam"),
+        awayTeam          = parseTeam(fixture \ "awayTeam"),
+        venue             = parseVenue(fixture \ "venue"),
         competition				 = parseCompetition(fixture \ "competition")
       )
     }
