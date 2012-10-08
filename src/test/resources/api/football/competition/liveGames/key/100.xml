@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<liveMatches xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:noNamespaceSchemaLocation="http://pads6.pa-sport.com/API/Schemas/Football/Competition/liveGames.xsd">
+    <match matchID="3528311" date="07/10/2012" koTime="13:30">
+        <stage stageNumber="1" type="League"></stage>
+        <round roundNumber="1"></round>
+        <venue venueID="78">St. Mary's Stadium</venue>
+        <referee refereeID="186005">Mark Clattenburg</referee>
+        <attendance></attendance>
+        <matchStatus>SHS</matchStatus>
+        <homeTeam teamID="18">
+            <name>Southampton</name>
+            <score>1</score>
+            <htScore>1</htScore>
+            <aggregateScore>1</aggregateScore>
+            <scorers>Jose Fonte (4)</scorers>
+        </homeTeam>
+        <awayTeam teamID="55">
+            <name>Fulham</name>
+            <score>1</score>
+            <htScore>0</htScore>
+            <aggregateScore></aggregateScore>
+            <scorers>Jos Hooiveld (70 o.g.)</scorers>
+        </awayTeam>
+        <comments></comments>
+    </match>
+    <match matchID="3528313" date="07/10/2012" koTime="15:00">
+        <stage stageNumber="1" type="League"></stage>
+        <round roundNumber="1"></round>
+        <venue venueID="61">White Hart Lane</venue>
+        <referee refereeID="185880">Neil Swarbrick</referee>
+        <attendance></attendance>
+        <matchStatus>KO</matchStatus>
+        <homeTeam teamID="19">
+            <name>Tottenham</name>
+            <score>0</score>
+            <htScore></htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </homeTeam>
+        <awayTeam teamID="2">
+            <name>Aston Villa</name>
+            <score>0</score>
+            <htScore></htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </awayTeam>
+        <comments></comments>
+    </match>
+    <match matchID="3554549" date="07/10/2012" koTime="15:00">
+        <stage stageNumber="1" type="League"></stage>
+        <round roundNumber="1"></round>
+        <venue venueID="46">Anfield</venue>
+        <referee refereeID="182780">Lee Mason</referee>
+        <attendance></attendance>
+        <matchStatus>KO</matchStatus>
+        <homeTeam teamID="9">
+            <name>Liverpool</name>
+            <score>0</score>
+            <htScore></htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </homeTeam>
+        <awayTeam teamID="38">
+            <name>Stoke</name>
+            <score>0</score>
+            <htScore></htScore>
+            <aggregateScore></aggregateScore>
+            <scorers></scorers>
+        </awayTeam>
+        <comments></comments>
+    </match>
+</liveMatches>

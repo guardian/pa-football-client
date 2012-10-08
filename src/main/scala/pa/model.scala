@@ -21,8 +21,6 @@ case class MatchEvents(homeTeam: Team, awayTeam: Team, events: List[Event]) {
   val awayTeamScore = awayTeamGoals.size
 }
 
-case class Team(id: String, name: String)
-
 case class Player(id: String, teamID: String, name: String)
 
 case class Event(
@@ -62,6 +60,15 @@ case class Official(id: String, name: String)
 case class Venue(id: String, name: String)
 case class Round(roundNumber: String, name: Option[String])
 
+case class LeagueTableEntry(stageNumber: String, round: Option[Round], team: LeagueTeam)
+
+trait FootballTeam {
+  def id: String
+  def name: String
+}
+
+case class Team(id: String, name: String) extends FootballTeam
+
 case class MatchDayTeam(
   id: String,
   name: String,
@@ -69,7 +76,41 @@ case class MatchDayTeam(
   htScore: Option[Int],
   aggregateScore: Option[Int],
   scorers: Option[String]
-)
+) extends FootballTeam
+
+case class LeagueTeam(
+  id: String,
+  name: String,
+  rank: Int,
+  played: Int,
+  won: Int,
+  drawn: Int,
+  lost: Int,
+  goalsFor: Int,
+  goalsAgainst: Int,
+  goalDifference: Int,
+  points: Int
+) extends FootballTeam
+
+trait FootballMatch {
+  def id: String
+  def date: DateTime
+  def round: Option[Round]
+  def homeTeam: MatchDayTeam
+  def awayTeam: MatchDayTeam
+  def venue: Option[Venue]
+}
+
+case class Fixture(
+   id: String,
+   date: DateTime,
+   stage: Stage,
+   round: Option[Round],
+   leg: String,
+   homeTeam: MatchDayTeam,
+   awayTeam: MatchDayTeam,
+   venue: Option[Venue],
+   competition: Option[Competition]) extends FootballMatch
 
 case class MatchDay(
   id: String,
@@ -89,23 +130,6 @@ case class MatchDay(
   venue: Option[Venue]
 )
 
-case class LeagueTableEntry(stageNumber: String, round: Option[Round], team: LeagueTeam)
-
-case class LeagueTeam(
-  id: String,
-  name: String,
-  rank: Int,
-  played: Int,
-  won: Int,
-  drawn: Int,
-  lost: Int,
-  goalsFor: Int,
-  goalsAgainst: Int,
-  goalDifference: Int,
-  points: Int
-)
-
-// Looks a lot like a MatchDay
 case class Result(
   id: String,
   date: DateTime,
@@ -117,39 +141,24 @@ case class Result(
   awayTeam: MatchDayTeam,
   referee: Option[Official],
   venue: Option[Venue]
-)
+) extends FootballMatch
 
-case class Fixture(fixtureId: String,
-                   fixtureDate: DateTime,
-                   stage: Stage,
-                   fixtureRound: Option[Round],
-                   fixtureLeg: String,
-                   fixtureHomeTeam: MatchDayTeam,
-                   fixtureAwayTeam: MatchDayTeam,
-                   fixtureVenue: Option[Venue],
-                   competition: Option[Competition])
-  extends MatchDay(
-            fixtureId,
-            fixtureDate,
-            fixtureRound,
-            fixtureLeg,
-            liveMatch         = false,
-            result            = false,
-            previewAvailable  = false,
-            reportAvailable   = false,
-            lineupsAvailable  = false,
-            matchStatus       = "FUT",
-            attendance        = None,
-            homeTeam          = fixtureHomeTeam,
-            awayTeam          = fixtureAwayTeam,
-            referee           = None,
-            venue             = fixtureVenue
-)
+case class LiveMatch(
+  id: String,
+  date: DateTime,
+  round: Option[Round],
+  attendance: Option[String],
+  homeTeam: MatchDayTeam,
+  awayTeam: MatchDayTeam,
+  referee: Option[Official],
+  venue: Option[Venue],
+  status: String,
+  comments: Option[String]
+) extends FootballMatch
 
 case class Stage(
     stageNumber: String
 )
-
 
 private object Formats {
   val HoursMinutes = """^(\d+):(\d+)$""".r

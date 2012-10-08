@@ -151,6 +151,33 @@ object Parser {
     }
   }
 
+  def parseLiveMatches(s: String): List[LiveMatch] = {
+
+    def parseTeam(team: NodeSeq): MatchDayTeam = MatchDayTeam(
+      team \@ "teamID",
+      team \> "name",
+      (team \>> "score") map (_.toInt),
+      (team \>> "htScore") map (_.toInt),
+      (team \>> "aggregateScore") map (_.toInt),
+      team \> "scorers"
+    )
+
+    XML.loadString(s) \ "match" map { aMatch =>
+      LiveMatch(
+        aMatch \@ "matchID",
+        Date(aMatch \@ "date", aMatch \@ "koTime"),
+        parseRound(aMatch \ "round"),
+        aMatch \> "attendance",
+        parseTeam(aMatch \ "homeTeam"),
+        parseTeam(aMatch \ "awayTeam"),
+        parseReferee(aMatch \ "referee"),
+        parseVenue(aMatch \ "venue"),
+        aMatch \> "matchStatus",
+        aMatch \> "comments"
+      )
+    }
+  }
+
   def parseLeagueTable(s: String): List[LeagueTableEntry] = {
 
     (XML.loadString(s) \ "tableEntry") map { entry =>
@@ -194,14 +221,14 @@ object Parser {
 
     (XML.loadString(s) \\ "fixtures" \ "fixture") map { fixture =>
       Fixture(
-        fixtureId                = fixture \@ "matchID",
-        fixtureDate              = Date(fixture \@ "date", fixture \@ "koTime"),
+        id                = fixture \@ "matchID",
+        date              = Date(fixture \@ "date", fixture \@ "koTime"),
         stage                    = parseStage(fixture \ "stage"),
-        fixtureRound             = parseRound(fixture \ "round"),
-        fixtureLeg               = fixture \> "leg",
-        fixtureHomeTeam          = parseTeam(fixture \ "homeTeam"),
-        fixtureAwayTeam          = parseTeam(fixture \ "awayTeam"),
-        fixtureVenue             = parseVenue(fixture \ "venue"),
+        round             = parseRound(fixture \ "round"),
+        leg               = fixture \> "leg",
+        homeTeam          = parseTeam(fixture \ "homeTeam"),
+        awayTeam          = parseTeam(fixture \ "awayTeam"),
+        venue             = parseVenue(fixture \ "venue"),
         competition				 = parseCompetition(fixture \ "competition")
       )
     }
@@ -223,5 +250,4 @@ object Parser {
   protected def parseVenue(venue: NodeSeq) = (venue \@@ "venueID") map { id =>
     Venue(id, venue.text)
   }
-
 }
