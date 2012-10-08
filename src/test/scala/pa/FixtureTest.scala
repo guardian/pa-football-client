@@ -1,8 +1,7 @@
 package pa
 
-import org.scalatest.{OneInstancePerTest, FunSuite}
+import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
-import org.joda.time.DateMidnight
 
 class ParserTest extends FunSuite with ShouldMatchers {
 
@@ -61,16 +60,6 @@ class ParserTest extends FunSuite with ShouldMatchers {
 
     matchFixtureTwo.venue.map(_.id).getOrElse("") should be ("60")
     matchFixtureTwo.venue.map(_.name).getOrElse("") should be ("Craven Cottage")
-  }
-
-  test("Test MatchDay fixture unused values") {
-    matchFixtureOne.liveMatch should be (false)
-    matchFixtureOne.result should be (false)
-    matchFixtureOne.previewAvailable should be (false)
-    matchFixtureOne.reportAvailable should be (false)
-    matchFixtureOne.lineupsAvailable should be (false)
-    matchFixtureOne.attendance should be (None)
-    matchFixtureOne.referee should be (None)
   }
 
   test("Test MatchDay fixture stage") {

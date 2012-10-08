@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<liveGames xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="http://pads6.pa-sport.com/API/Schemas/Football/Competition/liveGames.xsd">
+    <errors>
+        <error>No data available</error>
+    </errors>
+</liveGames>
