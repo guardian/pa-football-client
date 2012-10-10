@@ -107,6 +107,7 @@ object Parser {
       MatchDay(
         aMatch \@ "matchID",
         Date(aMatch \@ "date", aMatch \@ "koTime"),
+        parseCompetition(aMatch \ "competition"),
         parseRound(aMatch \ "round"),
         aMatch \> "leg",
         aMatch \>> "liveMatch",
@@ -233,14 +234,13 @@ object Parser {
       )
     }
   }
-  
 
   protected def parseReferee(official: NodeSeq) = (official \@@ "refereeID") flatMap { id =>
     if (official.text == "") None else Some(Official(id, official.text))
   }
 
   protected def parseCompetition(competition: NodeSeq) = (competition \@@ "competitionID") map { id =>
-  	Competition(id, competition.text)
+    Competition(id, competition.text)
   }
   
   protected def parseRound(round: NodeSeq) = (round \@@ "roundNumber") map { number =>
