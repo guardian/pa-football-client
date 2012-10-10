@@ -129,7 +129,7 @@ case class MatchDay(
   awayTeam: MatchDayTeam,
   referee: Option[Official],
   venue: Option[Venue]
-)
+) extends FootballMatch
 
 case class Result(
   id: String,
