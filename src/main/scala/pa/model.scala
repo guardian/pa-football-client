@@ -115,6 +115,7 @@ case class Fixture(
 case class MatchDay(
   id: String,
   date: DateTime,
+  competition: Option[Competition],
   round: Option[Round],
   leg: String,
   liveMatch: Boolean,

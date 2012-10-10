@@ -15,6 +15,7 @@ class MatchDayTest extends FlatSpec with ShouldMatchers {
       MatchDay(
         "3407349",
         new DateTime(2011, 8, 27, 15, 0, 0, 0),
+        None,
         Some(Round("1", None)),
         "1",
         liveMatch = false,
@@ -100,6 +101,9 @@ class MatchDayTest extends FlatSpec with ShouldMatchers {
     val matches = StubClient.matchDay(new DateMidnight(2012, 9, 29))
     
     matches.size should be (2)
+
+    matches(0).competition should be (Some(Competition("100", "Barclays Premier League 12/13")))
+
   }
     
 }

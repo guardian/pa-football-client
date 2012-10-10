@@ -3,8 +3,7 @@
 	xsi:noNamespaceSchemaLocation="http://pads6.pa-sport.com/API/Schemas/Football/Competitions/matches.xsd"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<match matchID="3518091" date="29/09/2012" koTime="12:45">
-		<competition competitionID="100" seasonID="203">Barclays Premier
-			League 12/13</competition>
+		<competition competitionID="100" seasonID="203">Barclays Premier League 12/13</competition>
 		<stage stageNumber="1" stageType="League"></stage>
 		<round roundNumber="1"></round>
 		<leg>1</leg>
@@ -36,8 +35,7 @@
 		<comments></comments>
 	</match>
 	<match matchID="3518093" date="29/09/2012" koTime="15:00">
-		<competition competitionID="100" seasonID="203">Barclays Premier
-			League 12/13</competition>
+		<competition competitionID="100" seasonID="203">Barclays Premier League 12/13</competition>
 		<stage stageNumber="1" stageType="League"></stage>
 		<round roundNumber="1"></round>
 		<leg>1</leg>
