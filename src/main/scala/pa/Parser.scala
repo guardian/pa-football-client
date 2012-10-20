@@ -181,6 +181,15 @@ object Parser {
 
   def parseLeagueTable(s: String): List[LeagueTableEntry] = {
 
+    def parseLeagueStats(stats: NodeSeq) = LeagueStats(
+      stats \> "played" toInt,
+      stats \> "won" toInt,
+      stats \> "drawn" toInt,
+      stats \> "lost" toInt,
+      stats \> "for" toInt,
+      stats \> "against" toInt
+    )
+
     (XML.loadString(s) \ "tableEntry") map { entry =>
 
       val team = entry \ "team"
@@ -192,12 +201,9 @@ object Parser {
           team \@ "teamID",
           team \@ "teamName",
           team \> "rank" toInt,
-          team \> "played" toInt,
-          team \> "won" toInt,
-          team \> "drawn" toInt,
-          team \> "lost" toInt,
-          team \> "for" toInt,
-          team \> "against" toInt,
+          parseLeagueStats(team),
+          parseLeagueStats(team \ "home"),
+          parseLeagueStats(team \ "away"),
           team \> "goalDifference" toInt,
           team \> "points" toInt
         )

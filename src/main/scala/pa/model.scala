@@ -78,16 +78,22 @@ case class MatchDayTeam(
   scorers: Option[String]
 ) extends FootballTeam
 
-case class LeagueTeam(
-  id: String,
-  name: String,
-  rank: Int,
+case class LeagueStats(
   played: Int,
   won: Int,
   drawn: Int,
   lost: Int,
   goalsFor: Int,
-  goalsAgainst: Int,
+  goalsAgainst: Int
+)
+
+case class LeagueTeam(
+  id: String,
+  name: String,
+  rank: Int,
+  total: LeagueStats,
+  home: LeagueStats,
+  away: LeagueStats,
   goalDifference: Int,
   points: Int
 ) extends FootballTeam

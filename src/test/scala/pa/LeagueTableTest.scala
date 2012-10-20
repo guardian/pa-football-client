@@ -15,12 +15,9 @@ class LeagueTableTest extends FlatSpec with ShouldMatchers{
       id = "12",
       name = "Man Utd",
       rank = 1,
-      played = 3,
-      won = 3,
-      drawn = 0,
-      lost = 0,
-      goalsFor = 13,
-      goalsAgainst = 3,
+      total = LeagueStats(played = 3, won = 3, drawn = 0, lost = 0, goalsFor = 13, goalsAgainst = 3),
+      home = LeagueStats(played = 2, won = 2, drawn = 0, lost = 0, goalsFor = 11, goalsAgainst = 2),
+      away = LeagueStats(played = 1, won = 1, drawn = 0, lost = 0, goalsFor = 2, goalsAgainst = 1),
       goalDifference = 10,
       points = 9
     )
