@@ -42,7 +42,7 @@ case class Event(
 
 }
 
-case class MatchStats(homePossession: Int, homeTeam: TeamStats, awayTeam: TeamStats) {
+case class MatchStats(interval: Int, homePossession: Int, homeTeam: TeamStats, awayTeam: TeamStats) {
   lazy val awayPossession: Int = 100 - homePossession
 }
 

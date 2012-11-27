@@ -67,29 +67,28 @@ object Parser {
     }
   }
 
-  def parseMatchStats(s: String): Option[MatchStats] = {
-    val matchStats = XML.loadString(s)
+  def parseMatchStats(s: String): Seq[MatchStats] = {
 
-    def parseTeam(team: NodeSeq) = TeamStats(
-      team \> "bookings" toInt,
-      team \> "dismissals" toInt,
-      team \> "corners" toInt,
-      team \> "offsides" toInt,
-      team \> "fouls" toInt,
-      team \> "shotsOnTarget" toInt,
-      team \> "shotsOffTarget" toInt
-    )
-
-    if ((matchStats \ "errors").nonEmpty )
-      None
-    else
-      Some(
-        MatchStats(
-          matchStats \> "possession" toInt,
-          parseTeam(matchStats \ "homeTeam"),
-          parseTeam(matchStats \ "awayTeam")
-        )
+    def parseTeam(team: NodeSeq) = {
+      TeamStats(
+        team \ "bookings" \@ "total" toInt,
+        team \ "dismissals" \@ "total" toInt,
+        team \ "corners" \@ "total" toInt,
+        team \ "offsides" \@ "total" toInt,
+        team \ "fouls" \@ "total" toInt,
+        team \ "shotsOnTarget" \@ "total" toInt,
+        team \ "shotsOffTarget" \@ "total" toInt
       )
+    }
+
+    (XML.loadString(s) \\ "stat").map{ stats =>
+      MatchStats(
+        stats \@ "interval" toInt,
+        stats \> "possession" toInt,
+        parseTeam(stats \ "homeTeam"),
+        parseTeam(stats \ "awayTeam")
+      )
+    }
   }
 
   def parseMatchDay(s: String) = {

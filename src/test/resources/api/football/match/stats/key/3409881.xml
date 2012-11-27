@@ -1,25 +1,314 @@
 <?xml version="1.0" encoding="utf-8"?>
-<matchStats xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xsi:noNamespaceSchemaLocation="http://pads2.pa-sport.com/API/Schemas/Football/Match/stats.xsd">
-    <possession>49</possession>
-    <dominance>-5</dominance>
-    <hotSpot>Away Right Channel</hotSpot>
-    <homeTeam>
-        <bookings>1</bookings>
-        <dismissals>0</dismissals>
-        <corners>9</corners>
-        <offsides>2</offsides>
-        <fouls>15</fouls>
-        <shotsOnTarget>10</shotsOnTarget>
-        <shotsOffTarget>4</shotsOffTarget>
-    </homeTeam>
-    <awayTeam>
-        <bookings>2</bookings>
-        <dismissals>0</dismissals>
-        <corners>2</corners>
-        <offsides>0</offsides>
-        <fouls>9</fouls>
-        <shotsOnTarget>7</shotsOnTarget>
-        <shotsOffTarget>3</shotsOffTarget>
-    </awayTeam>
+<matchStats xsi:noNamespaceSchemaLocation="http://pads6.pa-sport.com/API/Schemas/Football/Match/stats.xsd"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <stat interval="90">
+        <possession>49</possession>
+        <dominance>-5</dominance>
+        <hotSpot>Away Right Channel</hotSpot>
+        <homeTeam>
+            <bookings total="1">0</bookings>
+            <corners total="9">3</corners>
+            <crosses total="0">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="15">2</fouls>
+            <goals total="3">0</goals>
+            <offsides total="2">0</offsides>
+            <saves total="3">1</saves>
+            <shotsOnTarget total="10">1</shotsOnTarget>
+            <shotsOffTarget total="4">1</shotsOffTarget>
+            <substitutions total="3">1</substitutions>
+        </homeTeam>
+        <awayTeam>
+            <bookings total="2">0</bookings>
+            <corners total="2"></corners>
+            <crosses total="1">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="9">0</fouls>
+            <goals total="2">1</goals>
+            <offsides total="0">0</offsides>
+            <saves total="6">2</saves>
+            <shotsOnTarget total="7">2</shotsOnTarget>
+            <shotsOffTarget total="3">0</shotsOffTarget>
+            <substitutions total="3">0</substitutions>
+        </awayTeam>
+    </stat>
+    <stat interval="80">
+        <possession>56</possession>
+        <dominance>-5</dominance>
+        <hotSpot>Away Right Channel</hotSpot>
+        <homeTeam>
+            <bookings total="1">0</bookings>
+            <corners total="6">1</corners>
+            <crosses total="0">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="13">1</fouls>
+            <goals total="3">1</goals>
+            <offsides total="2">0</offsides>
+            <saves total="2">0</saves>
+            <shotsOnTarget total="9">3</shotsOnTarget>
+            <shotsOffTarget total="3">1</shotsOffTarget>
+            <substitutions total="2">1</substitutions>
+        </homeTeam>
+        <awayTeam>
+            <bookings total="2">0</bookings>
+            <corners total="1"></corners>
+            <crosses total="1">1</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="9">1</fouls>
+            <goals total="1">0</goals>
+            <offsides total="0">0</offsides>
+            <saves total="4">1</saves>
+            <shotsOnTarget total="5">0</shotsOnTarget>
+            <shotsOffTarget total="3">0</shotsOffTarget>
+            <substitutions total="3">1</substitutions>
+        </awayTeam>
+    </stat>
+    <stat interval="70">
+        <possession>65</possession>
+        <dominance>-4</dominance>
+        <hotSpot>Away Left Channel</hotSpot>
+        <homeTeam>
+            <bookings total="1">0</bookings>
+            <corners total="5">0</corners>
+            <crosses total="0">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="12">4</fouls>
+            <goals total="2">0</goals>
+            <offsides total="2">0</offsides>
+            <saves total="2">2</saves>
+            <shotsOnTarget total="6">2</shotsOnTarget>
+            <shotsOffTarget total="2">0</shotsOffTarget>
+            <substitutions total="1">0</substitutions>
+        </homeTeam>
+        <awayTeam>
+            <bookings total="2">1</bookings>
+            <corners total="0"></corners>
+            <crosses total="0">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="8">1</fouls>
+            <goals total="1">0</goals>
+            <offsides total="0">0</offsides>
+            <saves total="3">2</saves>
+            <shotsOnTarget total="5">2</shotsOnTarget>
+            <shotsOffTarget total="3">2</shotsOffTarget>
+            <substitutions total="2">0</substitutions>
+        </awayTeam>
+    </stat>
+    <stat interval="60">
+        <possession>60</possession>
+        <dominance>-5</dominance>
+        <hotSpot>Home Right Channel</hotSpot>
+        <homeTeam>
+            <bookings total="1">0</bookings>
+            <corners total="5">1</corners>
+            <crosses total="0">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="8">0</fouls>
+            <goals total="2">0</goals>
+            <offsides total="2">1</offsides>
+            <saves total="0">0</saves>
+            <shotsOnTarget total="4">0</shotsOnTarget>
+            <shotsOffTarget total="2">0</shotsOffTarget>
+            <substitutions total="1">1</substitutions>
+        </homeTeam>
+        <awayTeam>
+            <bookings total="1">0</bookings>
+            <corners total="0"></corners>
+            <crosses total="0">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="7">3</fouls>
+            <goals total="1">0</goals>
+            <offsides total="0">0</offsides>
+            <saves total="1">0</saves>
+            <shotsOnTarget total="3">0</shotsOnTarget>
+            <shotsOffTarget total="1">0</shotsOffTarget>
+            <substitutions total="2">2</substitutions>
+        </awayTeam>
+    </stat>
+    <stat interval="50">
+        <possession>51</possession>
+        <dominance>-5</dominance>
+        <hotSpot>Away Left Channel</hotSpot>
+        <homeTeam>
+            <bookings total="1">1</bookings>
+            <corners total="4">0</corners>
+            <crosses total="0">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="8">1</fouls>
+            <goals total="2">0</goals>
+            <offsides total="1">1</offsides>
+            <saves total="0">0</saves>
+            <shotsOnTarget total="4">0</shotsOnTarget>
+            <shotsOffTarget total="2">1</shotsOffTarget>
+            <substitutions total="0">0</substitutions>
+        </homeTeam>
+        <awayTeam>
+            <bookings total="1">0</bookings>
+            <corners total="0"></corners>
+            <crosses total="0">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="4">1</fouls>
+            <goals total="1">0</goals>
+            <offsides total="0">0</offsides>
+            <saves total="1">0</saves>
+            <shotsOnTarget total="3">0</shotsOnTarget>
+            <shotsOffTarget total="1">0</shotsOffTarget>
+            <substitutions total="0">0</substitutions>
+        </awayTeam>
+    </stat>
+    <stat interval="40">
+        <possession>62</possession>
+        <dominance>-5</dominance>
+        <hotSpot>Away Right Channel</hotSpot>
+        <homeTeam>
+            <bookings total="0">0</bookings>
+            <corners total="4">0</corners>
+            <crosses total="0">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="7">3</fouls>
+            <goals total="2">0</goals>
+            <offsides total="0">0</offsides>
+            <saves total="0">0</saves>
+            <shotsOnTarget total="4">0</shotsOnTarget>
+            <shotsOffTarget total="1">1</shotsOffTarget>
+            <substitutions total="0">0</substitutions>
+        </homeTeam>
+        <awayTeam>
+            <bookings total="1">0</bookings>
+            <corners total="0"></corners>
+            <crosses total="0">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="3">1</fouls>
+            <goals total="1">0</goals>
+            <offsides total="0">0</offsides>
+            <saves total="1">0</saves>
+            <shotsOnTarget total="3">1</shotsOnTarget>
+            <shotsOffTarget total="1">0</shotsOffTarget>
+            <substitutions total="0">0</substitutions>
+        </awayTeam>
+    </stat>
+    <stat interval="30">
+        <possession>51</possession>
+        <dominance>-5</dominance>
+        <hotSpot>Away Left Channel</hotSpot>
+        <homeTeam>
+            <bookings total="0">0</bookings>
+            <corners total="4">2</corners>
+            <crosses total="0">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="4">1</fouls>
+            <goals total="2">0</goals>
+            <offsides total="0">0</offsides>
+            <saves total="0">0</saves>
+            <shotsOnTarget total="4">1</shotsOnTarget>
+            <shotsOffTarget total="0">0</shotsOffTarget>
+            <substitutions total="0">0</substitutions>
+        </homeTeam>
+        <awayTeam>
+            <bookings total="1">0</bookings>
+            <corners total="0"></corners>
+            <crosses total="0">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="2">0</fouls>
+            <goals total="1">0</goals>
+            <offsides total="0">0</offsides>
+            <saves total="1">0</saves>
+            <shotsOnTarget total="2">0</shotsOnTarget>
+            <shotsOffTarget total="1">0</shotsOffTarget>
+            <substitutions total="0">0</substitutions>
+        </awayTeam>
+    </stat>
+    <stat interval="20">
+        <possession>54</possession>
+        <dominance>0</dominance>
+        <hotSpot>Away Right Channel</hotSpot>
+        <homeTeam>
+            <bookings total="0">0</bookings>
+            <corners total="2">1</corners>
+            <crosses total="0">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="3">0</fouls>
+            <goals total="2">2</goals>
+            <offsides total="0">0</offsides>
+            <saves total="0">0</saves>
+            <shotsOnTarget total="3">3</shotsOnTarget>
+            <shotsOffTarget total="0">0</shotsOffTarget>
+            <substitutions total="0">0</substitutions>
+        </homeTeam>
+        <awayTeam>
+            <bookings total="1">1</bookings>
+            <corners total="0"></corners>
+            <crosses total="0">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="2">1</fouls>
+            <goals total="1">0</goals>
+            <offsides total="0">0</offsides>
+            <saves total="1">1</saves>
+            <shotsOnTarget total="2">1</shotsOnTarget>
+            <shotsOffTarget total="1">1</shotsOffTarget>
+            <substitutions total="0">0</substitutions>
+        </awayTeam>
+    </stat>
+    <stat interval="10">
+        <possession>65</possession>
+        <dominance>0</dominance>
+        <hotSpot>Away Right Channel</hotSpot>
+        <homeTeam>
+            <bookings total="0">0</bookings>
+            <corners total="1">1</corners>
+            <crosses total="0">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="3">3</fouls>
+            <goals total="0">0</goals>
+            <offsides total="0">0</offsides>
+            <saves total="0">0</saves>
+            <shotsOnTarget total="0">0</shotsOnTarget>
+            <shotsOffTarget total="0">0</shotsOffTarget>
+            <substitutions total="0">0</substitutions>
+        </homeTeam>
+        <awayTeam>
+            <bookings total="0">0</bookings>
+            <corners total="0"></corners>
+            <crosses total="0">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="1">1</fouls>
+            <goals total="1">1</goals>
+            <offsides total="0">0</offsides>
+            <saves total="0">0</saves>
+            <shotsOnTarget total="1">1</shotsOnTarget>
+            <shotsOffTarget total="0">0</shotsOffTarget>
+            <substitutions total="0">0</substitutions>
+        </awayTeam>
+    </stat>
+    <stat interval="0">
+        <possession>50</possession>
+        <dominance>0</dominance>
+        <hotSpot></hotSpot>
+        <homeTeam>
+            <bookings total="0">0</bookings>
+            <corners total="0">0</corners>
+            <crosses total="0">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="0">0</fouls>
+            <goals total="0">0</goals>
+            <offsides total="0">0</offsides>
+            <saves total="0">0</saves>
+            <shotsOnTarget total="0">0</shotsOnTarget>
+            <shotsOffTarget total="0">0</shotsOffTarget>
+            <substitutions total="0">0</substitutions>
+        </homeTeam>
+        <awayTeam>
+            <bookings total="0">0</bookings>
+            <corners total="0"></corners>
+            <crosses total="0">0</crosses>
+            <dismissals total="0">0</dismissals>
+            <fouls total="0">0</fouls>
+            <goals total="0">0</goals>
+            <offsides total="0">0</offsides>
+            <saves total="0">0</saves>
+            <shotsOnTarget total="0">0</shotsOnTarget>
+            <shotsOffTarget total="0">0</shotsOffTarget>
+            <substitutions total="0">0</substitutions>
+        </awayTeam>
+    </stat>
 </matchStats>
