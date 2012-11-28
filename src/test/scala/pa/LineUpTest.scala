@@ -9,6 +9,9 @@ class LineUpTest extends FlatSpec with ShouldMatchers {
 
     val lineUp = StubClient.lineUp("3560717")
 
+    lineUp.homeTeamPossession should be (52)
+    lineUp.awayTeamPossession should be (48)
+
     val homeTeam = lineUp.homeTeam
 
     homeTeam.name should be ("Chelsea")

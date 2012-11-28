@@ -71,7 +71,8 @@ object Parser {
 
     LineUp(
       parseTeam(xml \ "teams" \ "homeTeam"),
-      parseTeam(xml \ "teams" \ "awayTeam")
+      parseTeam(xml \ "teams" \ "awayTeam"),
+      xml \@ "possession" toInt
     )
   }
 

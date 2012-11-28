@@ -207,7 +207,9 @@ case class LineUpPlayer(
   events: Seq[LineUpEvent]
 ) extends Person
 
-case class LineUp(homeTeam: LineUpTeam, awayTeam: LineUpTeam)
+case class LineUp(homeTeam: LineUpTeam, awayTeam: LineUpTeam, homeTeamPossession: Int) {
+  lazy val awayTeamPossession = 100 - homeTeamPossession
+}
 
 private object Formats {
   val HoursMinutes = """^(\d+):(\d+)$""".r
