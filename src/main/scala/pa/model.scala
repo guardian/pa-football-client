@@ -8,7 +8,7 @@ case class Season(id: String, name: String, startDate: DateMidnight, endDate: Da
 
 case class Competition(id: String, name: String)
 
-case class MatchEvents(homeTeam: Team, awayTeam: Team, events: List[Event]) {
+case class MatchEvents(homeTeam: Team, awayTeam: Team, events: List[MatchEvent]) {
 
   val goals = events.filter(_.isGoal)
 
@@ -21,9 +21,14 @@ case class MatchEvents(homeTeam: Team, awayTeam: Team, events: List[Event]) {
   val awayTeamScore = awayTeamGoals.size
 }
 
-case class Player(id: String, teamID: String, name: String)
+trait Person {
+  val id: String
+  val name: String
+}
 
-case class Event(
+case class Player(id: String, teamID: String, name: String) extends Person
+
+case class MatchEvent(
   id: Option[String],
   teamID: Option[String],
   eventType: String,
@@ -56,7 +61,7 @@ case class TeamStats(
   shotsOffTarget: Int
 )
 
-case class Official(id: String, name: String)
+case class Official(id: String, name: String) extends Person
 case class Venue(id: String, name: String)
 case class Round(roundNumber: String, name: Option[String])
 
@@ -166,6 +171,43 @@ case class LiveMatch(
 case class Stage(
     stageNumber: String
 )
+
+case class LineUpEvent(
+  eventType: String,
+  eventTime: String,
+  matchTime: String
+)
+
+case class LineUpTeam (
+  id: String,
+  name: String,
+  teamColour: String,
+  manager: Official,
+  formation: String,
+  shotsOn: Int,
+  shotsOff: Int,
+  fouls: Int,
+  corners: Int,
+  offsides: Int,
+  bookings: Int,
+  dismissals: Int,
+  players: Seq[LineUpPlayer]
+) extends FootballTeam
+
+case class LineUpPlayer(
+  id: String,
+  name: String,
+  firstName: String,
+  lastName: String,
+  shirtNumber: String,
+  position: String,
+  substitute: Boolean,
+  rating: Option[Int],
+  timeOnPitch: String,
+  events: Seq[LineUpEvent]
+) extends Person
+
+case class LineUp(homeTeam: LineUpTeam, awayTeam: LineUpTeam)
 
 private object Formats {
   val HoursMinutes = """^(\d+):(\d+)$""".r

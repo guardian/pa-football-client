@@ -28,6 +28,53 @@ object Parser {
     )
   }
 
+  def parseLineUp(s: String): LineUp = {
+    val xml = XML.loadString(s)
+
+    def parsePlayer(player: NodeSeq) = LineUpPlayer(
+      player \@ "playerID",
+      player \> "fullName",
+      player \> "firstName",
+      player \> "lastName",
+      player \> "shirtNumber",
+      player \> "position",
+      player \> "substitute",
+      (player \>> "rating") map (_.toInt) ,
+      player \> "timeOnPitch",
+      (player \\ "event") map parseEvent
+    )
+
+    def parseEvent(event: NodeSeq) = LineUpEvent(
+      event \@ "type",
+      event \@ "eventTime",
+      event \@ "matchTime"
+    )
+
+    def parseTeam(team: NodeSeq): LineUpTeam = LineUpTeam(
+      team \@ "teamID",
+      team \@ "teamName",
+      team \@ "teamColour",
+      Official(
+        team \@ "managerID",
+        team \@ "manager"
+      ),
+      team \@ "formation",
+      team \@ "shotsOn" toInt,
+      team \@ "shotsOff" toInt,
+      team \@ "fouls" toInt,
+      team \@ "corners" toInt,
+      team \@ "offsides" toInt,
+      team \@ "bookings" toInt,
+      team \@ "dismissals" toInt,
+      (team \\ "player") map parsePlayer
+    )
+
+    LineUp(
+      parseTeam(xml \ "teams" \ "homeTeam"),
+      parseTeam(xml \ "teams" \ "awayTeam")
+    )
+  }
+
   def parseMatchEvents(s: String): Option[MatchEvents] = {
 
     val xml = XML.loadString(s)
@@ -41,7 +88,7 @@ object Parser {
         Player(_, player \@ "teamID", player.text)
     }
 
-    def parseEvent(event: NodeSeq) = Event(
+    def parseEvent(event: NodeSeq) = MatchEvent(
       event \@ "eventID",
       event \@ "teamID",
       event \> "eventType",
