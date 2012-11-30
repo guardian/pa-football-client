@@ -43,6 +43,12 @@ package object pa{
     case _ => throw new RuntimeException("Unexpected value for boolean: " + s)
   }
 
+  implicit def string2boolean(s: String): Boolean = s match {
+    case "Yes" => true
+    case "No" => false
+    case _ => throw new RuntimeException("Unexpected value for boolean: " + s)
+  }
+
   implicit def optionString2int(s: Option[String]) = new {
     lazy val toInt = s.get.toInt
   }

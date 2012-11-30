@@ -6,7 +6,7 @@ Sbt dependencies
 
     resolvers += "Guardian Github Releases" at "http://guardian.github.com/maven/repo-releases"
 
-    libraryDependencies += "com.gu" %% "pa-client" % "2.4"
+    libraryDependencies += "com.gu" %% "pa-client" % "2.7"
 
 Usage
 
@@ -48,3 +48,7 @@ Usage
     // results for a competition between two dates
     val matches = Client.results("100", new DateMidnight(2012, 8, 23), new DateMidnight(2012, 9, 1))
     matches.foreach(println)
+
+    // lineup for a match
+    val lineup = Client.lineUp("1234)
+    println(lineup.homeTeam.name)
