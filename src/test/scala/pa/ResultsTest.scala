@@ -24,7 +24,8 @@ class ResultsTest extends FlatSpec with ShouldMatchers {
         ),
         awayTeam = MatchDayTeam("42", "West Brom", Some(1), Some(0), None, Some("James Morrison (90 +0:21)")),
         referee = Some(Official("100924", "Mike Dean")),
-        venue = Some(Venue("61", "White Hart Lane"))
+        venue = Some(Venue("61", "White Hart Lane")),
+        comments = None
       )
     )
   }
@@ -33,6 +34,13 @@ class ResultsTest extends FlatSpec with ShouldMatchers {
     val matches = StubClient.results("100", new DateMidnight(2012, 8, 23), new DateMidnight(2012, 9, 1))
 
     matches(0).homeTeam.name should be ("Liverpool")
+  }
+
+  it should "load comments" in {
+
+    val theMatch = StubClient.results("100", new DateMidnight(2010, 8, 1)).find(_.id == "3528299").get
+
+    theMatch.comments should be (Some("Simple comment"))
   }
   
   it should "get results across all competitions from a start date" in {
