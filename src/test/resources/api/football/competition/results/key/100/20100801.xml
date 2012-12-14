@@ -45,7 +45,7 @@
             <aggregateScore></aggregateScore>
             <scorers></scorers>
         </awayTeam>
-        <comments></comments>
+        <comments>Simple comment</comments>
     </result>
     <result matchID="3517764" date="25/08/2012" koTime="17:30">
         <round roundNumber="1"></round>
