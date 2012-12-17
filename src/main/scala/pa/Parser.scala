@@ -167,7 +167,8 @@ object Parser {
         parseTeam(aMatch \ "homeTeam"),
         parseTeam(aMatch \ "awayTeam"),
         parseReferee(aMatch \ "referee"),
-        parseVenue(aMatch \ "venue")
+        parseVenue(aMatch \ "venue"),
+        aMatch \>> "comments"
       )
     }
   }
