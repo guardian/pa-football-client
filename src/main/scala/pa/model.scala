@@ -110,6 +110,7 @@ trait FootballMatch {
   def homeTeam: MatchDayTeam
   def awayTeam: MatchDayTeam
   def venue: Option[Venue]
+  def comments: Option[String]
 }
 
 case class Fixture(
@@ -121,7 +122,9 @@ case class Fixture(
    homeTeam: MatchDayTeam,
    awayTeam: MatchDayTeam,
    venue: Option[Venue],
-   competition: Option[Competition]) extends FootballMatch
+   competition: Option[Competition]) extends FootballMatch {
+  override val comments = None
+}
 
 case class MatchDay(
   id: String,
@@ -139,7 +142,8 @@ case class MatchDay(
   homeTeam: MatchDayTeam,
   awayTeam: MatchDayTeam,
   referee: Option[Official],
-  venue: Option[Venue]
+  venue: Option[Venue],
+  comments: Option[String]
 ) extends FootballMatch
 
 case class Result(

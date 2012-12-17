@@ -30,9 +30,16 @@ class MatchDayTest extends FlatSpec with ShouldMatchers {
         ),
         awayTeam = MatchDayTeam("14", "Norwich", Some(1), Some(0), None, Some("Grant Holt (63)")),
         referee = Some(Official("410888", "Mike Jones")),
-        venue = Some(Venue("511", "Stamford Bridge"))
+        venue = Some(Venue("511", "Stamford Bridge")),
+        comments = None
       )
     )
+  }
+
+  it should "load comments" in {
+    val theMatch = StubClient.matchDay("100", new DateMidnight(2011, 3, 19)).find(_.id == "3284716").get
+
+    theMatch.comments should be  (Some("Wolverhampton win in extra time"))
   }
 
   it should "parse a day that only has a single game" in {
