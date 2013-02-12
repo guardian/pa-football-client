@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<matches xsi:noNamespaceSchemaLocation="http://pads6.pa-sport.com/API/Schemas/Football/Match/info.xsd"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <match matchID="3560717" date="31/10/2012" koTime="19:45">
+        <stage stageNumber="1" stageType="Knockout"/>
+        <round roundNumber="5">Fourth Round</round>
+        <leg>1</leg>
+        <liveMatch>No</liveMatch>
+        <result>Yes</result>
+        <previewAvailable>Yes</previewAvailable>
+        <reportAvailable>Yes</reportAvailable>
+        <lineupsAvailable>Yes</lineupsAvailable>
+        <matchStatus>FT</matchStatus>
+        <attendance>41126</attendance>
+        <referee refereeID="182780">Lee Mason</referee>
+        <venue venueID="511">Stamford Bridge</venue>
+        <homeTeam teamID="4">
+            <teamName>Chelsea</teamName>
+            <score>5</score>
+            <htScore>1</htScore>
+            <aggregateScore/>
+            <scorers><![CDATA[David Luiz (31 Pen),Gary Cahill (52),Eden Hazard (90 +3:53 Pen),Daniel Sturridge (97),Nascimento Ramires (116)]]></scorers>
+        </homeTeam>
+        <awayTeam teamID="12">
+            <teamName>Man Utd</teamName>
+            <score>4</score>
+            <htScore>2</htScore>
+            <aggregateScore/>
+            <scorers><![CDATA[Ryan Giggs (22),Javier Hernandez (43),Luis Nani (59),Ryan Giggs (120 Pen)]]></scorers>
+        </awayTeam>
+        <comments>(After Extra Time)</comments>
+    </match>
+</matches>
