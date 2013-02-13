@@ -40,7 +40,8 @@ case class MatchEvent(
   whereFrom: Option[String],
   whereTo: Option[String],
   distance: Option[String],
-  outcome: Option[String]
+  outcome: Option[String],
+  typ: Option[String]
 ) {
 
   val isGoal = outcome map (_ == "Goal") getOrElse false

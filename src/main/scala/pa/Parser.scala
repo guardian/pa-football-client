@@ -101,7 +101,8 @@ object Parser {
       event \> "whereFrom",
       event \> "whereTo",
       event \> "distance",
-      event \> "outcome"
+      event \> "outcome",
+      event \> "type"
     )
 
     //annoyingly there are some matches with no events
