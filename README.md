@@ -50,5 +50,5 @@ Usage
     matches.foreach(println)
 
     // lineup for a match
-    val lineup = Client.lineUp("1234)
+    val lineup = Client.lineUp("1234")
     println(lineup.homeTeam.name)
