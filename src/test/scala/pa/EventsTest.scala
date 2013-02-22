@@ -36,7 +36,7 @@ class EventsTest extends FlatSpec with ShouldMatchers {
     theEvent.how should be (Some("Left Foot"))
     theEvent.whereFrom should be (Some("Right Wing"))
     theEvent.whereTo should be (None)
-    theEvent.typ should be (Some("Direct"))
+    theEvent.gameEventType should be (Some("Direct"))
     theEvent.distance should be (None)
     theEvent.outcome should be (Some("Cross"))
   }
