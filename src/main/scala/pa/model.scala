@@ -220,7 +220,7 @@ case class LineUp(homeTeam: LineUpTeam, awayTeam: LineUpTeam, homeTeamPossession
 case class EAIndexTeam(
   id: String,
   name: String
-)
+) extends FootballTeam
 
 case class EAIndexTeamMembership(
   team: EAIndexTeam,
@@ -264,7 +264,7 @@ case class EAIndexPlayer(
   teams: List[EAIndexTeamMembership],
   position: String,
   matches: List[EAIndexPlayerMatchStatistics]
-)
+) extends Person
 
 private object Formats {
   val HoursMinutes = """^(\d+):(\d+)$""".r
