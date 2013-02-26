@@ -3,20 +3,34 @@ package pa
 import scala.Some
 import xml.{NodeSeq, XML}
 import org.joda.time.format.DateTimeFormat
-import org.joda.time.DateTime
+import org.joda.time.{DateTimeZone, DateTime}
 
 //There is always a certain amount of ugliness in parsing a feed.
 //keep it all in one place
 object Parser {
-
+  /** PA uses several formats for representing date time information - this should be able to parse them all */
   private object Date {
-
     private val DateParser = DateTimeFormat.forPattern("dd/MM/yyyy")
-    private val DateTimeParser = DateTimeFormat.forPattern("ddd/MM/yyyy HH:mm")
+    private val CompositeDateTimeParser = DateTimeFormat.forPattern("ddd/MM/yyyy HH:mm")
+    private val DateTimeParser = DateTimeFormat.forPattern("dd/MM/yyyy HH:mm:ss")
 
-    def apply(date: String): DateTime = DateParser.parseDateTime(date)
+    def apply(date: String): DateTime = {
+      if (date.length == 10) {
+        DateParser.parseDateTime(date)
+      } else {
+        DateTimeParser.parseDateTime(date)
+      }
+    }
 
-    def apply(date: String, time: String) = DateTimeParser.parseDateTime("%s %s".format(date, time))
+    def apply(date: String, time: String) = CompositeDateTimeParser.parseDateTime("%s %s".format(date, time))
+  }
+
+  /** Boolean values are represented in PA's API as 'Yes' or 'No' strings */
+  private object YesOrNo {
+    def apply(yesOrNo: String): Boolean = yesOrNo match {
+      case "Yes" => true
+      case _ => false
+    }
   }
 
   def parseCompetitions(s: String): List[Season] = (XML.loadString(s) \\ "season") map { season =>
@@ -76,6 +90,62 @@ object Parser {
     )
   }
 
+  def parseEaIndex(s: String): List[EAIndexPlayer] = {
+    val xml = XML.loadString(s)
+
+    def parseMembership(membership: NodeSeq) = EAIndexTeamMembership(
+      EAIndexTeam(
+        membership \@ "teamID",
+        membership \> "name"
+      ),
+      Date(membership \> "startDate"),
+      YesOrNo(membership \> "onLoan"),
+      (membership \> "squadNumber") match {
+        case "" => None
+        case x => Some(x.toInt)
+      }
+    )
+
+    def parseMatch(_match: NodeSeq) = EAIndexPlayerMatchStatistics(
+      _match \@ "matchID",
+      Date(_match \@ "date"),
+      (_match \> "index").toInt,
+      (_match \> "minsOnPitch").toInt,
+      (_match \> "allGoals").toInt,
+      (_match \> "ownGoals").toInt,
+      (_match \> "dismissals").toInt,
+      (_match \> "bookings").toInt,
+      (_match \> "shotsOnTarget").toInt,
+      (_match \> "shotsOffTarget").toInt,
+      (_match \> "fouls").toInt,
+      (_match \> "tacklesWon").toInt,
+      (_match \> "tacklesLost").toInt,
+      (_match \> "clearances").toInt,
+      (_match \> "interceptions").toInt,
+      (_match \> "saves").toInt,
+      (_match \> "blocks").toInt,
+      (_match \> "passes").toInt,
+      (_match \> "dribbles").toInt,
+      (_match \> "crosses").toInt,
+      Date(_match \> "lastUpdated")
+    )
+
+    def parsePlayer(player: NodeSeq) = EAIndexPlayer(
+      player \@ "playerID",
+      player \> "name",
+      player \> "height",
+      player \> "weight",
+      Date(player \> "dob"),
+      (player \> "age").toInt,
+      player \> "nationality",
+      (player \\ "team") map parseMembership,
+      player \> "position",
+      (player \\ "match") map parseMatch
+    )
+
+    xml \\ "player" map parsePlayer
+  }
+
   def parseMatchEvents(s: String): Option[MatchEvents] = {
 
     val xml = XML.loadString(s)
@@ -101,7 +171,8 @@ object Parser {
       event \> "whereFrom",
       event \> "whereTo",
       event \> "distance",
-      event \> "outcome"
+      event \> "outcome",
+      event \> "type"
     )
 
     //annoyingly there are some matches with no events

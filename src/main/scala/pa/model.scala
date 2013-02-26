@@ -40,7 +40,8 @@ case class MatchEvent(
   whereFrom: Option[String],
   whereTo: Option[String],
   distance: Option[String],
-  outcome: Option[String]
+  outcome: Option[String],
+  gameEventType: Option[String]
 ) {
 
   val isGoal = outcome map (_ == "Goal") getOrElse false
@@ -215,6 +216,55 @@ case class LineUpPlayer(
 case class LineUp(homeTeam: LineUpTeam, awayTeam: LineUpTeam, homeTeamPossession: Int) {
   lazy val awayTeamPossession = 100 - homeTeamPossession
 }
+
+case class EAIndexTeam(
+  id: String,
+  name: String
+) extends FootballTeam
+
+case class EAIndexTeamMembership(
+  team: EAIndexTeam,
+  startDate: DateTime,
+  onLoan: Boolean,
+  squadNumber: Option[Int]
+)
+
+case class EAIndexPlayerMatchStatistics(
+  matchID: String,
+  date: DateTime,
+  index: Int,
+  minutesOnPitch: Int,
+  allGoals: Int,
+  ownGoals: Int,
+  dismissals: Int,
+  bookings: Int,
+  shotsOnTarget: Int,
+  shotsOffTarget: Int,
+  fouls: Int,
+  tacklesWon: Int,
+  tacklesLost: Int,
+  clearances: Int,
+  interceptions: Int,
+  saves: Int,
+  blocks: Int,
+  passes: Int,
+  dribbles: Int,
+  crosses: Int,
+  lastUpdated: DateTime
+)
+
+case class EAIndexPlayer(
+  id: String,
+  name: String,
+  height: String,
+  weight: String,
+  dateOfBirth: DateTime,
+  age: Int,
+  nationality: String,
+  teams: List[EAIndexTeamMembership],
+  position: String,
+  matches: List[EAIndexPlayerMatchStatistics]
+) extends Person
 
 private object Formats {
   val HoursMinutes = """^(\d+):(\d+)$""".r

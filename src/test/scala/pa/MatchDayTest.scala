@@ -36,6 +36,45 @@ class MatchDayTest extends FlatSpec with ShouldMatchers {
     )
   }
 
+  "PaClient" should "load a match by ID" in {
+    val _match = StubClient.matchDay("3560717")
+
+    _match.isEmpty should be (false)
+
+    val matchDay = _match.get
+
+    matchDay.id should be ("3560717")
+    matchDay.date should be (new DateTime(2012, 10, 31, 19, 45, 0, 0))
+    matchDay.competition should be (None)
+    matchDay.round should be (Some(Round("5", Some("Fourth Round"))))
+    matchDay.leg should be ("1")
+    matchDay.liveMatch should be (false)
+    matchDay.result should be (true)
+    matchDay.previewAvailable should be (true)
+    matchDay.lineupsAvailable should be (true)
+    matchDay.matchStatus should be ("FT")
+    matchDay.attendance should be (Some("41126"))
+    matchDay.homeTeam should be (MatchDayTeam(
+      "4",
+      "Chelsea",
+      Some(5),
+      Some(1),
+      None,
+      Some("David Luiz (31 Pen),Gary Cahill (52),Eden Hazard (90 +3:53 Pen),Daniel Sturridge (97),Nascimento Ramires (116)")
+      ))
+    matchDay.awayTeam should be (MatchDayTeam(
+      "12",
+      "Man Utd",
+      Some(4),
+      Some(2),
+      None,
+      Some("Ryan Giggs (22),Javier Hernandez (43),Luis Nani (59),Ryan Giggs (120 Pen)")
+    ))
+    matchDay.referee should be (Some(Official("182780", "Lee Mason")))
+    matchDay.venue should be (Some(Venue("511", "Stamford Bridge")))
+    matchDay.comments should be (Some("(After Extra Time)"))
+  }
+
   it should "load comments" in {
     val theMatch = StubClient.matchDay("100", new DateMidnight(2011, 3, 19)).find(_.id == "3284716").get
 
