@@ -2,15 +2,16 @@ name := "pa-client"
 
 organization := "com.gu"
 
-version := "2.10-SNAPSHOT"
+version := "3.1-SNAPSHOT"
 
-scalaVersion := "2.9.1"
+scalaVersion := "2.10.0"
 
 libraryDependencies ++= Seq(
     "joda-time" % "joda-time" % "1.6.2",
-    "net.databinder.dispatch" %% "core" % "0.9.0",
-    "org.scalatest" %% "scalatest" % "1.8" % "test"
+    "net.databinder.dispatch" %% "dispatch-core" % "0.9.5",
+    "org.scalatest" %% "scalatest" % "1.9.1" % "test"
 )
+
 
 publishTo <<= (version) { version: String =>
     val publishType = if (version.endsWith("SNAPSHOT")) "snapshots" else "releases"

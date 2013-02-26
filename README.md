@@ -1,3 +1,6 @@
+*NOTE*: as of 3.0, Scala 2.9.x is no longer supported due to changes in Dispatch.
+To get a 2.9.x version clone/ fork https://github.com/guardian/pa-football-client/tree/scala_2.9.1
+
 A simple scala client for the PA football API
 
 It merely interacts with the PA feeds, it does not understand Guardian Tags and match reports and so on
@@ -6,7 +9,7 @@ Sbt dependencies
 
     resolvers += "Guardian Github Releases" at "http://guardian.github.com/maven/repo-releases"
 
-    libraryDependencies += "com.gu" %% "pa-client" % "2.9"
+    libraryDependencies += "com.gu" %% "pa-client" % "3.0"
 
 Usage
 

@@ -4,7 +4,6 @@ import com.ning.http.client.{AsyncHttpClient, ProxyServer, AsyncHttpClientConfig
 import com.ning.http.client.providers.netty.{NettyAsyncHttpProvider, NettyConnectionsPool}
 import dispatch.{url, FunctionHandler}
 
-
 trait Http {
   def GET(url: String): Response
 }
@@ -34,12 +33,10 @@ trait DispatchHttp extends Http {
     c.build
   }
 
-  object Client extends dispatch.Http {
-    override lazy val client = {
-      val connectionPool = new NettyConnectionsPool(new NettyAsyncHttpProvider(config))
-      new AsyncHttpClient(new AsyncHttpClientConfig.Builder(config).setConnectionsPool(connectionPool).build)
-    }
-  }
+  object Client extends dispatch.Http(client = {
+    val connectionPool = new NettyConnectionsPool(new NettyAsyncHttpProvider(config))
+    new AsyncHttpClient(new AsyncHttpClientConfig.Builder(config).setConnectionsPool(connectionPool).build)
+  })
 
   def GET(urlString: String): Response = {
 
