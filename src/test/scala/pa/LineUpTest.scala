@@ -2,12 +2,15 @@ package pa
 
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
+import concurrent.Await
+import concurrent.duration._
+import scala.concurrent.ExecutionContext.Implicits.global
 
 class LineUpTest extends FlatSpec with ShouldMatchers {
 
   "PaClient" should "load lineups for a match" in {
 
-    val lineUp = StubClient.lineUp("3560717")
+    val lineUp = Await.result(StubClient.lineUp("3560717"), 1.second)
 
     lineUp.homeTeamPossession should be (52)
     lineUp.awayTeamPossession should be (48)

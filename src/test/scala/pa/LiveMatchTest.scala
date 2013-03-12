@@ -3,11 +3,14 @@ package pa
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
 import org.joda.time.{DateTime, DateMidnight}
+import concurrent.Await
+import concurrent.duration._
+import scala.concurrent.ExecutionContext.Implicits.global
 
 class LiveMatchTest extends FlatSpec with ShouldMatchers {
 
   "PaClient" should "load live matches" in {
-    val matches = StubClient.liveMatches("100")
+    val matches = Await.result(StubClient.liveMatches("100"), 1.second)
 
     matches.size should be (3)
 
@@ -29,7 +32,7 @@ class LiveMatchTest extends FlatSpec with ShouldMatchers {
 
   it should "be empty if there are no matches" in {
 
-    StubClient.liveMatches("108").size should be (0)
+    Await.result(StubClient.liveMatches("108"), 1.second).size should be (0)
 
   }
 }
