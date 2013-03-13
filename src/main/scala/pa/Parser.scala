@@ -4,6 +4,8 @@ import scala.Some
 import xml.{NodeSeq, XML}
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.DateTime
+import language.reflectiveCalls
+import language.postfixOps
 
 //There is always a certain amount of ugliness in parsing a feed.
 //keep it all in one place

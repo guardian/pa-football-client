@@ -1,4 +1,4 @@
-*NOTE*: as of 3.0, Scala 2.9.x is no longer supported due to changes in Dispatch.
+*NOTE*: as of 4.0, Scala 2.9.x is no longer as the client has moved to an async model using Scala 2.10.x features.
 To get a 2.9.x version clone/ fork https://github.com/guardian/pa-football-client/tree/scala_2.9.1
 
 A simple scala client for the PA football API
@@ -6,52 +6,54 @@ A simple scala client for the PA football API
 It merely interacts with the PA feeds, it does not understand Guardian Tags and match reports and so on
 
 Sbt dependencies
+'''
+resolvers += "Guardian Github Releases" at "http://guardian.github.com/maven/repo-releases"
 
-    resolvers += "Guardian Github Releases" at "http://guardian.github.com/maven/repo-releases"
-
-    libraryDependencies += "com.gu" %% "pa-client" % "3.0"
-
+libraryDependencies += "com.gu" %% "pa-client" % "4.0"
+'''
 Usage
+'''
+object Client extends PaClient {
+    val apiKey = "YOUR_API_KEY"
+    def GET(url: String): Future[Response] = { /* implement code to fetch a url */ }
+}
 
-    object Client extends PaClient with DispatchHttp {
-        val apiKey = "YOUR_API_KEY"
-    }
+// list all competitions
+Client.competitions.map(_.foreach(println))
 
-    // list all competitions
-    Client.competitions.foreach(println)
+// fixtures for all competitions
+val fixtures = Client.fixtures()
+fixtures.map(_.foreach(println))
 
-    // fixtures for all competitions
-    val fixtures = Client.fixtures()
-    fixtures.foreach(println)
+// live matches for a competition
+val matches = Client.liveMatches("100")
+matches.map(_.foreach(println))
 
-    // live matches for a competition
-    val matches = Client.liveMatches("100")
-    matches.foreach(println)
-    
-    // events in a match
-    val theMatch = Client.matchEvents("3507403")
-    println(theMatch.homeTeam.name)
+// events in a match
+val theMatch = Client.matchEvents("3507403")
+theMatch.map( m =>  println(m.homeTeam.name))
 
-    // matches for a specific day for all competitions
-    val matches = Client.matchDay(new DateMidnight(2011, 8, 27))
-    matches.foreach(println)
+// matches for a specific day for all competitions
+val matches = Client.matchDay(new DateMidnight(2011, 8, 27))
+matches.map(_.foreach(println))
 
-    // matches for a specific day in a specific competition
-    val matches = Client.matchDay("100", new DateMidnight(2011, 8, 27))
-    matches.foreach(println)
+// matches for a specific day in a specific competition
+val matches = Client.matchDay("100", new DateMidnight(2011, 8, 27))
+matches.map(_.foreach(println))
 
-    // results for all competitions since a certain date
-    val matches = Client.results(new DateMidnight(2010, 8, 1))
-    matches.foreach(println)
-    
-    // results for a competition since a certain date
-    val matches = Client.results("100", new DateMidnight(2010, 8, 1))
-    matches.foreach(println)
+// results for all competitions since a certain date
+val matches = Client.results(new DateMidnight(2010, 8, 1))
+matches.map(_.foreach(println))
 
-    // results for a competition between two dates
-    val matches = Client.results("100", new DateMidnight(2012, 8, 23), new DateMidnight(2012, 9, 1))
-    matches.foreach(println)
+// results for a competition since a certain date
+val matches = Client.results("100", new DateMidnight(2010, 8, 1))
+matches.map(_.foreach(println))
 
-    // lineup for a match
-    val lineup = Client.lineUp("1234)
-    println(lineup.homeTeam.name)
+// results for a competition between two dates
+val matches = Client.results("100", new DateMidnight(2012, 8, 23), new DateMidnight(2012, 9, 1))
+matches.map(_.foreach(println))
+
+// lineup for a match
+val lineup = Client.lineUp("1234)
+lineip.map(l => println(l.homeTeam.name))
+'''

@@ -70,7 +70,7 @@ class MatchDayTest extends FlatSpec with ShouldMatchers {
 
   it should "parse match with missing referee" in {
 
-    val matches = Await.result(StubClient.matchDay("101", new DateMidnight(2010, 11, 07)), 1.second)
+    val matches = Await.result(StubClient.matchDay("101", new DateMidnight(2010, 11, 7)), 1.second)
 
     matches(0).referee should be (None)
   }
@@ -84,7 +84,7 @@ class MatchDayTest extends FlatSpec with ShouldMatchers {
 
   it should "parse match without half time score" in {
 
-    val matches = Await.result(StubClient.matchDay("102", new DateMidnight(2010, 11, 02)), 1.second)
+    val matches = Await.result(StubClient.matchDay("102", new DateMidnight(2010, 11, 2)), 1.second)
 
     matches(4).awayTeam.htScore should be (None)
     matches(4).awayTeam.aggregateScore should be (None)
@@ -93,7 +93,7 @@ class MatchDayTest extends FlatSpec with ShouldMatchers {
 
   it should "parse match without attendance" in {
 
-    val matches = Await.result(StubClient.matchDay("102", new DateMidnight(2010, 11, 02)), 1.second)
+    val matches = Await.result(StubClient.matchDay("102", new DateMidnight(2010, 11, 2)), 1.second)
 
     matches(4).attendance should be (None)
   }
