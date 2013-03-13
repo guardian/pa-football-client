@@ -1,5 +1,5 @@
 *NOTE*: as of 4.0, Scala 2.9.x is no longer as the client has moved to an async model using Scala 2.10.x features.
-To get a 2.9.x version clone/ fork https://github.com/guardian/pa-football-client/tree/scala_2.9.1
+To get the old 2.9.x version see https://github.com/guardian/pa-football-2.9
 
 A simple scala client for the PA football API
 
