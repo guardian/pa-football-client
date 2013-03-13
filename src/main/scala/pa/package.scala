@@ -1,5 +1,7 @@
 import xml.NodeSeq
 import org.joda.time.{DateMidnight, DateTime}
+import language.implicitConversions
+import language.reflectiveCalls
 
 package object pa{
 

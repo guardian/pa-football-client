@@ -2,15 +2,19 @@ package pa
 
 import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers
+import concurrent.Await
+import concurrent.duration._
+import scala.concurrent.ExecutionContext.Implicits.global
+
 
 class ParserTest extends FunSuite with ShouldMatchers {
 
   val stubClient = StubClient
-  val matchFixtureOne = stubClient.fixtures("789")(0)
-  val matchFixtureTwo = stubClient.fixtures("789")(1)
+  val matchFixtureOne = Await.result(stubClient.fixtures("789"), 1.second)(0)
+  val matchFixtureTwo = Await.result(stubClient.fixtures("789"), 1.second)(1)
 
   test("Test parser returns two fixtures for test xml") {
-    val fixtures = stubClient.fixtures("789")
+    val fixtures = Await.result(stubClient.fixtures("789"), 1.second)
     fixtures.length should be (2)
   }
 
@@ -67,7 +71,7 @@ class ParserTest extends FunSuite with ShouldMatchers {
     matchFixtureTwo.stage.stageNumber should be ("1")
   }
   
-  val fixtures = stubClient.fixtures()
+  val fixtures = Await.result(stubClient.fixtures, 1.second)
 
   test("Test can get all Fixtures across all competitions") {
     fixtures(0).id should be ("3407177")

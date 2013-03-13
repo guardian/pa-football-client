@@ -3,11 +3,14 @@ package pa
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
 import org.joda.time.{DateTime, DateMidnight}
+import concurrent.Await
+import concurrent.duration._
+import scala.concurrent.ExecutionContext.Implicits.global
 
 class ResultsTest extends FlatSpec with ShouldMatchers {
 
   "PaClient" should "load results" in {
-    val matches = StubClient.results("100", new DateMidnight(2010, 8, 1))
+    val matches = Await.result(StubClient.results("100", new DateMidnight(2010, 8, 1)), 1.second)
 
     matches.size should be(780)
 
@@ -31,20 +34,20 @@ class ResultsTest extends FlatSpec with ShouldMatchers {
   }
 
   it should "work with an end date" in {
-    val matches = StubClient.results("100", new DateMidnight(2012, 8, 23), new DateMidnight(2012, 9, 1))
+    val matches = Await.result(StubClient.results("100", new DateMidnight(2012, 8, 23), new DateMidnight(2012, 9, 1)), 1.second)
 
     matches(0).homeTeam.name should be ("Liverpool")
   }
 
   it should "load comments" in {
 
-    val theMatch = StubClient.results("100", new DateMidnight(2010, 8, 1)).find(_.id == "3528299").get
+    val theMatch = Await.result(StubClient.results("100", new DateMidnight(2010, 8, 1)), 1.second).find(_.id == "3528299").get
 
     theMatch.comments should be (Some("Simple comment"))
   }
   
   it should "get results across all competitions from a start date" in {
-    val results = StubClient.results(new DateMidnight(2012, 8, 23))
+    val results = Await.result(StubClient.results(new DateMidnight(2012, 8, 23)), 1.second)
     
     results.size should be (2)
     
@@ -53,7 +56,7 @@ class ResultsTest extends FlatSpec with ShouldMatchers {
   }
   
     it should "get results across all competitions from a start date to an end date" in {
-    val results = StubClient.results(new DateMidnight(2012, 8, 23), new DateMidnight(2012, 9, 23))
+    val results = Await.result(StubClient.results(new DateMidnight(2012, 8, 23), new DateMidnight(2012, 9, 23)), 1.second)
     
     results.size should be (2)
     

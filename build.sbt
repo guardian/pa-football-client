@@ -2,14 +2,17 @@ name := "pa-client"
 
 organization := "com.gu"
 
-version := "2.10-SNAPSHOT"
+version := "4.1-SNAPSHOT"
 
-scalaVersion := "2.9.1"
+scalaVersion := "2.10.0"
+
+crossScalaVersions := Seq("2.10.0", "2.10.1")
+
+scalacOptions ++= Seq("-feature", "-deprecation")
 
 libraryDependencies ++= Seq(
     "joda-time" % "joda-time" % "1.6.2",
-    "net.databinder.dispatch" %% "core" % "0.9.0",
-    "org.scalatest" %% "scalatest" % "1.8" % "test"
+    "org.scalatest" %% "scalatest" % "1.9.1" % "test"
 )
 
 publishTo <<= (version) { version: String =>
