@@ -2,12 +2,15 @@ package pa
 
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
+import concurrent.Await
+import concurrent.duration._
+import scala.concurrent.ExecutionContext.Implicits.global
 
 class StatsTest extends FlatSpec with ShouldMatchers {
 
   "PaClient" should "load match stats" in {
 
-    val stats = StubClient.matchStats("3409881")
+    val stats = Await.result(StubClient.matchStats("3409881"), 1.second)
 
     val finalStats = stats.filter(_.interval == 90).head
 
@@ -28,6 +31,6 @@ class StatsTest extends FlatSpec with ShouldMatchers {
   }
 
   it should "load empty match stats" in {
-    StubClient.matchStats("3283333") should be (Nil)
+    Await.result(StubClient.matchStats("3283333"), 1.second) should be (Nil)
   }
 }

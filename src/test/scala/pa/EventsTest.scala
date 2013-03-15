@@ -2,12 +2,15 @@ package pa
 
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
+import concurrent.Await
+import concurrent.duration._
+import scala.concurrent.ExecutionContext.Implicits.global
 
 class EventsTest extends FlatSpec with ShouldMatchers {
 
   "PaClient" should "load a match" in {
 
-    val theMatch = StubClient.matchEvents("3507403").get
+    val theMatch = Await.result(StubClient.matchEvents("3507403"), 1.second).get
 
     theMatch.homeTeam should be (Team("9", "Liverpool"))
     theMatch.awayTeam should be (Team("4", "Chelsea"))
@@ -20,6 +23,6 @@ class EventsTest extends FlatSpec with ShouldMatchers {
   }
 
   it should "parse those dodgy matches with no events" in {
-    StubClient.matchEvents("3304257") should be (None)
+    Await.result(StubClient.matchEvents("3304257"), 1.second) should be (None)
   }
 }

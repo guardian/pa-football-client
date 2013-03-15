@@ -3,11 +3,14 @@ package pa
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
 import org.joda.time.DateMidnight
+import concurrent.Await
+import concurrent.duration._
+import scala.concurrent.ExecutionContext.Implicits.global
 
 class LeagueTableTest extends FlatSpec with ShouldMatchers{
 
   "PaClient" should "load a League Table" in {
-    val List(first, second) = StubClient.leagueTable("100", new DateMidnight(2011, 8, 27)) take 2
+    val List(first, second) = Await.result(StubClient.leagueTable("100", new DateMidnight(2011, 8, 27)), 1.second) take 2
 
     first.stageNumber should be("1")
     first.round should be(Some(Round("1",None)))
@@ -27,7 +30,7 @@ class LeagueTableTest extends FlatSpec with ShouldMatchers{
   }
 
   it should "load a League Table with negative Goal Difference" in {
-    val List(entry) = StubClient.leagueTable("100", new DateMidnight(2011, 8, 28)) filter (_.team.name == "QPR") take 1
+    val List(entry) = Await.result(StubClient.leagueTable("100", new DateMidnight(2011, 8, 28)), 1.second) filter (_.team.name == "QPR") take 1
 
     entry.team.goalDifference should be(-5)
   }
