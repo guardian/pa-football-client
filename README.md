@@ -6,13 +6,16 @@ A simple scala client for the PA football API
 It merely interacts with the PA feeds, it does not understand Guardian Tags and match reports and so on
 
 Sbt dependencies
-'''
+
+```scala
 resolvers += "Guardian Github Releases" at "http://guardian.github.com/maven/repo-releases"
 
 libraryDependencies += "com.gu" %% "pa-client" % "4.0"
-'''
+```
+
 Usage
-'''
+
+```scala
 object Client extends PaClient {
     val apiKey = "YOUR_API_KEY"
     def GET(url: String): Future[Response] = { /* implement code to fetch a url */ }
@@ -56,4 +59,4 @@ matches.map(_.foreach(println))
 // lineup for a match
 val lineup = Client.lineUp("1234)
 lineip.map(l => println(l.homeTeam.name))
-'''
+```
