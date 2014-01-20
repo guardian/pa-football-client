@@ -1,11 +1,16 @@
-*NOTE*: as of 4.0, Scala 2.9.x is no longer as the client has moved to an async model using Scala 2.10.x features.
-To get the old 2.9.x version see https://github.com/guardian/pa-football-2.9
+A simple scala client for the PA football API.
 
-A simple scala client for the PA football API
+*NOTE*: as of 4.0, Scala 2.9.x is no longer as the client has moved to
+an async model using Scala 2.10.x features.  To get the old 2.9.x
+version see https://github.com/guardian/pa-football-2.9
 
-It merely interacts with the PA feeds, it does not understand Guardian Tags and match reports and so on
+It merely interacts with the PA feeds, it does not understand Guardian
+Tags and match reports and so on.
 
-Sbt dependencies
+## Sbt dependencies
+
+To include this library in your project using sbt, add the following
+to your sbt configuration:
 
 ```scala
 resolvers += "Guardian Github Releases" at "http://guardian.github.com/maven/repo-releases"
@@ -13,7 +18,10 @@ resolvers += "Guardian Github Releases" at "http://guardian.github.com/maven/rep
 libraryDependencies += "com.gu" %% "pa-client" % "4.0"
 ```
 
-Usage
+## Usage
+
+Note that this library does not include an HTTP library so you will
+need to provide and implementation for the client's GET method.
 
 ```scala
 object Client extends PaClient {
