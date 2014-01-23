@@ -24,6 +24,7 @@ object Parser {
   def parseCompetitions(s: String): List[Season] = (XML.loadString(s) \\ "season") map { season =>
     Season(
       season \@ "competitionID",
+      season \@ "seasonID",
       season \> "name",
       Date(season \> "startDate"),
       Date(season \> "endDate")
