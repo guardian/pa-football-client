@@ -21,7 +21,7 @@ libraryDependencies += "com.gu" %% "pa-client" % "4.0"
 ## Usage
 
 Note that this library does not include an HTTP library so you will
-need to provide and implementation for the client's GET method.
+need to provide an implementation for the client's GET method.
 
 ```scala
 object Client extends PaClient {
@@ -65,6 +65,6 @@ val matches = Client.results("100", new DateMidnight(2012, 8, 23), new DateMidni
 matches.map(_.foreach(println))
 
 // lineup for a match
-val lineup = Client.lineUp("1234)
-lineip.map(l => println(l.homeTeam.name))
+val lineup = Client.lineUp("1234")
+lineup.map(l => println(l.homeTeam.name))
 ```
