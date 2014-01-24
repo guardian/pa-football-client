@@ -292,6 +292,35 @@ object Parser {
     }
   }
 
+  def parseTeamHead2Head(s: String): (TeamHead2Head, TeamHead2Head) = {
+    def parseHead2HeadStat(stat: NodeSeq): Head2HeadStat = {
+      val home = stat \ "home"
+      val away = stat \ "away"
+      Head2HeadStat(
+        homeCount   = (home \@ "total").toInt,
+        homeMatches = (home \ "matches" \ "match") map { m => MatchInfo(m \@ "matchID", Date(m \@ "date", m \@ "koTime"), m \@ "description") },
+        awayCount   = (away \@ "total").toInt,
+        awayMatches = (away \ "matches" \ "match") map { m => MatchInfo(m \@ "matchID", Date(m \@ "date", m \@ "koTime"), m \@ "description") }
+      )
+    }
+    def parseTeamHead2Head(team: NodeSeq): TeamHead2Head = {
+      TeamHead2Head(
+        id            = team \@ "teamID",
+        name          = team \@ "name",
+        goals         = parseHead2HeadStat(team \ "goals"),
+        bookings      = parseHead2HeadStat(team \ "bookings"),
+        dismissals    = parseHead2HeadStat(team \ "dismissals"),
+        substitutions = parseHead2HeadStat(team \ "substitutions")
+      )
+    }
+
+    val teams = XML.loadString(s) \\ "headToHeads" \ "teams"
+    (
+      parseTeamHead2Head(teams \ "teamOne"),
+      parseTeamHead2Head(teams \ "teamTwo")
+    )
+  }
+
   protected def parseReferee(official: NodeSeq) = (official \@@ "refereeID") flatMap { id =>
     if (official.text == "") None else Some(Official(id, official.text))
   }

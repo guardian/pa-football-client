@@ -60,6 +60,18 @@ trait PaClient { self: Http =>
   def liveMatches(competitionId: String)(implicit context: ExecutionContext): Future[List[LiveMatch]] =
     get(s"/api/football/competition/liveGames/$apiKey/$competitionId").map(parseLiveMatches)
 
+  def teamHead2Head(team1Id: String, team2Id: String, startDate: DateMidnight, endDate: DateMidnight)(implicit context: ExecutionContext): Future[(TeamHead2Head, TeamHead2Head)] =
+    teamHead2Head(team1Id, team2Id, startDate, endDate, None)
+
+  def teamHead2Head(team1Id: String, team2Id: String, startDate: DateMidnight, endDate: DateMidnight, competitionId: String)(implicit context: ExecutionContext): Future[(TeamHead2Head, TeamHead2Head)] =
+    teamHead2Head(team1Id, team2Id, startDate, endDate, Some(competitionId))
+
+  private def teamHead2Head(team1Id: String, team2Id: String, startDate: DateMidnight, endDate: DateMidnight, competitionId: Option[String])(implicit context: ExecutionContext): Future[(TeamHead2Head, TeamHead2Head)] = {
+    val startDateStr = startDate.toString("yyyyMMdd")
+    val endDateStr = endDate.toString("yyyyMMdd")
+    val competitionIdStr = competitionId.map(id => s"/$id").getOrElse("")
+    get(s"/api/football/team/headToHeads/$apiKey/$team1Id/$team2Id/$startDateStr/$endDateStr$competitionIdStr").map(parseTeamHead2Head)
+  }
 
   protected def get(suffix: String)(implicit context: ExecutionContext): Future[String] = GET(base + suffix).map{
     case Response(200, body, _) =>  body

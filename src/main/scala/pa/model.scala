@@ -216,6 +216,22 @@ case class LineUp(homeTeam: LineUpTeam, awayTeam: LineUpTeam, homeTeamPossession
   lazy val awayTeamPossession = 100 - homeTeamPossession
 }
 
+case class TeamHead2Head(
+  id: String,
+  name: String,
+  goals: Head2HeadStat,
+  bookings: Head2HeadStat,
+  dismissals: Head2HeadStat,
+  substitutions: Head2HeadStat
+) extends FootballTeam {
+  def totalGoals = goals.awayCount + goals.homeCount
+  def totalBookings = bookings.awayCount + bookings.homeCount
+  def totalDismissals = dismissals.awayCount + dismissals.homeCount
+  def totalSubstitutions = substitutions.awayCount + substitutions.homeCount
+}
+case class MatchInfo(id: String, matchDate: DateTime, description: String)
+case class Head2HeadStat(homeCount: Int, homeMatches: List[MatchInfo], awayCount: Int, awayMatches: List[MatchInfo])
+
 private object Formats {
   val HoursMinutes = """^(\d+):(\d+)$""".r
 }
