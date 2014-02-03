@@ -232,6 +232,115 @@ case class TeamHead2Head(
 case class MatchInfo(id: String, matchDate: DateTime, description: String)
 case class Head2HeadStat(homeCount: Int, homeMatches: List[MatchInfo], awayCount: Int, awayMatches: List[MatchInfo])
 
+case class TeamEventMatch(
+  id: String,
+  date: DateTime,
+  competitionId: String,
+  stage: Int,
+  round: Int,
+  leg: Int,
+  homeTeam: TeamEventMatchTeam,
+  awayTeam: TeamEventMatchTeam,
+  events: TeamEventMatchEvents
+)
+case class TeamEventMatchTeam(
+  id: String,
+  name: String,
+  score: Int,
+  htScore: Int,
+  aggregateScore: Option[Int]
+)
+case class TeamEventMatchEvents(
+  bookings: List[TeamEventMatchBooking],
+  dismissals: List[TeamEventMatchDismissal],
+  goals: List[TeamEventMatchGoal],
+  penalties: List[TeamEventMatchPenalty],
+  substitutions: List[TeamEventMatchSubstitution],
+  shootoutPenalties: List[TeamEventMatchShootoutPenalty],
+  other: List[TeamEventMatchOther]
+)
+trait TeamEventMatchEvent {
+  val eventId: String
+  val normalTime: String
+  val addedTime: String
+  val team: Team
+}
+case class TeamEventMatchBooking(
+  eventId: String,
+  normalTime: String,
+  addedTime: String,
+  team: Team,
+  player: Player,
+  reason: String
+) extends TeamEventMatchEvent
+case class TeamEventMatchDismissal(
+  eventId: String,
+  normalTime: String,
+  addedTime: String,
+  team: Team,
+  player: Player,
+  reason: String
+) extends TeamEventMatchEvent
+case class TeamEventMatchGoal(
+  eventId: String,
+  normalTime: String,
+  addedTime: String,
+  team: Team,
+  player: Player,
+  ownGoal: Boolean,
+  how: Option[String],
+  whereFrom: Option[String],
+  whereTo: Option[String],
+  distanceInYards: Option[String]
+) extends TeamEventMatchEvent
+case class TeamEventMatchPenalty(
+  eventId: String,
+  normalTime: String,
+  addedTime: String,
+  team: Team,
+  player: Player,
+  how: Option[String],
+  whereTo: Option[String],
+  outcome: String,
+  keeperCorrect: Option[Boolean],
+  `type`: Option[String]
+) extends TeamEventMatchEvent
+case class TeamEventMatchSubstitution(
+  eventId: String,
+  normalTime: String,
+  addedTime: String,
+  team: Team,
+  playerOn: Player,
+  playerOff: Player,
+  how: Option[String],
+  reason: Option[String]
+) extends TeamEventMatchEvent
+case class TeamEventMatchShootoutPenalty(
+  eventId: String,
+  team: Team,
+  player: Player,
+  how: Option[String],
+  `type`: Option[String],
+  whereTo: Option[String],
+  keeperCorrect: Option[Boolean],
+  outcome: Option[String]
+)
+case class TeamEventMatchOther(
+  eventId: String,
+  normalTime: String,
+  addedTime: String,
+  team: Team,
+  player: Option[Player],
+  eventType: String,
+  how: Option[String],
+  `type`: Option[String],
+  whereFrom: Option[String],
+  whereTo: Option[String],
+  distanceInYards: Option[Int],
+  outcome: Option[String],
+  onTarget: Option[Boolean]
+) extends TeamEventMatchEvent
+
 private object Formats {
   val HoursMinutes = """^(\d+):(\d+)$""".r
 }

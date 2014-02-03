@@ -321,6 +321,150 @@ object Parser {
     )
   }
 
+  def parseTeamEventMatches(s: String): List[TeamEventMatch] = {
+    def parseMatchTeam(team: NodeSeq): TeamEventMatchTeam = {
+      TeamEventMatchTeam(
+        id             = team \@ "teamID",
+        name           = team \> "name",
+        score          = (team \> "score").toInt,
+        htScore        = (team \> "htScore").toInt,
+        aggregateScore = (team \>> "aggregateScore").map(_.toInt)
+      )
+    }
+    def parseTeamEventMatchEvents(events: NodeSeq): TeamEventMatchEvents = {
+      TeamEventMatchEvents(
+        bookings = (events \ "bookings" \ "booking") map { node =>
+          TeamEventMatchBooking(
+            eventId = node \@ "eventID",
+            normalTime = node \> "normalTime",
+            addedTime = node \> "addedTime",
+            team = Team(node \ "team" \@ "teamID", node \> "team"),
+            player = {
+              val playerNode = node \ "player"
+              Player(playerNode \@ "playerID", node \ "team" \@ "teamID", playerNode.text)
+            },
+            reason = node \> "reason"
+          )
+        },
+        dismissals = (events \ "dismissals" \ "dismissal") map { node =>
+          TeamEventMatchDismissal(
+            eventId = node \@ "eventID",
+            normalTime = node \> "normalTime",
+            addedTime = node \> "addedTime",
+            team = Team(node \ "team" \@ "teamID", node \> "team"),
+            player = {
+              val playerNode = node \ "player"
+              Player(playerNode \@ "playerID", node \ "team" \@ "teamID", playerNode.text)
+            },
+            reason = node \> "reason"
+          )
+        },
+        goals = (events \ "goals" \ "goal") map { node =>
+          TeamEventMatchGoal(
+            eventId = node \@ "eventID",
+            normalTime = node \> "normalTime",
+            addedTime = node \> "addedTime",
+            team = Team(node \ "team" \@ "teamID", node \> "team"),
+            player = {
+              val playerNode = node \ "player"
+              Player(playerNode \@ "playerID", node \ "team" \@ "teamID", playerNode.text)
+            },
+            ownGoal = (node \> "ownGoal") == "Yes",
+            how = node \>> "how",
+            whereFrom = node \>> "whereFrom",
+            whereTo = node \>> "whereTo",
+            distanceInYards = node \>> "distanceInYards"
+          )
+        },
+        penalties = (events \ "penalties" \ "penalty") map { node =>
+          TeamEventMatchPenalty(
+            eventId = node \@ "eventID",
+            normalTime = node \> "normalTime",
+            addedTime = node \> "addedTime",
+            team = Team(node \ "team" \@ "teamID", node \> "team"),
+            player = {
+              val playerNode = node \ "player"
+              Player(playerNode \@ "playerID", node \ "team" \@ "teamID", playerNode.text)
+            },
+            how = node \>> "how",
+            whereTo = node \>> "whereTo",
+            outcome = node \> "outcome",
+            keeperCorrect = (node \>> "keeperCorrect") map ("Yes"==),
+            `type` = node \>> "type"
+          )
+        },
+        substitutions = (events \ "substitutions" \ "substitution") map { node =>
+          TeamEventMatchSubstitution(
+            eventId = node \@ "eventID",
+            normalTime = node \> "normalTime",
+            addedTime = node \> "addedTime",
+            team = Team(node \ "team" \@ "teamID", node \> "team"),
+            playerOn = {
+              val playerNode = node \ "playerOn"
+              Player(playerNode \@ "playerID", node \ "team" \@ "teamID", playerNode.text)
+            },
+            playerOff = {
+              val playerNode = node \ "playerOff"
+              Player(playerNode \@ "playerID", node \ "team" \@ "teamID", playerNode.text)
+            },
+            how = node \>> "how",
+            reason = node \>> "reason"
+          )
+        },
+        shootoutPenalties = (events \ "shootOutPenalties" \ "shootOutPenalty") map { node =>
+          TeamEventMatchShootoutPenalty(
+            eventId = node \@ "eventID",
+            team = Team(node \ "team" \@ "teamID", node \> "team"),
+            player = {
+              val playerNode = node \ "player"
+              Player(playerNode \@ "playerID", node \ "team" \@ "teamID", playerNode.text)
+            },
+            how = node \>> "how",
+            `type` = node \>> "type",
+            whereTo = node \>> "whereTo",
+            keeperCorrect = (node \>> "keeperCorrect") map ("Yes"==),
+            outcome = node \>> "outcome"
+          )
+        },
+        other = (events \ "other" \ "event") map { node =>
+          TeamEventMatchOther(
+            eventId = node \@ "eventID",
+            normalTime = node \> "normalTime",
+            addedTime = node \> "addedTime",
+            team = Team(node \ "team1" \@ "teamID", node \> "team1"),
+            player = (node \>> "player1").map { playerName =>
+              Player(node \ "player1" \@ "playerID", node \ "team1" \@ "teamID", playerName)
+            },
+            eventType = node \> "eventType",
+            how = node \>> "how",
+            `type` = node \>> "type",
+            whereFrom = node \>> "whereFrom",
+            whereTo = node \>> "whereTo",
+            distanceInYards = (node \>> "distanceInYards").map(_.toInt),
+            outcome = node \>> "outcome",
+            onTarget = (node \>> "onTarget") map ("Yes"==)
+          )
+        }
+      )
+    }
+
+    (XML.loadString(s) \\ "matches" \ "match") map { matchNode =>
+      val homeTeam = parseMatchTeam(matchNode \ "homeTeam")
+      val awayTeam = parseMatchTeam(matchNode \ "awayTeam")
+      TeamEventMatch(
+        id            = matchNode \@ "matchID",
+        date          = Date(matchNode \@ "date", matchNode \@ "koTime"),
+        competitionId = matchNode \ "competition" \@ "competitionID",
+        stage         = (matchNode \ "stage" \@ "stageNumber").toInt,
+        round         = (matchNode \ "round" \@ "roundNumber").toInt,
+        leg           = (matchNode \> "leg").toInt,
+        homeTeam      = homeTeam,
+        awayTeam      = awayTeam,
+        events        = parseTeamEventMatchEvents(matchNode \ "events")
+      )
+    }
+  }
+
   protected def parseReferee(official: NodeSeq) = (official \@@ "refereeID") flatMap { id =>
     if (official.text == "") None else Some(Official(id, official.text))
   }
