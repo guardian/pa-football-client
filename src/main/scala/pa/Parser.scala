@@ -497,6 +497,27 @@ object Parser {
     }
   }
 
+  def parsePlayerAppearances(s: String): PlayerAppearances = {
+    def parseAppearance(node: NodeSeq): Appearances = {
+      Appearances(
+        appearances     = (node \> "appearances").toInt,
+        started         = (node \> "started").toInt,
+        substitutedOn   = (node \> "substitutedOn").toInt,
+        substitutedOff  = (node \> "substitutedOff").toInt,
+        dismissals      = (node \> "dismissals").toInt
+      )
+    }
+
+    val player = XML.loadString(s) \\ "playerAppearances" \ "player"
+    val matches = player \ "matches"
+    PlayerAppearances(
+      playerName  = player \> "name",
+      home        = parseAppearance(matches \ "home"),
+      away        = parseAppearance(matches \ "away"),
+      total       = parseAppearance(matches \ "totals")
+    )
+  }
+
   protected def parseReferee(official: NodeSeq) = (official \@@ "refereeID") flatMap { id =>
     if (official.text == "") None else Some(Official(id, official.text))
   }

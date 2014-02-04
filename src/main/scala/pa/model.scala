@@ -353,3 +353,17 @@ case class SquadMember(
   endDate: Option[DateMidnight],
   onLoan: Boolean
 )
+
+case class PlayerAppearances(
+  playerName: String,
+  home: Appearances,
+  away: Appearances,
+  total: Appearances
+)
+case class Appearances(
+  appearances: Int,
+  started: Int,
+  substitutedOn: Int,
+  substitutedOff: Int,
+  dismissals: Int
+)
