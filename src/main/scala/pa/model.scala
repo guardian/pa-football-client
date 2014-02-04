@@ -344,3 +344,12 @@ case class TeamEventMatchOther(
 private object Formats {
   val HoursMinutes = """^(\d+):(\d+)$""".r
 }
+
+case class SquadMember(
+  playerId: String,
+  name: String,
+  squadNumber: Option[String],
+  startDate: DateMidnight,
+  endDate: Option[DateMidnight],
+  onLoan: Boolean
+)

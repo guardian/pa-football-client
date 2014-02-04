@@ -466,6 +466,19 @@ object Parser {
     }
   }
 
+  def parseSquad(s: String): List[SquadMember] = {
+    (XML.loadString(s) \\ "teamSquad" \ "squadMember") map { squadMemberNode =>
+      SquadMember(
+        playerId    = squadMemberNode \@ "playerID",
+        name        = squadMemberNode \> "name",
+        squadNumber = squadMemberNode \>> "squadNumber",
+        startDate   = Date(squadMemberNode \> "startDate"),
+        endDate     = (squadMemberNode \>> "endDate").map(Date(_)),
+        onLoan      = (squadMemberNode \> "onLoan") == "Yes"
+      )
+    }
+  }
+
   protected def parseReferee(official: NodeSeq) = (official \@@ "refereeID") flatMap { id =>
     if (official.text == "") None else Some(Official(id, official.text))
   }
