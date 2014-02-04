@@ -288,24 +288,14 @@ object Parser {
         homeTeam          = parseTeam(fixture \ "homeTeam"),
         awayTeam          = parseTeam(fixture \ "awayTeam"),
         venue             = parseVenue(fixture \ "venue"),
-        competition				 = parseCompetition(fixture \ "competition")
+        competition       = parseCompetition(fixture \ "competition")
       )
     }
   }
 
-  def parseTeamHead2Head(s: String): (TeamHead2Head, TeamHead2Head) = {
-    def parseHead2HeadStat(stat: NodeSeq): Head2HeadStat = {
-      val home = stat \ "home"
-      val away = stat \ "away"
-      Head2HeadStat(
-        homeCount   = (home \@ "total").toInt,
-        homeMatches = (home \ "matches" \ "match") map { m => MatchInfo(m \@ "matchID", Date(m \@ "date", m \@ "koTime"), m \@ "description") },
-        awayCount   = (away \@ "total").toInt,
-        awayMatches = (away \ "matches" \ "match") map { m => MatchInfo(m \@ "matchID", Date(m \@ "date", m \@ "koTime"), m \@ "description") }
-      )
-    }
-    def parseTeamHead2Head(team: NodeSeq): TeamHead2Head = {
-      TeamHead2Head(
+  def parseTeamHead2Head(s: String): (Head2Head, Head2Head) = {
+    def parseTeamHead2Head(team: NodeSeq): Head2Head = {
+      Head2Head(
         id            = team \@ "teamID",
         name          = team \@ "name",
         goals         = parseHead2HeadStat(team \ "goals"),
@@ -319,6 +309,25 @@ object Parser {
     (
       parseTeamHead2Head(teams \ "teamOne"),
       parseTeamHead2Head(teams \ "teamTwo")
+    )
+  }
+
+  def parsePlayerHead2Head(s: String): (Head2Head, Head2Head) = {
+    def parsePlayerHead2Head(player: NodeSeq): Head2Head = {
+      Head2Head(
+        id            = player \@ "playerID",
+        name          = player \@ "name",
+        goals         = parseHead2HeadStat(player \ "goals"),
+        bookings      = parseHead2HeadStat(player \ "bookings"),
+        dismissals    = parseHead2HeadStat(player \ "dismissals"),
+        substitutions = parseHead2HeadStat(player \ "substitutions")
+      )
+    }
+
+    val players = XML.loadString(s) \\ "headToHeads" \ "players"
+    (
+      parsePlayerHead2Head(players \ "playerOne"),
+      parsePlayerHead2Head(players \ "playerTwo")
     )
   }
 
@@ -502,5 +511,16 @@ object Parser {
 
   protected def parseVenue(venue: NodeSeq) = (venue \@@ "venueID") map { id =>
     Venue(id, venue.text)
+  }
+
+  protected def parseHead2HeadStat(stat: NodeSeq): Head2HeadStat = {
+    val home = stat \ "home"
+    val away = stat \ "away"
+    Head2HeadStat(
+      homeCount   = (home \@ "total").toInt,
+      homeMatches = (home \ "matches" \ "match") map { m => MatchInfo(m \@ "matchID", Date(m \@ "date", m \@ "koTime"), m \@ "description") },
+      awayCount   = (away \@ "total").toInt,
+      awayMatches = (away \ "matches" \ "match") map { m => MatchInfo(m \@ "matchID", Date(m \@ "date", m \@ "koTime"), m \@ "description") }
+    )
   }
 }

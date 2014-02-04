@@ -216,7 +216,7 @@ case class LineUp(homeTeam: LineUpTeam, awayTeam: LineUpTeam, homeTeamPossession
   lazy val awayTeamPossession = 100 - homeTeamPossession
 }
 
-case class TeamHead2Head(
+case class Head2Head(
   id: String,
   name: String,
   goals: Head2HeadStat,
