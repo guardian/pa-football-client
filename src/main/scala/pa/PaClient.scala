@@ -98,6 +98,12 @@ trait PaClient { self: Http =>
     get(s"/api/football/team/squad/$apiKey/$teamId/$startDateStr/$endDateStr").map(parseSquad)
   }
 
+  def teams(competitionId: String, startDate: DateMidnight, endDate: DateMidnight)(implicit context: ExecutionContext): Future[List[Team]] = {
+    val startDateStr = startDate.toString("yyyyMMdd")
+    val endDateStr = endDate.toString("yyyyMMdd")
+    get(s"/api/football/competition/teams/$apiKey/$competitionId/$startDateStr/$endDateStr").map(parseTeams)
+  }
+
   protected def get(suffix: String)(implicit context: ExecutionContext): Future[String] = GET(base + suffix).map{
     case Response(200, body, _) =>  body
     case Response(status, _, reason) => throw new PaClientException(status + " " + reason)

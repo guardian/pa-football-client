@@ -479,6 +479,15 @@ object Parser {
     }
   }
 
+  def parseTeams(s: String): List[Team] = {
+    (XML.loadString(s) \\ "teams" \ "team") map { teamNode =>
+      Team(
+        id = teamNode \@ "teamID",
+        name = teamNode.text
+      )
+    }
+  }
+
   protected def parseReferee(official: NodeSeq) = (official \@@ "refereeID") flatMap { id =>
     if (official.text == "") None else Some(Official(id, official.text))
   }
