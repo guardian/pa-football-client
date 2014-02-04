@@ -13,13 +13,13 @@ class SeasonsTest extends FlatSpec with ShouldMatchers {
 
     val competitions = Await.result(StubClient.competitions, 1.second)
 
-    competitions should contain (Season("100", "Barclays Premier League 10/11",
-      new DateMidnight(2010,8,1), new DateMidnight(2011,5,31)))
+    competitions should contain (Season("100", "785", "Barclays Premier League 13/14",
+      new DateMidnight(2013,6,1), new DateMidnight(2014,5,31)))
 
-    competitions should contain (Season("794", "ABSA Premier League 10/11",
-      new DateMidnight(2010,8,1), new DateMidnight(2011,5,31)))
+    competitions should contain (Season("625", "467", "German Bundesliga 12/13",
+      new DateMidnight(2012,8,1), new DateMidnight(2013,5,31)))
 
-    competitions(0).interval should be(new Interval(new DateMidnight(2010,8,1), new DateMidnight(2011,5,31)))
-    competitions(1).interval should be(new Interval(new DateMidnight(2010,8,1), new DateMidnight(2011,5,31)))
+    competitions(0).interval should be(new Interval(new DateMidnight(2013,6,1), new DateMidnight(2014,5,31)))
+    competitions(1).interval should be(new Interval(new DateMidnight(2012,8,1), new DateMidnight(2013,5,31)))
   }
 }

@@ -2,7 +2,7 @@ package pa
 
 import org.joda.time.{Interval, DateTime, DateMidnight}
 
-case class Season(id: String, name: String, startDate: DateMidnight, endDate: DateMidnight){
+case class Season(competitionId: String, seasonId: String, name: String, startDate: DateMidnight, endDate: DateMidnight){
   lazy val interval: Interval = new Interval(startDate, endDate)
 }
 
