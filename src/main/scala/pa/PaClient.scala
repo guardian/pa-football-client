@@ -38,14 +38,20 @@ trait PaClient { self: Http =>
     get(s"/api/football/competitions/results/$apiKey/$dateStr").map(parseResults)
   }
 
-  def results(competitionId: String, start: DateMidnight)(implicit context: ExecutionContext): Future[List[Result]] = results(competitionId, start, None)
+  def results(competitionId: String, start: DateMidnight)(implicit context: ExecutionContext): Future[List[Result]] = results("competition", competitionId, start, None)
 
   def results(competitionId: String, start: DateMidnight, end: DateMidnight)(implicit context: ExecutionContext): Future[List[Result]] =
-    results(competitionId, start, Some(end))
+    results("competition", competitionId, start, Some(end))
 
-  private def results(competitionId: String, start: DateMidnight, end: Option[DateMidnight] = None)(implicit context: ExecutionContext): Future[List[Result]] ={
+  def teamResults(teamId: String, start: DateMidnight)(implicit context: ExecutionContext): Future[List[Result]] =
+    results("team", teamId, start, None)
+
+  def teamResults(teamId: String, start: DateMidnight, end: DateMidnight)(implicit context: ExecutionContext): Future[List[Result]] =
+    results("team", teamId, start, Some(end))
+
+  private def results(resultType: String, competitionId: String, start: DateMidnight, end: Option[DateMidnight] = None)(implicit context: ExecutionContext): Future[List[Result]] ={
     val dateStr = start.toString("yyyyMMdd") + (end map { e => s"/${e.toString("yyyyMMdd")}" } getOrElse "")
-    get(s"/api/football/competition/results/$apiKey/$competitionId/$dateStr").map(parseResults)
+    get(s"/api/football/$resultType/results/$apiKey/$competitionId/$dateStr").map(parseResults)
   }
 
   def leagueTable(competitionId: String, date: DateMidnight)(implicit context: ExecutionContext): Future[List[LeagueTableEntry]] =
