@@ -123,6 +123,16 @@ trait PaClient { self: Http =>
     get(s"/api/football/player/appearances/$apiKey/$playerId/$startDateStr/$endDateStr").map(parsePlayerAppearances)
   }
 
+  def playerStats(playerId: String, startDate: DateMidnight, endDate: DateMidnight)(implicit context: ExecutionContext): Future[PlayerStats] = {
+    val startDateStr = startDate.toString("yyyyMMdd")
+    val endDateStr = endDate.toString("yyyyMMdd")
+    get(s"/api/football/player/stats/summary/$apiKey/$playerId/$startDateStr/$endDateStr").map(parsePlayerStats)
+  }
+
+  def playerProfile(playerId: String)(implicit context: ExecutionContext): Future[PlayerProfile] = {
+    get(s"/api/football/player/profile/$apiKey/$playerId").map(parsePlayerProfile)
+  }
+
   protected def get(suffix: String)(implicit context: ExecutionContext): Future[String] = GET(base + suffix).map{
     case Response(200, body, _) =>  body
     case Response(status, _, reason) => throw new PaClientException(status + " " + reason)

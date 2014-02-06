@@ -518,6 +518,68 @@ object Parser {
     )
   }
 
+  def parsePlayerStats(s: String): PlayerStats = {
+    def parseStat(node: NodeSeq): Stat = {
+      Stat(
+        home = (node \ "stat" \> "homeTotal").toInt,
+        away = (node \ "stat" \> "awayTotal").toInt,
+        statDescription = node \> "description",
+        statTypeId = node \@ "statsTypeID"
+      )
+    }
+
+    val nodes = XML.loadString(s) \\ "statsSummary" \ "statsType"
+    PlayerStats(
+      defence = PlayerStatsDefence(
+        backPasses        = parseStat(nodes.filter(node => node \@ "statsTypeID" == "264")),
+        blocks            = parseStat(nodes.filter(node => node \@ "statsTypeID" == "212")),
+        clearances        = parseStat(nodes.filter(node => node \@ "statsTypeID" == "181")),
+        goalKicks         = parseStat(nodes.filter(node => node \@ "statsTypeID" == "153")),
+        goalsAgainst      = parseStat(nodes.filter(node => node \@ "statsTypeID" == "597")),
+        ownGoals          = parseStat(nodes.filter(node => node \@ "statsTypeID" == "102")),
+        ownGoalsFor       = parseStat(nodes.filter(node => node \@ "statsTypeID" == "596")),
+        saves             = parseStat(nodes.filter(node => node \@ "statsTypeID" == "151"))
+      ),
+      offence = PlayerStatsOffense(
+        assists           = parseStat(nodes.filter(node => node \@ "statsTypeID" == "234")),
+        corners           = parseStat(nodes.filter(node => node \@ "statsTypeID" == "190")),
+        crosses           = parseStat(nodes.filter(node => node \@ "statsTypeID" == "148")),
+        freeKicks         = parseStat(nodes.filter(node => node \@ "statsTypeID" == "159")),
+        goals             = parseStat(nodes.filter(node => node \@ "statsTypeID" == "78")),
+        penalties         = parseStat(nodes.filter(node => node \@ "statsTypeID" == "46")),
+        shotsOffTarget    = parseStat(nodes.filter(node => node \@ "statsTypeID" == "164")),
+        shotsOnTarget     = parseStat(nodes.filter(node => node \@ "statsTypeID" == "214")),
+        throwIns          = parseStat(nodes.filter(node => node \@ "statsTypeID" == "144"))
+      ),
+      discipline = PlayerStatsDiscipline(
+        bookings          = parseStat(nodes.filter(node => node \@ "statsTypeID" == "37")),
+        dismissals        = parseStat(nodes.filter(node => node \@ "statsTypeID" == "29")),
+        foulsAgainst      = parseStat(nodes.filter(node => node \@ "statsTypeID" == "173")),
+        foulsCommitted    = parseStat(nodes.filter(node => node \@ "statsTypeID" == "170")),
+        handBalls         = parseStat(nodes.filter(node => node \@ "statsTypeID" == "255")),
+        offsides          = parseStat(nodes.filter(node => node \@ "statsTypeID" == "156")),
+        tenYards          = parseStat(nodes.filter(node => node \@ "statsTypeID" == "273"))
+      ),
+      substitutionsOff  = parseStat(nodes.filter(node => node \@ "statsTypeID" == "72")),
+      substitutionsOn   = parseStat(nodes.filter(node => node \@ "statsTypeID" == "70")),
+      totalGoalsAgainst = parseStat(nodes.filter(node => node \@ "statsTypeID" == "599")),
+      totalGoalsFor     = parseStat(nodes.filter(node => node \@ "statsTypeID" == "598"))
+    )
+  }
+
+  def parsePlayerProfile(s: String): PlayerProfile = {
+    val node = XML.loadString(s) \\ "player"
+    PlayerProfile(
+      fullName    = node \> "fullName",
+      height      = node \>> "height",
+      weight      = node \>> "weight",
+      dob         = (node \>> "dob").map(Date(_).toDateMidnight),
+      age         = node \>> "age",
+      nationality = node \>> "nationality",
+      position    = node \>> "position"
+    )
+  }
+
   protected def parseReferee(official: NodeSeq) = (official \@@ "refereeID") flatMap { id =>
     if (official.text == "") None else Some(Official(id, official.text))
   }

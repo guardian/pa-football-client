@@ -367,3 +367,71 @@ case class Appearances(
   substitutedOff: Int,
   dismissals: Int
 )
+
+case class PlayerStats(
+  defence: PlayerStatsDefence,
+  offence: PlayerStatsOffense,
+  discipline: PlayerStatsDiscipline,
+  substitutionsOn: Stat,
+  substitutionsOff: Stat,
+  totalGoalsAgainst: Stat,
+  totalGoalsFor: Stat
+)
+case class PlayerStatsOffense(
+  assists: Stat,
+  corners: Stat,
+  crosses: Stat,
+  freeKicks: Stat,
+  goals: Stat,
+  penalties: Stat,
+  shotsOffTarget: Stat,
+  shotsOnTarget: Stat,
+  throwIns: Stat
+) {
+  private def percentage(n: Float, m: Float): Int = {
+    if (0 == n) 0
+    else if (0 == n + m) 100
+    else Math.round((n / (n + m)) * 100)
+  }
+
+  val shotsOnTargetPercentage = new Stat(
+    percentage(shotsOnTarget.home, shotsOffTarget.home),
+    percentage(shotsOnTarget.away, shotsOffTarget.away),
+    "Shots On Target Percentage",
+    "0"
+  ) {
+    override val total = percentage(shotsOnTarget.total, shotsOffTarget.total)
+  }
+}
+case class PlayerStatsDefence(
+  backPasses: Stat,
+  blocks: Stat,
+  clearances: Stat,
+  goalKicks: Stat,
+  goalsAgainst: Stat,
+  ownGoals: Stat,
+  ownGoalsFor: Stat,
+  saves: Stat
+)
+case class PlayerStatsDiscipline(
+  bookings: Stat,
+  dismissals: Stat,
+  foulsAgainst: Stat,
+  foulsCommitted: Stat,
+  handBalls: Stat,
+  offsides: Stat,
+  tenYards: Stat
+)
+case class Stat(home: Int, away: Int, statDescription: String, statTypeId: String) {
+  val total = home + away
+}
+
+case class PlayerProfile(
+  fullName: String,
+  height: Option[String],
+  weight: Option[String],
+  dob: Option[DateMidnight],
+  age: Option[String],
+  nationality: Option[String],
+  position: Option[String]
+)
