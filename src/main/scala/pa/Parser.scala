@@ -518,7 +518,7 @@ object Parser {
     )
   }
 
-  def parsePlayerStats(s: String): PlayerStats = {
+  def parseStatsSummary(s: String): StatsSummary = {
     def parseStat(node: NodeSeq): Stat = {
       Stat(
         home = (node \ "stat" \> "homeTotal").toInt,
@@ -529,8 +529,8 @@ object Parser {
     }
 
     val nodes = XML.loadString(s) \\ "statsSummary" \ "statsType"
-    PlayerStats(
-      defence = PlayerStatsDefence(
+    StatsSummary(
+      defence = PlayerStatsSummaryDefence(
         backPasses        = parseStat(nodes.filter(node => node \@ "statsTypeID" == "264")),
         blocks            = parseStat(nodes.filter(node => node \@ "statsTypeID" == "212")),
         clearances        = parseStat(nodes.filter(node => node \@ "statsTypeID" == "181")),
@@ -540,7 +540,7 @@ object Parser {
         ownGoalsFor       = parseStat(nodes.filter(node => node \@ "statsTypeID" == "596")),
         saves             = parseStat(nodes.filter(node => node \@ "statsTypeID" == "151"))
       ),
-      offence = PlayerStatsOffense(
+      offence = PlayerStatsSummaryOffense(
         assists           = parseStat(nodes.filter(node => node \@ "statsTypeID" == "234")),
         corners           = parseStat(nodes.filter(node => node \@ "statsTypeID" == "190")),
         crosses           = parseStat(nodes.filter(node => node \@ "statsTypeID" == "148")),
@@ -551,7 +551,7 @@ object Parser {
         shotsOnTarget     = parseStat(nodes.filter(node => node \@ "statsTypeID" == "214")),
         throwIns          = parseStat(nodes.filter(node => node \@ "statsTypeID" == "144"))
       ),
-      discipline = PlayerStatsDiscipline(
+      discipline = PlayerStatsSummaryDiscipline(
         bookings          = parseStat(nodes.filter(node => node \@ "statsTypeID" == "37")),
         dismissals        = parseStat(nodes.filter(node => node \@ "statsTypeID" == "29")),
         foulsAgainst      = parseStat(nodes.filter(node => node \@ "statsTypeID" == "173")),

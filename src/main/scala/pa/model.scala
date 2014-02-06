@@ -368,16 +368,16 @@ case class Appearances(
   dismissals: Int
 )
 
-case class PlayerStats(
-  defence: PlayerStatsDefence,
-  offence: PlayerStatsOffense,
-  discipline: PlayerStatsDiscipline,
+case class StatsSummary(
+  defence: PlayerStatsSummaryDefence,
+  offence: PlayerStatsSummaryOffense,
+  discipline: PlayerStatsSummaryDiscipline,
   substitutionsOn: Stat,
   substitutionsOff: Stat,
   totalGoalsAgainst: Stat,
   totalGoalsFor: Stat
 )
-case class PlayerStatsOffense(
+case class PlayerStatsSummaryOffense(
   assists: Stat,
   corners: Stat,
   crosses: Stat,
@@ -403,7 +403,7 @@ case class PlayerStatsOffense(
     override val total = percentage(shotsOnTarget.total, shotsOffTarget.total)
   }
 }
-case class PlayerStatsDefence(
+case class PlayerStatsSummaryDefence(
   backPasses: Stat,
   blocks: Stat,
   clearances: Stat,
@@ -413,7 +413,7 @@ case class PlayerStatsDefence(
   ownGoalsFor: Stat,
   saves: Stat
 )
-case class PlayerStatsDiscipline(
+case class PlayerStatsSummaryDiscipline(
   bookings: Stat,
   dismissals: Stat,
   foulsAgainst: Stat,
