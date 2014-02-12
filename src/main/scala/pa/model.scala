@@ -4,6 +4,9 @@ import org.joda.time.{Interval, DateTime, DateMidnight}
 
 case class Season(competitionId: String, seasonId: String, name: String, startDate: DateMidnight, endDate: DateMidnight){
   lazy val interval: Interval = new Interval(startDate, endDate)
+
+  // for backwards-compatibility
+  val id = competitionId
 }
 
 case class Competition(id: String, name: String)
