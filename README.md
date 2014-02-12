@@ -67,4 +67,49 @@ matches.map(_.foreach(println))
 // lineup for a match
 val lineup = Client.lineUp("1234")
 lineup.map(l => println(l.homeTeam.name))
+
+// team head 2 head data
+val teamH2Hs = Client.teamHead2Head("4", "12", new DateMidnight(2013, 12, 2), new DateMidnight(2014, 1, 24))
+teamH2Hs.map { case (team1H2H, team2H2H) =>
+  println(s"${team1H2H.name} vs ${team2H2H.name}")
+  println(s"${team1H2H.totalGoals} - ${team2H2H.totalGoals}")
+}
+
+// show events for a team
+val teamEvents = Client.teamEvents("19", new DateMidnight(2013, 10, 11), new DateMidnight(2014, 1, 24))
+teamEvents.map(_.foreach(println))
+
+// results for the specified team
+val teamResults = Client.teamResults("19", new DateMidnight(2013, 10, 11))
+teamResults.map(_.foreach(println))
+
+// get a stats summary for a team
+val teamStats = Client.teamStats("19", new DateMidnight(2013, 8, 1), new DateMidnight(2014, 2, 5))
+teamStats.map(println)
+
+// retrieve a team's squad
+val squad = Client.squad("19")
+squad.map(_.foreach(println))
+
+// get all the teams in the specified competition (Premier League, in this example)
+val teams = Client.teams("100", new DateMidnight(2013, 12, 5), new DateMidnight(2014, 2, 4))
+teams.map(_.foreach(team => println(team.name)))
+
+// fetch head to head information for two players
+val playerH2H = Client.playerHead2Head("300448", "494151", new DateMidnight(2013, 11, 3), new DateMidnight(2014, 2, 4), "100")
+playerH2H.map { case (player1H2H, player2H2H) =>
+  println(s"${player1H2H.name} vs ${player2H2H.name}")
+  println(s"${player1H2H.totalGoals} - ${player2H2H .totalGoals}")
+}
+
+// get the statistics on appearances for the given player
+val playerAppearances = Client.appearances("237670", new DateMidnight(2013, 9, 4), new DateMidnight(2014, 2, 4))
+playerAppearances.map(appearances => s"${appearances.playerName} has appeared ${appearances.total} times")
+
+// fetch a player's profile information
+Client.playerProfile("237670").map(profile => s"${profile.fullName}, ${profile.age} years old, ${profile.height} tall")
+
+// stats summary for a player
+val playerStats = Client.playerStats("237670", new DateMidnight(2013, 8, 1), new DateMidnight(2014, 2, 5))
+playerStats.map(stats => s"Shots on target: ${stats.offence.shotsOnTargetPercentage.total}%")
 ```

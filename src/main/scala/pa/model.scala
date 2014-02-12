@@ -2,8 +2,11 @@ package pa
 
 import org.joda.time.{Interval, DateTime, DateMidnight}
 
-case class Season(id: String, name: String, startDate: DateMidnight, endDate: DateMidnight){
+case class Season(competitionId: String, seasonId: String, name: String, startDate: DateMidnight, endDate: DateMidnight){
   lazy val interval: Interval = new Interval(startDate, endDate)
+
+  // for backwards-compatibility
+  val id = competitionId
 }
 
 case class Competition(id: String, name: String)
@@ -216,6 +219,222 @@ case class LineUp(homeTeam: LineUpTeam, awayTeam: LineUpTeam, homeTeamPossession
   lazy val awayTeamPossession = 100 - homeTeamPossession
 }
 
+case class Head2Head(
+  id: String,
+  name: String,
+  goals: Head2HeadStat,
+  bookings: Head2HeadStat,
+  dismissals: Head2HeadStat,
+  substitutions: Head2HeadStat
+) extends FootballTeam {
+  def totalGoals = goals.awayCount + goals.homeCount
+  def totalBookings = bookings.awayCount + bookings.homeCount
+  def totalDismissals = dismissals.awayCount + dismissals.homeCount
+  def totalSubstitutions = substitutions.awayCount + substitutions.homeCount
+}
+case class MatchInfo(id: String, matchDate: DateTime, description: String)
+case class Head2HeadStat(homeCount: Int, homeMatches: List[MatchInfo], awayCount: Int, awayMatches: List[MatchInfo])
+
+case class TeamEventMatch(
+  id: String,
+  date: DateTime,
+  competitionId: String,
+  stage: Int,
+  round: Int,
+  leg: Int,
+  homeTeam: TeamEventMatchTeam,
+  awayTeam: TeamEventMatchTeam,
+  events: TeamEventMatchEvents
+)
+case class TeamEventMatchTeam(
+  id: String,
+  name: String,
+  score: Int,
+  htScore: Int,
+  aggregateScore: Option[Int]
+)
+case class TeamEventMatchEvents(
+  bookings: List[TeamEventMatchBooking],
+  dismissals: List[TeamEventMatchDismissal],
+  goals: List[TeamEventMatchGoal],
+  penalties: List[TeamEventMatchPenalty],
+  substitutions: List[TeamEventMatchSubstitution],
+  shootoutPenalties: List[TeamEventMatchShootoutPenalty],
+  other: List[TeamEventMatchOther]
+)
+trait TeamEventMatchEvent {
+  val eventId: String
+  val normalTime: String
+  val addedTime: String
+  val team: Team
+}
+case class TeamEventMatchBooking(
+  eventId: String,
+  normalTime: String,
+  addedTime: String,
+  team: Team,
+  player: Player,
+  reason: String
+) extends TeamEventMatchEvent
+case class TeamEventMatchDismissal(
+  eventId: String,
+  normalTime: String,
+  addedTime: String,
+  team: Team,
+  player: Player,
+  reason: String
+) extends TeamEventMatchEvent
+case class TeamEventMatchGoal(
+  eventId: String,
+  normalTime: String,
+  addedTime: String,
+  team: Team,
+  player: Player,
+  ownGoal: Boolean,
+  how: Option[String],
+  whereFrom: Option[String],
+  whereTo: Option[String],
+  distanceInYards: Option[String]
+) extends TeamEventMatchEvent
+case class TeamEventMatchPenalty(
+  eventId: String,
+  normalTime: String,
+  addedTime: String,
+  team: Team,
+  player: Player,
+  how: Option[String],
+  whereTo: Option[String],
+  outcome: String,
+  keeperCorrect: Option[Boolean],
+  `type`: Option[String]
+) extends TeamEventMatchEvent
+case class TeamEventMatchSubstitution(
+  eventId: String,
+  normalTime: String,
+  addedTime: String,
+  team: Team,
+  playerOn: Player,
+  playerOff: Player,
+  how: Option[String],
+  reason: Option[String]
+) extends TeamEventMatchEvent
+case class TeamEventMatchShootoutPenalty(
+  eventId: String,
+  team: Team,
+  player: Player,
+  how: Option[String],
+  `type`: Option[String],
+  whereTo: Option[String],
+  keeperCorrect: Option[Boolean],
+  outcome: Option[String]
+)
+case class TeamEventMatchOther(
+  eventId: String,
+  normalTime: String,
+  addedTime: String,
+  team: Team,
+  player: Option[Player],
+  eventType: String,
+  how: Option[String],
+  `type`: Option[String],
+  whereFrom: Option[String],
+  whereTo: Option[String],
+  distanceInYards: Option[Int],
+  outcome: Option[String],
+  onTarget: Option[Boolean]
+) extends TeamEventMatchEvent
+
 private object Formats {
   val HoursMinutes = """^(\d+):(\d+)$""".r
 }
+
+case class SquadMember(
+  playerId: String,
+  name: String,
+  squadNumber: Option[String],
+  startDate: DateMidnight,
+  endDate: Option[DateMidnight],
+  onLoan: Boolean
+)
+
+case class PlayerAppearances(
+  playerName: String,
+  home: Appearances,
+  away: Appearances,
+  total: Appearances
+)
+case class Appearances(
+  appearances: Int,
+  started: Int,
+  substitutedOn: Int,
+  substitutedOff: Int,
+  dismissals: Int
+)
+
+case class StatsSummary(
+  defence: PlayerStatsSummaryDefence,
+  offence: PlayerStatsSummaryOffense,
+  discipline: PlayerStatsSummaryDiscipline,
+  substitutionsOn: Stat,
+  substitutionsOff: Stat,
+  totalGoalsAgainst: Stat,
+  totalGoalsFor: Stat
+)
+case class PlayerStatsSummaryOffense(
+  assists: Stat,
+  corners: Stat,
+  crosses: Stat,
+  freeKicks: Stat,
+  goals: Stat,
+  penalties: Stat,
+  shotsOffTarget: Stat,
+  shotsOnTarget: Stat,
+  throwIns: Stat
+) {
+  private def percentage(n: Float, m: Float): Int = {
+    if (0 == n) 0
+    else if (0 == n + m) 100
+    else Math.round((n / (n + m)) * 100)
+  }
+
+  val shotsOnTargetPercentage = new Stat(
+    percentage(shotsOnTarget.home, shotsOffTarget.home),
+    percentage(shotsOnTarget.away, shotsOffTarget.away),
+    "Shots On Target Percentage",
+    "0"
+  ) {
+    override val total = percentage(shotsOnTarget.total, shotsOffTarget.total)
+  }
+}
+case class PlayerStatsSummaryDefence(
+  backPasses: Stat,
+  blocks: Stat,
+  clearances: Stat,
+  goalKicks: Stat,
+  goalsAgainst: Stat,
+  ownGoals: Stat,
+  ownGoalsFor: Stat,
+  saves: Stat
+)
+case class PlayerStatsSummaryDiscipline(
+  bookings: Stat,
+  dismissals: Stat,
+  foulsAgainst: Stat,
+  foulsCommitted: Stat,
+  handBalls: Stat,
+  offsides: Stat,
+  tenYards: Stat
+)
+case class Stat(home: Int, away: Int, statDescription: String, statTypeId: String) {
+  val total = home + away
+}
+
+case class PlayerProfile(
+  fullName: String,
+  height: Option[String],
+  weight: Option[String],
+  dob: Option[DateMidnight],
+  age: Option[String],
+  nationality: Option[String],
+  position: Option[String]
+)
