@@ -1,18 +1,29 @@
-*NOTE*: as of 4.0, Scala 2.9.x is no longer as the client has moved to an async model using Scala 2.10.x features.
-To get the old 2.9.x version see https://github.com/guardian/pa-football-2.9
+A simple scala client for the PA football API.
 
-A simple scala client for the PA football API
+*NOTE*: as of 4.0, Scala 2.9.x is no longer as the client has moved to
+an async model using Scala 2.10.x features.  To get the old 2.9.x
+version see https://github.com/guardian/pa-football-2.9
 
-It merely interacts with the PA feeds, it does not understand Guardian Tags and match reports and so on
+It merely interacts with the PA feeds, it does not understand Guardian
+Tags and match reports and so on.
 
-Sbt dependencies
-'''
+## Sbt dependencies
+
+To include this library in your project using sbt, add the following
+to your sbt configuration:
+
+```scala
 resolvers += "Guardian Github Releases" at "http://guardian.github.com/maven/repo-releases"
 
 libraryDependencies += "com.gu" %% "pa-client" % "4.0"
-'''
-Usage
-'''
+```
+
+## Usage
+
+Note that this library does not include an HTTP library so you will
+need to provide an implementation for the client's GET method.
+
+```scala
 object Client extends PaClient {
     val apiKey = "YOUR_API_KEY"
     def GET(url: String): Future[Response] = { /* implement code to fetch a url */ }
@@ -54,6 +65,6 @@ val matches = Client.results("100", new DateMidnight(2012, 8, 23), new DateMidni
 matches.map(_.foreach(println))
 
 // lineup for a match
-val lineup = Client.lineUp("1234)
-lineip.map(l => println(l.homeTeam.name))
-'''
+val lineup = Client.lineUp("1234")
+lineup.map(l => println(l.homeTeam.name))
+```
