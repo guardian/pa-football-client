@@ -1,6 +1,6 @@
 package pa
 
-import concurrent.{Future, Promise}
+import concurrent.Future
 
 trait Http {
   def GET(url: String): Future[Response]

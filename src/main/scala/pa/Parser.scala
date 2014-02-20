@@ -142,6 +142,14 @@ object Parser {
     }
   }
 
+  def parseMatchInfo(s: String) = {
+    parseMatchDay(s) match {
+      case theMatch :: Nil => theMatch
+      case matches =>
+        throw new RuntimeException(s"Expected exactly one match in match info endpoint but got ${matches.length}")
+    }
+  }
+
   def parseMatchDay(s: String) = {
 
     def parseTeam(team: NodeSeq): MatchDayTeam = MatchDayTeam(
