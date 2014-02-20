@@ -14,6 +14,9 @@ trait PaClient { self: Http =>
   def competitions(implicit context: ExecutionContext): Future[List[Season]] =
     get(s"/api/football/competitions/competitions/$apiKey").map(parseCompetitions)
 
+  def matchInfo(id: String)(implicit context: ExecutionContext): Future[MatchDay] =
+    get(s"/api/football/match/info/$apiKey/$id").map(parseMatchInfo)
+
   def matchEvents(id: String)(implicit context: ExecutionContext): Future[Option[MatchEvents]] =
     get(s"/api/football/match/events/$apiKey/$id").map(parseMatchEvents)
 
