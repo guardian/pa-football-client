@@ -20,6 +20,8 @@ class EventsTest extends FlatSpec with ShouldMatchers {
     theMatch.awayTeamScore should be (1)
 
     theMatch.homeTeamGoals(0).players(0).name should be ("Jordan Henderson")
+
+    theMatch.isResult should be (true)
   }
 
   it should "parse those dodgy matches with no events" in {
