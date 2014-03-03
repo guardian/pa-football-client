@@ -46,7 +46,7 @@ case class MatchEvent(
   outcome: Option[String]
 ) {
 
-  val isGoal = outcome map (_ == "Goal") getOrElse false
+  val isGoal = outcome.exists(_ == "Goal")
 
 }
 
