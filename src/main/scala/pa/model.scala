@@ -11,7 +11,7 @@ case class Season(competitionId: String, seasonId: String, name: String, startDa
 
 case class Competition(id: String, name: String)
 
-case class MatchEvents(homeTeam: Team, awayTeam: Team, events: List[MatchEvent]) {
+case class MatchEvents(homeTeam: Team, awayTeam: Team, events: List[MatchEvent], isResult: Boolean) {
 
   val goals = events.filter(_.isGoal)
 

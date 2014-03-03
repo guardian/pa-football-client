@@ -107,13 +107,16 @@ object Parser {
       event \> "outcome"
     )
 
+    def parseIsResult(isResult: NodeSeq) = isResult.text == "Yes"
+
     //annoyingly there are some matches with no events
     //marked up in a weird way
     xml \ "teams" \>> "homeTeam" map { homeTeam =>
       MatchEvents(
         parseTeam(xml \\ "homeTeam"),
         parseTeam(xml \\ "awayTeam"),
-        (xml \ "events" \\ "event") map { parseEvent }
+        (xml \ "events" \\ "event") map { parseEvent },
+        parseIsResult(xml \ "isResult")
       )
     }
   }
