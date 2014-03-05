@@ -98,6 +98,7 @@ object Parser {
       event \> "eventType",
       event \> "matchTime",
       event \> "eventTime",
+      event \> "addedTime",
       ((event \\ "player1") ++ (event \\ "player2")) flatMap { parsePlayer },
       event \> "reason",
       event \> "how",

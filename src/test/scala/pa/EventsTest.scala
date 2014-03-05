@@ -27,4 +27,14 @@ class EventsTest extends FlatSpec with ShouldMatchers {
   it should "parse those dodgy matches with no events" in {
     Await.result(StubClient.matchEvents("3304257"), 1.second) should be (None)
   }
+
+  it should "parse added time if the field is available" in {
+    val theEvents = Await.result(StubClient.matchEvents("3704203"), 1.second).get
+
+    val Some(event) = theEvents.events.find(_.id == Some("18882801"))
+
+    event.matchTime should be (Some("(90 +5:33)"))
+    event.eventTime should be (Some("90"))
+    event.addedTime should be (Some("5:33"))
+  }
 }
