@@ -37,6 +37,7 @@ case class MatchEvent(
   eventType: String,
   matchTime: Option[String],
   eventTime: Option[String],
+  addedTime: Option[String],
   players: List[Player],
   reason: Option[String],
   how: Option[String],
