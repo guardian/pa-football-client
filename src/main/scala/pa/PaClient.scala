@@ -63,20 +63,17 @@ trait PaClient { self: Http =>
   def liveMatches(competitionId: String)(implicit context: ExecutionContext): Future[List[LiveMatch]] =
     get(s"/api/football/competition/liveGames/$apiKey/$competitionId").map(parseLiveMatches)
 
-  def teamHead2Head(team1Id: String, team2Id: String, startDate: DateMidnight, endDate: DateMidnight)(implicit context: ExecutionContext): Future[(Head2Head, Head2Head)] =
-    teamHead2Head(team1Id, team2Id, startDate, endDate, None)
-  def teamHead2Head(team1Id: String, team2Id: String, startDate: DateMidnight, endDate: DateMidnight, competitionId: String)(implicit context: ExecutionContext): Future[(Head2Head, Head2Head)] =
-    teamHead2Head(team1Id, team2Id, startDate, endDate, Some(competitionId))
-  private def teamHead2Head(team1Id: String, team2Id: String, startDate: DateMidnight, endDate: DateMidnight, competitionId: Option[String])(implicit context: ExecutionContext): Future[(Head2Head, Head2Head)] = {
-    val startDateStr = startDate.toString("yyyyMMdd")
-    val endDateStr = endDate.toString("yyyyMMdd")
-    val competitionIdStr = competitionId.map(id => s"/$id").getOrElse("")
-    get(s"/api/football/team/headToHeads/$apiKey/$team1Id/$team2Id/$startDateStr/$endDateStr$competitionIdStr").map(parseTeamHead2Head)
+  def teamHead2Head(team1Id: String, team2Id: String, startDate: DateMidnight, endDate: DateMidnight)(implicit context: ExecutionContext): Future[(Head2Head, Head2Head)] = {
+    val (startDateStr, endDateStr) = formatDates(startDate, endDate)
+    get(s"/api/football/team/headToHeads/$apiKey/$team1Id/$team2Id/$startDateStr/$endDateStr").map(parseTeamHead2Head)
+  }
+  def teamHead2Head(team1Id: String, team2Id: String, startDate: DateMidnight, endDate: DateMidnight, competitionId: String)(implicit context: ExecutionContext): Future[(Head2Head, Head2Head)] = {
+    val (startDateStr, endDateStr) = formatDates(startDate, endDate)
+    get(s"/api/football/team/headToHeads/$apiKey/$team1Id/$team2Id/$startDateStr/$endDateStr/$competitionId").map(parseTeamHead2Head)
   }
 
   def teamEvents(teamId: String, startDate: DateMidnight, endDate: DateMidnight)(implicit context: ExecutionContext): Future[List[TeamEventMatch]] = {
-    val startDateStr = startDate.toString("yyyyMMdd")
-    val endDateStr = endDate.toString("yyyyMMdd")
+    val (startDateStr, endDateStr) = formatDates(startDate, endDate)
     get(s"/api/football/team/events/$apiKey/$teamId/$startDateStr/$endDateStr").map(parseTeamEventMatches)
   }
 
@@ -88,71 +85,53 @@ trait PaClient { self: Http =>
     get(s"/api/football/team/squad/$apiKey/$teamId/$startDateStr").map(parseSquad)
   }
   def squad(teamId: String, startDate: DateMidnight, endDate: DateMidnight)(implicit context: ExecutionContext): Future[List[SquadMember]] = {
-    val startDateStr = startDate.toString("yyyyMMdd")
-    val endDateStr = endDate.toString("yyyyMMdd")
+    val (startDateStr, endDateStr) = formatDates(startDate, endDate)
     get(s"/api/football/team/squad/$apiKey/$teamId/$startDateStr/$endDateStr").map(parseSquad)
   }
 
   def teams(competitionId: String, startDate: DateMidnight, endDate: DateMidnight)(implicit context: ExecutionContext): Future[List[Team]] = {
-    val startDateStr = startDate.toString("yyyyMMdd")
-    val endDateStr = endDate.toString("yyyyMMdd")
+    val (startDateStr, endDateStr) = formatDates(startDate, endDate)
     get(s"/api/football/competition/teams/$apiKey/$competitionId/$startDateStr/$endDateStr").map(parseTeams)
   }
 
-  def playerHead2Head(player1Id: String, player2Id: String, startDate: DateMidnight, endDate: DateMidnight)(implicit context: ExecutionContext): Future[(Head2Head, Head2Head)] =
-    playerHead2Head(player1Id, player2Id, startDate, endDate, None)
-  def playerHead2Head(player1Id: String, player2Id: String, startDate: DateMidnight, endDate: DateMidnight, competitionId: String)(implicit context: ExecutionContext): Future[(Head2Head, Head2Head)] =
-    playerHead2Head(player1Id, player2Id, startDate, endDate, Some(competitionId))
-  private def playerHead2Head(player1Id: String, player2Id: String, startDate: DateMidnight, endDate: DateMidnight, competitionIdOpt: Option[String])(implicit context: ExecutionContext): Future[(Head2Head, Head2Head)] = {
-    val startDateStr = startDate.toString("yyyyMMdd")
-    val endDateStr = endDate.toString("yyyyMMdd")
-    competitionIdOpt match {
-      case None => get(s"/api/football/player/headToHeads/$apiKey/$player1Id/$player2Id/$startDateStr/$endDateStr").map(parsePlayerHead2Head)
-      case Some(competitionId) => get(s"/api/football/player/headToHeads/$apiKey/$player1Id/$player2Id/$startDateStr/$endDateStr/$competitionId").map(parsePlayerHead2Head)
-    }
+  def playerHead2Head(player1Id: String, player2Id: String, startDate: DateMidnight, endDate: DateMidnight)(implicit context: ExecutionContext): Future[(Head2Head, Head2Head)] = {
+    val (startDateStr, endDateStr) = formatDates(startDate, endDate)
+    get(s"/api/football/player/headToHeads/$apiKey/$player1Id/$player2Id/$startDateStr/$endDateStr").map(parsePlayerHead2Head)
+  }
+  def playerHead2Head(player1Id: String, player2Id: String, startDate: DateMidnight, endDate: DateMidnight, competitionId: String)(implicit context: ExecutionContext): Future[(Head2Head, Head2Head)] = {
+    val (startDateStr, endDateStr) = formatDates(startDate, endDate)
+    get(s"/api/football/player/headToHeads/$apiKey/$player1Id/$player2Id/$startDateStr/$endDateStr/$competitionId").map(parsePlayerHead2Head)
   }
 
-  def appearances(playerId: String, startDate: DateMidnight, endDate: DateMidnight)(implicit context: ExecutionContext): Future[PlayerAppearances] =
-    appearances(playerId, startDate, endDate, None, None)
-  def appearances(playerId: String, startDate: DateMidnight, endDate: DateMidnight, teamId: String)(implicit context: ExecutionContext): Future[PlayerAppearances] =
-    appearances(playerId, startDate, endDate, Some(teamId), None)
-  def appearances(playerId: String, startDate: DateMidnight, endDate: DateMidnight, teamId: String, competitionId: String)(implicit context: ExecutionContext): Future[PlayerAppearances] =
-    appearances(playerId, startDate, endDate, Some(teamId), Some(competitionId))
-  private def appearances(playerId: String, startDate: DateMidnight, endDate: DateMidnight, teamIdOpt: Option[String], competitionIdOpt: Option[String])(implicit context: ExecutionContext): Future[PlayerAppearances] = {
-    val startDateStr = startDate.toString("yyyyMMdd")
-    val endDateStr = endDate.toString("yyyyMMdd")
-    (teamIdOpt, competitionIdOpt) match {
-      case (Some(teamId), None) => get(s"/api/football/player/appearances/$apiKey/$playerId/$startDateStr/$endDateStr/$teamId").map(parsePlayerAppearances)
-      case (Some(teamId), Some(competitionId)) => get(s"/api/football/player/appearances/$apiKey/$playerId/$startDateStr/$endDateStr/$teamId/$competitionId").map(parsePlayerAppearances)
-      case _ => get(s"/api/football/player/appearances/$apiKey/$playerId/$startDateStr/$endDateStr").map(parsePlayerAppearances)
-    }
+  def appearances(playerId: String, startDate: DateMidnight, endDate: DateMidnight)(implicit context: ExecutionContext): Future[PlayerAppearances] = {
+    val (startDateStr, endDateStr) = formatDates(startDate, endDate)
+    get(s"/api/football/player/appearances/$apiKey/$playerId/$startDateStr/$endDateStr").map(parsePlayerAppearances)
+  }
+  def appearances(playerId: String, startDate: DateMidnight, endDate: DateMidnight, teamId: String)(implicit context: ExecutionContext): Future[PlayerAppearances] = {
+    val (startDateStr, endDateStr) = formatDates(startDate, endDate)
+    get(s"/api/football/player/appearances/$apiKey/$playerId/$startDateStr/$endDateStr/$teamId").map(parsePlayerAppearances)
+  }
+  def appearances(playerId: String, startDate: DateMidnight, endDate: DateMidnight, teamId: String, competitionId: String)(implicit context: ExecutionContext): Future[PlayerAppearances] = {
+    val (startDateStr, endDateStr) = formatDates(startDate, endDate)
+    get(s"/api/football/player/appearances/$apiKey/$playerId/$startDateStr/$endDateStr/$teamId/$competitionId").map(parsePlayerAppearances)
   }
 
-  def playerStats(playerId: String, startDate: DateMidnight, endDate: DateMidnight)(implicit context: ExecutionContext): Future[StatsSummary] =
-    playerStats(playerId, startDate, endDate, None, None)
-  def playerStats(playerId: String, startDate: DateMidnight, endDate: DateMidnight, teamId: String, competitionId: String)(implicit context: ExecutionContext): Future[StatsSummary] =
-    playerStats(playerId, startDate, endDate, Some(teamId), Some(competitionId))
-  private def playerStats(playerId: String, startDate: DateMidnight, endDate: DateMidnight, teamIdOpt: Option[String], competitionIdOpt: Option[String])(implicit context: ExecutionContext): Future[StatsSummary] = {
-    val startDateStr = startDate.toString("yyyyMMdd")
-    val endDateStr = endDate.toString("yyyyMMdd")
-    (teamIdOpt, competitionIdOpt) match {
-      case (Some(teamId), Some(competitionId)) => get(s"/api/football/player/stats/summary/$apiKey/$playerId/$startDateStr/$endDateStr/$teamId/$competitionId").map(parseStatsSummary)
-      case _ => get(s"/api/football/player/stats/summary/$apiKey/$playerId/$startDateStr/$endDateStr").map(parseStatsSummary)
-    }
+  def playerStats(playerId: String, startDate: DateMidnight, endDate: DateMidnight)(implicit context: ExecutionContext): Future[StatsSummary] = {
+    val (startDateStr, endDateStr) = formatDates(startDate, endDate)
+    get(s"/api/football/player/stats/summary/$apiKey/$playerId/$startDateStr/$endDateStr").map(parseStatsSummary)
+  }
+  def playerStats(playerId: String, startDate: DateMidnight, endDate: DateMidnight, teamId: String, competitionId: String)(implicit context: ExecutionContext): Future[StatsSummary] = {
+    val (startDateStr, endDateStr) = formatDates(startDate, endDate)
+    get(s"/api/football/player/stats/summary/$apiKey/$playerId/$startDateStr/$endDateStr/$teamId/$competitionId").map(parseStatsSummary)
   }
 
-  def teamStats(teamId: String, startDate: DateMidnight, endDate: DateMidnight)(implicit context: ExecutionContext): Future[StatsSummary] =
-    teamStats(teamId, startDate, endDate, None)
-  def teamStats(teamId: String, startDate: DateMidnight, endDate: DateMidnight, competitionId: String)(implicit context: ExecutionContext): Future[StatsSummary] =
-    teamStats(teamId, startDate, endDate, Some(competitionId))
-  private def teamStats(teamId: String, startDate: DateMidnight, endDate: DateMidnight, competitionIdOpt: Option[String])(implicit context: ExecutionContext): Future[StatsSummary] = {
-    val startDateStr = startDate.toString("yyyyMMdd")
-    val endDateStr = endDate.toString("yyyyMMdd")
-    val competitionIdStr = competitionIdOpt.map(id => s"/$id").getOrElse("")
-    competitionIdOpt match {
-      case None => get(s"/api/football/team/stats/summary/$apiKey/$teamId/$startDateStr/$endDateStr").map(parseStatsSummary)
-      case Some(competitionId) => get(s"/api/football/team/stats/summary/$apiKey/$teamId/$startDateStr/$endDateStr/$competitionIdStr").map(parseStatsSummary)
-    }
+  def teamStats(teamId: String, startDate: DateMidnight, endDate: DateMidnight)(implicit context: ExecutionContext): Future[StatsSummary] = {
+    val (startDateStr, endDateStr) = formatDates(startDate, endDate)
+    get(s"/api/football/team/stats/summary/$apiKey/$teamId/$startDateStr/$endDateStr").map(parseStatsSummary)
+  }
+  def teamStats(teamId: String, startDate: DateMidnight, endDate: DateMidnight, competitionId: String)(implicit context: ExecutionContext): Future[StatsSummary] = {
+    val (startDateStr, endDateStr) = formatDates(startDate, endDate)
+    get(s"/api/football/team/stats/summary/$apiKey/$teamId/$startDateStr/$endDateStr/$competitionId").map(parseStatsSummary)
   }
 
   def playerProfile(playerId: String)(implicit context: ExecutionContext): Future[PlayerProfile] = {
@@ -163,6 +142,11 @@ trait PaClient { self: Http =>
     case Response(200, body, _) =>  body
     case Response(status, _, reason) => throw new PaClientException(status + " " + reason)
   }
+
+  private def formatDates(startDate: DateMidnight, endDate: DateMidnight): (String, String) = (
+    startDate.toString("yyyyMMdd"),
+    endDate.toString("yyyyMMdd")
+  )
 }
 
 class PaClientException(msg: String) extends RuntimeException(msg)
