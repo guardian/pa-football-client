@@ -9,7 +9,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 
 class TeamStatsTest extends FlatSpec with ShouldMatchers {
-   "PaClient" should "load results" in {
+   "PaClient" should "load team stats" in {
      val teamStats = Await.result(
        StubClient.teamStats("19", new DateMidnight(2013, 8, 1), new DateMidnight(2014, 2, 5)),
        1.second
@@ -50,5 +50,17 @@ class TeamStatsTest extends FlatSpec with ShouldMatchers {
      teamStats.substitutionsOn should have ('home (23), 'away(24), 'total (47), 'statDescription ("Substitutions On"), 'statTypeId ("70"))
      teamStats.totalGoalsAgainst should have ('home (26), 'away(27), 'total (53), 'statDescription ("Total Goals Against"), 'statTypeId ("599"))
      teamStats.totalGoalsFor should have ('home (27), 'away(28), 'total (55), 'statDescription ("Total Goals For"), 'statTypeId ("598"))
+   }
+
+   "PaClient" should "load team stats for the given league" in {
+     val teamStats = Await.result(
+       StubClient.teamStats("19", new DateMidnight(2013, 8, 1), new DateMidnight(2014, 2, 5), "100"),
+       1.second
+     )
+
+     teamStats.offence.assists should have ('home (7), 'away(10), 'total (17), 'statDescription ("Assists"), 'statTypeId ("234"))
+     teamStats.defence.backPasses should have ('home (0), 'away(0), 'total (0), 'statDescription ("Back Passes"), 'statTypeId ("264"))
+     teamStats.discipline.bookings should have ('home (22), 'away(19), 'total (41), 'statDescription ("Bookings"), 'statTypeId ("37"))
+     teamStats.substitutionsOff should have ('home (35), 'away(33), 'total (68), 'statDescription ("Substitutions Off"), 'statTypeId ("72"))
    }
  }
