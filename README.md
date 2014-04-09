@@ -15,7 +15,7 @@ to your sbt configuration:
 ```scala
 resolvers += "Guardian Github Releases" at "http://guardian.github.com/maven/repo-releases"
 
-libraryDependencies += "com.gu" %% "pa-client" % "4.6"
+libraryDependencies += "com.gu" %% "pa-client" % "4.7"
 ```
 
 ## Usage
