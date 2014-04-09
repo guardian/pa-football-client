@@ -3,7 +3,7 @@ package pa
 object TeamCodes {
   def codeFor(team: FootballTeam): String = {
     codes.get(team.id).getOrElse {
-      val alteredName = team.name.split(" ").toList match {
+      val alteredName = team.name.split(" ").toList.filter(_.isDefined) match {
         case word1 :: word2 :: word3 :: Nil => s"${word1.head}${word2.head}${word3.head}"
         case prefix :: rest if skipWords.contains(prefix) => rest.mkString
         case name => name.mkString

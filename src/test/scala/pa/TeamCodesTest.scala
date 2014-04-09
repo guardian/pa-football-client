@@ -31,4 +31,8 @@ class TeamCodesTest extends FunSuite with ShouldMatchers {
   test("3-word initials take precedent over skip-words") {
     TeamCodes.codeFor(new Team("a", "Real Hyper Test")) should equal("RHT")
   }
+
+  test("Name with funny spaces doesn't break the 3-word initials") {
+    TeamCodes.codeFor(new Team("a", "Bad  Name")) should equal("BAD")
+  }
 }
