@@ -23,7 +23,7 @@ scmInfo := Some(ScmInfo(
 description := "Scala client for PA football feeds. Only does football data, it has no knowledge of Guardian match reports and such."
 
 pomExtra := (
-<url>https://github.com/xuwei-k/sbt-sonatype-and-sbt-release-sample</url>
+<url>https://github.com/guardian/pa-football-client</url>
 <developers>
   <developer>
     <id>adamnfish</id>
