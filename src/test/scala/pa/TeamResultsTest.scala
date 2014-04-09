@@ -1,7 +1,7 @@
 package pa
 
 import org.scalatest.FlatSpec
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.ShouldMatchers
 import org.joda.time.{DateTime, DateMidnight}
 import concurrent.Await
 import concurrent.duration._

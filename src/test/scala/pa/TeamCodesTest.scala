@@ -1,7 +1,7 @@
 package pa
 
 import org.scalatest.FunSuite
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.ShouldMatchers
 
 class TeamCodesTest extends FunSuite with ShouldMatchers {
   test("Can get the mapped 3-letter code for a team") {
