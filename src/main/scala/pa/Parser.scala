@@ -600,8 +600,8 @@ object Parser {
     Competition(id, competition.text)
   }
   
-  protected def parseRound(round: NodeSeq) = (round \@@ "roundNumber") map { number =>
-    Round(number, round.text)
+  protected def parseRound(round: NodeSeq) = {
+    Round(round \@ "roundNumber", round.text)
   }
 
   protected def parseVenue(venue: NodeSeq) = (venue \@@ "venueID") map { id =>

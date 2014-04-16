@@ -18,7 +18,7 @@ class ResultsTest extends FlatSpec with ShouldMatchers with OptionValues {
       'id ("3517772"),
       'date (new DateTime(2012, 8, 25, 15, 0, 0, 0)),
       'stage (Stage("1")),
-      'round (Some(Round("1", Some("League")))),
+      'round (Round("1", Some("League"))),
       'leg ("1"),
       'reportAvailable (true),
       'attendance (Some("36166")),

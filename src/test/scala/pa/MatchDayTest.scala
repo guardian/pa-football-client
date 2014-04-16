@@ -19,7 +19,7 @@ class MatchDayTest extends FlatSpec with ShouldMatchers with OptionValues {
       'date (new DateTime(2011, 8, 27, 15, 0, 0, 0)),
       'competition (None),
       'stage (Stage("1")),
-      'round (Some(Round("1", Some("League")))),
+      'round (Round("1", Some("League"))),
       'leg ("1"),
       'liveMatch (false),
       'result (true),
@@ -97,7 +97,7 @@ class MatchDayTest extends FlatSpec with ShouldMatchers with OptionValues {
     val matches = Await.result(StubClient.matchDay("101", new DateMidnight(2011, 5, 16)), 1.second)
 
     val matchDay = matches(0)
-    matchDay.round.value should be (Round("1", Some("Play-Offs Semi-Final")))
+    matchDay.round should be (Round("1", Some("Play-Offs Semi-Final")))
     matchDay.stage should be (Stage("2"))
     matchDay.leg should be ("2")
   }

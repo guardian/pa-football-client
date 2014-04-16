@@ -18,7 +18,7 @@ class LiveMatchTest extends FlatSpec with ShouldMatchers with OptionValues {
       'id ("3528311"),
       'date (new DateTime(2012, 10, 7, 13, 30, 0,0)),
       'stage (Stage("1")),
-      'round (Some(Round("1", None))),
+      'round (Round("1", None)),
       'leg ("1"),
       'attendance (None),
       'status ("SHS"),
