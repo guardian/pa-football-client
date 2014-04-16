@@ -2,7 +2,8 @@
 <matches xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="http://pads2.pa-sport.com/API/Schemas/Football/Competition/matches.xsd">
     <match matchID="3283329" date="02/11/2010" koTime="19:45">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -30,7 +31,8 @@
         <comments></comments>
     </match>
     <match matchID="3283330" date="02/11/2010" koTime="19:45">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -58,7 +60,8 @@
         <comments></comments>
     </match>
     <match matchID="3283331" date="02/11/2010" koTime="19:45">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -86,7 +89,8 @@
         <comments></comments>
     </match>
     <match matchID="3283332" date="02/11/2010" koTime="19:45">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -114,7 +118,8 @@
         <comments></comments>
     </match>
     <match matchID="3283333" date="02/11/2010" koTime="19:45">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -142,7 +147,8 @@
         <comments></comments>
     </match>
     <match matchID="3283334" date="02/11/2010" koTime="19:45">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -170,7 +176,8 @@
         <comments></comments>
     </match>
     <match matchID="3283335" date="02/11/2010" koTime="19:45">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -198,7 +205,8 @@
         <comments></comments>
     </match>
     <match matchID="3283336" date="02/11/2010" koTime="19:45">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -226,7 +234,8 @@
         <comments></comments>
     </match>
     <match matchID="3283337" date="02/11/2010" koTime="19:45">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -254,7 +263,8 @@
         <comments></comments>
     </match>
     <match matchID="3283338" date="02/11/2010" koTime="19:45">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -283,7 +293,8 @@
         <comments></comments>
     </match>
     <match matchID="3283339" date="02/11/2010" koTime="19:45">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -311,7 +322,8 @@
         <comments></comments>
     </match>
     <match matchID="3283340" date="02/11/2010" koTime="19:45">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>

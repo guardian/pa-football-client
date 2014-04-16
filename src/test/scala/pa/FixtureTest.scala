@@ -7,7 +7,7 @@ import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
 
-class ParserTest extends FunSuite with ShouldMatchers {
+class FixtureTest extends FunSuite with ShouldMatchers {
 
   val stubClient = StubClient
   val matchFixtureOne = Await.result(stubClient.fixtures("789"), 1.second)(0)
@@ -35,7 +35,7 @@ class ParserTest extends FunSuite with ShouldMatchers {
 
   test("Test MatchDay fixture round") {
     matchFixtureOne.round.map(_.roundNumber).getOrElse("") should be ("1")
-    matchFixtureOne.round.flatMap(_.name).getOrElse("nothing") should be ("nothing")
+    matchFixtureOne.round.flatMap(_.name).getOrElse("nothing") should be ("League")
 
     matchFixtureTwo.round.map(_.roundNumber).getOrElse("") should be ("7")
     matchFixtureTwo.round.flatMap(_.name).getOrElse("") should be ("round")

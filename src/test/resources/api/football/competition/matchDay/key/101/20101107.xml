@@ -2,7 +2,8 @@
 <matches xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="http://pads2.pa-sport.com/API/Schemas/Football/Competition/matches.xsd">
     <match matchID="3289241" date="07/11/2010" koTime="13:10">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>

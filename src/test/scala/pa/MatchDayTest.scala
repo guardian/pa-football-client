@@ -1,41 +1,58 @@
 package pa
 
-import org.scalatest.FlatSpec
-import org.scalatest.ShouldMatchers
+import org.scalatest.{OptionValues, FlatSpec, ShouldMatchers}
 import org.joda.time.{DateTime, DateMidnight}
 import concurrent.Await
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class MatchDayTest extends FlatSpec with ShouldMatchers {
+class MatchDayTest extends FlatSpec with ShouldMatchers with OptionValues {
 
   "PaClient" should "load a match day" in {
     val matches = Await.result(StubClient.matchDay("100", new DateMidnight(2011, 8, 27)), 1.second)
 
     matches.size should be (6)
-
-    matches(3) should be(
-      MatchDay(
-        "3407349",
-        new DateTime(2011, 8, 27, 15, 0, 0, 0),
-        None,
-        Some(Round("1", None)),
-        "1",
-        liveMatch = false,
-        result = true,
-        previewAvailable = true,
-        reportAvailable = true,
-        lineupsAvailable = true,
-        matchStatus = "FT",
-        attendance = Some("41765"),
-        homeTeam = MatchDayTeam(
-          "4", "Chelsea", Some(3), Some(1), None, Some("Jose Bosingwa (6),Frank Lampard (82 Pen),Juan Mata (90 +10:03)")
-        ),
-        awayTeam = MatchDayTeam("14", "Norwich", Some(1), Some(0), None, Some("Grant Holt (63)")),
-        referee = Some(Official("410888", "Mike Jones")),
-        venue = Some(Venue("511", "Stamford Bridge")),
-        comments = None
-      )
+    val matchDay = matches(3)
+    
+    matchDay should have(
+      'id ("3407349"),
+      'date (new DateTime(2011, 8, 27, 15, 0, 0, 0)),
+      'competition (None),
+      'stage (Stage("1")),
+      'round (Some(Round("1", Some("League")))),
+      'leg ("1"),
+      'liveMatch (false),
+      'result (true),
+      'previewAvailable (true),
+      'reportAvailable (true),
+      'lineupsAvailable (true),
+      'matchStatus ("FT"),
+      'attendance (Some("41765")),
+      'comments (None)
+    )
+    matchDay.homeTeam should have (
+      'id ("4"),
+      'name ("Chelsea"),
+      'score (Some(3)),
+      'htScore (Some(1)),
+      'aggregateScore (None),
+      'scorers (Some("Jose Bosingwa (6),Frank Lampard (82 Pen),Juan Mata (90 +10:03)"))
+    )
+    matchDay.awayTeam should have (
+      'id ("14"),
+      'name ("Norwich"),
+      'score (Some(1)),
+      'htScore (Some(0)),
+      'aggregateScore (None),
+      'scorers (Some("Grant Holt (63)"))
+    )
+    matchDay.referee.value should have (
+      'id ("410888"),
+      'name ("Mike Jones")
+    )
+    matchDay.venue.value should have (
+      'id ("511"),
+      'name ("Stamford Bridge")
     )
   }
 
@@ -75,11 +92,14 @@ class MatchDayTest extends FlatSpec with ShouldMatchers {
     matches(0).referee should be (None)
   }
 
-  it should "parse match with round" in {
+  it should "parse match with complex round/stage" in {
 
     val matches = Await.result(StubClient.matchDay("101", new DateMidnight(2011, 5, 16)), 1.second)
 
-    matches(0).round should be (Some(Round("1", Some("Play-Offs Semi-Final"))))
+    val matchDay = matches(0)
+    matchDay.round.value should be (Round("1", Some("Play-Offs Semi-Final")))
+    matchDay.stage should be (Stage("2"))
+    matchDay.leg should be ("2")
   }
 
   it should "parse match without half time score" in {

@@ -110,7 +110,9 @@ case class LeagueTeam(
 trait FootballMatch {
   def id: String
   def date: DateTime
+  def stage: Stage
   def round: Option[Round]
+  def leg: String
   def homeTeam: MatchDayTeam
   def awayTeam: MatchDayTeam
   def venue: Option[Venue]
@@ -134,6 +136,7 @@ case class MatchDay(
   id: String,
   date: DateTime,
   competition: Option[Competition],
+  stage: Stage,
   round: Option[Round],
   leg: String,
   liveMatch: Boolean,
@@ -153,6 +156,7 @@ case class MatchDay(
 case class Result(
   id: String,
   date: DateTime,
+  stage: Stage,
   round: Option[Round],
   leg: String,
   reportAvailable: Boolean,
@@ -167,7 +171,9 @@ case class Result(
 case class LiveMatch(
   id: String,
   date: DateTime,
+  stage: Stage,
   round: Option[Round],
+  leg: String,
   attendance: Option[String],
   homeTeam: MatchDayTeam,
   awayTeam: MatchDayTeam,

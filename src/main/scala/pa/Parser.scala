@@ -170,6 +170,7 @@ object Parser {
         aMatch \@ "matchID",
         Date(aMatch \@ "date", aMatch \@ "koTime"),
         parseCompetition(aMatch \ "competition"),
+        parseStage(aMatch \ "stage"),
         parseRound(aMatch \ "round"),
         aMatch \> "leg",
         aMatch \>> "liveMatch",
@@ -203,6 +204,7 @@ object Parser {
       Result(
         result \@ "matchID",
         Date(result \@ "date", result \@ "koTime"),
+        parseStage(result \ "stage"),
         parseRound(result \ "round"),
         result \> "leg",
         result \>> "reportAvailable",
@@ -231,7 +233,9 @@ object Parser {
       LiveMatch(
         aMatch \@ "matchID",
         Date(aMatch \@ "date", aMatch \@ "koTime"),
+        parseStage(aMatch \ "stage"),
         parseRound(aMatch \ "round"),
+        aMatch \> "leg",
         aMatch \> "attendance",
         parseTeam(aMatch \ "homeTeam"),
         parseTeam(aMatch \ "awayTeam"),
@@ -286,15 +290,11 @@ object Parser {
       scorers        = None
     )
 
-    def parseStage(stage: NodeSeq): Stage = Stage (
-      stageNumber = stage \@ "stageNumber"
-    )
-
     (XML.loadString(s) \\ "fixtures" \ "fixture") map { fixture =>
       Fixture(
         id                = fixture \@ "matchID",
         date              = Date(fixture \@ "date", fixture \@ "koTime"),
-        stage                    = parseStage(fixture \ "stage"),
+        stage             = parseStage(fixture \ "stage"),
         round             = parseRound(fixture \ "round"),
         leg               = fixture \> "leg",
         homeTeam          = parseTeam(fixture \ "homeTeam"),
@@ -618,4 +618,8 @@ object Parser {
       awayMatches = (away \ "matches" \ "match") map { m => MatchInfo(m \@ "matchID", Date(m \@ "date", m \@ "koTime"), m \@ "description") }
     )
   }
+
+  protected def parseStage(stage: NodeSeq): Stage = Stage (
+    stageNumber = stage \@ "stageNumber"
+  )
 }

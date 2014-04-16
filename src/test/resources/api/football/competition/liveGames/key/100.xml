@@ -4,6 +4,7 @@
     <match matchID="3528311" date="07/10/2012" koTime="13:30">
         <stage stageNumber="1" type="League"></stage>
         <round roundNumber="1"></round>
+        <leg>1</leg>
         <venue venueID="78">St. Mary's Stadium</venue>
         <referee refereeID="186005">Mark Clattenburg</referee>
         <attendance></attendance>
@@ -27,6 +28,7 @@
     <match matchID="3528313" date="07/10/2012" koTime="15:00">
         <stage stageNumber="1" type="League"></stage>
         <round roundNumber="1"></round>
+        <leg>1</leg>
         <venue venueID="61">White Hart Lane</venue>
         <referee refereeID="185880">Neil Swarbrick</referee>
         <attendance></attendance>
@@ -50,6 +52,7 @@
     <match matchID="3554549" date="07/10/2012" koTime="15:00">
         <stage stageNumber="1" type="League"></stage>
         <round roundNumber="1"></round>
+        <leg>1</leg>
         <venue venueID="46">Anfield</venue>
         <referee refereeID="182780">Lee Mason</referee>
         <attendance></attendance>

@@ -2,7 +2,8 @@
 <matches xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="http://pads2.pa-sport.com/API/Schemas/Football/Competition/matches.xsd">
     <match matchID="3304257" date="16/04/2011" koTime="14:00">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>No</result>
@@ -30,7 +31,8 @@
         <comments></comments>
     </match>
     <match matchID="3304258" date="16/04/2011" koTime="14:00">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -58,7 +60,8 @@
         <comments></comments>
     </match>
     <match matchID="3304259" date="16/04/2011" koTime="19:15">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -86,7 +89,8 @@
         <comments></comments>
     </match>
     <match matchID="3304260" date="16/04/2011" koTime="19:15">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>

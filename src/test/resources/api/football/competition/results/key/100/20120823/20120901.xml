@@ -2,7 +2,8 @@
 <results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="http://pads2.pa-sport.com/API/Schemas/Football/Competition/results.xsd">
     <result matchID="3528300" date="26/08/2012" koTime="16:00">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <venue venueID="46">Anfield</venue>
         <referee refereeID="186049">Andre Marriner</referee>
@@ -25,7 +26,8 @@
         <comments></comments>
     </result>
     <result matchID="3528299" date="26/08/2012" koTime="13:30">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <venue venueID="51">Britannia Stadium</venue>
         <referee refereeID="182780">Lee Mason</referee>
@@ -48,7 +50,8 @@
         <comments></comments>
     </result>
     <result matchID="3517764" date="25/08/2012" koTime="17:30">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <venue venueID="511">Stamford Bridge</venue>
         <referee refereeID="101020">Phil Dowd</referee>
@@ -71,7 +74,8 @@
         <comments></comments>
     </result>
     <result matchID="3517772" date="25/08/2012" koTime="15:00">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <venue venueID="61">White Hart Lane</venue>
         <referee refereeID="100924">Mike Dean</referee>
@@ -94,7 +98,8 @@
         <comments></comments>
     </result>
     <result matchID="3517768" date="25/08/2012" koTime="15:00">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <venue venueID="78">St. Mary's Stadium</venue>
         <referee refereeID="164505">Anthony Taylor</referee>
@@ -117,7 +122,8 @@
         <comments></comments>
     </result>
     <result matchID="3517767" date="25/08/2012" koTime="15:00">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <venue venueID="75">Carrow Road</venue>
         <referee refereeID="186005">Mark Clattenburg</referee>
@@ -140,7 +146,8 @@
         <comments></comments>
     </result>
     <result matchID="3517766" date="25/08/2012" koTime="15:00">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <venue venueID="114">Old Trafford</venue>
         <referee refereeID="233470">Kevin Friend</referee>
@@ -163,7 +170,8 @@
         <comments></comments>
     </result>
     <result matchID="3517763" date="25/08/2012" koTime="15:00">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <venue venueID="377">Villa Park</venue>
         <referee refereeID="384554">Michael Oliver</referee>
@@ -186,7 +194,8 @@
         <comments></comments>
     </result>
     <result matchID="3517771" date="25/08/2012" koTime="12:45">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="League" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <venue venueID="79">Liberty Stadium</venue>
         <referee refereeID="275268">Martin Atkinson</referee>
