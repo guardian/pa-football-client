@@ -2,6 +2,7 @@
 <matches xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="http://pads2.pa-sport.com/API/Schemas/Football/Competition/matches.xsd">
     <match matchID="3401097" date="16/05/2011" koTime="19:45">
+        <stage stageNumber="2" stageType="" />
         <round roundNumber="1">Play-Offs Semi-Final</round>
         <leg>2</leg>
         <liveMatch>No</liveMatch>

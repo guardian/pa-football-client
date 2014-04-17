@@ -17,7 +17,7 @@ class TeamResultsTest extends FlatSpec with ShouldMatchers {
     results(0) should have (
       'id ("3632243"),
       'date (new DateTime(2014, 1, 29, 19, 45, 0, 0)),
-      'round (Some(Round("1", Some("League")))),
+      'round (Round("1", Some("League"))),
       'leg ("1"),
       'reportAvailable (true),
       'attendance (Some("36071")),

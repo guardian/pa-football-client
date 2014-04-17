@@ -13,7 +13,7 @@ class LeagueTableTest extends FlatSpec with ShouldMatchers{
     val List(first, second) = Await.result(StubClient.leagueTable("100", new DateMidnight(2011, 8, 27)), 1.second) take 2
 
     first.stageNumber should be("1")
-    first.round should be(Some(Round("1",None)))
+    first.round should be(Round("1",None))
     val manUtd = LeagueTeam(
       id = "12",
       name = "Man Utd",

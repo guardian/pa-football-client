@@ -2,7 +2,8 @@
 <matches xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="http://pads2.pa-sport.com/API/Schemas/Football/Competition/matches.xsd">
     <match matchID="3284723" date="19/03/2011" koTime="12:45">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -30,7 +31,8 @@
         <comments></comments>
     </match>
     <match matchID="3284724" date="19/03/2011" koTime="15:00">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -58,7 +60,8 @@
         <comments></comments>
     </match>
     <match matchID="3284725" date="19/03/2011" koTime="15:00">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -86,7 +89,8 @@
         <comments></comments>
     </match>
     <match matchID="3284716" date="19/03/2011" koTime="15:00">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -114,7 +118,8 @@
         <comments>Wolverhampton win in extra time</comments>
     </match>
     <match matchID="3284717" date="19/03/2011" koTime="15:00">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -142,7 +147,8 @@
         <comments></comments>
     </match>
     <match matchID="3284720" date="19/03/2011" koTime="15:00">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -170,7 +176,8 @@
         <comments></comments>
     </match>
     <match matchID="3284721" date="19/03/2011" koTime="15:00">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>
@@ -199,7 +206,8 @@
         <comments></comments>
     </match>
     <match matchID="3284719" date="19/03/2011" koTime="17:30">
-        <round roundNumber="1"></round>
+        <stage stageNumber="1" stageType="" />
+        <round roundNumber="1">League</round>
         <leg>1</leg>
         <liveMatch>No</liveMatch>
         <result>Yes</result>

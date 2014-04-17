@@ -1,35 +1,52 @@
 package pa
 
-import org.scalatest.FlatSpec
-import org.scalatest.ShouldMatchers
+import org.scalatest.{OptionValues, FlatSpec, ShouldMatchers}
 import org.joda.time.{DateTime, DateMidnight}
 import concurrent.Await
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class ResultsTest extends FlatSpec with ShouldMatchers {
+class ResultsTest extends FlatSpec with ShouldMatchers with OptionValues {
 
   "PaClient" should "load results" in {
     val matches = Await.result(StubClient.results("100", new DateMidnight(2010, 8, 1)), 1.second)
 
     matches.size should be(780)
-
-    matches(3) should be(
-      Result(
-        "3517772",
-        new DateTime(2012, 8, 25, 15, 0, 0, 0),
-        Some(Round("1", None)),
-        "1",
-        reportAvailable = true,
-        attendance = Some("36166"),
-        homeTeam = MatchDayTeam(
-          "19", "Tottenham", Some(1), Some(0), None, Some("Benoit Assou-Ekotto (74)")
-        ),
-        awayTeam = MatchDayTeam("42", "West Brom", Some(1), Some(0), None, Some("James Morrison (90 +0:21)")),
-        referee = Some(Official("100924", "Mike Dean")),
-        venue = Some(Venue("61", "White Hart Lane")),
-        comments = None
-      )
+    val result = matches(3)
+    
+    result should have (
+      'id ("3517772"),
+      'date (new DateTime(2012, 8, 25, 15, 0, 0, 0)),
+      'stage (Stage("1")),
+      'round (Round("1", Some("League"))),
+      'leg ("1"),
+      'reportAvailable (true),
+      'attendance (Some("36166")),
+      'comments (None)
+    )
+    result.homeTeam should have (
+      'id ("19"),
+      'name ("Tottenham"),
+      'score (Some(1)),
+      'htScore (Some(0)),
+      'aggregateScore (None),
+      'scorers (Some("Benoit Assou-Ekotto (74)"))
+    )
+    result.awayTeam should have (
+      'id ("42"),
+      'name ("West Brom"),
+      'score (Some(1)),
+      'htScore (Some(0)),
+      'aggregateScore (None),
+      'scorers (Some("James Morrison (90 +0:21)"))
+    )
+    result.referee.value should have (
+      'id ("100924"),
+      'name ("Mike Dean")
+    )
+    result.venue.value should have (
+      'id ("61"),
+      'name ("White Hart Lane")
     )
   }
 

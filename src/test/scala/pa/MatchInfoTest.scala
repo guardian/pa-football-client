@@ -12,7 +12,7 @@ class MatchInfoTest extends FlatSpec with ShouldMatchers {
 
     theMatch should have (
       'id ("3695171"),
-      'round (Some(Round("7", "Semi-Final Second Leg"))),
+      'round (Round("7", "Semi-Final Second Leg")),
       'leg ("2"),
       'liveMatch (false),
       'result (true),

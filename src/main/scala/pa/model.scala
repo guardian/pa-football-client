@@ -69,7 +69,7 @@ case class Official(id: String, name: String) extends Person
 case class Venue(id: String, name: String)
 case class Round(roundNumber: String, name: Option[String])
 
-case class LeagueTableEntry(stageNumber: String, round: Option[Round], team: LeagueTeam)
+case class LeagueTableEntry(stageNumber: String, round: Round, team: LeagueTeam)
 
 trait FootballTeam {
   def id: String
@@ -110,7 +110,9 @@ case class LeagueTeam(
 trait FootballMatch {
   def id: String
   def date: DateTime
-  def round: Option[Round]
+  def stage: Stage
+  def round: Round
+  def leg: String
   def homeTeam: MatchDayTeam
   def awayTeam: MatchDayTeam
   def venue: Option[Venue]
@@ -121,7 +123,7 @@ case class Fixture(
    id: String,
    date: DateTime,
    stage: Stage,
-   round: Option[Round],
+   round: Round,
    leg: String,
    homeTeam: MatchDayTeam,
    awayTeam: MatchDayTeam,
@@ -134,7 +136,8 @@ case class MatchDay(
   id: String,
   date: DateTime,
   competition: Option[Competition],
-  round: Option[Round],
+  stage: Stage,
+  round: Round,
   leg: String,
   liveMatch: Boolean,
   result: Boolean,
@@ -153,7 +156,8 @@ case class MatchDay(
 case class Result(
   id: String,
   date: DateTime,
-  round: Option[Round],
+  stage: Stage,
+  round: Round,
   leg: String,
   reportAvailable: Boolean,
   attendance: Option[String],
@@ -167,7 +171,9 @@ case class Result(
 case class LiveMatch(
   id: String,
   date: DateTime,
-  round: Option[Round],
+  stage: Stage,
+  round: Round,
+  leg: String,
   attendance: Option[String],
   homeTeam: MatchDayTeam,
   awayTeam: MatchDayTeam,
