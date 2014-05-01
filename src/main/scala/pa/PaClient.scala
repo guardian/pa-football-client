@@ -120,6 +120,10 @@ trait PaClient { self: Http =>
     val (startDateStr, endDateStr) = formatDates(startDate, endDate)
     get(s"/api/football/player/stats/summary/$apiKey/$playerId/$startDateStr/$endDateStr").map(parseStatsSummary)
   }
+  def playerStats(playerId: String, startDate: DateMidnight, endDate: DateMidnight, teamId: String)(implicit context: ExecutionContext): Future[StatsSummary] = {
+    val (startDateStr, endDateStr) = formatDates(startDate, endDate)
+    get(s"/api/football/player/stats/summary/$apiKey/$playerId/$startDateStr/$endDateStr/$teamId").map(parseStatsSummary)
+  }
   def playerStats(playerId: String, startDate: DateMidnight, endDate: DateMidnight, teamId: String, competitionId: String)(implicit context: ExecutionContext): Future[StatsSummary] = {
     val (startDateStr, endDateStr) = formatDates(startDate, endDate)
     get(s"/api/football/player/stats/summary/$apiKey/$playerId/$startDateStr/$endDateStr/$teamId/$competitionId").map(parseStatsSummary)

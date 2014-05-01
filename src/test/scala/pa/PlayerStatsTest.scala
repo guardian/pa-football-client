@@ -52,13 +52,25 @@ class PlayerStatsTest extends FlatSpec with ShouldMatchers {
     playerStats.totalGoalsFor should have ('home (27), 'away(28), 'total (55), 'statDescription ("Total Goals For"), 'statTypeId ("598"))
   }
 
+  "PaClient" should "load player stats for the given team" in {
+    val playerStats = Await.result(
+      StubClient.playerStats("237670", new DateMidnight(2013, 8, 1), new DateMidnight(2014, 2, 5), "19"),
+      1.second
+    )
+
+    playerStats.offence.crosses should have ('home (7), 'away(3), 'total (10), 'statDescription ("Crosses"), 'statTypeId ("148"))
+    playerStats.defence.clearances should have ('home (2), 'away(7), 'total (9), 'statDescription ("Clearances"), 'statTypeId ("181"))
+    playerStats.discipline.bookings should have ('home (1), 'away(0), 'total (1), 'statDescription ("Bookings"), 'statTypeId ("37"))
+    playerStats.substitutionsOff should have ('home (2), 'away(2), 'total (4), 'statDescription ("Substitutions Off"), 'statTypeId ("72"))
+  }
+
   "PaClient" should "load player stats for the given team and competition" in {
     val playerStats = Await.result(
       StubClient.playerStats("237670", new DateMidnight(2013, 8, 1), new DateMidnight(2014, 2, 5), "19", "100"),
       1.second
     )
 
-    playerStats.offence.assists should have ('home (1), 'away(0), 'total (1), 'statDescription ("Assists"), 'statTypeId ("234"))
+    playerStats.offence.crosses should have ('home (3), 'away(3), 'total (6), 'statDescription ("Crosses"), 'statTypeId ("148"))
     playerStats.defence.backPasses should have ('home (0), 'away(0), 'total (0), 'statDescription ("Back Passes"), 'statTypeId ("264"))
     playerStats.discipline.bookings should have ('home (0), 'away(0), 'total (0), 'statDescription ("Bookings"), 'statTypeId ("37"))
     playerStats.substitutionsOff should have ('home (1), 'away(2), 'total (3), 'statDescription ("Substitutions Off"), 'statTypeId ("72"))
