@@ -277,7 +277,7 @@ object TeamCodes {
     ("997", "BEL"),   // Belgium
     ("7531", "BIH"),  // Bosnia & Herzongevina
     ("23104", "BRA"), // Brazil
-    ("7924", "CAM"),  // Cameroon
+    ("7924", "CMR"),  // Cameroon
     ("2559", "CHI"),  // Chile
     ("6996", "COL"),  // Columbia
     ("37621", "CRC"), // Costa Rica
@@ -286,22 +286,22 @@ object TeamCodes {
     ("37262", "ECU"), // Ecuador
     ("497", "ENG"),   // England
     ("619", "FRA"),   // France
-    ("1678", "GER"),  // Germany
+    ("1678", "DEU"),  // Germany
     ("37306", "GHA"), // Ghana
     ("6286", "GRE"),  // Greece
     ("37618", "HON"), // Honduras
     ("8111", "IRN"),  // Iran
     ("717", "ITA"),   // Italy
-    ("6736", "JAP"),  // Japan
+    ("6736", "JPN"),  // Japan
     ("23120", "KOR"), // South Korea
     ("5837", "MEX"),  // Mexico
     ("631", "NED"),   // Netherlands
-    ("8110", "NIG"),  // Nigeria
-    ("5539", "POR"),  // Portugal
+    ("8110", "NGA"),  // Nigeria
+    ("5539", "PRT"),  // Portugal
     ("5827", "RUS"),  // Russia
-    ("999", "SPA"),   // Spain
+    ("999", "ESP"),   // Spain
     ("1660", "SWI"),  // Switzerland
-    ("37260", "URU"), // Uruguay
+    ("37260", "URY"), // Uruguay
     ("7356", "USA"),  // USA
     // "Internationals (home nations)"
     ("630", "WAL"),   // Wales
@@ -345,6 +345,8 @@ object TeamCodes {
     ("6605", "SVN"),  // Slovenia
     ("5845", "SWE"),  // Sweden
     ("1661", "TUR"),  // Turkey
-    ("6272", "UKR")   // Urkaine
+    ("6272", "UKR"),  // Urkaine
+    // other internationals
+    ("47589", "NGR")  // Niger
   )
 }
