@@ -1,7 +1,7 @@
 package pa
 
 import org.scalatest.{OptionValues, FlatSpec, ShouldMatchers}
-import org.joda.time.{DateTime, DateMidnight}
+import org.joda.time.{DateTime, LocalDate}
 import concurrent.Await
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global

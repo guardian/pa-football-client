@@ -585,7 +585,7 @@ object Parser {
       fullName    = node \> "fullName",
       height      = node \>> "height",
       weight      = node \>> "weight",
-      dob         = (node \>> "dob").map(Date(_).toDateMidnight),
+      dob         = (node \>> "dob").map(Date(_).toLocalDate),
       age         = node \>> "age",
       nationality = node \>> "nationality",
       position    = node \>> "position"

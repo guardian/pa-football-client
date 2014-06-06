@@ -2,7 +2,7 @@ package pa
 
 import org.scalatest.FlatSpec
 import org.scalatest.ShouldMatchers
-import org.joda.time.{DateTime, DateMidnight}
+import org.joda.time.{DateTime, LocalDate}
 import concurrent.Await
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -11,7 +11,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 class TeamResultsTest extends FlatSpec with ShouldMatchers {
 
   "PaClient" should "load team results" in {
-    val results = Await.result(StubClient.teamResults("19", new DateMidnight(2013, 10, 11)), 1.second)
+    val results = Await.result(StubClient.teamResults("19", new LocalDate(2013, 10, 11)), 1.second)
 
     results.size should be(23)
     results(0) should have (

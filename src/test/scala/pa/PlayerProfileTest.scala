@@ -2,7 +2,7 @@ package pa
 
 import org.scalatest.FlatSpec
 import org.scalatest.ShouldMatchers
-import org.joda.time.{DateTime, DateMidnight}
+import org.joda.time.{DateTime, LocalDate}
 import concurrent.Await
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -18,7 +18,7 @@ class PlayerProfileTest extends FlatSpec with ShouldMatchers {
       'fullName ("Emmanuel Adebayor"),
       'height (Some("1.9 Metres")),
       'weight (Some("75 Kilograms")),
-      'dob (Some(new DateMidnight(1984, 2, 26))),
+      'dob (Some(new LocalDate(1984, 2, 26))),
       'age (Some("29")),
       'nationality (Some("Togolese")),
       'position (Some("Striker"))

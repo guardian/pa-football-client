@@ -1,9 +1,9 @@
 package pa
 
-import org.joda.time.{Interval, DateTime, DateMidnight}
+import org.joda.time.{Interval, DateTime, LocalDate}
 
-case class Season(competitionId: String, seasonId: String, name: String, startDate: DateMidnight, endDate: DateMidnight){
-  lazy val interval: Interval = new Interval(startDate, endDate)
+case class Season(competitionId: String, seasonId: String, name: String, startDate: LocalDate, endDate: LocalDate){
+  lazy val interval: Interval = new Interval(startDate.toDateTimeAtStartOfDay, endDate.toDateTimeAtStartOfDay)
 
   // for backwards-compatibility
   val id = competitionId
@@ -359,8 +359,8 @@ case class SquadMember(
   playerId: String,
   name: String,
   squadNumber: Option[String],
-  startDate: DateMidnight,
-  endDate: Option[DateMidnight],
+  startDate: LocalDate,
+  endDate: Option[LocalDate],
   onLoan: Boolean
 )
 
@@ -440,7 +440,7 @@ case class PlayerProfile(
   fullName: String,
   height: Option[String],
   weight: Option[String],
-  dob: Option[DateMidnight],
+  dob: Option[LocalDate],
   age: Option[String],
   nationality: Option[String],
   position: Option[String]

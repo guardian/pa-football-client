@@ -1,5 +1,5 @@
 import xml.NodeSeq
-import org.joda.time.{DateMidnight, DateTime}
+import org.joda.time.{LocalDate, DateTime}
 import language.implicitConversions
 import language.reflectiveCalls
 
@@ -37,7 +37,7 @@ package object pa{
     }
   }
 
-  implicit def date2midnight(date: DateTime): DateMidnight = date.toDateMidnight
+  implicit def date2midnight(date: DateTime): LocalDate = date.toLocalDate
 
   implicit def optionString2boolean(s: Option[String]): Boolean = s match {
     case Some("Yes") => true

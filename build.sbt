@@ -11,7 +11,7 @@ organization := "com.gu"
 
 scalaVersion := "2.10.4"
 
-crossScalaVersions := Seq("2.10.4") // Add more versions into here when Scala 2.11 becomes available?
+crossScalaVersions := Seq("2.10.4", "2.11.1")
 
 scalacOptions ++= Seq("-feature", "-deprecation")
 
@@ -35,10 +35,24 @@ pomExtra := (
 
 licenses := Seq("Apache V2" -> url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 
+
+
 libraryDependencies ++= Seq(
-    "joda-time" % "joda-time" % "1.6.2",
-    "org.scalatest" %% "scalatest" % "2.1.3" % "test"
+  "joda-time" % "joda-time" % "2.3",
+  "org.joda" % "joda-convert" % "1.6",
+  "org.scalatest" %% "scalatest" % "2.1.7" % "test"
 )
+
+libraryDependencies := {
+  CrossVersion.partialVersion(scalaVersion.value) match {
+    // if scala 2.11+ is used, add dependency on scala-xml module
+    case Some((2, scalaMajor)) if scalaMajor >= 11 =>
+      libraryDependencies.value ++ Seq(
+        "org.scala-lang.modules" %% "scala-xml" % "1.0.2"
+      )
+    case _ => libraryDependencies.value
+  }
+}
 
 ReleaseKeys.releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,
