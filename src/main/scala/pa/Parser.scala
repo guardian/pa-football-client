@@ -3,7 +3,7 @@ package pa
 import scala.Some
 import xml.{NodeSeq, XML}
 import org.joda.time.format.DateTimeFormat
-import org.joda.time.DateTime
+import org.joda.time.{DateTimeZone, DateTime}
 import language.reflectiveCalls
 import language.postfixOps
 
@@ -13,8 +13,11 @@ object Parser {
 
   private object Date {
 
-    private val DateParser = DateTimeFormat.forPattern("dd/MM/yyyy")
-    private val DateTimeParser = DateTimeFormat.forPattern("ddd/MM/yyyy HH:mm")
+    // All feed dates are in UK time
+    private val feedTimezone = DateTimeZone.forID("Europe/London")
+
+    private val DateParser = DateTimeFormat.forPattern("dd/MM/yyyy").withZone(feedTimezone)
+    private val DateTimeParser = DateTimeFormat.forPattern("ddd/MM/yyyy HH:mm").withZone(feedTimezone)
 
     def apply(date: String): DateTime = DateParser.parseDateTime(date)
 
