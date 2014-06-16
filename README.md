@@ -15,8 +15,15 @@ to your sbt configuration:
 ```scala
 resolvers += "Guardian Github Releases" at "http://guardian.github.com/maven/repo-releases"
 
-libraryDependencies += "com.gu" %% "pa-client" % "4.10"
+libraryDependencies += "com.gu" %% "pa-client" % "5.0.0"
 ```
+## Timezones
+
+As of v5.0.0, the PA client correctly uses timezone-aware dates and
+times. Since all date information is provided from the PA feed in UK
+time, the timezone is set as Europe/London. Your application will need
+to be aware of this because Europe/London changes between UTC and
+UTC+1 depending on the time of year (BST).
 
 ## Usage
 
