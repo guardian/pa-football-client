@@ -7,6 +7,11 @@ version see https://github.com/guardian/pa-football-2.9
 It merely interacts with the PA feeds, it does not understand Guardian
 Tags and match reports and so on.
 
+## Breaking Change
+From version 6.0.0 this library uses `org.joda.time.LocalDate` instead of the [deprecated](https://github.com/JodaOrg/joda-time/issues/81) `org.joda.time.DateMidnight`
+
+Version 5.0.0 still uses `DateMidnight`
+
 ## Sbt dependencies
 
 To include this library in your project using sbt, add the following
@@ -15,7 +20,7 @@ to your sbt configuration:
 ```scala
 resolvers += "Guardian Github Releases" at "http://guardian.github.com/maven/repo-releases"
 
-libraryDependencies += "com.gu" %% "pa-client" % "5.0.0"
+libraryDependencies += "com.gu" %% "pa-client" % "6.0.0"
 ```
 ## Timezones
 
