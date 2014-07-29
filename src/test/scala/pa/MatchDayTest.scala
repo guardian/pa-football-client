@@ -1,7 +1,7 @@
 package pa
 
 import org.scalatest.{OptionValues, FlatSpec, ShouldMatchers}
-import org.joda.time.{DateTime, DateMidnight}
+import org.joda.time.{DateTime, LocalDate}
 import concurrent.Await
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -9,7 +9,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 class MatchDayTest extends FlatSpec with ShouldMatchers with OptionValues {
 
   "PaClient" should "load a match day" in {
-    val matches = Await.result(StubClient.matchDay("100", new DateMidnight(2011, 8, 27)), 1.second)
+    val matches = Await.result(StubClient.matchDay("100", new LocalDate(2011, 8, 27)), 1.second)
 
     matches.size should be (6)
     val matchDay = matches(3)
@@ -57,14 +57,14 @@ class MatchDayTest extends FlatSpec with ShouldMatchers with OptionValues {
   }
 
   it should "load comments" in {
-    val theMatch = Await.result(StubClient.matchDay("100", new DateMidnight(2011, 3, 19)), 1.second).find(_.id == "3284716").get
+    val theMatch = Await.result(StubClient.matchDay("100", new LocalDate(2011, 3, 19)), 1.second).find(_.id == "3284716").get
 
     theMatch.comments should be  (Some("Wolverhampton win in extra time"))
   }
 
   it should "parse a day that only has a single game" in {
 
-    val matches = Await.result(StubClient.matchDay("100", new DateMidnight(2010, 8, 15)), 1.second)
+    val matches = Await.result(StubClient.matchDay("100", new LocalDate(2010, 8, 15)), 1.second)
 
     matches.size should be (1)
 
@@ -73,28 +73,28 @@ class MatchDayTest extends FlatSpec with ShouldMatchers with OptionValues {
 
   it should "handle days with no data" in {
 
-    val matches = Await.result(StubClient.matchDay("100", new DateMidnight(2010, 8, 1)), 1.second)
+    val matches = Await.result(StubClient.matchDay("100", new LocalDate(2010, 8, 1)), 1.second)
 
     matches.size should be (0)
   }
 
   it should "parse match with missing venue" in {
 
-    val matches = Await.result(StubClient.matchDay("100", new DateMidnight(2011, 3, 19)), 1.second)
+    val matches = Await.result(StubClient.matchDay("100", new LocalDate(2011, 3, 19)), 1.second)
 
     matches(0).venue should be (None)
   }
 
   it should "parse match with missing referee" in {
 
-    val matches = Await.result(StubClient.matchDay("101", new DateMidnight(2010, 11, 7)), 1.second)
+    val matches = Await.result(StubClient.matchDay("101", new LocalDate(2010, 11, 7)), 1.second)
 
     matches(0).referee should be (None)
   }
 
   it should "parse match with complex round/stage" in {
 
-    val matches = Await.result(StubClient.matchDay("101", new DateMidnight(2011, 5, 16)), 1.second)
+    val matches = Await.result(StubClient.matchDay("101", new LocalDate(2011, 5, 16)), 1.second)
 
     val matchDay = matches(0)
     matchDay.round should be (Round("1", Some("Play-Offs Semi-Final")))
@@ -104,7 +104,7 @@ class MatchDayTest extends FlatSpec with ShouldMatchers with OptionValues {
 
   it should "parse match without half time score" in {
 
-    val matches = Await.result(StubClient.matchDay("102", new DateMidnight(2010, 11, 2)), 1.second)
+    val matches = Await.result(StubClient.matchDay("102", new LocalDate(2010, 11, 2)), 1.second)
 
     matches(4).awayTeam.htScore should be (None)
     matches(4).awayTeam.aggregateScore should be (None)
@@ -113,7 +113,7 @@ class MatchDayTest extends FlatSpec with ShouldMatchers with OptionValues {
 
   it should "parse match without attendance" in {
 
-    val matches = Await.result(StubClient.matchDay("102", new DateMidnight(2010, 11, 2)), 1.second)
+    val matches = Await.result(StubClient.matchDay("102", new LocalDate(2010, 11, 2)), 1.second)
 
     matches(4).attendance should be (None)
   }
@@ -121,14 +121,14 @@ class MatchDayTest extends FlatSpec with ShouldMatchers with OptionValues {
 
   it should "parse match without score" in {
 
-    val matches = Await.result(StubClient.matchDay("794", new DateMidnight(2011, 4, 16)), 1.second)
+    val matches = Await.result(StubClient.matchDay("794", new LocalDate(2011, 4, 16)), 1.second)
 
     matches(0).homeTeam.score should be (None)
   }
   
   it should "load all match days" in {
 
-    val matches = Await.result(StubClient.matchDay(new DateMidnight(2012, 9, 29)), 1.second)
+    val matches = Await.result(StubClient.matchDay(new LocalDate(2012, 9, 29)), 1.second)
     
     matches.size should be (2)
 

@@ -2,7 +2,7 @@ package pa
 
 import org.scalatest.FlatSpec
 import org.scalatest.ShouldMatchers
-import org.joda.time.{DateTime, DateMidnight}
+import org.joda.time.{DateTime, LocalDate}
 import concurrent.Await
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -11,7 +11,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 class PlayerStatsTest extends FlatSpec with ShouldMatchers {
   "PaClient" should "load player stats" in {
     val playerStats = Await.result(
-      StubClient.playerStats("237670", new DateMidnight(2013, 8, 1), new DateMidnight(2014, 2, 5)),
+      StubClient.playerStats("237670", new LocalDate(2013, 8, 1), new LocalDate(2014, 2, 5)),
       1.second
     )
 
@@ -54,7 +54,7 @@ class PlayerStatsTest extends FlatSpec with ShouldMatchers {
 
   "PaClient" should "load player stats for the given team" in {
     val playerStats = Await.result(
-      StubClient.playerStats("237670", new DateMidnight(2013, 8, 1), new DateMidnight(2014, 2, 5), "19"),
+      StubClient.playerStats("237670", new LocalDate(2013, 8, 1), new LocalDate(2014, 2, 5), "19"),
       1.second
     )
 
@@ -66,7 +66,7 @@ class PlayerStatsTest extends FlatSpec with ShouldMatchers {
 
   "PaClient" should "load player stats for the given team and competition" in {
     val playerStats = Await.result(
-      StubClient.playerStats("237670", new DateMidnight(2013, 8, 1), new DateMidnight(2014, 2, 5), "19", "100"),
+      StubClient.playerStats("237670", new LocalDate(2013, 8, 1), new LocalDate(2014, 2, 5), "19", "100"),
       1.second
     )
 
