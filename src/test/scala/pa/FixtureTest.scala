@@ -85,6 +85,16 @@ class FixtureTest extends FunSuite with ShouldMatchers with OptionValues {
   test("Test Fixture without a competition") {
     fixtures(1).competition should be (None)
   }
+
+  test("Test fixture throw exception if it encounters errors") {
+    try {
+      Await.result(stubClient.fixtures("errors"), 1.second)
+      assert(false, "Exception should have been thrown")
+    }
+    catch {
+      case e: PaClientErrorsException => assert(true)
+    }
+  }
   
   
 }

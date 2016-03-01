@@ -48,7 +48,13 @@ class LiveMatchTest extends FlatSpec with ShouldMatchers with OptionValues {
 
   it should "be empty if there are no matches" in {
 
-    Await.result(StubClient.liveMatches("108"), 1.second).size should be (0)
+    try {
+      Await.result(StubClient.liveMatches("108"), 1.second)
+      assert(false, "Exception should have been thrown")
+    }
+    catch {
+      case e: PaClientErrorsException => assert(true)
+    }
 
   }
 }

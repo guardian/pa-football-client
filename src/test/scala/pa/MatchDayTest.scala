@@ -72,10 +72,13 @@ class MatchDayTest extends FlatSpec with ShouldMatchers with OptionValues {
   }
 
   it should "handle days with no data" in {
-
-    val matches = Await.result(StubClient.matchDay("100", new LocalDate(2010, 8, 1)), 1.second)
-
-    matches.size should be (0)
+    try {
+      Await.result(StubClient.matchDay("100", new LocalDate(2010, 8, 1)), 1.second)
+      assert(false, "Exception should have been thrown")
+    }
+    catch {
+      case e: PaClientErrorsException => assert(true)
+    }
   }
 
   it should "parse match with missing venue" in {
