@@ -625,4 +625,10 @@ object Parser {
   protected def parseStage(stage: NodeSeq): Stage = Stage (
     stageNumber = stage \@ "stageNumber"
   )
+
+  def parseErrors(s: String): List[Error] = {
+    (XML.loadString(s) \\ "errors" \ "error") map { error =>
+      Error(error.text)
+    }
+  }
 }

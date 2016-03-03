@@ -31,6 +31,12 @@ class StatsTest extends FlatSpec with ShouldMatchers {
   }
 
   it should "load empty match stats" in {
-    Await.result(StubClient.matchStats("3283333"), 1.second) should be (Nil)
+    try {
+      Await.result(StubClient.matchStats("3283333"), 1.second) should be (Nil)
+      assert(false, "Exception should have been thrown")
+    }
+    catch {
+      case e: PaClientErrorsException => assert(true)
+    }
   }
 }
