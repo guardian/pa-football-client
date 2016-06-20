@@ -20,7 +20,7 @@ object StubClient extends PaClient with Http {
 
   def readOrFetch(url: String)(implicit context: ExecutionContext): Future[Response] = {
 
-    val filename = s"src/test/resources/${url.replaceFirst(base+"/", "")}.xml"
+    val filename = s"src/test/resources/data/${url.replaceFirst(base+"/", "")}.xml"
     val urlWithKey = url.replace("/key", "/_YOUR_API_KEY_HERE")
 
     readFromFile(filename).recoverWith {
@@ -29,7 +29,7 @@ object StubClient extends PaClient with Http {
         val response: Future[Response] = fetchFromUrl(urlWithKey)
         response.onSuccess {
           case r: Response =>
-            Logger.info(s"Writing response to test files, $filename.xml")
+            Logger.info(s"Writing response to test files, $filename")
             writeToFile(filename, r.body)
         }
         response
