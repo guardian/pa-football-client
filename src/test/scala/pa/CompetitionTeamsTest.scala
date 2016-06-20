@@ -10,18 +10,18 @@ import scala.concurrent.ExecutionContext.Implicits.global
 class CompetitionTeamsTest extends FlatSpec with ShouldMatchers {
   "PaClient" should "load the competition's teams" in {
     val teams = Await.result(
-      StubClient.teams("100", new LocalDate(2013, 12, 5), new LocalDate(2014, 2, 4)),
-      1.second
+      StubClient.teams("100", new LocalDate(2015, 12, 5), new LocalDate(2016, 2, 4)),
+      10.seconds
     )
 
     teams should have length 20
-    teams(0) should have (
+    teams(1) should have (
       'id ("1006"),
       'name ("Arsenal")
     )
-    teams(14) should have (
-      'id ("19"),
-      'name ("Spurs")
+    teams(6) should have (
+      'id ("29"),
+      'name ("Leicester")
     )
   }
 }

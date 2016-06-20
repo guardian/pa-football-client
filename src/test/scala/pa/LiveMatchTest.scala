@@ -9,7 +9,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 class LiveMatchTest extends FlatSpec with ShouldMatchers with OptionValues {
 
   "PaClient" should "load live matches" in {
-    val matches = Await.result(StubClient.liveMatches("100"), 1.second)
+    val matches = Await.result(StubClient.liveMatches("100"), 10.seconds)
 
     matches.size should be (3)
 
@@ -49,7 +49,7 @@ class LiveMatchTest extends FlatSpec with ShouldMatchers with OptionValues {
   it should "be empty if there are no matches" in {
 
     try {
-      Await.result(StubClient.liveMatches("108"), 1.second)
+      Await.result(StubClient.liveMatches("108"), 10.seconds)
       assert(false, "Exception should have been thrown")
     }
     catch {

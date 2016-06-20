@@ -10,13 +10,13 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 class TeamEventsTest extends FlatSpec with ShouldMatchers {
 
-  private val spurs = Team("19", "Spurs")
+  private val spurs = Team("19", "Tottenham Hotspur")
   private val swansea = Team("65", "Swansea")
   "PaClient" should "load the team events info" in {
 
     val matches = Await.result(
       StubClient.teamEvents("19", new LocalDate(2013, 10, 11), new LocalDate(2014, 1, 24)),
-      2.second
+      10.seconds
     )
 
     val match0 = matches(0)
@@ -37,7 +37,7 @@ class TeamEventsTest extends FlatSpec with ShouldMatchers {
     )
     match0.awayTeam should have (
       'id ("19"),
-      'name ("Spurs"),
+      'name ("Tottenham Hotspur"),
       'score (3),
       'htScore (1),
       'aggregateScore (None)
@@ -109,7 +109,7 @@ class TeamEventsTest extends FlatSpec with ShouldMatchers {
       'reason ("Serious Foul Play")
     )
     matches(8).events.dismissals(0).team should equal(spurs)
-    matches(8).events.dismissals(0).player should equal(Player("362826", "19", "Joe Paulo Paulinho"))
+    matches(8).events.dismissals(0).player should equal(Player("362826", "19", "Jose Paulo Paulinho"))
 
     matches(18).events.shootoutPenalties should have length 18
     matches(18).events.shootoutPenalties(0) should have(

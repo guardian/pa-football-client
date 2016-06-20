@@ -10,10 +10,10 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 class TeamHead2HeadTest extends FlatSpec with ShouldMatchers {
 
-  "PaClient" should "load the headto head information" in {
+  "PaClient" should "load the head to head information" in {
     val (team1, team2) = Await.result(
       StubClient.teamHead2Head("4", "12", new LocalDate(2013, 12, 2), new LocalDate(2014, 1, 24)),
-      1.second
+      10.seconds
     )
 
     team1 should have (

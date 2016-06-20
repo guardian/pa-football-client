@@ -11,7 +11,7 @@ class PlayerProfileTest extends FlatSpec with ShouldMatchers {
   "PaClient" should "load player profile info" in {
     val playerProfile = Await.result(
       StubClient.playerProfile("237670"),
-      1.second
+      10.seconds
     )
 
     playerProfile should have (
@@ -19,7 +19,7 @@ class PlayerProfileTest extends FlatSpec with ShouldMatchers {
       'height (Some("1.9 Metres")),
       'weight (Some("75 Kilograms")),
       'dob (Some(new LocalDate(1984, 2, 26))),
-      'age (Some("29")),
+      'age (Some("32")),
       'nationality (Some("Togolese")),
       'position (Some("Striker"))
     )
