@@ -3,13 +3,17 @@ package pa
 
 import Parser._
 import org.joda.time.LocalDate
-import concurrent.{ExecutionContext, Future, Promise}
+import concurrent.{ExecutionContext, Future}
+
+object PaClientConfig {
+  lazy val baseUrl: String = "https://football.api.press.net/v1.5"
+}
 
 trait PaClient { self: Http =>
 
   def apiKey: String
 
-  lazy val base: String = "https://football.api.press.net/v1.5"
+  lazy val base: String = PaClientConfig.baseUrl
 
   def competitions(implicit context: ExecutionContext): Future[List[Season]] =
     get(s"/competitions/competitions/$apiKey").map(interceptErrors).map(parseCompetitions)
