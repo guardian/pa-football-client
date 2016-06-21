@@ -7,43 +7,26 @@ import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
 class EventsTest extends FlatSpec with ShouldMatchers {
-  /** The original XML format did not have the 'addedTime' field */
-  "PaClient" should "load a match in the original XML format" in {
-    val theMatch = Await.result(StubClient.matchEvents("3507403"), 1.second).get
+  it should "load a match and match events" in {
+    val theMatch = Await.result(StubClient.matchEvents("3888465"), 10.seconds).get
 
-    theMatch.homeTeam should be (Team("9", "Liverpool"))
-    theMatch.awayTeam should be (Team("4", "Chelsea"))
+    theMatch.homeTeam should be (Team("999", "Spain"))
+    theMatch.awayTeam should be (Team("6318", "Czech Republic"))
 
-    theMatch.homeTeamScore should be (3)
+    theMatch.homeTeamScore should be (1)
 
-    theMatch.awayTeamScore should be (1)
+    theMatch.awayTeamScore should be (0)
 
-    theMatch.homeTeamGoals(0).players(0).name should be ("Jordan Henderson")
+    theMatch.homeTeamGoals(0).players(0).name should be ("Gerard Pique")
 
     theMatch.isResult should be (true)
-  }
 
-  it should "parse those dodgy matches with no events" in {
-    Await.result(StubClient.matchEvents("3304257"), 1.second) should be (None)
-  }
-
-  it should "load a match in the new XML format" in {
-    val theEvents = Await.result(StubClient.matchEvents("3704203"), 1.second).get
-
-    theEvents should have(
-      'homeTeam (Team("188", "Crawley Town")),
-      'awayTeam (Team("1073", "Stevenage")),
-      'homeTeamScore (1),
-      'awayTeamScore (1),
-      'isResult (true)
-    )
-
-    val Some(event) = theEvents.events.find(_.id == Some("18882801"))
+    val Some(event) = theMatch.events.find(_.id == Some("22306998"))
 
     event should have(
-      'matchTime (Some("(90 +5:33)")),
+      'matchTime (Some("(90 +2:05)")),
       'eventTime (Some("90")),
-      'addedTime (Some("5:33"))
+      'addedTime (Some("2:05"))
     )
   }
 }

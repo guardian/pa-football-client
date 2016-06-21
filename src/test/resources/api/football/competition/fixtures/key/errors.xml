@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<fixtures>
-    <errors>
-        <error>Invalid/Unrecognised apiKey</error>
-        <error>No data available</error>
-    </errors>
-</fixtures>

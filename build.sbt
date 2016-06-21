@@ -16,10 +16,13 @@ bintrayRepository := "frontend"
 
 licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 
+resolvers += Resolver.typesafeRepo("releases")
+
 libraryDependencies ++= Seq(
   "joda-time" % "joda-time" % "2.3",
   "org.joda" % "joda-convert" % "1.6",
-  "org.scalatest" %% "scalatest" % "2.1.7" % "test"
+  "org.scalatest" %% "scalatest" % "2.1.7" % "test",
+  "com.typesafe.play" %% "play-ws" % "2.4.3" % "test"
 )
 
 

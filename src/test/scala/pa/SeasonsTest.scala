@@ -11,15 +11,16 @@ class SeasonsTest extends FlatSpec with ShouldMatchers {
 
   "PaClient" should "load the list of seasons" in {
 
-    val competitions = Await.result(StubClient.competitions, 1.second)
+    val seasons = Await.result(StubClient.competitions, 10.seconds)
+    def seasonWithName(name: String) : Season = seasons.collectFirst{ case c if c.name == name => c }.get
 
-    competitions should contain (Season("100", "785", "Barclays Premier League 13/14",
+    seasons should contain (Season("100", "785", "Barclays Premier League 13/14",
       new LocalDate(2013,6,1), new LocalDate(2014,5,31)))
 
-    competitions should contain (Season("625", "467", "German Bundesliga 12/13",
+    seasons should contain (Season("625", "467", "German Bundesliga 12/13",
       new LocalDate(2012,8,1), new LocalDate(2013,5,31)))
 
-    competitions(0).interval should be(new Interval(new LocalDate(2013,6,1).toDateTimeAtStartOfDay, new LocalDate(2014,5,31).toDateTimeAtStartOfDay))
-    competitions(1).interval should be(new Interval(new LocalDate(2012,8,1).toDateTimeAtStartOfDay, new LocalDate(2013,5,31).toDateTimeAtStartOfDay))
+    seasonWithName("Barclays Premier League 12/13").interval should be(new Interval(new LocalDate(2012,8,1).toDateTimeAtStartOfDay, new LocalDate(2013,5,31).toDateTimeAtStartOfDay))
+    seasonWithName("Barclays Premier League 13/14").interval should be(new Interval(new LocalDate(2013,6,1).toDateTimeAtStartOfDay, new LocalDate(2014,5,31).toDateTimeAtStartOfDay))
   }
 }

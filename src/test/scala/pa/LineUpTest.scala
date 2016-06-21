@@ -10,7 +10,7 @@ class LineUpTest extends FlatSpec with ShouldMatchers {
 
   "PaClient" should "load lineups for a match" in {
 
-    val lineUp = Await.result(StubClient.lineUp("3560717"), 1.second)
+    val lineUp = Await.result(StubClient.lineUp("3560717"), 10.seconds)
 
     lineUp.homeTeamPossession should be (52)
     lineUp.awayTeamPossession should be (48)
@@ -41,8 +41,8 @@ class LineUpTest extends FlatSpec with ShouldMatchers {
     david.shirtNumber should be ("4")
     david.position should be ("Defender")
     david.substitute should be (false)
-    david.rating should be (Some(5))
-    david.timeOnPitch should be ("120:00")
+    david.rating should be (None)
+    david.timeOnPitch should be ("130:45")
 
     david.events(2) should be (LineUpEvent("throw in", "29", "(29)"))
 

@@ -11,22 +11,22 @@ class TeamSquadTest extends FlatSpec with ShouldMatchers {
   "PaClient" should "load team's squad" in {
     val squadMembers = Await.result(
       StubClient.squad("4"),
-      1.second
+      10.seconds
     )
 
     squadMembers(0) should have(
-      'playerId ("496967"),
-      'name ("Andreas Christensen"),
-      'squadNumber (None),
-      'startDate (new LocalDate(2013, 5, 19)),
+      'playerId ("38930"),
+      'name ("John Terry"),
+      'squadNumber (Some("26")),
+      'startDate (new LocalDate(1998, 8, 1)),
       'endDate (None),
       'onLoan (false)
     )
     squadMembers(9) should have(
-      'playerId ("41948"),
-      'name ("Ashley Cole"),
-      'squadNumber (Some("3")),
-      'startDate (new LocalDate(2006, 9, 1)),
+      'playerId ("370846"),
+      'name ("Marko Marin"),
+      'squadNumber (None),
+      'startDate (new LocalDate(2012, 7, 1)),
       'endDate (None),
       'onLoan (false)
     )

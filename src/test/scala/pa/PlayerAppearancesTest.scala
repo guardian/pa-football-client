@@ -11,7 +11,7 @@ class PlayerAppearancesTest extends FlatSpec with ShouldMatchers {
   "PaClient" should "load a player's appearances" in {
     val playerAppearances = Await.result(
       StubClient.appearances("237670", new LocalDate(2013, 9, 4), new LocalDate(2014, 2, 4)),
-      1.second
+      10.seconds
     )
 
     playerAppearances.playerName should equal ("Emmanuel Adebayor")
@@ -41,7 +41,7 @@ class PlayerAppearancesTest extends FlatSpec with ShouldMatchers {
   "PaClient" should "load a player's appearances for the specified team" in {
     val playerAppearances = Await.result(
       StubClient.appearances("237670", new LocalDate(2013, 9, 4), new LocalDate(2014, 2, 4), "19"),
-      1.second
+      10.seconds
     )
 
     playerAppearances.playerName should equal ("Emmanuel Adebayor")
@@ -60,8 +60,8 @@ class PlayerAppearancesTest extends FlatSpec with ShouldMatchers {
       'dismissals (0)
     )
     playerAppearances.total should have (
-      'appearances (10),
-      'started (9),
+      'appearances (11),
+      'started (10),
       'substitutedOn (1),
       'substitutedOff (4),
       'dismissals (0)
@@ -71,7 +71,7 @@ class PlayerAppearancesTest extends FlatSpec with ShouldMatchers {
   "PaClient" should "load a player's appearances for the specified team and competition" in {
     val playerAppearances = Await.result(
       StubClient.appearances("237670", new LocalDate(2013, 9, 4), new LocalDate(2014, 2, 4), "19", "100"),
-      1.second
+      10.seconds
     )
 
     playerAppearances.playerName should equal ("Emmanuel Adebayor")

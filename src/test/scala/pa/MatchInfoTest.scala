@@ -8,7 +8,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 class MatchInfoTest extends FlatSpec with ShouldMatchers {
   "PaClient" should "load matchInfo" in {
-    val theMatch = Await.result(StubClient.matchInfo("3695171"), 1.second)
+    val theMatch = Await.result(StubClient.matchInfo("3695171"), 10.seconds)
 
     theMatch should have (
       'id ("3695171"),
@@ -23,7 +23,7 @@ class MatchInfoTest extends FlatSpec with ShouldMatchers {
       'attendance (None),
       'referee (Some(Official("182780", "Lee Mason"))),
       'venue (Some(Venue("114", "Old Trafford"))),
-      'comments (Some("(Sunderland win 2-1 on penalties)"))
+      'comments (None)
     )
 
     theMatch.homeTeam should have (
