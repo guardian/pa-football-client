@@ -102,7 +102,7 @@ object TeamCodes {
     ("19337", "NPT"), // Newport
     ("59", "NMT"),    // Northampton
     ("33", "OXD"),    // Oxford United
-    ("80", "PLY"),    // Plymouth
+    ("34", "PLY"),    // Plymouth
     ("36", "POR"),    // Portsmouth
     ("85", "ROC"),    // Rochdale
     ("87", "SCU"),    // Scunthorpe
