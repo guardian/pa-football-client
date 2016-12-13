@@ -57,7 +57,7 @@ object TeamCodes {
     ("15", "NOT"),    // Nottingham Forest
     ("16", "QPR"),    // QPR
     ("62", "REA"),    // Reading
-    ("37", "SHW"),    // Sheffield Wednesday
+    ("17", "SHW"),    // Sheffield Wednesday
     ("41", "WAT"),    // Watford
     ("68", "WIG"),    // Wigan
     ("6870", "YEO"),  // Yeovil
@@ -102,7 +102,7 @@ object TeamCodes {
     ("19337", "NPT"), // Newport
     ("59", "NMT"),    // Northampton
     ("33", "OXD"),    // Oxford United
-    ("80", "PLY"),    // Plymouth
+    ("34", "PLY"),    // Plymouth
     ("36", "POR"),    // Portsmouth
     ("85", "ROC"),    // Rochdale
     ("87", "SCU"),    // Scunthorpe
@@ -189,7 +189,6 @@ object TeamCodes {
     ("38276", "ZEN"), // Zenit St Petersberg
     ("32471", "ZUL"), // Zulte Waregem
     // "La Liga"
-    ("26303", "ALM"), // Almeria
     ("26313", "ATH"), // Athletic Bilbao
     ("26305", "AMD"), // Atletico Madrid
     ("26300", "BAR"), // Barcelona
