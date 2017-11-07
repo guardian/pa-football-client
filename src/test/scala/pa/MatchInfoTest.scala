@@ -1,12 +1,12 @@
 package pa
 
 import org.scalatest.FlatSpec
-import org.scalatest.ShouldMatchers
+import org.scalatest.Matchers
 import scala.concurrent.Await
 import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class MatchInfoTest extends FlatSpec with ShouldMatchers {
+class MatchInfoTest extends FlatSpec with Matchers {
   "PaClient" should "load matchInfo" in {
     val theMatch = Await.result(StubClient.matchInfo("3695171"), 10.seconds)
 

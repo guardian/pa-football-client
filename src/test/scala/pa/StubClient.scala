@@ -1,13 +1,16 @@
 package pa
 
-import concurrent.Future
-import concurrent.ExecutionContext
-import concurrent.ExecutionContext.Implicits.global
+import concurrent.{ExecutionContext, ExecutionContextExecutor, Future}
 import java.io.{File, PrintWriter}
-import play.api.Logger
-import play.api.libs.ws.ning.NingWSClient
+
+import akka.actor.ActorSystem
+import akka.stream.ActorMaterializer
+import play.api.libs.ws.ahc.StandaloneAhcWSClient
+
 import scala.io.Source
 import scala.util.control.NonFatal
+import scala.concurrent.duration._
+import scala.language.postfixOps
 
 object StubClient extends PaClient with Http {
 
@@ -15,7 +18,10 @@ object StubClient extends PaClient with Http {
 
   override def GET(url: String): Future[Response] = readOrFetch(url)
 
-  val wsClient = NingWSClient()
+  implicit val system: ActorSystem = ActorSystem()
+  implicit val materializer: ActorMaterializer = ActorMaterializer()
+  implicit val ec: ExecutionContextExecutor = system.dispatcher
+  val wsClient = StandaloneAhcWSClient()
 
 
   def readOrFetch(url: String)(implicit context: ExecutionContext): Future[Response] = {
@@ -25,26 +31,25 @@ object StubClient extends PaClient with Http {
 
     readFromFile(filename).recoverWith {
       case e: Exception =>
-        Logger.warn(s"Missing fixture for API response: $url ($filename)")
+        println(s"Missing fixture for API response: $url ($filename)")
         val response: Future[Response] = fetchFromUrl(urlWithKey)
-        response.onSuccess {
-          case r: Response =>
-            Logger.info(s"Writing response to test files, $filename")
-            writeToFile(filename, r.body)
+        response.foreach { r =>
+          println(s"Writing response to test files, $filename")
+          writeToFile(filename, r.body)
         }
         response
     }
   }
 
   def fetchFromUrl(url: String): Future[Response] = {
-    wsClient.url(url).withRequestTimeout(10000)
+    wsClient.url(url).withRequestTimeout(10000 milli)
       .get()
       .map { wsResponse =>
         pa.Response(wsResponse.status, wsResponse.body, wsResponse.statusText)
       }
       .recoverWith {
         case NonFatal(exception) =>
-          Logger.error(s"Error fetching content for $url", exception)
+          println(s"Error fetching content for $url", exception)
           Future.failed(exception)
       }
   }

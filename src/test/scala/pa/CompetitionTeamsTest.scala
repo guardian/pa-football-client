@@ -1,13 +1,13 @@
 package pa
 
 import org.scalatest.FlatSpec
-import org.scalatest.ShouldMatchers
+import org.scalatest.Matchers
 import scala.concurrent.Await
 import org.joda.time.LocalDate
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class CompetitionTeamsTest extends FlatSpec with ShouldMatchers {
+class CompetitionTeamsTest extends FlatSpec with Matchers {
   "PaClient" should "load the competition's teams" in {
     val teams = Await.result(
       StubClient.teams("100", new LocalDate(2015, 12, 5), new LocalDate(2016, 2, 4)),

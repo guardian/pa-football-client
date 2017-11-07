@@ -1,12 +1,12 @@
 package pa
 
 import org.scalatest.FlatSpec
-import org.scalatest.ShouldMatchers
+import org.scalatest.Matchers
 import concurrent.Await
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class EventsTest extends FlatSpec with ShouldMatchers {
+class EventsTest extends FlatSpec with Matchers {
   it should "load a match and match events" in {
     val theMatch = Await.result(StubClient.matchEvents("3888465"), 10.seconds).get
 

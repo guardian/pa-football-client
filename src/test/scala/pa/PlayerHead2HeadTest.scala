@@ -1,14 +1,14 @@
 package pa
 
 import org.scalatest.FlatSpec
-import org.scalatest.ShouldMatchers
+import org.scalatest.Matchers
 import scala.concurrent.Await
 import org.joda.time.{DateTime, LocalDate}
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
 
-class PlayerHead2HeadTest extends FlatSpec with ShouldMatchers {
+class PlayerHead2HeadTest extends FlatSpec with Matchers {
   "PaClient" should "load the player head to head info" in {
     val (player1h2h, player2h2h) = Await.result(
       StubClient.playerHead2Head("250968", "355256", new LocalDate(2013, 11, 3), new LocalDate(2014, 2, 4)),

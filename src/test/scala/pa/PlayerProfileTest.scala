@@ -1,13 +1,13 @@
 package pa
 
 import org.scalatest.FlatSpec
-import org.scalatest.ShouldMatchers
+import org.scalatest.Matchers
 import org.joda.time.{DateTime, LocalDate}
 import concurrent.Await
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class PlayerProfileTest extends FlatSpec with ShouldMatchers {
+class PlayerProfileTest extends FlatSpec with Matchers {
   "PaClient" should "load player profile info" in {
     val playerProfile = Await.result(
       StubClient.playerProfile("237670"),

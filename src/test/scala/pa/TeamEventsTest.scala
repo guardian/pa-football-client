@@ -1,14 +1,14 @@
 package pa
 
 import org.scalatest.FlatSpec
-import org.scalatest.ShouldMatchers
+import org.scalatest.Matchers
 import scala.concurrent.Await
 import org.joda.time.{DateTime, LocalDate}
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
 
-class TeamEventsTest extends FlatSpec with ShouldMatchers {
+class TeamEventsTest extends FlatSpec with Matchers {
 
   private val spurs = Team("19", "Tottenham Hotspur")
   private val swansea = Team("65", "Swansea")

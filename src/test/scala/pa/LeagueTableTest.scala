@@ -1,13 +1,13 @@
 package pa
 
 import org.scalatest.FlatSpec
-import org.scalatest.ShouldMatchers
+import org.scalatest.Matchers
 import org.joda.time.LocalDate
 import concurrent.Await
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class LeagueTableTest extends FlatSpec with ShouldMatchers{
+class LeagueTableTest extends FlatSpec with Matchers{
 
   "PaClient" should "load a League Table" in {
     val List(first, second) = Await.result(StubClient.leagueTable("100", new LocalDate(2014, 8, 27)), 10.seconds) take 2

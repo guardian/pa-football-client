@@ -1,12 +1,12 @@
 package pa
 
-import org.scalatest.{OptionValues, FlatSpec, ShouldMatchers}
+import org.scalatest.{OptionValues, FlatSpec, Matchers}
 import org.joda.time.{DateTime, LocalDate}
 import concurrent.Await
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class ResultsTest extends FlatSpec with ShouldMatchers with OptionValues {
+class ResultsTest extends FlatSpec with Matchers with OptionValues {
 
   "PaClient" should "load results" in {
     val matches = Await.result(StubClient.results("100", new LocalDate(2016, 4, 1)), 10.seconds)

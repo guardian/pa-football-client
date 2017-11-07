@@ -1,6 +1,6 @@
 enablePlugins(GitVersioning)
 
-scalaVersion := "2.11.1"
+scalaVersion := "2.12.4"
 
 name := "pa-client"
 
@@ -21,8 +21,8 @@ resolvers += Resolver.typesafeRepo("releases")
 libraryDependencies ++= Seq(
   "joda-time" % "joda-time" % "2.3",
   "org.joda" % "joda-convert" % "1.6",
-  "org.scalatest" %% "scalatest" % "2.1.7" % "test",
-  "com.typesafe.play" %% "play-ws" % "2.4.3" % "test"
+  "org.scalatest" %% "scalatest" % "3.0.4" % "test",
+  "com.typesafe.play" %% "play-ahc-ws-standalone" % "1.1.3" % "test"
 )
 
 
@@ -33,7 +33,7 @@ libraryDependencies := {
     // if scala 2.11+ is used, add dependency on scala-xml module
     case Some((2, scalaMajor)) if scalaMajor >= 11 =>
       libraryDependencies.value ++ Seq(
-        "org.scala-lang.modules" %% "scala-xml" % "1.0.2"
+        "org.scala-lang.modules" %% "scala-xml" % "1.0.6"
       )
     case _ => libraryDependencies.value
   }

@@ -1,12 +1,12 @@
 package pa
 
-import org.scalatest.{OptionValues, FlatSpec, ShouldMatchers}
+import org.scalatest.{OptionValues, FlatSpec, Matchers}
 import org.joda.time.{DateTime, LocalDate}
 import concurrent.Await
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class MatchDayTest extends FlatSpec with ShouldMatchers with OptionValues {
+class MatchDayTest extends FlatSpec with Matchers with OptionValues {
 
   "PaClient" should "load a match day" in {
     val matches = Await.result(StubClient.matchDay("100", new LocalDate(2014, 8, 23)), 10.seconds)
