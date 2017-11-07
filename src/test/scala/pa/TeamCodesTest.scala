@@ -1,9 +1,9 @@
 package pa
 
 import org.scalatest.FunSuite
-import org.scalatest.ShouldMatchers
+import org.scalatest.Matchers
 
-class TeamCodesTest extends FunSuite with ShouldMatchers {
+class TeamCodesTest extends FunSuite with Matchers {
   test("Can get the mapped 3-letter code for a team") {
     TeamCodes.codeFor(new Team("19", "Spurs")) should equal("TOT")
     TeamCodes.codeFor(new Team("37621", "Costa Rica")) should equal("CRC")

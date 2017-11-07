@@ -1,14 +1,14 @@
 package pa
 
 import org.scalatest.FlatSpec
-import org.scalatest.ShouldMatchers
+import org.scalatest.Matchers
 import scala.concurrent.Await
 import org.joda.time.LocalDate
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
 
-class TeamHead2HeadTest extends FlatSpec with ShouldMatchers {
+class TeamHead2HeadTest extends FlatSpec with Matchers {
 
   "PaClient" should "load the head to head information" in {
     val (team1, team2) = Await.result(

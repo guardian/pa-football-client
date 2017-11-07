@@ -1,12 +1,13 @@
 package pa
 
-import org.scalatest.{OptionValues, FunSuite, ShouldMatchers}
+import org.scalatest.{FunSuite, Matchers, OptionValues}
+
 import concurrent.Await
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
 
-class FixtureTest extends FunSuite with ShouldMatchers with OptionValues {
+class FixtureTest extends FunSuite with Matchers with OptionValues {
 
   val stubClient = StubClient
   val competitionId = "100"

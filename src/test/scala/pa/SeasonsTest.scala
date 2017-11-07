@@ -1,13 +1,13 @@
 package pa
 
 import org.scalatest.FlatSpec
-import org.scalatest.ShouldMatchers
+import org.scalatest.Matchers
 import org.joda.time.{Interval, LocalDate}
 import concurrent.Await
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class SeasonsTest extends FlatSpec with ShouldMatchers {
+class SeasonsTest extends FlatSpec with Matchers {
 
   "PaClient" should "load the list of seasons" in {
 
