@@ -1,9 +1,11 @@
 package pa
 
+import java.time.LocalDate
+
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers
+
 import scala.concurrent.Await
-import org.joda.time.LocalDate
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -12,7 +14,7 @@ class TeamHead2HeadTest extends FlatSpec with Matchers {
 
   "PaClient" should "load the head to head information" in {
     val (team1, team2) = Await.result(
-      StubClient.teamHead2Head("4", "12", new LocalDate(2013, 12, 2), new LocalDate(2014, 1, 24)),
+      StubClient.teamHead2Head("4", "12", LocalDate.of(2013, 12, 2), LocalDate.of(2014, 1, 24)),
       10.seconds
     )
 

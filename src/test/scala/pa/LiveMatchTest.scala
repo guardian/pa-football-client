@@ -1,7 +1,9 @@
 package pa
 
-import org.scalatest.{OptionValues, FlatSpec, Matchers}
-import org.joda.time.{DateTime, LocalDate}
+import java.time.LocalDateTime
+
+import org.scalatest.{FlatSpec, Matchers, OptionValues}
+
 import concurrent.Await
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -16,7 +18,7 @@ class LiveMatchTest extends FlatSpec with Matchers with OptionValues {
     val liveMatch = matches(0)
     liveMatch should have (
       'id ("3528311"),
-      'date (new DateTime(2012, 10, 7, 13, 30, 0,0)),
+      'date (LocalDateTime.of(2012, 10, 7, 13, 30, 0,0)),
       'stage (Stage("1")),
       'round (Round("1", None)),
       'leg ("1"),

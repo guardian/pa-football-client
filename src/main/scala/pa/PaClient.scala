@@ -1,8 +1,11 @@
 package pa
 
 
+import java.time.{LocalDate, LocalDateTime}
+import java.time.format.DateTimeFormatter
+
 import Parser._
-import org.joda.time.LocalDate
+
 import concurrent.{ExecutionContext, Future}
 
 object PaClientConfig {
@@ -10,6 +13,8 @@ object PaClientConfig {
 }
 
 trait PaClient { self: Http =>
+
+  val formatter = DateTimeFormatter.ofPattern("yyyyMMdd")
 
   def apiKey: String
 
@@ -30,34 +35,34 @@ trait PaClient { self: Http =>
   def lineUp(id: String)(implicit context: ExecutionContext): Future[LineUp] = get(s"/match/lineUps/$apiKey/$id").map(interceptErrors).map(parseLineUp)
 
   def matchDay(date: LocalDate)(implicit context: ExecutionContext): Future[List[MatchDay]] =
-    get(s"/competitions/matchDay/$apiKey/${date.toString("yyyyMMdd")}").map(interceptErrors).map(parseMatchDay)
+    get(s"/competitions/matchDay/$apiKey/${date.format(formatter)}").map(interceptErrors).map(parseMatchDay)
   def matchDay(competitionId: String, date: LocalDate)(implicit context: ExecutionContext): Future[List[MatchDay]] =
-    get(s"/competition/matchDay/$apiKey/$competitionId/${date.toString("yyyyMMdd")}").map(interceptErrors).map(parseMatchDay)
+    get(s"/competition/matchDay/$apiKey/$competitionId/${date.format(formatter)}").map(interceptErrors).map(parseMatchDay)
 
   def results(start: LocalDate)(implicit context: ExecutionContext): Future[List[Result]] = resultsAll(start, None)
   def results(start: LocalDate, end: LocalDate)(implicit context: ExecutionContext): Future[List[Result]] = resultsAll(start, Some(end))
 
   private def resultsAll(start: LocalDate, end: Option[LocalDate] = None)(implicit context: ExecutionContext): Future[List[Result]] = {
-    val dateStr = start.toString("yyyyMMdd") + (end map { e => s"/${e.toString("yyyyMMdd")}"} getOrElse "")
+    val dateStr = start.format(formatter) + (end map { e => s"/${e.format(formatter)}"} getOrElse "")
     get(s"/competitions/results/$apiKey/$dateStr").map(interceptErrors).map(parseResults)
   }
 
   def results(competitionId: String, start: LocalDate)(implicit context: ExecutionContext): Future[List[Result]] = results("competition", competitionId, start, None)
-  def results(competitionId: String, start: LocalDate, end: LocalDate)(implicit context: ExecutionContext): Future[List[Result]] =
+  def results(competitionId: String, start: LocalDate, end: LocalDateTime)(implicit context: ExecutionContext): Future[List[Result]] =
     results("competition", competitionId, start, Some(end))
 
   def teamResults(teamId: String, start: LocalDate)(implicit context: ExecutionContext): Future[List[Result]] =
     results("team", teamId, start, None)
-  def teamResults(teamId: String, start: LocalDate, end: LocalDate)(implicit context: ExecutionContext): Future[List[Result]] =
+  def teamResults(teamId: String, start: LocalDate, end: LocalDateTime)(implicit context: ExecutionContext): Future[List[Result]] =
     results("team", teamId, start, Some(end))
 
-  private def results(resultType: String, competitionId: String, start: LocalDate, end: Option[LocalDate] = None)(implicit context: ExecutionContext): Future[List[Result]] ={
-    val dateStr = start.toString("yyyyMMdd") + (end map { e => s"/${e.toString("yyyyMMdd")}" } getOrElse "")
+  private def results(resultType: String, competitionId: String, start: LocalDate, end: Option[LocalDateTime] = None)(implicit context: ExecutionContext): Future[List[Result]] ={
+    val dateStr = start.format(formatter) + (end map { e => s"/${e.format(formatter)}" } getOrElse "")
     get(s"/$resultType/results/$apiKey/$competitionId/$dateStr").map(interceptErrors).map(parseResults)
   }
 
   def leagueTable(competitionId: String, date: LocalDate)(implicit context: ExecutionContext): Future[List[LeagueTableEntry]] =
-      get(s"/competition/leagueTable/$apiKey/$competitionId/${date.toString("yyyyMMdd")}").map(interceptErrors).map(parseLeagueTable)
+      get(s"/competition/leagueTable/$apiKey/$competitionId/${date.format(formatter)}").map(interceptErrors).map(parseLeagueTable)
 
 
   def fixtures(implicit context: ExecutionContext): Future[List[Fixture]] = get(s"/competitions/fixtures/$apiKey").map(interceptErrors).map(parseFixtures)
@@ -85,7 +90,7 @@ trait PaClient { self: Http =>
     get(s"/team/squad/$apiKey/$teamId").map(interceptErrors).map(parseSquad)
   }
   def squad(teamId: String, startDate: LocalDate)(implicit context: ExecutionContext): Future[List[SquadMember]] = {
-    val startDateStr = startDate.toString("yyyyMMdd")
+    val startDateStr = startDate.format(formatter)
     get(s"/team/squad/$apiKey/$teamId/$startDateStr").map(interceptErrors).map(parseSquad)
   }
   def squad(teamId: String, startDate: LocalDate, endDate: LocalDate)(implicit context: ExecutionContext): Future[List[SquadMember]] = {
@@ -161,8 +166,8 @@ trait PaClient { self: Http =>
   }
 
   private def formatDates(startDate: LocalDate, endDate: LocalDate): (String, String) = (
-    startDate.toString("yyyyMMdd"),
-    endDate.toString("yyyyMMdd")
+    startDate.format(formatter),
+    endDate.format(formatter)
   )
 }
 

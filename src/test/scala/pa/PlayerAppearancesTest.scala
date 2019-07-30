@@ -1,8 +1,10 @@
 package pa
 
+import java.time.LocalDate
+
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers
-import org.joda.time.{Interval, LocalDate}
+
 import concurrent.Await
 import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -10,7 +12,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 class PlayerAppearancesTest extends FlatSpec with Matchers {
   "PaClient" should "load a player's appearances" in {
     val playerAppearances = Await.result(
-      StubClient.appearances("237670", new LocalDate(2013, 9, 4), new LocalDate(2014, 2, 4)),
+      StubClient.appearances("237670", LocalDate.of(2013, 9, 4), LocalDate.of(2014, 2, 4)),
       10.seconds
     )
 
@@ -40,7 +42,7 @@ class PlayerAppearancesTest extends FlatSpec with Matchers {
 
   "PaClient" should "load a player's appearances for the specified team" in {
     val playerAppearances = Await.result(
-      StubClient.appearances("237670", new LocalDate(2013, 9, 4), new LocalDate(2014, 2, 4), "19"),
+      StubClient.appearances("237670", LocalDate.of(2013, 9, 4), LocalDate.of(2014, 2, 4), "19"),
       10.seconds
     )
 
@@ -70,7 +72,7 @@ class PlayerAppearancesTest extends FlatSpec with Matchers {
 
   "PaClient" should "load a player's appearances for the specified team and competition" in {
     val playerAppearances = Await.result(
-      StubClient.appearances("237670", new LocalDate(2013, 9, 4), new LocalDate(2014, 2, 4), "19", "100"),
+      StubClient.appearances("237670", LocalDate.of(2013, 9, 4), LocalDate.of(2014, 2, 4), "19", "100"),
       10.seconds
     )
 
