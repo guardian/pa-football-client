@@ -1,6 +1,6 @@
 package pa
 
-import java.time.{LocalDate, LocalDateTime}
+import java.time.{LocalDate, ZonedDateTime, ZoneId}
 
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers
@@ -24,7 +24,7 @@ class TeamEventsTest extends FlatSpec with Matchers {
     val match0 = matches(0)
     match0 should have (
       'id ("3684146"),
-      'date (LocalDateTime.of(2014, 1, 19, 13, 30, 0, 0)),
+      'date (ZonedDateTime.of(2014, 1, 19, 13, 30, 0, 0, ZoneId.of("Europe/London"))),
       'competitionId ("100"),
       'stage (1),
       'round (1),

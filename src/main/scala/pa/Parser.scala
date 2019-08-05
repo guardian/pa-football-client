@@ -1,7 +1,7 @@
 package pa
 
 
-import java.time.{LocalDate, LocalDateTime, ZoneId}
+import java.time.{LocalDate, ZonedDateTime, ZoneId}
 import java.time.format.DateTimeFormatter
 import java.util.TimeZone
 
@@ -24,7 +24,7 @@ object Parser {
 
     def apply(date: String): LocalDate = LocalDate.parse(date, DateParser)
 
-    def apply(date: String, time: String): LocalDateTime = LocalDateTime.parse("%s %s".format(date, time), DateTimeParser)
+    def apply(date: String, time: String): ZonedDateTime = ZonedDateTime.parse("%s %s".format(date, time), DateTimeParser)
   }
 
   def parseCompetitions(s: String): List[Season] = (XML.loadString(s) \\ "season") map { season =>

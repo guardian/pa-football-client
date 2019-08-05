@@ -1,6 +1,6 @@
 package pa
 
-import java.time.{LocalDate, LocalDateTime}
+import java.time.{LocalDate, ZonedDateTime, ZoneId}
 
 import org.scalatest.{FlatSpec, Matchers, OptionValues}
 
@@ -18,7 +18,7 @@ class MatchDayTest extends FlatSpec with Matchers with OptionValues {
     
     matchDay should have(
       'id ("3733674"),
-      'date (LocalDateTime.of(2014, 8, 23, 17, 30, 0, 0)),
+      'date (ZonedDateTime.of(2014, 8, 23, 17, 30, 0, 0, ZoneId.of("Europe/London"))),
       'competition (None),
       'stage (Stage("1")),
       'round (Round("1", Some("League"))),

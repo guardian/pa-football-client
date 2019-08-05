@@ -1,6 +1,6 @@
 package pa
 
-import java.time.LocalDateTime
+import java.time.{ZonedDateTime, ZoneId}
 
 import org.scalatest.{FlatSpec, Matchers, OptionValues}
 
@@ -18,7 +18,7 @@ class LiveMatchTest extends FlatSpec with Matchers with OptionValues {
     val liveMatch = matches(0)
     liveMatch should have (
       'id ("3528311"),
-      'date (LocalDateTime.of(2012, 10, 7, 13, 30, 0,0)),
+      'date (ZonedDateTime.of(2012, 10, 7, 13, 30, 0,0, ZoneId.of("Europe/London"))),
       'stage (Stage("1")),
       'round (Round("1", None)),
       'leg ("1"),

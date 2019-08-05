@@ -1,7 +1,7 @@
 package pa
 
 
-import java.time.{LocalDate, LocalDateTime}
+import java.time.{LocalDate, ZonedDateTime}
 import java.time.format.DateTimeFormatter
 
 import Parser._
@@ -48,15 +48,15 @@ trait PaClient { self: Http =>
   }
 
   def results(competitionId: String, start: LocalDate)(implicit context: ExecutionContext): Future[List[Result]] = results("competition", competitionId, start, None)
-  def results(competitionId: String, start: LocalDate, end: LocalDateTime)(implicit context: ExecutionContext): Future[List[Result]] =
+  def results(competitionId: String, start: LocalDate, end: LocalDate)(implicit context: ExecutionContext): Future[List[Result]] =
     results("competition", competitionId, start, Some(end))
 
   def teamResults(teamId: String, start: LocalDate)(implicit context: ExecutionContext): Future[List[Result]] =
     results("team", teamId, start, None)
-  def teamResults(teamId: String, start: LocalDate, end: LocalDateTime)(implicit context: ExecutionContext): Future[List[Result]] =
+  def teamResults(teamId: String, start: LocalDate, end: LocalDate)(implicit context: ExecutionContext): Future[List[Result]] =
     results("team", teamId, start, Some(end))
 
-  private def results(resultType: String, competitionId: String, start: LocalDate, end: Option[LocalDateTime] = None)(implicit context: ExecutionContext): Future[List[Result]] ={
+  private def results(resultType: String, competitionId: String, start: LocalDate, end: Option[LocalDate] = None)(implicit context: ExecutionContext): Future[List[Result]] ={
     val dateStr = start.format(formatter) + (end map { e => s"/${e.format(formatter)}" } getOrElse "")
     get(s"/$resultType/results/$apiKey/$competitionId/$dateStr").map(interceptErrors).map(parseResults)
   }

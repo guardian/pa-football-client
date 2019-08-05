@@ -1,6 +1,6 @@
 package pa
 
-import java.time.{LocalDate, LocalDateTime}
+import java.time.{LocalDate, ZonedDateTime, ZoneId}
 
 import org.scalatest.{FlatSpec, Matchers, OptionValues}
 
@@ -18,7 +18,7 @@ class ResultsTest extends FlatSpec with Matchers with OptionValues {
     
     result should have (
       'id ("3834731"),
-      'date (LocalDateTime.of(2016, 5, 15, 15, 0, 0, 0)),
+      'date (ZonedDateTime.of(2016, 5, 15, 15, 0, 0, 0, ZoneId.of("Europe/London"))),
       'stage (Stage("1")),
       'round (Round("1", Some("League"))),
       'leg ("1"),
@@ -53,7 +53,7 @@ class ResultsTest extends FlatSpec with Matchers with OptionValues {
   }
 
   it should "work with an end date" in {
-    val matches = Await.result(StubClient.results("100", LocalDate.of(2014, 8, 23), LocalDate.of(2014, 9, 1).atStartOfDay()), 10.seconds)
+    val matches = Await.result(StubClient.results("100", LocalDate.of(2014, 8, 23), LocalDate.of(2014, 9, 1)), 10.seconds)
 
     matches(0).homeTeam.name should be ("Leicester")
   }

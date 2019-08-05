@@ -1,6 +1,6 @@
 package pa
 
-import java.time.{LocalDate, LocalDateTime}
+import java.time.{LocalDate, ZoneId, ZonedDateTime}
 
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers
@@ -13,12 +13,12 @@ import scala.concurrent.ExecutionContext.Implicits.global
 class TeamResultsTest extends FlatSpec with Matchers {
 
   "PaClient" should "load team results" in {
-    val results = Await.result(StubClient.teamResults("19", LocalDate.of(2013, 10, 11),  LocalDateTime.of(2014, 1, 30, 19, 45, 0, 0)), 10.seconds)
+    val results = Await.result(StubClient.teamResults("19", LocalDate.of(2013, 10, 11),  LocalDate.of(2014, 1, 30)), 10.seconds)
 
     results.size should be(23)
     results(0) should have (
       'id ("3632243"),
-      'date (LocalDateTime.of(2014, 1, 29, 19, 45, 0, 0)),
+      'date (ZonedDateTime.of(2014, 1, 29, 19, 45, 0, 0, ZoneId.of("Europe/London"))),
       'round (Round("1", Some("League"))),
       'leg ("1"),
       'reportAvailable (true),
