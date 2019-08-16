@@ -22,7 +22,6 @@ resolvers ++= Seq(
    Resolver.typesafeRepo("releases")
 )
 libraryDependencies ++= Seq(
-  "org.feijoas" %% "mango" % "0.14",
   "org.scalatest" %% "scalatest" % "3.0.4" % "test",
   "com.typesafe.play" %% "play-ahc-ws-standalone" % "1.1.3" % "test"
 )

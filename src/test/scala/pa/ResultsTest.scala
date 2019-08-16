@@ -1,6 +1,6 @@
 package pa
 
-import java.time.{LocalDate, LocalDateTime}
+import java.time.{LocalDate, LocalDateTime, ZoneId}
 
 import org.scalatest.{FlatSpec, Matchers, OptionValues}
 
@@ -18,7 +18,7 @@ class ResultsTest extends FlatSpec with Matchers with OptionValues {
     
     result should have (
       'id ("3834731"),
-      'date (LocalDateTime.of(2016, 5, 15, 15, 0, 0, 0)),
+      'date (LocalDateTime.of(2016, 5, 15, 15, 0, 0, 0).atZone(ZoneId.of("Europe/London"))),
       'stage (Stage("1")),
       'round (Round("1", Some("League"))),
       'leg ("1"),

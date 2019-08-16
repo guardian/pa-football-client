@@ -1,6 +1,6 @@
 package pa
 
-import java.time.{LocalDate, LocalDateTime}
+import java.time.{LocalDate, LocalDateTime, ZoneId}
 
 import org.scalatest.{FlatSpec, Matchers}
 
@@ -17,7 +17,7 @@ class TeamResultsTest extends FlatSpec with Matchers {
     results.size should be(23)
     results(0) should have (
       'id ("3632243"),
-      'date (LocalDateTime.of(2014, 1, 29, 19, 45, 0, 0)),
+      'date (LocalDateTime.of(2014, 1, 29, 19, 45, 0, 0).atZone(ZoneId.of("Europe/London"))),
       'round (Round("1", Some("League"))),
       'leg ("1"),
       'reportAvailable (true),
