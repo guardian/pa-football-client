@@ -1,12 +1,12 @@
 package pa
 
 
-import java.time.{LocalDate, ZonedDateTime}
+import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-import Parser._
+import pa.Parser._
 
-import concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ExecutionContext, Future}
 
 object PaClientConfig {
   lazy val baseUrl: String = "https://football.api.press.net/v1.5"

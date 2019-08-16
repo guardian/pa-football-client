@@ -1,10 +1,10 @@
 package pa
 
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers
+import org.scalatest.{FlatSpec, Matchers}
+
 import scala.concurrent.Await
-import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
 
 class MatchInfoTest extends FlatSpec with Matchers {
   "PaClient" should "load matchInfo" in {

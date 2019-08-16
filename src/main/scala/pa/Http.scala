@@ -1,6 +1,6 @@
 package pa
 
-import concurrent.Future
+import scala.concurrent.Future
 
 trait Http {
   def GET(url: String): Future[Response]

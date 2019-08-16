@@ -2,12 +2,11 @@ package pa
 
 import java.time.LocalDate
 
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers
+import org.scalatest.{FlatSpec, Matchers}
 
 import scala.concurrent.Await
-import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
 
 
 class TeamHead2HeadTest extends FlatSpec with Matchers {

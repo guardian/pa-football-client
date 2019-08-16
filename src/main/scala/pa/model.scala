@@ -1,6 +1,6 @@
 package pa
 
-import java.time.{LocalDate, LocalDateTime, ZonedDateTime, ZoneOffset}
+import java.time.{LocalDate, LocalDateTime, ZoneOffset}
 
 import org.feijoas.mango.common.collect.{Range => MangoRange}
 
@@ -117,7 +117,7 @@ case class LeagueTeam(
 
 trait FootballMatch {
   def id: String
-  def date: ZonedDateTime
+  def date: LocalDateTime
   def stage: Stage
   def round: Round
   def leg: String
@@ -129,7 +129,7 @@ trait FootballMatch {
 
 case class Fixture(
    id: String,
-   date: ZonedDateTime,
+   date: LocalDateTime,
    stage: Stage,
    round: Round,
    leg: String,
@@ -142,7 +142,7 @@ case class Fixture(
 
 case class MatchDay(
   id: String,
-  date: ZonedDateTime,
+  date: LocalDateTime,
   competition: Option[Competition],
   stage: Stage,
   round: Round,
@@ -163,7 +163,7 @@ case class MatchDay(
 
 case class Result(
   id: String,
-  date: ZonedDateTime,
+  date: LocalDateTime,
   stage: Stage,
   round: Round,
   leg: String,
@@ -178,7 +178,7 @@ case class Result(
 
 case class LiveMatch(
   id: String,
-  date: ZonedDateTime,
+  date: LocalDateTime,
   stage: Stage,
   round: Round,
   leg: String,
@@ -247,12 +247,12 @@ case class Head2Head(
   def totalDismissals = dismissals.awayCount + dismissals.homeCount
   def totalSubstitutions = substitutions.awayCount + substitutions.homeCount
 }
-case class MatchInfo(id: String, matchDate: ZonedDateTime, description: String)
+case class MatchInfo(id: String, matchDate: LocalDateTime, description: String)
 case class Head2HeadStat(homeCount: Int, homeMatches: List[MatchInfo], awayCount: Int, awayMatches: List[MatchInfo])
 
 case class TeamEventMatch(
   id: String,
-  date: ZonedDateTime,
+  date: LocalDateTime,
   competitionId: String,
   stage: Int,
   round: Int,

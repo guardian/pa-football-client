@@ -1,12 +1,12 @@
 package pa
 
-import java.time.{LocalDate, ZonedDateTime, ZoneId}
+import java.time.{LocalDate, LocalDateTime}
 
 import org.scalatest.{FlatSpec, Matchers, OptionValues}
 
-import concurrent.Await
-import concurrent.duration._
+import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
 
 class MatchDayTest extends FlatSpec with Matchers with OptionValues {
 
@@ -18,7 +18,7 @@ class MatchDayTest extends FlatSpec with Matchers with OptionValues {
     
     matchDay should have(
       'id ("3733674"),
-      'date (ZonedDateTime.of(2014, 8, 23, 17, 30, 0, 0, ZoneId.of("Europe/London"))),
+      'date (LocalDateTime.of(2014, 8, 23, 17, 30, 0, 0)),
       'competition (None),
       'stage (Stage("1")),
       'round (Round("1", Some("League"))),

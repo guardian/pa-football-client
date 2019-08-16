@@ -2,9 +2,9 @@ package pa
 
 import org.scalatest.{FunSuite, Matchers, OptionValues}
 
-import concurrent.Await
-import concurrent.duration._
+import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
 
 
 class FixtureTest extends FunSuite with Matchers with OptionValues {

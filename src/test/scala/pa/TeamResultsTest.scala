@@ -1,13 +1,12 @@
 package pa
 
-import java.time.{LocalDate, ZoneId, ZonedDateTime}
+import java.time.{LocalDate, LocalDateTime}
 
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers
+import org.scalatest.{FlatSpec, Matchers}
 
-import concurrent.Await
-import concurrent.duration._
+import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
 
 
 class TeamResultsTest extends FlatSpec with Matchers {
@@ -18,7 +17,7 @@ class TeamResultsTest extends FlatSpec with Matchers {
     results.size should be(23)
     results(0) should have (
       'id ("3632243"),
-      'date (ZonedDateTime.of(2014, 1, 29, 19, 45, 0, 0, ZoneId.of("Europe/London"))),
+      'date (LocalDateTime.of(2014, 1, 29, 19, 45, 0, 0)),
       'round (Round("1", Some("League"))),
       'leg ("1"),
       'reportAvailable (true),

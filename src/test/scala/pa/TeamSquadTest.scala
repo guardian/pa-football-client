@@ -2,12 +2,11 @@ package pa
 
 import java.time.LocalDate
 
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers
+import org.scalatest.{FlatSpec, Matchers}
 
-import concurrent.Await
-import concurrent.duration._
+import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
 
 class TeamSquadTest extends FlatSpec with Matchers {
   "PaClient" should "load team's squad" in {

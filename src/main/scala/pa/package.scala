@@ -1,6 +1,5 @@
-import xml.NodeSeq
-import language.implicitConversions
-import language.reflectiveCalls
+import scala.language.{implicitConversions, reflectiveCalls}
+import scala.xml.NodeSeq
 
 package object pa{
 

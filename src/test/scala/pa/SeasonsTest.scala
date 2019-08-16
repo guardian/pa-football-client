@@ -3,11 +3,11 @@ package pa
 import java.time.{LocalDate, LocalDateTime, ZoneOffset}
 
 import org.feijoas.mango.common.collect.{Range => MangoRange}
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers
-import concurrent.Await
-import concurrent.duration._
+import org.scalatest.{FlatSpec, Matchers}
+
+import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
 
 
 class SeasonsTest extends FlatSpec with Matchers {
