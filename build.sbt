@@ -16,11 +16,12 @@ bintrayRepository := "frontend"
 
 licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 
-resolvers += Resolver.typesafeRepo("releases")
-
+resolvers ++= Seq(
+  "Sonatype Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
+  "Sonatype Releases" at "http://oss.sonatype.org/content/repositories/releases", 
+   Resolver.typesafeRepo("releases")
+)
 libraryDependencies ++= Seq(
-  "joda-time" % "joda-time" % "2.3",
-  "org.joda" % "joda-convert" % "1.6",
   "org.scalatest" %% "scalatest" % "3.0.4" % "test",
   "com.typesafe.play" %% "play-ahc-ws-standalone" % "1.1.3" % "test"
 )

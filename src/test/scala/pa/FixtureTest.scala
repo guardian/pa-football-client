@@ -2,9 +2,9 @@ package pa
 
 import org.scalatest.{FunSuite, Matchers, OptionValues}
 
-import concurrent.Await
-import concurrent.duration._
+import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
 
 
 class FixtureTest extends FunSuite with Matchers with OptionValues {
@@ -25,13 +25,13 @@ class FixtureTest extends FunSuite with Matchers with OptionValues {
   }
 
   test("Test MatchDay fixture dates") {
-    matchFixtureOne.date.dayOfMonth.get should be (13)
-    matchFixtureOne.date.monthOfYear.get should be (8)
-    matchFixtureOne.date.year.get should be (2016)
+    matchFixtureOne.date.getDayOfMonth should be (13)
+    matchFixtureOne.date.getMonthValue should be (8)
+    matchFixtureOne.date.getYear should be (2016)
 
-    matchFixtureTwo.date.dayOfMonth.get should be (13)
-    matchFixtureTwo.date.monthOfYear.get should be (8)
-    matchFixtureTwo.date.year.get should be (2016)
+    matchFixtureTwo.date.getDayOfMonth should be (13)
+    matchFixtureTwo.date.getMonthValue should be (8)
+    matchFixtureTwo.date.getYear should be (2016)
   }
 
   test("Test MatchDay fixture round") {

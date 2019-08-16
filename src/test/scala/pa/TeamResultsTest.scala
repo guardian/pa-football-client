@@ -1,22 +1,23 @@
 package pa
 
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers
-import org.joda.time.{DateTime, LocalDate}
-import concurrent.Await
-import concurrent.duration._
+import java.time.{LocalDate, LocalDateTime, ZoneId}
+
+import org.scalatest.{FlatSpec, Matchers}
+
+import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
 
 
 class TeamResultsTest extends FlatSpec with Matchers {
 
   "PaClient" should "load team results" in {
-    val results = Await.result(StubClient.teamResults("19", new LocalDate(2013, 10, 11), new DateTime(2014, 1, 30, 19, 45, 0, 0)), 10.seconds)
+    val results = Await.result(StubClient.teamResults("19", LocalDate.of(2013, 10, 11),  LocalDate.of(2014, 1, 30)), 10.seconds)
 
     results.size should be(23)
     results(0) should have (
       'id ("3632243"),
-      'date (new DateTime(2014, 1, 29, 19, 45, 0, 0)),
+      'date (LocalDateTime.of(2014, 1, 29, 19, 45, 0, 0).atZone(ZoneId.of("Europe/London"))),
       'round (Round("1", Some("League"))),
       'leg ("1"),
       'reportAvailable (true),

@@ -1,16 +1,17 @@
 package pa
 
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers
-import org.joda.time.LocalDate
-import concurrent.Await
-import concurrent.duration._
+import java.time.LocalDate
+
+import org.scalatest.{FlatSpec, Matchers}
+
+import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
 
 class LeagueTableTest extends FlatSpec with Matchers{
 
   "PaClient" should "load a League Table" in {
-    val List(first, second) = Await.result(StubClient.leagueTable("100", new LocalDate(2014, 8, 27)), 10.seconds) take 2
+    val List(first, second) = Await.result(StubClient.leagueTable("100", LocalDate.of(2014, 8, 27)), 10.seconds) take 2
 
     first.stageNumber should be("1")
     first.round should be(Round("1", "League"))
@@ -30,7 +31,7 @@ class LeagueTableTest extends FlatSpec with Matchers{
   }
 
   it should "load a League Table with negative Goal Difference" in {
-    val List(entry) = Await.result(StubClient.leagueTable("100", new LocalDate(2014, 8, 28)), 10.seconds) filter (_.team.name == "QPR") take 1
+    val List(entry) = Await.result(StubClient.leagueTable("100", LocalDate.of(2014, 8, 28)), 10.seconds) filter (_.team.name == "QPR") take 1
 
     entry.team.goalDifference should be(-5)
   }

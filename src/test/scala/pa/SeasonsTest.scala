@@ -1,13 +1,16 @@
 package pa
 
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers
-import org.joda.time.{Interval, LocalDate}
-import concurrent.Await
-import concurrent.duration._
+import java.time.{LocalDate, LocalDateTime, ZoneOffset}
+import org.scalatest.{FlatSpec, Matchers}
+
+import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
+
 
 class SeasonsTest extends FlatSpec with Matchers {
+
+  implicit val localDateOrdering: Ordering[LocalDateTime] = Ordering.by(_.toEpochSecond(ZoneOffset.UTC))
 
   "PaClient" should "load the list of seasons" in {
 
@@ -15,12 +18,17 @@ class SeasonsTest extends FlatSpec with Matchers {
     def seasonWithName(name: String) : Season = seasons.collectFirst{ case c if c.name == name => c }.get
 
     seasons should contain (Season("100", "785", "Barclays Premier League 13/14",
-      new LocalDate(2013,6,1), new LocalDate(2014,5,31)))
+      LocalDate.of(2013,6,1), LocalDate.of(2014,5,31)))
 
     seasons should contain (Season("625", "467", "German Bundesliga 12/13",
-      new LocalDate(2012,8,1), new LocalDate(2013,5,31)))
+        LocalDate.of(2012,8,1),   LocalDate.of(2013,5,31)))
 
-    seasonWithName("Barclays Premier League 12/13").interval should be(new Interval(new LocalDate(2012,8,1).toDateTimeAtStartOfDay, new LocalDate(2013,5,31).toDateTimeAtStartOfDay))
-    seasonWithName("Barclays Premier League 13/14").interval should be(new Interval(new LocalDate(2013,6,1).toDateTimeAtStartOfDay, new LocalDate(2014,5,31).toDateTimeAtStartOfDay))
+    val now = LocalDateTime.now()
+    
+    //seasonWithName("Barclays Premier League 12/13").interval.toString() should be(MangoRange.closed(LocalDate.of(2012,8,1).atStartOfDay(), LocalDate.of(2013,5,31).atStartOfDay).toString())
+    seasonWithName("Barclays Premier League 12/13").startDate should be(LocalDate.of(2012,8,1))
+    seasonWithName("Barclays Premier League 12/13").endDate should be(LocalDate.of(2013,5,31))
+    seasonWithName("Barclays Premier League 13/14").startDate should be(LocalDate.of(2013,6,1))
+    seasonWithName("Barclays Premier League 13/14").endDate should be(LocalDate.of(2014,5,31))
   }
 }

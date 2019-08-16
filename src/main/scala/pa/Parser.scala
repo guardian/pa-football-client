@@ -1,11 +1,11 @@
 package pa
 
-import scala.Some
-import xml.{NodeSeq, XML}
-import org.joda.time.format.DateTimeFormat
-import org.joda.time.{DateTimeZone, DateTime}
-import language.reflectiveCalls
-import language.postfixOps
+
+import java.time.format.DateTimeFormatter
+import java.time.{LocalDate, LocalDateTime, ZoneId, ZonedDateTime}
+
+import scala.language.{postfixOps, reflectiveCalls}
+import scala.xml.{NodeSeq, XML}
 
 //There is always a certain amount of ugliness in parsing a feed.
 //keep it all in one place
@@ -14,14 +14,14 @@ object Parser {
   private object Date {
 
     // All feed dates are in UK time
-    private val feedTimezone = DateTimeZone.forID("Europe/London")
+    private val feedTimezone = ZoneId.of("Europe/London")
 
-    private val DateParser = DateTimeFormat.forPattern("dd/MM/yyyy").withZone(feedTimezone)
-    private val DateTimeParser = DateTimeFormat.forPattern("ddd/MM/yyyy HH:mm").withZone(feedTimezone)
+    private val DateParser = DateTimeFormatter.ofPattern("dd/MM/yyyy").withZone(feedTimezone)
+    private val DateTimeParser = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm").withZone(feedTimezone)
 
-    def apply(date: String): DateTime = DateParser.parseDateTime(date)
+    def apply(date: String): LocalDate = LocalDate.parse(date, DateParser)
 
-    def apply(date: String, time: String) = DateTimeParser.parseDateTime("%s %s".format(date, time))
+    def apply(date: String, time: String): ZonedDateTime = ZonedDateTime.parse("%s %s".format(date, time), DateTimeParser)
   }
 
   def parseCompetitions(s: String): List[Season] = (XML.loadString(s) \\ "season") map { season =>
@@ -588,7 +588,7 @@ object Parser {
       fullName    = node \> "fullName",
       height      = node \>> "height",
       weight      = node \>> "weight",
-      dob         = (node \>> "dob").map(Date(_).toLocalDate),
+      dob         = (node \>> "dob").map(Date(_)),
       age         = node \>> "age",
       nationality = node \>> "nationality",
       position    = node \>> "position"

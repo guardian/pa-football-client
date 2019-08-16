@@ -1,16 +1,16 @@
 package pa
 
-import concurrent.{ExecutionContext, ExecutionContextExecutor, Future}
 import java.io.{File, PrintWriter}
 
 import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer
 import play.api.libs.ws.ahc.StandaloneAhcWSClient
 
-import scala.io.Source
-import scala.util.control.NonFatal
 import scala.concurrent.duration._
+import scala.concurrent.{ExecutionContext, ExecutionContextExecutor, Future}
+import scala.io.Source
 import scala.language.postfixOps
+import scala.util.control.NonFatal
 
 object StubClient extends PaClient with Http {
 
@@ -27,7 +27,7 @@ object StubClient extends PaClient with Http {
   def readOrFetch(url: String)(implicit context: ExecutionContext): Future[Response] = {
 
     val filename = s"src/test/resources/data/${url.replaceFirst(base+"/", "")}.xml"
-    val urlWithKey = url.replace("/key", "/_YOUR_API_KEY_HERE")
+    val urlWithKey = url.replace("/key", "/key")
 
     readFromFile(filename).recoverWith {
       case e: Exception =>

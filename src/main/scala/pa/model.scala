@@ -1,11 +1,12 @@
 package pa
 
-import org.joda.time.{Interval, DateTime, LocalDate}
+import java.time.{LocalDate, LocalDateTime, ZoneOffset, ZonedDateTime}
 
 case class Error(message: String)
 
 case class Season(competitionId: String, seasonId: String, name: String, startDate: LocalDate, endDate: LocalDate){
-  lazy val interval: Interval = new Interval(startDate.toDateTimeAtStartOfDay, endDate.toDateTimeAtStartOfDay)
+
+  implicit val localDateOrdering: Ordering[LocalDateTime] = Ordering.by(_.toEpochSecond(ZoneOffset.UTC))
 
   // for backwards-compatibility
   val id = competitionId
@@ -29,8 +30,8 @@ case class MatchEvents(homeTeam: Team, awayTeam: Team, events: List[MatchEvent],
 trait Person {
   val id: String
   val name: String
-}
 
+}
 case class Player(id: String, teamID: String, name: String) extends Person
 
 case class MatchEvent(
@@ -111,7 +112,7 @@ case class LeagueTeam(
 
 trait FootballMatch {
   def id: String
-  def date: DateTime
+  def date: ZonedDateTime
   def stage: Stage
   def round: Round
   def leg: String
@@ -123,7 +124,7 @@ trait FootballMatch {
 
 case class Fixture(
    id: String,
-   date: DateTime,
+   date: ZonedDateTime,
    stage: Stage,
    round: Round,
    leg: String,
@@ -136,7 +137,7 @@ case class Fixture(
 
 case class MatchDay(
   id: String,
-  date: DateTime,
+  date: ZonedDateTime,
   competition: Option[Competition],
   stage: Stage,
   round: Round,
@@ -157,7 +158,7 @@ case class MatchDay(
 
 case class Result(
   id: String,
-  date: DateTime,
+  date: ZonedDateTime,
   stage: Stage,
   round: Round,
   leg: String,
@@ -172,7 +173,7 @@ case class Result(
 
 case class LiveMatch(
   id: String,
-  date: DateTime,
+  date: ZonedDateTime,
   stage: Stage,
   round: Round,
   leg: String,
@@ -241,12 +242,12 @@ case class Head2Head(
   def totalDismissals = dismissals.awayCount + dismissals.homeCount
   def totalSubstitutions = substitutions.awayCount + substitutions.homeCount
 }
-case class MatchInfo(id: String, matchDate: DateTime, description: String)
+case class MatchInfo(id: String, matchDate: ZonedDateTime, description: String)
 case class Head2HeadStat(homeCount: Int, homeMatches: List[MatchInfo], awayCount: Int, awayMatches: List[MatchInfo])
 
 case class TeamEventMatch(
   id: String,
-  date: DateTime,
+  date: ZonedDateTime,
   competitionId: String,
   stage: Int,
   round: Int,

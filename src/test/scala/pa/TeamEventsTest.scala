@@ -1,11 +1,12 @@
 package pa
 
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers
+import java.time.{LocalDate, LocalDateTime, ZoneId}
+
+import org.scalatest.{FlatSpec, Matchers}
+
 import scala.concurrent.Await
-import org.joda.time.{DateTime, LocalDate}
-import concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
 
 
 class TeamEventsTest extends FlatSpec with Matchers {
@@ -15,14 +16,14 @@ class TeamEventsTest extends FlatSpec with Matchers {
   "PaClient" should "load the team events info" in {
 
     val matches = Await.result(
-      StubClient.teamEvents("19", new LocalDate(2013, 10, 11), new LocalDate(2014, 1, 24)),
+      StubClient.teamEvents("19", LocalDate.of(2013, 10, 11), LocalDate.of(2014, 1, 24)),
       10.seconds
     )
 
     val match0 = matches(0)
     match0 should have (
       'id ("3684146"),
-      'date (new DateTime(2014, 1, 19, 13, 30, 0, 0)),
+      'date (LocalDateTime.of(2014, 1, 19, 13, 30, 0, 0).atZone(ZoneId.of("Europe/London"))),
       'competitionId ("100"),
       'stage (1),
       'round (1),

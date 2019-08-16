@@ -1,22 +1,24 @@
 package pa
 
-import org.scalatest.{OptionValues, FlatSpec, Matchers}
-import org.joda.time.{DateTime, LocalDate}
-import concurrent.Await
-import concurrent.duration._
+import java.time.{LocalDate, LocalDateTime, ZoneId}
+
+import org.scalatest.{FlatSpec, Matchers, OptionValues}
+
+import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration._
 
 class ResultsTest extends FlatSpec with Matchers with OptionValues {
 
   "PaClient" should "load results" in {
-    val matches = Await.result(StubClient.results("100", new LocalDate(2016, 4, 1)), 10.seconds)
+    val matches = Await.result(StubClient.results("100", LocalDate.of(2016, 4, 1)), 10.seconds)
 
     matches.size should be(77)
     val result = matches(3)
     
     result should have (
       'id ("3834731"),
-      'date (new DateTime(2016, 5, 15, 15, 0, 0, 0)),
+      'date (LocalDateTime.of(2016, 5, 15, 15, 0, 0, 0).atZone(ZoneId.of("Europe/London"))),
       'stage (Stage("1")),
       'round (Round("1", Some("League"))),
       'leg ("1"),
@@ -51,13 +53,13 @@ class ResultsTest extends FlatSpec with Matchers with OptionValues {
   }
 
   it should "work with an end date" in {
-    val matches = Await.result(StubClient.results("100", new LocalDate(2014, 8, 23), new LocalDate(2014, 9, 1)), 10.seconds)
+    val matches = Await.result(StubClient.results("100", LocalDate.of(2014, 8, 23), LocalDate.of(2014, 9, 1)), 10.seconds)
 
     matches(0).homeTeam.name should be ("Leicester")
   }
 
   it should "get results across all competitions from a start date" in {
-    val results = Await.result(StubClient.results(new LocalDate(2016, 3, 23)), 10.seconds)
+    val results = Await.result(StubClient.results(LocalDate.of(2016, 3, 23)), 10.seconds)
     
     results.size should be (1329)
     
@@ -66,7 +68,7 @@ class ResultsTest extends FlatSpec with Matchers with OptionValues {
   }
   
     it should "get results across all competitions from a start date to an end date" in {
-    val results = Await.result(StubClient.results(new LocalDate(2016, 3, 23), new LocalDate(2016, 5, 23)), 10.seconds)
+    val results = Await.result(StubClient.results(LocalDate.of(2016, 3, 23), LocalDate.of(2016, 5, 23)), 10.seconds)
     
     results.size should be (1224)
     
