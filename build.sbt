@@ -1,6 +1,9 @@
-enablePlugins(GitVersioning)
+import ReleaseTransformations._
 
-scalaVersion := "2.12.4"
+val scala_2_12: String = "2.12.11"
+val scala_2_13: String = "2.13.2"
+
+scalaVersion := scala_2_12
 
 name := "pa-client"
 
@@ -8,34 +11,35 @@ organization := "com.gu"
 
 description := "Scala client for PA football feeds. Only does football data, it has no knowledge of Guardian match reports and such."
 
+crossScalaVersions := Seq(scala_2_12, scala_2_13)
+releaseCrossBuild := true
 publishMavenStyle := true
-
-bintrayOrganization := Some("guardian")
-
-bintrayRepository := "frontend"
-
 licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 
-resolvers ++= Seq(
-  "Sonatype Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
-  "Sonatype Releases" at "http://oss.sonatype.org/content/repositories/releases", 
-   Resolver.typesafeRepo("releases")
-)
-libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.0.4" % "test",
-  "com.typesafe.play" %% "play-ahc-ws-standalone" % "1.1.3" % "test"
-)
+bintrayOrganization := Some("guardian")
+bintrayRepository := "frontend"
 
+
+libraryDependencies ++= Seq(
+  "org.scalatest" %% "scalatest" % "3.0.8" % "test",
+  "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
+  "com.typesafe.play" %% "play-ahc-ws-standalone" % "2.1.2" % "test"
+)
 
 scalacOptions ++= Seq("-feature", "-deprecation")
 
-libraryDependencies := {
-  CrossVersion.partialVersion(scalaVersion.value) match {
-    // if scala 2.11+ is used, add dependency on scala-xml module
-    case Some((2, scalaMajor)) if scalaMajor >= 11 =>
-      libraryDependencies.value ++ Seq(
-        "org.scala-lang.modules" %% "scala-xml" % "1.0.6"
-      )
-    case _ => libraryDependencies.value
-  }
-}
+releasePublishArtifactsAction := PgpKeys.publishSigned.value
+releaseProcess := Seq[ReleaseStep](
+  checkSnapshotDependencies,
+  inquireVersions,
+  runClean,
+  runTest,
+  setReleaseVersion,
+  commitReleaseVersion,
+  tagRelease,
+  publishArtifacts,
+  releaseStepTask(bintrayRelease),
+  setNextVersion,
+  commitNextVersion,
+  pushChanges
+)
