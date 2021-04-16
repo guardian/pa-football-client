@@ -1,25 +1,9 @@
 import ReleaseTransformations._
 
-val scala_2_12: String = "2.12.11"
-val scala_2_13: String = "2.13.2"
+val scala_2_12: String = "2.12.13"
+val scala_2_13: String = "2.13.5"
 
 scalaVersion := scala_2_12
-
-name := "pa-client"
-
-organization := "com.gu"
-
-description := "Scala client for PA football feeds. Only does football data, it has no knowledge of Guardian match reports and such."
-
-crossScalaVersions := Seq(scala_2_12, scala_2_13)
-releaseCrossBuild := true
-publishMavenStyle := true
-licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
-
-bintrayOrganization := Some("guardian")
-bintrayRepository := "frontend"
-
-
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.0.8" % "test",
   "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
@@ -28,7 +12,23 @@ libraryDependencies ++= Seq(
 
 scalacOptions ++= Seq("-feature", "-deprecation")
 
-releasePublishArtifactsAction := PgpKeys.publishSigned.value
+// Required Sonatype fields
+name := "pa-client"
+organization := "com.gu"
+description := "Scala client for PA football feeds. Only does football data, it has no knowledge of Guardian match reports and such."
+licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
+scmInfo := Some(ScmInfo(
+  browseUrl = url("https://github.com/guardian/YOUR_PROJECT"),
+  connection = "scm:git@github.com:guardian/YOUR_PROJECT")
+)
+homepage := scmInfo.value.map(_.browseUrl)
+developers := List(Developer(id = "guardian", name = "Guardian", email = null, url = url("https://github.com/guardian")))
+publishTo := sonatypePublishToBundle.value
+
+crossScalaVersions := Seq(scala_2_12, scala_2_13)
+releaseCrossBuild := true
+publishMavenStyle := true
+
 releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,
   inquireVersions,
@@ -37,9 +37,9 @@ releaseProcess := Seq[ReleaseStep](
   setReleaseVersion,
   commitReleaseVersion,
   tagRelease,
-  publishArtifacts,
-  releaseStepTask(bintrayRelease),
   setNextVersion,
   commitNextVersion,
+  releaseStepCommandAndRemaining("+publishSigned"),
+  releaseStepCommand("sonatypeBundleRelease"),
   pushChanges
 )
