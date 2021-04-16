@@ -18,8 +18,8 @@ organization := "com.gu"
 description := "Scala client for PA football feeds. Only does football data, it has no knowledge of Guardian match reports and such."
 licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 scmInfo := Some(ScmInfo(
-  browseUrl = url("https://github.com/guardian/YOUR_PROJECT"),
-  connection = "scm:git@github.com:guardian/YOUR_PROJECT")
+  browseUrl = url("https://github.com/guardian/pa-football-client"),
+  connection = "scm:git@github.com:guardian/pa-football-client")
 )
 homepage := scmInfo.value.map(_.browseUrl)
 developers := List(Developer(id = "guardian", name = "Guardian", email = null, url = url("https://github.com/guardian")))
