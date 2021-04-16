@@ -2,7 +2,7 @@
 
 A simple scala client for the PA football API.
 
-[ ![Download](https://api.bintray.com/packages/guardian/frontend/pa-client/images/download.svg) ](https://bintray.com/guardian/frontend/pa-client/_latestVersion) 
+[Latest versions here.](https://repo1.maven.org/maven2/com/gu/pa-client_2.12/) 
 
 It merely interacts with the PA feeds, it does not understand Guardian
 Tags and match reports and so on.
@@ -17,7 +17,8 @@ libraryDependencies += "com.gu" % "pa-client" % "<version>"
 
 Versions are published for Scala 2.12 and 2.13.
 
-Note, version prior to 7.0.5 were stored on Bintray and are no longer available.
+Note, versions prior to 7.0.5 were stored on Bintray and are no longer
+available.
 
 ## How to release a new version
 
