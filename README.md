@@ -1,45 +1,33 @@
+# PA Football Client
+
 A simple scala client for the PA football API.
 
 [ ![Download](https://api.bintray.com/packages/guardian/frontend/pa-client/images/download.svg) ](https://bintray.com/guardian/frontend/pa-client/_latestVersion) 
 
-*NOTE*: as of 4.0, Scala 2.9.x is no longer as the client has moved to
-an async model using Scala 2.10.x features.  To get the old 2.9.x
-version see https://github.com/guardian/pa-football-2.9
-*NOTE*: as of 6.0, Scala 2.11 is required
-
 It merely interacts with the PA feeds, it does not understand Guardian
 Tags and match reports and so on.
 
-## Breaking Change
-From version 6.0.0 this library uses `org.joda.time.LocalDate` instead of the [deprecated](https://github.com/JodaOrg/joda-time/issues/81) `org.joda.time.DateMidnight`
-
-Version 5.0.0 still uses `DateMidnight`
-
 ## How to use
 
-Add a resolver to the Bintray Maven repo:
-
-```
-resolvers += "Guardian Frontend Bintray" at "http://dl.bintray.com/guardian/frontend"
-```
-
-and add a dependency:
+Add a dependency:
 
 ```
 libraryDependencies += "com.gu" % "pa-client" % "<version>"
 ```
 
-See the Bintray badge above for the latest published version.
+Versions are published for Scala 2.12 and 2.13.
+
+Note, version prior to 7.0.5 were stored on Bintray and are no longer available.
 
 ## How to release a new version
 
-1. Make sure you have a Bintray account, it's been added to the Guardian org, and it has permission to publish artifacts to the `frontend` Maven repo.
+Make sure you have the latest `main` branch locally. Then run:
 
-2. Run `sbt bintrayChangeCredentials` and fill in your username and API key. They will be stored in a file in your `~/.sbt` folder.
+    $ sbt release
 
-3. Bump version number in [version.sbt](version.sbt)
-
-3. Run `sbt publish`. This will publish to Bintray
+Note, you will need an account on Sonatype and a PGP key to do this. See [this
+doc](https://docs.google.com/document/d/1rNXjoZDqZMsQblOVXPAIIOMWuwUKe3KzTCttuqS7AcY)
+(Guardian only) for information on how to do this.
 
 ## Timezones
 
