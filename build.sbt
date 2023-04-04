@@ -7,7 +7,7 @@ scalaVersion := scala_2_12
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.0.8" % "test",
   "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
-  "com.typesafe.play" %% "play-ahc-ws-standalone" % "2.1.2" % "test"
+  "com.typesafe.play" %% "play-ahc-ws-standalone" % "2.1.10" % "test"
 )
 
 scalacOptions ++= Seq("-feature", "-deprecation")
