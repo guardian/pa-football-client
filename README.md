@@ -2,7 +2,7 @@
 
 A simple scala client for the PA football API.
 
-[Latest versions here.](https://repo1.maven.org/maven2/com/gu/pa-client_2.12/) 
+[![pa-client Scala version support](https://index.scala-lang.org/guardian/pa-football-client/pa-client/latest-by-scala-version.svg?platform=jvm)](https://index.scala-lang.org/guardian/pa-football-client/pa-client)
 
 It merely interacts with the PA feeds, it does not understand Guardian
 Tags and match reports and so on.
