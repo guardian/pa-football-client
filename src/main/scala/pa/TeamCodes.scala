@@ -8,7 +8,7 @@ object TeamCodes {
         case prefix :: rest if skipWords.contains(prefix) => rest.mkString
         case name => name.mkString
       }
-      alteredName.take(3).replaceAllLiterally(" ", "").toUpperCase
+      alteredName.take(3).replace(" ", "").toUpperCase
     }
   }
 

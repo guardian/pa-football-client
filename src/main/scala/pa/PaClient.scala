@@ -153,7 +153,7 @@ trait PaClient { self: Http =>
 
   protected def get(suffix: String)(implicit context: ExecutionContext): Future[String] = GET(base + suffix).map{
     case Response(200, body, _) =>  body
-    case Response(status, _, reason) => throw new PaClientException(status + " " + reason)
+    case Response(status, _, reason) => throw new PaClientException(s"$status $reason")
   }
 
   /*
