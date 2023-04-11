@@ -1,7 +1,7 @@
 import ReleaseTransformations._
 
 val scala_2_12: String = "2.12.17"
-val scala_2_13: String = "2.13.5"
+val scala_2_13: String = "2.13.10"
 
 scalaVersion := scala_2_12
 libraryDependencies ++= Seq(
