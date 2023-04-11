@@ -6,7 +6,7 @@ val scala_2_13: String = "2.13.10"
 scalaVersion := scala_2_12
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.0.9" % "test",
-  "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
+  "org.scala-lang.modules" %% "scala-xml" % "2.1.0",
   "com.typesafe.play" %% "play-ahc-ws-standalone" % "2.1.2" % "test"
 )
 
