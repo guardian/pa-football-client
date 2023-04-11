@@ -2,13 +2,14 @@ package pa
 
 import java.time.LocalDate
 
-import org.scalatest.{FlatSpec, Matchers}
 
 import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class PlayerAppearancesTest extends FlatSpec with Matchers {
+class PlayerAppearancesTest extends AnyFlatSpec with Matchers {
   "PaClient" should "load a player's appearances" in {
     val playerAppearances = Await.result(
       StubClient.appearances("237670", LocalDate.of(2013, 9, 4), LocalDate.of(2014, 2, 4)),

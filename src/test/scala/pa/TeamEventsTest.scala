@@ -2,14 +2,15 @@ package pa
 
 import java.time.{LocalDate, LocalDateTime, ZoneId}
 
-import org.scalatest.{FlatSpec, Matchers}
 
 import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
 
-class TeamEventsTest extends FlatSpec with Matchers {
+class TeamEventsTest extends AnyFlatSpec with Matchers {
 
   private val spurs = Team("19", "Tottenham Hotspur")
   private val swansea = Team("65", "Swansea")

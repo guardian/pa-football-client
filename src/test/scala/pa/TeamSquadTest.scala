@@ -2,13 +2,14 @@ package pa
 
 import java.time.LocalDate
 
-import org.scalatest.{FlatSpec, Matchers}
 
 import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class TeamSquadTest extends FlatSpec with Matchers {
+class TeamSquadTest extends AnyFlatSpec with Matchers {
   "PaClient" should "load team's squad" in {
     val squadMembers = Await.result(
       StubClient.squad("4"),
