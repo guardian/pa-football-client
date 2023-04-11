@@ -17,25 +17,25 @@ class PlayerAppearancesTest extends FlatSpec with Matchers {
 
     playerAppearances.playerName should equal ("Emmanuel Adebayor")
     playerAppearances.home should have (
-      'appearances (5),
-      'started (5),
-      'substitutedOn (0),
-      'substitutedOff (2),
-      'dismissals (0)
+      Symbol("appearances") (5),
+      Symbol("started") (5),
+      Symbol("substitutedOn") (0),
+      Symbol("substitutedOff") (2),
+      Symbol("dismissals") (0)
     )
     playerAppearances.away should have (
-      'appearances (6),
-      'started (5),
-      'substitutedOn (1),
-      'substitutedOff (2),
-      'dismissals (0)
+      Symbol("appearances") (6),
+      Symbol("started") (5),
+      Symbol("substitutedOn") (1),
+      Symbol("substitutedOff") (2),
+      Symbol("dismissals") (0)
     )
     playerAppearances.total should have (
-      'appearances (11),
-      'started (10),
-      'substitutedOn (1),
-      'substitutedOff (4),
-      'dismissals (0)
+      Symbol("appearances") (11),
+      Symbol("started") (10),
+      Symbol("substitutedOn") (1),
+      Symbol("substitutedOff") (4),
+      Symbol("dismissals") (0)
     )
   }
 
@@ -47,25 +47,25 @@ class PlayerAppearancesTest extends FlatSpec with Matchers {
 
     playerAppearances.playerName should equal ("Emmanuel Adebayor")
     playerAppearances.home should have (
-      'appearances (5),
-      'started (5),
-      'substitutedOn (0),
-      'substitutedOff (2),
-      'dismissals (0)
+      Symbol("appearances") (5),
+      Symbol("started") (5),
+      Symbol("substitutedOn") (0),
+      Symbol("substitutedOff") (2),
+      Symbol("dismissals") (0)
     )
     playerAppearances.away should have (
-      'appearances (6),
-      'started (5),
-      'substitutedOn (1),
-      'substitutedOff (2),
-      'dismissals (0)
+      Symbol("appearances") (6),
+      Symbol("started") (5),
+      Symbol("substitutedOn") (1),
+      Symbol("substitutedOff") (2),
+      Symbol("dismissals") (0)
     )
     playerAppearances.total should have (
-      'appearances (11),
-      'started (10),
-      'substitutedOn (1),
-      'substitutedOff (4),
-      'dismissals (0)
+      Symbol("appearances") (11),
+      Symbol("started") (10),
+      Symbol("substitutedOn") (1),
+      Symbol("substitutedOff") (4),
+      Symbol("dismissals") (0)
     )
   }
 
@@ -77,25 +77,25 @@ class PlayerAppearancesTest extends FlatSpec with Matchers {
 
     playerAppearances.playerName should equal ("Emmanuel Adebayor")
     playerAppearances.home should have (
-      'appearances (4),
-      'started (4),
-      'substitutedOn (0),
-      'substitutedOff (1),
-      'dismissals (0)
+      Symbol("appearances") (4),
+      Symbol("started") (4),
+      Symbol("substitutedOn") (0),
+      Symbol("substitutedOff") (1),
+      Symbol("dismissals") (0)
     )
     playerAppearances.away should have (
-      'appearances (5),
-      'started (4),
-      'substitutedOn (1),
-      'substitutedOff (2),
-      'dismissals (0)
+      Symbol("appearances") (5),
+      Symbol("started") (4),
+      Symbol("substitutedOn") (1),
+      Symbol("substitutedOff") (2),
+      Symbol("dismissals") (0)
     )
     playerAppearances.total should have (
-      'appearances (9),
-      'started (8),
-      'substitutedOn (1),
-      'substitutedOff (3),
-      'dismissals (0)
+      Symbol("appearances") (9),
+      Symbol("started") (8),
+      Symbol("substitutedOn") (1),
+      Symbol("substitutedOff") (3),
+      Symbol("dismissals") (0)
     )
   }
 }

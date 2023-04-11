@@ -22,36 +22,36 @@ class TeamEventsTest extends FlatSpec with Matchers {
 
     val match0 = matches(0)
     match0 should have (
-      'id ("3684146"),
-      'date (LocalDateTime.of(2014, 1, 19, 13, 30, 0, 0).atZone(ZoneId.of("Europe/London"))),
-      'competitionId ("100"),
-      'stage (1),
-      'round (1),
-      'leg (1)
+      Symbol("id") ("3684146"),
+      Symbol("date") (LocalDateTime.of(2014, 1, 19, 13, 30, 0, 0).atZone(ZoneId.of("Europe/London"))),
+      Symbol("competitionId") ("100"),
+      Symbol("stage") (1),
+      Symbol("round") (1),
+      Symbol("leg") (1)
     )
     match0.homeTeam should have (
-      'id ("65"),
-      'name ("Swansea"),
-      'score (1),
-      'htScore (0),
-      'aggregateScore (None)
+      Symbol("id") ("65"),
+      Symbol("name") ("Swansea"),
+      Symbol("score") (1),
+      Symbol("htScore") (0),
+      Symbol("aggregateScore") (None)
     )
     match0.awayTeam should have (
-      'id ("19"),
-      'name ("Tottenham Hotspur"),
-      'score (3),
-      'htScore (1),
-      'aggregateScore (None)
+      Symbol("id") ("19"),
+      Symbol("name") ("Tottenham Hotspur"),
+      Symbol("score") (3),
+      Symbol("htScore") (1),
+      Symbol("aggregateScore") (None)
     )
     val events0 = match0.events
 
     events0.bookings should have length 3
     val booking0 = events0.bookings(0)
     booking0 should have (
-      'eventId ("18670657"),
-      'normalTime ("48:31"),
-      'addedTime ("0:00"),
-      'reason ("Unsporting behaviour")
+      Symbol("eventId") ("18670657"),
+      Symbol("normalTime") ("48:31"),
+      Symbol("addedTime") ("0:00"),
+      Symbol("reason") ("Unsporting behaviour")
     )
     booking0.team should equal (swansea)
     booking0.player should equal(Player("428189", "65", "Jordi Amat"))
@@ -60,14 +60,14 @@ class TeamEventsTest extends FlatSpec with Matchers {
     events0.goals should have length 4
     val goal0 = events0.goals(0)
     goal0 should have (
-      'eventId ("18670511"),
-      'normalTime ("34:24"),
-      'addedTime ("0:00"),
-      'ownGoal (false),
-      'how (Some("Head")),
-      'whereFrom (Some("Centre 6 Yard")),
-      'whereTo (Some("Left Low")),
-      'distanceInYards (None)
+      Symbol("eventId") ("18670511"),
+      Symbol("normalTime") ("34:24"),
+      Symbol("addedTime") ("0:00"),
+      Symbol("ownGoal") (false),
+      Symbol("how") (Some("Head")),
+      Symbol("whereFrom") (Some("Centre 6 Yard")),
+      Symbol("whereTo") (Some("Left Low")),
+      Symbol("distanceInYards") (None)
     )
     goal0.team should equal (spurs)
     goal0.player should equal(Player("237670", "19", "Emmanuel Adebayor"))
@@ -75,10 +75,10 @@ class TeamEventsTest extends FlatSpec with Matchers {
     events0.substitutions should have length 3
     val sub0 = events0.substitutions(0)
     sub0 should have (
-      'eventId ("18670659"),
-      'normalTime ("50:15"),
-      'addedTime ("0:00"),
-      'reason (Some("Injury"))
+      Symbol("eventId") ("18670659"),
+      Symbol("normalTime") ("50:15"),
+      Symbol("addedTime") ("0:00"),
+      Symbol("reason") (Some("Injury"))
     )
     sub0.team should equal (swansea)
     sub0.playerOff should equal (Player("389451", "65", "Jonjo Shelvey"))
@@ -90,36 +90,36 @@ class TeamEventsTest extends FlatSpec with Matchers {
 
     matches(1).events.penalties should have length 1
     matches(1).events.penalties(0) should have (
-      'eventId ("18624801"),
-      'normalTime ("7:48"),
-      'addedTime ("0:00"),
-      'how (Some("Left Foot")),
-      'keeperCorrect (Some(false)),
-      'outcome ("Missed"),
-      'type (None),
-      'whereTo (None)
+      Symbol("eventId") ("18624801"),
+      Symbol("normalTime") ("7:48"),
+      Symbol("addedTime") ("0:00"),
+      Symbol("how") (Some("Left Foot")),
+      Symbol("keeperCorrect") (Some(false)),
+      Symbol("outcome") ("Missed"),
+      Symbol("type") (None),
+      Symbol("whereTo") (None)
     )
     matches(1).events.penalties(0).team should equal(Team("5", "Crystal Palace"))
     matches(1).events.penalties(0).player should equal(Player("291350", "5", "Jason Puncheon"))
 
     matches(8).events.dismissals should have length 1
     matches(8).events.dismissals(0) should have (
-      'eventId ("18513360"),
-      'normalTime ("62:42"),
-      'addedTime ("0:00"),
-      'reason ("Serious Foul Play")
+      Symbol("eventId") ("18513360"),
+      Symbol("normalTime") ("62:42"),
+      Symbol("addedTime") ("0:00"),
+      Symbol("reason") ("Serious Foul Play")
     )
     matches(8).events.dismissals(0).team should equal(spurs)
     matches(8).events.dismissals(0).player should equal(Player("362826", "19", "Jose Paulo Paulinho"))
 
     matches(18).events.shootoutPenalties should have length 18
     matches(18).events.shootoutPenalties(0) should have(
-      'eventId ("18265079"),
-      'how (Some("Right Foot")),
-      'keeperCorrect (Some(false)),
-      'outcome (Some("Scored")),
-      'type (None),
-      'whereTo (Some("Left Low"))
+      Symbol("eventId") ("18265079"),
+      Symbol("how") (Some("Right Foot")),
+      Symbol("keeperCorrect") (Some(false)),
+      Symbol("outcome") (Some("Scored")),
+      Symbol("type") (None),
+      Symbol("whereTo") (Some("Left Low"))
     )
     matches(18).events.shootoutPenalties(0).team should equal(spurs)
     matches(18).events.shootoutPenalties(0).player should equal(Player("376065", "19", "Gylfi Sigurdsson"))

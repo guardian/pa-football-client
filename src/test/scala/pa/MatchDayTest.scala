@@ -17,44 +17,44 @@ class MatchDayTest extends FlatSpec with Matchers with OptionValues {
     val matchDay = matches(5)
     
     matchDay should have(
-      'id ("3733674"),
-      'date (LocalDateTime.of(2014, 8, 23, 17, 30, 0, 0).atZone(ZoneId.of("Europe/London"))),
-      'competition (None),
-      'stage (Stage("1")),
-      'round (Round("1", Some("League"))),
-      'leg ("1"),
-      'liveMatch (false),
-      'result (true),
-      'previewAvailable (true),
-      'reportAvailable (true),
-      'lineupsAvailable (true),
-      'matchStatus ("FT"),
-      'attendance (Some("39490")),
-      'comments (None)
+      Symbol("id") ("3733674"),
+      Symbol("date") (LocalDateTime.of(2014, 8, 23, 17, 30, 0, 0).atZone(ZoneId.of("Europe/London"))),
+      Symbol("competition") (None),
+      Symbol("stage") (Stage("1")),
+      Symbol("round") (Round("1", Some("League"))),
+      Symbol("leg") ("1"),
+      Symbol("liveMatch") (false),
+      Symbol("result") (true),
+      Symbol("previewAvailable") (true),
+      Symbol("reportAvailable") (true),
+      Symbol("lineupsAvailable") (true),
+      Symbol("matchStatus") ("FT"),
+      Symbol("attendance") (Some("39490")),
+      Symbol("comments") (None)
     )
     matchDay.homeTeam should have (
-      'id ("8"),
-      'name ("Everton"),
-      'score (Some(2)),
-      'htScore (Some(2)),
-      'aggregateScore (None),
-      'scorers (Some("Seamus Coleman (19),Steven Naismith (45)"))
+      Symbol("id") ("8"),
+      Symbol("name") ("Everton"),
+      Symbol("score") (Some(2)),
+      Symbol("htScore") (Some(2)),
+      Symbol("aggregateScore") (None),
+      Symbol("scorers") (Some("Seamus Coleman (19),Steven Naismith (45)"))
     )
     matchDay.awayTeam should have (
-      'id ("1006"),
-      'name ("Arsenal"),
-      'score (Some(2)),
-      'htScore (Some(0)),
-      'aggregateScore (None),
-      'scorers (Some("Aaron Ramsey (83),Olivier Giroud (90)"))
+      Symbol("id") ("1006"),
+      Symbol("name") ("Arsenal"),
+      Symbol("score") (Some(2)),
+      Symbol("htScore") (Some(0)),
+      Symbol("aggregateScore") (None),
+      Symbol("scorers") (Some("Aaron Ramsey (83),Olivier Giroud (90)"))
     )
     matchDay.referee.value should have (
-      'id ("233470"),
-      'name ("Kevin Friend")
+      Symbol("id") ("233470"),
+      Symbol("name") ("Kevin Friend")
     )
     matchDay.venue.value should have (
-      'id ("71"),
-      'name ("Goodison Park")
+      Symbol("id") ("71"),
+      Symbol("name") ("Goodison Park")
     )
   }
 

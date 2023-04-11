@@ -17,12 +17,12 @@ class PlayerHead2HeadTest extends FlatSpec with Matchers {
     )
 
     player1h2h should have (
-      'id ("250968"),
-      'name ("Fernando Torres"),
-      'totalGoals (3),
-      'totalBookings (0),
-      'totalDismissals (0),
-      'totalSubstitutions (9)
+      Symbol("id") ("250968"),
+      Symbol("name") ("Fernando Torres"),
+      Symbol("totalGoals") (3),
+      Symbol("totalBookings") (0),
+      Symbol("totalDismissals") (0),
+      Symbol("totalSubstitutions") (9)
     )
     player1h2h.goals.homeCount should equal(1)
     player1h2h.goals.awayCount should equal(2)
@@ -32,12 +32,12 @@ class PlayerHead2HeadTest extends FlatSpec with Matchers {
     player1h2h.substitutions.awayMatches.map(_.id) should equal(List("3690792", "3679046", "3631620", "3643939", "3667022"))
 
     player2h2h should have (
-      'id ("355256"),
-      'name ("Demba Ba"),
-      'totalGoals (3),
-      'totalBookings (0),
-      'totalDismissals (0),
-      'totalSubstitutions (11)
+      Symbol("id") ("355256"),
+      Symbol("name") ("Demba Ba"),
+      Symbol("totalGoals") (3),
+      Symbol("totalBookings") (0),
+      Symbol("totalDismissals") (0),
+      Symbol("totalSubstitutions") (11)
     )
     player2h2h.substitutions.homeCount should equal(6)
     player2h2h.substitutions.awayCount should equal(5)
@@ -50,20 +50,20 @@ class PlayerHead2HeadTest extends FlatSpec with Matchers {
     )
 
     team1 should have (
-      'id ("300448"),
-      'name ("Abou Diaby"),
-      'totalGoals (0),
-      'totalBookings (0),
-      'totalDismissals (0),
-      'totalSubstitutions (0)
+      Symbol("id") ("300448"),
+      Symbol("name") ("Abou Diaby"),
+      Symbol("totalGoals") (0),
+      Symbol("totalBookings") (0),
+      Symbol("totalDismissals") (0),
+      Symbol("totalSubstitutions") (0)
     )
     team2 should have (
-      'id ("494151"),
-      'name ("Adnan Januzaj"),
-      'totalGoals (1),
-      'totalBookings (3),
-      'totalDismissals (0),
-      'totalSubstitutions (7)
+      Symbol("id") ("494151"),
+      Symbol("name") ("Adnan Januzaj"),
+      Symbol("totalGoals") (1),
+      Symbol("totalBookings") (3),
+      Symbol("totalDismissals") (0),
+      Symbol("totalSubstitutions") (7)
     )
   }
 }

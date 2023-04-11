@@ -17,12 +17,12 @@ class CompetitionTeamsTest extends FlatSpec with Matchers {
 
     teams should have length 20
     teams(1) should have (
-      'id ("1006"),
-      'name ("Arsenal")
+      Symbol("id") ("1006"),
+      Symbol("name") ("Arsenal")
     )
     teams(6) should have (
-      'id ("29"),
-      'name ("Leicester")
+      Symbol("id") ("29"),
+      Symbol("name") ("Leicester")
     )
   }
 }
