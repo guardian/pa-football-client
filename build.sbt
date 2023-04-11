@@ -1,11 +1,11 @@
 import ReleaseTransformations._
 
-val scala_2_12: String = "2.12.13"
-val scala_2_13: String = "2.13.5"
+val scala_2_12: String = "2.12.17"
+val scala_2_13: String = "2.13.10"
 
 scalaVersion := scala_2_12
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.0.8" % "test",
+  "org.scalatest" %% "scalatest" % "3.0.9" % "test",
   "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
   "com.typesafe.play" %% "play-ahc-ws-standalone" % "2.1.2" % "test"
 )
