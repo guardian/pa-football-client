@@ -17,38 +17,38 @@ class ResultsTest extends FlatSpec with Matchers with OptionValues {
     val result = matches(3)
     
     result should have (
-      'id ("3834731"),
-      'date (LocalDateTime.of(2016, 5, 15, 15, 0, 0, 0).atZone(ZoneId.of("Europe/London"))),
-      'stage (Stage("1")),
-      'round (Round("1", Some("League"))),
-      'leg ("1"),
-      'reportAvailable (true),
-      'attendance (Some("36691")),
-      'comments (None)
+      Symbol("id") ("3834731"),
+      Symbol("date") (LocalDateTime.of(2016, 5, 15, 15, 0, 0, 0).atZone(ZoneId.of("Europe/London"))),
+      Symbol("stage") (Stage("1")),
+      Symbol("round") (Round("1", Some("League"))),
+      Symbol("leg") ("1"),
+      Symbol("reportAvailable") (true),
+      Symbol("attendance") (Some("36691")),
+      Symbol("comments") (None)
     )
     result.homeTeam should have (
-      'id ("8"),
-      'name ("Everton"),
-      'score (Some(3)),
-      'htScore (Some(2)),
-      'aggregateScore (None),
-      'scorers (Some("James McCarthy (19),Leighton Baines (44 Pen),Kevin Mirallas (48)"))
+      Symbol("id") ("8"),
+      Symbol("name") ("Everton"),
+      Symbol("score") (Some(3)),
+      Symbol("htScore") (Some(2)),
+      Symbol("aggregateScore") (None),
+      Symbol("scorers") (Some("James McCarthy (19),Leighton Baines (44 Pen),Kevin Mirallas (48)"))
     )
     result.awayTeam should have (
-      'id ("14"),
-      'name ("Norwich"),
-      'score (Some(0)),
-      'htScore (Some(0)),
-      'aggregateScore (None),
-      'scorers (None)
+      Symbol("id") ("14"),
+      Symbol("name") ("Norwich"),
+      Symbol("score") (Some(0)),
+      Symbol("htScore") (Some(0)),
+      Symbol("aggregateScore") (None),
+      Symbol("scorers") (None)
     )
     result.referee.value should have (
-      'id ("182780"),
-      'name ("Lee Mason")
+      Symbol("id") ("182780"),
+      Symbol("name") ("Lee Mason")
     )
     result.venue.value should have (
-      'id ("71"),
-      'name ("Goodison Park")
+      Symbol("id") ("71"),
+      Symbol("name") ("Goodison Park")
     )
   }
 

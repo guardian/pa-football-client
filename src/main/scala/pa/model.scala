@@ -401,10 +401,10 @@ case class PlayerStatsSummaryOffense(
   shotsOnTarget: Stat,
   throwIns: Stat
 ) {
-  private def percentage(n: Float, m: Float): Int = {
+  private def percentage(n: Int, m: Int): Int = {
     if (0 == n) 0
     else if (0 == n + m) 100
-    else Math.round((n / (n + m)) * 100)
+    else Math.round((n.toFloat / (n + m)) * 100)
   }
 
   val shotsOnTargetPercentage = new Stat(

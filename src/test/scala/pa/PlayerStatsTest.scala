@@ -16,41 +16,41 @@ class PlayerStatsTest extends FlatSpec with Matchers {
       10.seconds
     )
 
-    playerStats.offence.assists should have ('home (1), 'away(0), 'total (1), 'statDescription ("Assists"), 'statTypeId ("234"))
-    playerStats.offence.corners should have ('home (0), 'away(0), 'total (0), 'statDescription ("Corners"), 'statTypeId ("190"))
-    playerStats.offence.crosses should have ('home (7), 'away(3), 'total (10), 'statDescription ("Crosses"), 'statTypeId ("148"))
-    playerStats.offence.freeKicks should have ('home (1), 'away(0), 'total (1), 'statDescription ("Free Kicks"), 'statTypeId ("159"))
-    playerStats.offence.goals should have ('home (1), 'away(5), 'total (6), 'statDescription ("Goals"), 'statTypeId ("78"))
-    playerStats.offence.penalties should have ('home (0), 'away(0), 'total (0), 'statDescription ("Penalties"), 'statTypeId ("46"))
-    playerStats.offence.shotsOffTarget should have ('home (7), 'away(5), 'total (12), 'statDescription ("Shots Off Target"), 'statTypeId ("164"))
-    playerStats.offence.shotsOnTarget should have ('home (1), 'away(10), 'total (11), 'statDescription ("Shots On Target"), 'statTypeId ("214"))
-    playerStats.offence.throwIns should have ('home (2), 'away(1), 'total (3), 'statDescription ("Throw Ins"), 'statTypeId ("144"))
+    playerStats.offence.assists should have (Symbol("home") (1), Symbol("away")(0), Symbol("total") (1), Symbol("statDescription") ("Assists"), Symbol("statTypeId") ("234"))
+    playerStats.offence.corners should have (Symbol("home") (0), Symbol("away")(0), Symbol("total") (0), Symbol("statDescription") ("Corners"), Symbol("statTypeId") ("190"))
+    playerStats.offence.crosses should have (Symbol("home") (7), Symbol("away")(3), Symbol("total") (10), Symbol("statDescription") ("Crosses"), Symbol("statTypeId") ("148"))
+    playerStats.offence.freeKicks should have (Symbol("home") (1), Symbol("away")(0), Symbol("total") (1), Symbol("statDescription") ("Free Kicks"), Symbol("statTypeId") ("159"))
+    playerStats.offence.goals should have (Symbol("home") (1), Symbol("away")(5), Symbol("total") (6), Symbol("statDescription") ("Goals"), Symbol("statTypeId") ("78"))
+    playerStats.offence.penalties should have (Symbol("home") (0), Symbol("away")(0), Symbol("total") (0), Symbol("statDescription") ("Penalties"), Symbol("statTypeId") ("46"))
+    playerStats.offence.shotsOffTarget should have (Symbol("home") (7), Symbol("away")(5), Symbol("total") (12), Symbol("statDescription") ("Shots Off Target"), Symbol("statTypeId") ("164"))
+    playerStats.offence.shotsOnTarget should have (Symbol("home") (1), Symbol("away")(10), Symbol("total") (11), Symbol("statDescription") ("Shots On Target"), Symbol("statTypeId") ("214"))
+    playerStats.offence.throwIns should have (Symbol("home") (2), Symbol("away")(1), Symbol("total") (3), Symbol("statDescription") ("Throw Ins"), Symbol("statTypeId") ("144"))
 
     playerStats.offence.shotsOnTargetPercentage.home should equal(13)
     playerStats.offence.shotsOnTargetPercentage.away should equal(67)
     playerStats.offence.shotsOnTargetPercentage.total should equal(48)
 
-    playerStats.defence.backPasses should have ('home (0), 'away(0), 'total (0), 'statDescription ("Back Passes"), 'statTypeId ("264"))
-    playerStats.defence.blocks should have ('home (0), 'away(0), 'total (0), 'statDescription ("Blocks"), 'statTypeId ("212"))
-    playerStats.defence.clearances should have ('home (2), 'away(7), 'total (9), 'statDescription ("Clearances"), 'statTypeId ("181"))
-    playerStats.defence.goalKicks should have ('home (0), 'away(0), 'total (0), 'statDescription ("Goal Kicks"), 'statTypeId ("153"))
-    playerStats.defence.goalsAgainst should have ('home (5), 'away(1), 'total (6), 'statDescription ("Goals Against"), 'statTypeId ("597"))
-    playerStats.defence.ownGoals should have ('home (0), 'away(0), 'total (0), 'statDescription ("Own Goals"), 'statTypeId ("102"))
-    playerStats.defence.ownGoalsFor should have ('home (0), 'away(0), 'total (0), 'statDescription ("Own Goals For"), 'statTypeId ("596"))
-    playerStats.defence.saves should have ('home (0), 'away(0), 'total (0), 'statDescription ("Saves"), 'statTypeId ("151"))
+    playerStats.defence.backPasses should have (Symbol("home") (0), Symbol("away")(0), Symbol("total") (0), Symbol("statDescription") ("Back Passes"), Symbol("statTypeId") ("264"))
+    playerStats.defence.blocks should have (Symbol("home") (0), Symbol("away")(0), Symbol("total") (0), Symbol("statDescription") ("Blocks"), Symbol("statTypeId") ("212"))
+    playerStats.defence.clearances should have (Symbol("home") (2), Symbol("away")(7), Symbol("total") (9), Symbol("statDescription") ("Clearances"), Symbol("statTypeId") ("181"))
+    playerStats.defence.goalKicks should have (Symbol("home") (0), Symbol("away")(0), Symbol("total") (0), Symbol("statDescription") ("Goal Kicks"), Symbol("statTypeId") ("153"))
+    playerStats.defence.goalsAgainst should have (Symbol("home") (5), Symbol("away")(1), Symbol("total") (6), Symbol("statDescription") ("Goals Against"), Symbol("statTypeId") ("597"))
+    playerStats.defence.ownGoals should have (Symbol("home") (0), Symbol("away")(0), Symbol("total") (0), Symbol("statDescription") ("Own Goals"), Symbol("statTypeId") ("102"))
+    playerStats.defence.ownGoalsFor should have (Symbol("home") (0), Symbol("away")(0), Symbol("total") (0), Symbol("statDescription") ("Own Goals For"), Symbol("statTypeId") ("596"))
+    playerStats.defence.saves should have (Symbol("home") (0), Symbol("away")(0), Symbol("total") (0), Symbol("statDescription") ("Saves"), Symbol("statTypeId") ("151"))
 
-    playerStats.discipline.bookings should have ('home (1), 'away(0), 'total (1), 'statDescription ("Bookings"), 'statTypeId ("37"))
-    playerStats.discipline.dismissals should have ('home (0), 'away(0), 'total (0), 'statDescription ("Dismissals"), 'statTypeId ("29"))
-    playerStats.discipline.foulsAgainst should have ('home (3), 'away(3), 'total (6), 'statDescription ("Fouls Against"), 'statTypeId ("173"))
-    playerStats.discipline.foulsCommitted should have ('home (7), 'away(7), 'total (14), 'statDescription ("Fouls Committed"), 'statTypeId ("170"))
-    playerStats.discipline.handBalls should have ('home (1), 'away(0), 'total (1), 'statDescription ("Hand Balls"), 'statTypeId ("255"))
-    playerStats.discipline.offsides should have ('home (5), 'away(10), 'total (15), 'statDescription ("Offsides"), 'statTypeId ("156"))
-    playerStats.discipline.tenYards should have ('home (0), 'away(0), 'total (0), 'statDescription ("Ten Yards"), 'statTypeId ("273"))
+    playerStats.discipline.bookings should have (Symbol("home") (1), Symbol("away")(0), Symbol("total") (1), Symbol("statDescription") ("Bookings"), Symbol("statTypeId") ("37"))
+    playerStats.discipline.dismissals should have (Symbol("home") (0), Symbol("away")(0), Symbol("total") (0), Symbol("statDescription") ("Dismissals"), Symbol("statTypeId") ("29"))
+    playerStats.discipline.foulsAgainst should have (Symbol("home") (3), Symbol("away")(3), Symbol("total") (6), Symbol("statDescription") ("Fouls Against"), Symbol("statTypeId") ("173"))
+    playerStats.discipline.foulsCommitted should have (Symbol("home") (7), Symbol("away")(7), Symbol("total") (14), Symbol("statDescription") ("Fouls Committed"), Symbol("statTypeId") ("170"))
+    playerStats.discipline.handBalls should have (Symbol("home") (1), Symbol("away")(0), Symbol("total") (1), Symbol("statDescription") ("Hand Balls"), Symbol("statTypeId") ("255"))
+    playerStats.discipline.offsides should have (Symbol("home") (5), Symbol("away")(10), Symbol("total") (15), Symbol("statDescription") ("Offsides"), Symbol("statTypeId") ("156"))
+    playerStats.discipline.tenYards should have (Symbol("home") (0), Symbol("away")(0), Symbol("total") (0), Symbol("statDescription") ("Ten Yards"), Symbol("statTypeId") ("273"))
 
-    playerStats.substitutionsOff should have ('home (2), 'away(2), 'total (4), 'statDescription ("Substitutions Off"), 'statTypeId ("72"))
-    playerStats.substitutionsOn should have ('home (0), 'away(1), 'total (1), 'statDescription ("Substitutions On"), 'statTypeId ("70"))
-    playerStats.totalGoalsAgainst should have ('home (5), 'away(1), 'total (6), 'statDescription ("Total Goals Against"), 'statTypeId ("599"))
-    playerStats.totalGoalsFor should have ('home (1), 'away(5), 'total (6), 'statDescription ("Total Goals For"), 'statTypeId ("598"))
+    playerStats.substitutionsOff should have (Symbol("home") (2), Symbol("away")(2), Symbol("total") (4), Symbol("statDescription") ("Substitutions Off"), Symbol("statTypeId") ("72"))
+    playerStats.substitutionsOn should have (Symbol("home") (0), Symbol("away")(1), Symbol("total") (1), Symbol("statDescription") ("Substitutions On"), Symbol("statTypeId") ("70"))
+    playerStats.totalGoalsAgainst should have (Symbol("home") (5), Symbol("away")(1), Symbol("total") (6), Symbol("statDescription") ("Total Goals Against"), Symbol("statTypeId") ("599"))
+    playerStats.totalGoalsFor should have (Symbol("home") (1), Symbol("away")(5), Symbol("total") (6), Symbol("statDescription") ("Total Goals For"), Symbol("statTypeId") ("598"))
   }
 
   "PaClient" should "load player stats for the given team" in {
@@ -59,10 +59,10 @@ class PlayerStatsTest extends FlatSpec with Matchers {
       10.seconds
     )
 
-    playerStats.offence.crosses should have ('home (7), 'away(3), 'total (10), 'statDescription ("Crosses"), 'statTypeId ("148"))
-    playerStats.defence.clearances should have ('home (2), 'away(7), 'total (9), 'statDescription ("Clearances"), 'statTypeId ("181"))
-    playerStats.discipline.bookings should have ('home (1), 'away(0), 'total (1), 'statDescription ("Bookings"), 'statTypeId ("37"))
-    playerStats.substitutionsOff should have ('home (2), 'away(2), 'total (4), 'statDescription ("Substitutions Off"), 'statTypeId ("72"))
+    playerStats.offence.crosses should have (Symbol("home") (7), Symbol("away")(3), Symbol("total") (10), Symbol("statDescription") ("Crosses"), Symbol("statTypeId") ("148"))
+    playerStats.defence.clearances should have (Symbol("home") (2), Symbol("away")(7), Symbol("total") (9), Symbol("statDescription") ("Clearances"), Symbol("statTypeId") ("181"))
+    playerStats.discipline.bookings should have (Symbol("home") (1), Symbol("away")(0), Symbol("total") (1), Symbol("statDescription") ("Bookings"), Symbol("statTypeId") ("37"))
+    playerStats.substitutionsOff should have (Symbol("home") (2), Symbol("away")(2), Symbol("total") (4), Symbol("statDescription") ("Substitutions Off"), Symbol("statTypeId") ("72"))
   }
 
   "PaClient" should "load player stats for the given team and competition" in {
@@ -71,9 +71,9 @@ class PlayerStatsTest extends FlatSpec with Matchers {
       10.seconds
     )
 
-    playerStats.offence.crosses should have ('home (3), 'away(3), 'total (6), 'statDescription ("Crosses"), 'statTypeId ("148"))
-    playerStats.defence.backPasses should have ('home (0), 'away(0), 'total (0), 'statDescription ("Back Passes"), 'statTypeId ("264"))
-    playerStats.discipline.bookings should have ('home (0), 'away(0), 'total (0), 'statDescription ("Bookings"), 'statTypeId ("37"))
-    playerStats.substitutionsOff should have ('home (1), 'away(2), 'total (3), 'statDescription ("Substitutions Off"), 'statTypeId ("72"))
+    playerStats.offence.crosses should have (Symbol("home") (3), Symbol("away")(3), Symbol("total") (6), Symbol("statDescription") ("Crosses"), Symbol("statTypeId") ("148"))
+    playerStats.defence.backPasses should have (Symbol("home") (0), Symbol("away")(0), Symbol("total") (0), Symbol("statDescription") ("Back Passes"), Symbol("statTypeId") ("264"))
+    playerStats.discipline.bookings should have (Symbol("home") (0), Symbol("away")(0), Symbol("total") (0), Symbol("statDescription") ("Bookings"), Symbol("statTypeId") ("37"))
+    playerStats.substitutionsOff should have (Symbol("home") (1), Symbol("away")(2), Symbol("total") (3), Symbol("statDescription") ("Substitutions Off"), Symbol("statTypeId") ("72"))
   }
 }
