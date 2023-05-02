@@ -16,20 +16,20 @@ class TeamSquadTest extends FlatSpec with Matchers {
     )
 
     squadMembers(0) should have(
-      'playerId ("38930"),
-      'name ("John Terry"),
-      'squadNumber (Some("26")),
-      'startDate (LocalDate.of(1998, 8, 1)),
-      'endDate (None),
-      'onLoan (false)
+      Symbol("playerId") ("38930"),
+      Symbol("name") ("John Terry"),
+      Symbol("squadNumber") (Some("26")),
+      Symbol("startDate") (LocalDate.of(1998, 8, 1)),
+      Symbol("endDate") (None),
+      Symbol("onLoan") (false)
     )
     squadMembers(9) should have(
-      'playerId ("370846"),
-      'name ("Marko Marin"),
-      'squadNumber (None),
-      'startDate (LocalDate.of(2012, 7, 1)),
-      'endDate (None),
-      'onLoan (false)
+      Symbol("playerId") ("370846"),
+      Symbol("name") ("Marko Marin"),
+      Symbol("squadNumber") (None),
+      Symbol("startDate") (LocalDate.of(2012, 7, 1)),
+      Symbol("endDate") (None),
+      Symbol("onLoan") (false)
     )
   }
 }

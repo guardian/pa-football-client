@@ -16,13 +16,13 @@ class PlayerProfileTest extends FlatSpec with Matchers {
     )
 
     playerProfile should have (
-      'fullName ("Emmanuel Adebayor"),
-      'height (Some("1.9 Metres")),
-      'weight (Some("75 Kilograms")),
-      'dob (Some(LocalDate.of(1984, 2, 26))),
-      'age (Some("32")),
-      'nationality (Some("Togolese")),
-      'position (Some("Striker"))
+      Symbol("fullName") ("Emmanuel Adebayor"),
+      Symbol("height") (Some("1.9 Metres")),
+      Symbol("weight") (Some("75 Kilograms")),
+      Symbol("dob") (Some(LocalDate.of(1984, 2, 26))),
+      Symbol("age") (Some("32")),
+      Symbol("nationality") (Some("Togolese")),
+      Symbol("position") (Some("Striker"))
     )
   }
 }

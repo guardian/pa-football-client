@@ -2,15 +2,18 @@ package pa
 
 import java.io.{File, PrintWriter}
 
-import akka.actor.ActorSystem
-import akka.stream.ActorMaterializer
-import play.api.libs.ws.ahc.StandaloneAhcWSClient
-
 import scala.concurrent.duration._
-import scala.concurrent.{ExecutionContext, ExecutionContextExecutor, Future}
+import scala.concurrent.{ExecutionContext, Future}
 import scala.io.Source
 import scala.language.postfixOps
 import scala.util.control.NonFatal
+import scala.concurrent.ExecutionContext.Implicits.global
+import java.net.http.HttpClient
+import java.time.Duration
+import java.net.http.HttpResponse.BodyHandlers
+import java.net.http.HttpRequest
+import java.net.URI
+import scala.compat.java8.FutureConverters.toScala
 
 object StubClient extends PaClient with Http {
 
@@ -18,13 +21,13 @@ object StubClient extends PaClient with Http {
 
   override def GET(url: String): Future[Response] = readOrFetch(url)
 
-  implicit val system: ActorSystem = ActorSystem()
-  implicit val materializer: ActorMaterializer = ActorMaterializer()
-  implicit val ec: ExecutionContextExecutor = system.dispatcher
-  val wsClient = StandaloneAhcWSClient()
+  val httpClient: HttpClient =
+    HttpClient
+      .newBuilder
+      .connectTimeout(Duration.ofSeconds(10))
+      .build
 
-
-  def readOrFetch(url: String)(implicit context: ExecutionContext): Future[Response] = {
+  def readOrFetch(url: String): Future[Response] = {
 
     val filename = s"src/test/resources/data/${url.replaceFirst(base+"/", "")}.xml"
     val urlWithKey = url.replace("/key", "/key")
@@ -42,10 +45,11 @@ object StubClient extends PaClient with Http {
   }
 
   def fetchFromUrl(url: String): Future[Response] = {
-    wsClient.url(url).withRequestTimeout(10000 milli)
-      .get()
-      .map { wsResponse =>
-        pa.Response(wsResponse.status, wsResponse.body, wsResponse.statusText)
+    val request = HttpRequest.newBuilder(URI.create(url)).GET().build
+
+    toScala(httpClient.sendAsync(request, BodyHandlers.ofString))
+      .map { response =>
+        pa.Response(response.statusCode, response.body, "")
       }
       .recoverWith {
         case NonFatal(exception) =>

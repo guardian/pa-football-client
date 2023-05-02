@@ -18,20 +18,20 @@ class TeamHead2HeadTest extends FlatSpec with Matchers {
     )
 
     team1 should have (
-      'id ("4"),
-      'name ("Chelsea"),
-      'totalGoals (23),
-      'totalBookings (20),
-      'totalDismissals (0),
-      'totalSubstitutions (36)
+      Symbol("id") ("4"),
+      Symbol("name") ("Chelsea"),
+      Symbol("totalGoals") (23),
+      Symbol("totalBookings") (20),
+      Symbol("totalDismissals") (0),
+      Symbol("totalSubstitutions") (36)
     )
     team2 should have (
-      'id ("12"),
-      'name ("Man Utd"),
-      'totalGoals (21),
-      'totalBookings (24),
-      'totalDismissals (3),
-      'totalSubstitutions (38)
+      Symbol("id") ("12"),
+      Symbol("name") ("Man Utd"),
+      Symbol("totalGoals") (21),
+      Symbol("totalBookings") (24),
+      Symbol("totalDismissals") (3),
+      Symbol("totalSubstitutions") (38)
     )
 
     team1.goals.homeCount should equal(9)
