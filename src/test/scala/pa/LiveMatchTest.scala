@@ -2,15 +2,13 @@ package pa
 
 import java.time.{LocalDateTime, ZoneId}
 
-import org.scalatest.OptionValues
+import org.scalatest.{FlatSpec, Matchers, OptionValues}
 
 import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
-import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers
 
-class LiveMatchTest extends AnyFlatSpec with Matchers with OptionValues {
+class LiveMatchTest extends FlatSpec with Matchers with OptionValues {
 
   "PaClient" should "load live matches" in {
     val matches = Await.result(StubClient.liveMatches("100"), 10.seconds)

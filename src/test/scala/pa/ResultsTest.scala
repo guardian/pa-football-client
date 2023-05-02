@@ -2,15 +2,13 @@ package pa
 
 import java.time.{LocalDate, LocalDateTime, ZoneId}
 
-import org.scalatest.OptionValues
+import org.scalatest.{FlatSpec, Matchers, OptionValues}
 
 import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
-import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers
 
-class ResultsTest extends AnyFlatSpec with Matchers with OptionValues {
+class ResultsTest extends FlatSpec with Matchers with OptionValues {
 
   "PaClient" should "load results" in {
     val matches = Await.result(StubClient.results("100", LocalDate.of(2016, 4, 1)), 10.seconds)
