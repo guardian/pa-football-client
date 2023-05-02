@@ -24,9 +24,9 @@ class EventsTest extends FlatSpec with Matchers {
     val Some(event) = theMatch.events.find(_.id == Some("22306998"))
 
     event should have(
-      'matchTime (Some("(90 +2:05)")),
-      'eventTime (Some("90")),
-      'addedTime (Some("2:05"))
+      Symbol("matchTime") (Some("(90 +2:05)")),
+      Symbol("eventTime") (Some("90")),
+      Symbol("addedTime") (Some("2:05"))
     )
   }
 }

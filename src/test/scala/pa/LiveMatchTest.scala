@@ -17,34 +17,34 @@ class LiveMatchTest extends FlatSpec with Matchers with OptionValues {
 
     val liveMatch = matches(0)
     liveMatch should have (
-      'id ("3528311"),
-      'date (LocalDateTime.of(2012, 10, 7, 13, 30, 0, 0).atZone(ZoneId.of("Europe/London"))),
-      'stage (Stage("1")),
-      'round (Round("1", None)),
-      'leg ("1"),
-      'attendance (None),
-      'status ("SHS"),
-      'comments (None)
+      Symbol("id") ("3528311"),
+      Symbol("date") (LocalDateTime.of(2012, 10, 7, 13, 30, 0, 0).atZone(ZoneId.of("Europe/London"))),
+      Symbol("stage") (Stage("1")),
+      Symbol("round") (Round("1", None)),
+      Symbol("leg") ("1"),
+      Symbol("attendance") (None),
+      Symbol("status") ("SHS"),
+      Symbol("comments") (None)
     )
     liveMatch.homeTeam should have (
-      'id ("18"),
-      'name ("Southampton"),
-      'score (Some(1)),
-      'htScore (Some(1)),
-      'aggregateScore (Some(1)),
-      'scorers (Some("Jose Fonte (4)"))
+      Symbol("id") ("18"),
+      Symbol("name") ("Southampton"),
+      Symbol("score") (Some(1)),
+      Symbol("htScore") (Some(1)),
+      Symbol("aggregateScore") (Some(1)),
+      Symbol("scorers") (Some("Jose Fonte (4)"))
     )
     liveMatch.awayTeam should have (
-      'id ("55"),
-      'name ("Fulham"),
-      'score (Some(1)),
-      'htScore (Some(0)),
-      'aggregateScore (None),
-      'scorers (Some("Jos Hooiveld (70 o.g.)"))
+      Symbol("id") ("55"),
+      Symbol("name") ("Fulham"),
+      Symbol("score") (Some(1)),
+      Symbol("htScore") (Some(0)),
+      Symbol("aggregateScore") (None),
+      Symbol("scorers") (Some("Jos Hooiveld (70 o.g.)"))
     )
     liveMatch.venue.value should have (
-      'id ("78"),
-      'name ("St. Mary's Stadium")
+      Symbol("id") ("78"),
+      Symbol("name") ("St. Mary's Stadium")
     )
   }
 
