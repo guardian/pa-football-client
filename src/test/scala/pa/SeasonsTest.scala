@@ -1,14 +1,15 @@
 package pa
 
 import java.time.{LocalDate, LocalDateTime, ZoneOffset}
-import org.scalatest.{FlatSpec, Matchers}
 
 import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
 
-class SeasonsTest extends FlatSpec with Matchers {
+class SeasonsTest extends AnyFlatSpec with Matchers {
 
   implicit val localDateOrdering: Ordering[LocalDateTime] = Ordering.by(_.toEpochSecond(ZoneOffset.UTC))
 
