@@ -1,12 +1,13 @@
 package pa
 
-import org.scalatest.{FlatSpec, Matchers}
 
 import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class StatsTest extends FlatSpec with Matchers {
+class StatsTest extends AnyFlatSpec with Matchers {
 
   "PaClient" should "load match stats" in {
 

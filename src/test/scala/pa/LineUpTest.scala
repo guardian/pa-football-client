@@ -1,12 +1,13 @@
 package pa
 
-import org.scalatest.{FlatSpec, Matchers}
 
 import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class LineUpTest extends FlatSpec with Matchers {
+class LineUpTest extends AnyFlatSpec with Matchers {
 
   "PaClient" should "load lineups for a match" in {
 
