@@ -2,13 +2,14 @@ package pa
 
 import java.time.LocalDate
 
-import org.scalatest.{FlatSpec, Matchers}
 
 import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class LeagueTableTest extends FlatSpec with Matchers{
+class LeagueTableTest extends AnyFlatSpec with Matchers{
 
   "PaClient" should "load a League Table" in {
     val List(first, second) = Await.result(StubClient.leagueTable("100", LocalDate.of(2014, 8, 27)), 10.seconds) take 2

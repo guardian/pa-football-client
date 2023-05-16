@@ -5,7 +5,7 @@ val scala_2_13: String = "2.13.10"
 
 scalaVersion := scala_2_12
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.0.9" % Test,
+  "org.scalatest" %% "scalatest" % "3.2.16" % Test,
   "org.scala-lang.modules" %% "scala-xml" % "2.1.0",
   "org.scala-lang.modules" %% "scala-java8-compat" % "1.0.2"
 )
