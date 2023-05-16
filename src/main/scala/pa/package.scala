@@ -3,7 +3,7 @@ import scala.xml.NodeSeq
 
 package object pa{
 
-  implicit def seq2List[A](s: Seq[A]) = s.toList
+  implicit def seq2List[A](s: Seq[A]): List[A] = s.toList
 
   implicit def string2Option (s: String): Option[String] = s match {
     case null => None
@@ -12,7 +12,7 @@ package object pa{
   }
 
   //some shortcuts to avoid the whole (node \ "@competitonId").text thing
-  implicit def nodeSeq2rich(node: NodeSeq) = new {
+  implicit class NodeSeq2rich(node: NodeSeq) {
 
     //directly gets the text value of an attribute
     def \@(attributeName: String): String = (node \ ("@" + attributeName)).text
@@ -46,9 +46,5 @@ package object pa{
     case "Yes" => true
     case "No" => false
     case _ => throw new RuntimeException("Unexpected value for boolean: " + s)
-  }
-
-  implicit def optionString2int(s: Option[String]) = new {
-    lazy val toInt = s.get.toInt
   }
 }

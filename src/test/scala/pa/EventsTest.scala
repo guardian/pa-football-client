@@ -6,8 +6,9 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
+import org.scalatest.OptionValues
 
-class EventsTest extends AnyFlatSpec with Matchers {
+class EventsTest extends AnyFlatSpec with Matchers with OptionValues {
   it should "load a match and match events" in {
     val theMatch = Await.result(StubClient.matchEvents("3888465"), 10.seconds).get
 
@@ -22,7 +23,7 @@ class EventsTest extends AnyFlatSpec with Matchers {
 
     theMatch.isResult should be (true)
 
-    val Some(event) = theMatch.events.find(_.id == Some("22306998"))
+    val event = theMatch.events.find(_.id == Some("22306998")).value
 
     event should have(
       Symbol("matchTime") (Some("(90 +2:05)")),
