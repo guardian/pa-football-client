@@ -53,7 +53,7 @@ object StubClient extends PaClient with Http {
       }
       .recoverWith {
         case NonFatal(exception) =>
-          println(s"Error fetching content for $url", exception)
+          println((s"Error fetching content for $url", exception))
           Future.failed(exception)
       }
   }

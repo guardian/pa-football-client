@@ -2,8 +2,9 @@ import ReleaseTransformations._
 
 val scala_2_12: String = "2.12.17"
 val scala_2_13: String = "2.13.10"
+val scala_3: String = "3.2.2"
 
-scalaVersion := scala_2_12
+scalaVersion := scala_3
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.2.16" % Test,
   "org.scala-lang.modules" %% "scala-xml" % "2.1.0",
@@ -25,7 +26,7 @@ homepage := scmInfo.value.map(_.browseUrl)
 developers := List(Developer(id = "guardian", name = "Guardian", email = null, url = url("https://github.com/guardian")))
 publishTo := sonatypePublishToBundle.value
 
-crossScalaVersions := Seq(scala_2_12, scala_2_13)
+crossScalaVersions := Seq(scala_3, scala_2_12, scala_2_13)
 releaseCrossBuild := true
 publishMavenStyle := true
 
