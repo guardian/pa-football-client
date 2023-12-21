@@ -5,3 +5,7 @@ target
 .history
 test-results/
 .bsp/
+.vscode/
+.bloop/
+.metals/
+metals.sbt
