@@ -7,7 +7,7 @@ val scala_3: String = "3.3.0"
 scalaVersion := scala_3
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.2.16" % Test,
-  "org.scala-lang.modules" %% "scala-xml" % "2.1.0",
+  "org.scala-lang.modules" %% "scala-xml" % "2.2.0",
   "org.scala-lang.modules" %% "scala-java8-compat" % "1.0.2"
 )
 
