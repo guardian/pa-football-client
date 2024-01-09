@@ -9,3 +9,4 @@ test-results/
 .bloop/
 .metals/
 metals.sbt
+.tool-versions
