@@ -23,13 +23,9 @@ available.
 
 ## How to release a new version
 
-Make sure you have the latest `main` branch locally. Then run:
-
-    $ sbt release
-
-Note, you will need an account on Sonatype and a PGP key to do this. See [this
-doc](https://docs.google.com/document/d/1rNXjoZDqZMsQblOVXPAIIOMWuwUKe3KzTCttuqS7AcY)
-(Guardian only) for information on how to do this.
+This repo uses [`gha-scala-library-release-workflow`](https://github.com/guardian/gha-scala-library-release-workflow)
+to automate publishing releases - see
+[**Making a Release**](https://github.com/guardian/gha-scala-library-release-workflow/blob/main/docs/making-a-release.md).
 
 ## Timezones
 
