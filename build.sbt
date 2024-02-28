@@ -1,13 +1,13 @@
 import ReleaseTransformations._
 import sbtversionpolicy.withsbtrelease.ReleaseVersion
 
-val scala_2_12: String = "2.12.18"
-val scala_2_13: String = "2.13.12"
+val scala_2_12: String = "2.12.19"
+val scala_2_13: String = "2.13.13"
 val scala_3: String = "3.3.1"
 
 scalaVersion := scala_3
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.2.17" % Test,
+  "org.scalatest" %% "scalatest" % "3.2.18" % Test,
   "org.scala-lang.modules" %% "scala-xml" % "2.2.0",
   "org.scala-lang.modules" %% "scala-java8-compat" % "1.0.2"
 )
