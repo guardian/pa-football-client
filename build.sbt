@@ -3,7 +3,7 @@ import sbtversionpolicy.withsbtrelease.ReleaseVersion
 
 val scala_2_12: String = "2.12.21"
 val scala_2_13: String = "2.13.18"
-val scala_3: String = "3.3.7"
+val scala_3: String = "3.3.8"
 
 scalaVersion := scala_3
 libraryDependencies ++= Seq(
