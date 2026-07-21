@@ -37,6 +37,7 @@ case class Player(id: String, teamID: String, name: String) extends Person
 case class MatchEvent(
   id: Option[String],
   teamID: Option[String],
+  deleted: Option[Boolean],
   eventType: String,
   matchTime: Option[String],
   eventTime: Option[String],
@@ -51,7 +52,7 @@ case class MatchEvent(
 ) {
 
   val isGoal = outcome.exists(_ == "Goal")
-
+  val isDeleted = deleted.exists(_ == true)
 }
 
 case class MatchStats(interval: Int, homePossession: Int, homeTeam: TeamStats, awayTeam: TeamStats) {

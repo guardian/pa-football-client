@@ -31,4 +31,19 @@ class EventsTest extends AnyFlatSpec with Matchers with OptionValues {
       Symbol("addedTime") (Some("2:05"))
     )
   }
+
+  it should "parse the optional deleted flag on match events" in {
+    val theMatch = Await.result(StubClient.matchEvents("3888465"), 10.seconds).get
+
+    def event(id: String) = theMatch.events.find(_.id == Some(id)).value
+
+    // deleted="true" -> Some(true)
+    event("22306741").deleted should be (Some(true))
+
+    // deleted="false" -> Some(false)
+    event("22306742").deleted should be (Some(false))
+
+    // attribute missing -> None
+    event("22306998").deleted should be (None)
+  }
 }
