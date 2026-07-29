@@ -1,0 +1,992 @@
+<?xml version="1.0" encoding="utf-8"?>
+<match matchID="4566691" possession="67" domination="0">
+    <teams>
+        <homeTeam teamID="999" teamName="Spain" teamColour="#ED1322" managerID="679163" manager="Luis De La Fuente" formation="4-2-3-1" shotsOn="12" shotsOff="8" fouls="21" corners="9" offsides="4" bookings="0" dismissals="0">
+            <staff>
+                <member staffID="679163" position="Manager" name="Luis De La Fuente" />
+            </staff>
+            <players>
+                <player playerID="565536">
+                    <firstName>Unai</firstName>
+                    <lastName>Simon</lastName>
+                    <fullName>Unai Simon</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>23</shirtNumber>
+                    <position>Goal Keeper</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>137:21</timeOnPitch>
+                    <events>
+                        <event eventID="39501199" type="clearance" normalTime="4:56" addedTime="0:00" />
+                        <event eventID="39501222" type="goal kick" normalTime="16:30" addedTime="0:00" />
+                        <event eventID="39501289" type="clearance" normalTime="45:00" addedTime="0:10" />
+                        <event eventID="39501302" type="goal kick" normalTime="47:51" addedTime="0:00" />
+                        <event eventID="39501401" type="free kick" normalTime="81:00" addedTime="0:00" />
+                        <event eventID="39501443" type="goal kick" normalTime="92:08" addedTime="0:00" />
+                        <event eventID="39501521" type="goal kick" normalTime="115:08" addedTime="0:00" />
+                        <event eventID="39501537" type="goal kick" normalTime="120:00" addedTime="1:29" />
+                        <event eventID="39501542" type="free kick" normalTime="120:00" addedTime="3:11" />
+                    </events>
+                </player>
+                <player playerID="595610">
+                    <firstName>Pedro</firstName>
+                    <lastName>Porro</lastName>
+                    <fullName>Pedro Porro</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>12</shirtNumber>
+                    <position>Defender</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>137:21</timeOnPitch>
+                    <events>
+                        <event eventID="39501190" type="foul" normalTime="1:23" addedTime="0:00" />
+                        <event eventID="39501193" type="throw in" normalTime="3:23" addedTime="0:00" />
+                        <event eventID="39501201" type="throw in" normalTime="7:02" addedTime="0:00" />
+                        <event eventID="39501206" type="throw in" normalTime="9:05" addedTime="0:00" />
+                        <event eventID="39501215" type="throw in" normalTime="12:41" addedTime="0:00" />
+                        <event eventID="39501218" type="free kick" normalTime="14:44" addedTime="0:00" />
+                        <event eventID="39501227" type="free kick" normalTime="18:18" addedTime="0:00" />
+                        <event eventID="39501249" type="free kick" normalTime="28:33" addedTime="0:00" />
+                        <event eventID="39501250" type="throw in" normalTime="29:51" addedTime="0:00" />
+                        <event eventID="39501260" type="free kick" normalTime="33:28" addedTime="0:00" />
+                        <event eventID="39501266" type="free kick" normalTime="35:53" addedTime="0:00" />
+                        <event eventID="39501277" type="throw in" normalTime="39:04" addedTime="0:00" />
+                        <event eventID="39501283" type="cross" normalTime="41:38" addedTime="0:00" />
+                        <event eventID="39501315" type="foul" normalTime="53:13" addedTime="0:00" />
+                        <event eventID="39501325" type="cross" normalTime="56:45" addedTime="0:00" />
+                        <event eventID="39501329" type="throw in" normalTime="57:50" addedTime="0:00" />
+                        <event eventID="39501371" type="throw in" normalTime="70:52" addedTime="0:00" />
+                        <event eventID="39501387" type="throw in" normalTime="76:46" addedTime="0:00" />
+                        <event eventID="39501394" type="cross" normalTime="79:52" addedTime="0:00" />
+                        <event eventID="39501407" type="throw in" normalTime="84:46" addedTime="0:00" />
+                        <event eventID="39501408" type="throw in" normalTime="85:24" addedTime="0:00" />
+                        <event eventID="39501440" type="foul" normalTime="91:18" addedTime="0:00" />
+                        <event eventID="39501455" type="cross" normalTime="95:33" addedTime="0:00" />
+                        <event eventID="39501468" type="cross" normalTime="100:19" addedTime="0:00" />
+                        <event eventID="39501483" type="clearance" normalTime="105:00" addedTime="1:11" />
+                        <event eventID="39501485" type="throw in" normalTime="105:00" addedTime="2:18" />
+                        <event eventID="39501489" type="cross" normalTime="105:34" addedTime="0:00" />
+                        <event eventID="39501499" type="clearance" normalTime="109:39" addedTime="0:00" />
+                        <event eventID="39501507" type="free kick" normalTime="111:16" addedTime="0:00" />
+                        <event eventID="39501538" type="clearance" normalTime="120:00" addedTime="2:05" />
+                    </events>
+                </player>
+                <player playerID="668842">
+                    <firstName>Pau</firstName>
+                    <lastName>Cubarsi</lastName>
+                    <fullName>Pau Cubarsi</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>22</shirtNumber>
+                    <position>Defender</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>137:21</timeOnPitch>
+                    <events>
+                        <event eventID="39501243" type="clearance" normalTime="27:28" addedTime="0:00" />
+                        <event eventID="39501252" type="clearance" normalTime="30:51" addedTime="0:00" />
+                        <event eventID="39501276" type="clearance" normalTime="38:55" addedTime="0:00" />
+                        <event eventID="39501298" type="clearance" normalTime="46:05" addedTime="0:00" />
+                        <event eventID="39501313" type="free kick" normalTime="52:05" addedTime="0:00" />
+                        <event eventID="39501388" type="shot on target" normalTime="76:51" addedTime="0:00" />
+                        <event eventID="39501403" type="free kick" normalTime="82:18" addedTime="0:00" />
+                        <event eventID="39501432" type="free kick" normalTime="90:00" addedTime="5:11" />
+                        <event eventID="39501453" type="free kick" normalTime="94:06" addedTime="0:00" />
+                        <event eventID="39501522" type="clearance" normalTime="115:32" addedTime="0:00" />
+                        <event eventID="39501529" type="clearance" normalTime="118:53" addedTime="0:00" />
+                        <event eventID="39501675" type="clearance" normalTime="119:42" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="464749">
+                    <firstName>Aymeric</firstName>
+                    <lastName>Laporte</lastName>
+                    <fullName>Aymeric Laporte</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>14</shirtNumber>
+                    <position>Defender</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>110:46</timeOnPitch>
+                    <events>
+                        <event eventID="39501236" type="free kick" normalTime="21:38" addedTime="0:00" />
+                        <event eventID="39501282" type="free kick" normalTime="40:31" addedTime="0:00" />
+                        <event eventID="39501299" type="clearance" normalTime="46:59" addedTime="0:00" />
+                        <event eventID="39501346" type="clearance" normalTime="62:45" addedTime="0:00" />
+                        <event eventID="39501397" type="shot on target" normalTime="80:29" addedTime="0:00" />
+                        <event eventID="39501428" type="clearance" normalTime="90:00" addedTime="0:04" />
+                        <event eventID="39501420" type="foul" normalTime="90:00" addedTime="0:48" />
+                        <event eventID="39501454" type="throw in" normalTime="95:20" addedTime="0:00" />
+                        <event eventID="39501462" type="substitution" normalTime="98:24" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="590565">
+                    <firstName>Marc</firstName>
+                    <lastName>Cucurella</lastName>
+                    <fullName>Marc Cucurella</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>24</shirtNumber>
+                    <position>Defender</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>137:21</timeOnPitch>
+                    <events>
+                        <event eventID="39501209" type="throw in" normalTime="10:50" addedTime="0:00" />
+                        <event eventID="39501237" type="cross" normalTime="22:44" addedTime="0:00" />
+                        <event eventID="39501246" type="throw in" normalTime="28:05" addedTime="0:00" />
+                        <event eventID="39501261" type="offside" normalTime="34:17" addedTime="0:00" />
+                        <event eventID="39501267" type="throw in" normalTime="36:38" addedTime="0:00" />
+                        <event eventID="39501268" type="cross" normalTime="37:10" addedTime="0:00" />
+                        <event eventID="39501284" type="shot off target" normalTime="42:33" addedTime="0:00" />
+                        <event eventID="39501379" type="throw in" normalTime="75:00" addedTime="0:00" />
+                        <event eventID="39501413" type="throw in" normalTime="88:34" addedTime="0:00" />
+                        <event eventID="39501497" type="throw in" normalTime="108:44" addedTime="0:00" />
+                        <event eventID="39501504" type="free kick" normalTime="110:40" addedTime="0:00" />
+                        <event eventID="39501548" type="foul" normalTime="120:00" addedTime="4:32" />
+                    </events>
+                </player>
+                <player playerID="567396">
+                    <firstName>Rodrigo Hernandez</firstName>
+                    <lastName>Rodri</lastName>
+                    <fullName>Rodrigo Hernandez Rodri</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>16</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>110:39</timeOnPitch>
+                    <events>
+                        <event eventID="39501240" type="foul" normalTime="23:49" addedTime="0:00" />
+                        <event eventID="39501245" type="free kick" normalTime="27:40" addedTime="0:00" />
+                        <event eventID="39501255" type="foul" normalTime="32:26" addedTime="0:00" />
+                        <event eventID="39501273" type="free kick" normalTime="37:40" addedTime="0:00" />
+                        <event eventID="39501323" type="free kick" normalTime="55:28" addedTime="0:00" />
+                        <event eventID="39501406" type="free kick" normalTime="84:07" addedTime="0:00" />
+                        <event eventID="39501414" type="shot off target" normalTime="88:55" addedTime="0:00" />
+                        <event eventID="39501460" type="substitution" normalTime="98:17" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="545857">
+                    <firstName>Ruiz</firstName>
+                    <lastName>Fabian</lastName>
+                    <fullName>Ruiz Fabian</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>8</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>65:12</timeOnPitch>
+                    <events>
+                        <event eventID="39501196" type="free kick" normalTime="4:01" addedTime="0:00" />
+                        <event eventID="39501210" type="cross" normalTime="11:18" addedTime="0:00" />
+                        <event eventID="39501340" type="substitution" normalTime="61:12" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="664155">
+                    <firstName>Lamine</firstName>
+                    <lastName>Yamal</lastName>
+                    <fullName>Lamine Yamal</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>19</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>137:21</timeOnPitch>
+                    <events>
+                        <event eventID="39501197" type="shot on target" normalTime="4:17" addedTime="0:00" />
+                        <event eventID="39501202" type="foul" normalTime="7:38" addedTime="0:00" />
+                        <event eventID="39501223" type="cross" normalTime="16:52" addedTime="0:00" />
+                        <event eventID="39501332" type="free kick" normalTime="60:38" addedTime="0:00" />
+                        <event eventID="39501333" type="shot off target" normalTime="60:38" addedTime="0:00" />
+                        <event eventID="39501350" type="corner" normalTime="64:19" addedTime="0:00" />
+                        <event eventID="39501352" type="cross" normalTime="64:25" addedTime="0:00" />
+                        <event eventID="39501362" type="corner" normalTime="66:11" addedTime="0:00" />
+                        <event eventID="39501364" type="cross" normalTime="66:21" addedTime="0:00" />
+                        <event eventID="39501395" type="corner" normalTime="80:19" addedTime="0:00" />
+                        <event eventID="39501435" type="free kick" normalTime="90:00" addedTime="7:58" />
+                        <event eventID="39501436" type="shot on target" normalTime="90:00" addedTime="7:58" />
+                        <event eventID="39501470" type="shot off target" normalTime="100:52" addedTime="0:00" />
+                        <event eventID="39501493" type="foul" normalTime="107:34" addedTime="0:00" />
+                        <event eventID="39501527" type="clearance" normalTime="118:32" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="556397">
+                    <firstName>Dani</firstName>
+                    <lastName>Olmo</lastName>
+                    <fullName>Dani Olmo</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>10</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>78:43</timeOnPitch>
+                    <events>
+                        <event eventID="39501229" type="foul" normalTime="19:11" addedTime="0:00" />
+                        <event eventID="39501269" type="cross" normalTime="37:18" addedTime="0:00" />
+                        <event eventID="39501348" type="shot on target" normalTime="63:25" addedTime="0:00" />
+                        <event eventID="39501356" type="shot off target" normalTime="64:51" addedTime="0:00" />
+                        <event eventID="39501378" type="substitution" normalTime="74:43" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="627129">
+                    <firstName>Alex</firstName>
+                    <lastName>Baena</lastName>
+                    <fullName>Alex Baena</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>15</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>78:40</timeOnPitch>
+                    <events>
+                        <event eventID="39501212" type="corner" normalTime="12:07" addedTime="0:00" />
+                        <event eventID="39501213" type="cross" normalTime="12:23" addedTime="0:00" />
+                        <event eventID="39501219" type="foul" normalTime="15:30" addedTime="0:00" />
+                        <event eventID="39501239" type="corner" normalTime="23:17" addedTime="0:00" />
+                        <event eventID="39501253" type="cross" normalTime="31:38" addedTime="0:00" />
+                        <event eventID="39501296" type="shot on target" normalTime="45:43" addedTime="0:00" />
+                        <event eventID="39501304" type="foul" normalTime="49:24" addedTime="0:00" />
+                        <event eventID="39501307" type="foul" normalTime="50:15" addedTime="0:00" />
+                        <event eventID="39501318" type="foul" normalTime="53:44" addedTime="0:00" />
+                        <event eventID="39501324" type="corner" normalTime="56:40" addedTime="0:00" />
+                        <event eventID="39501335" type="cross" normalTime="60:41" addedTime="0:00" />
+                        <event eventID="39501344" type="free kick" normalTime="62:06" addedTime="0:00" />
+                        <event eventID="39501354" type="corner" normalTime="64:46" addedTime="0:00" />
+                        <event eventID="39501360" type="cross" normalTime="65:39" addedTime="0:00" />
+                        <event eventID="39501376" type="substitution" normalTime="74:40" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="564290">
+                    <firstName>Mikel</firstName>
+                    <lastName>Oyarzabal</lastName>
+                    <fullName>Mikel Oyarzabal</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>21</shirtNumber>
+                    <position>Striker</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>65:10</timeOnPitch>
+                    <events>
+                        <event eventID="39501232" type="offside" normalTime="20:42" addedTime="0:00" />
+                        <event eventID="39501274" type="shot on target" normalTime="38:31" addedTime="0:00" />
+                        <event eventID="39501291" type="foul" normalTime="45:00" addedTime="2:21" />
+                        <event eventID="39501301" type="clearance" normalTime="47:40" addedTime="0:00" />
+                        <event eventID="39501338" type="substitution" normalTime="61:10" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="507197">
+                    <firstName>David</firstName>
+                    <lastName>Raya</lastName>
+                    <fullName>David Raya</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>1</shirtNumber>
+                    <position>Goal Keeper</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>0:00</timeOnPitch>
+                    <events />
+                </player>
+                <player playerID="631314">
+                    <firstName>Joan</firstName>
+                    <lastName>Garcia</lastName>
+                    <fullName>Joan Garcia</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>13</shirtNumber>
+                    <position>Goal Keeper</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>0:00</timeOnPitch>
+                    <events />
+                </player>
+                <player playerID="646702">
+                    <firstName>Marc</firstName>
+                    <lastName>Pubill</lastName>
+                    <fullName>Marc Pubill</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>2</shirtNumber>
+                    <position>Defender</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>0:00</timeOnPitch>
+                    <events />
+                </player>
+                <player playerID="481610">
+                    <firstName>Alex</firstName>
+                    <lastName>Grimaldo</lastName>
+                    <fullName>Alex Grimaldo</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>3</shirtNumber>
+                    <position>Defender</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>0:00</timeOnPitch>
+                    <events />
+                </player>
+                <player playerID="609049">
+                    <firstName>Eric</firstName>
+                    <lastName>Garcia</lastName>
+                    <fullName>Eric Garcia</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>4</shirtNumber>
+                    <position>Defender</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>26:35</timeOnPitch>
+                    <events>
+                        <event eventID="39501462" type="substitution" normalTime="98:24" addedTime="0:00" />
+                        <event eventID="39501467" type="free kick" normalTime="99:49" addedTime="0:00" />
+                        <event eventID="39501614" type="clearance" normalTime="101:51" addedTime="0:00" />
+                        <event eventID="39501518" type="clearance" normalTime="114:29" addedTime="0:00" />
+                        <event eventID="39501545" type="foul" normalTime="120:00" addedTime="3:30" />
+                    </events>
+                </player>
+                <player playerID="545096">
+                    <firstName>Marcos</firstName>
+                    <lastName>Llorente</lastName>
+                    <fullName>Marcos Llorente</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>5</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>0:00</timeOnPitch>
+                    <events />
+                </player>
+                <player playerID="538270">
+                    <firstName>Mikel</firstName>
+                    <lastName>Merino</lastName>
+                    <fullName>Mikel Merino</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>6</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>58:38</timeOnPitch>
+                    <events>
+                        <event eventID="39501378" type="substitution" normalTime="74:43" addedTime="0:00" />
+                        <event eventID="39501456" type="foul" normalTime="95:35" addedTime="0:00" />
+                        <event eventID="39501475" type="shot off target" normalTime="102:18" addedTime="0:00" />
+                        <event eventID="39501525" type="block" normalTime="116:23" addedTime="0:00" />
+                        <event eventID="39501552" type="clearance" normalTime="120:00" addedTime="4:59" />
+                    </events>
+                </player>
+                <player playerID="595645">
+                    <firstName>Ferran</firstName>
+                    <lastName>Torres</lastName>
+                    <fullName>Ferran Torres</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>7</shirtNumber>
+                    <position>Striker</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>72:11</timeOnPitch>
+                    <events>
+                        <event eventID="39501338" type="substitution" normalTime="61:10" addedTime="0:00" />
+                        <event eventID="39501365" type="shot on target" normalTime="66:23" addedTime="0:00" />
+                        <event eventID="39501409" type="shot off target" normalTime="86:25" addedTime="0:00" />
+                        <event eventID="39501418" type="foul" normalTime="90:00" addedTime="0:08" />
+                        <event eventID="39501491" type="goal" normalTime="105:37" addedTime="0:00" />
+                        <event eventID="39501490" type="shot on target" normalTime="105:37" addedTime="0:00" />
+                        <event eventID="39501510" type="offside" normalTime="112:54" addedTime="0:00" />
+                        <event eventID="39501516" type="clearance" normalTime="114:03" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="640966">
+                    <firstName>Pablo Martin</firstName>
+                    <lastName>Gavi</lastName>
+                    <fullName>Pablo Martin Gavi</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>9</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>0:00</timeOnPitch>
+                    <events />
+                </player>
+                <player playerID="631313">
+                    <firstName>Yeremy</firstName>
+                    <lastName>Pino</lastName>
+                    <fullName>Yeremy Pino</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>11</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>0:00</timeOnPitch>
+                    <events />
+                </player>
+                <player playerID="633451">
+                    <firstName>Nico</firstName>
+                    <lastName>Williams</lastName>
+                    <fullName>Nico Williams</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>17</shirtNumber>
+                    <position>Striker</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>58:41</timeOnPitch>
+                    <events>
+                        <event eventID="39501376" type="substitution" normalTime="74:40" addedTime="0:00" />
+                        <event eventID="39501390" type="cross" normalTime="77:01" addedTime="0:00" />
+                        <event eventID="39501392" type="corner" normalTime="78:00" addedTime="0:00" />
+                        <event eventID="39501396" type="cross" normalTime="80:26" addedTime="0:00" />
+                        <event eventID="39501424" type="shot on target" normalTime="90:00" addedTime="2:17" />
+                        <event eventID="39501438" type="corner" normalTime="90:00" addedTime="8:13" />
+                        <event eventID="39501439" type="cross" normalTime="90:00" addedTime="8:15" />
+                        <event eventID="39501447" type="shot on target" normalTime="92:45" addedTime="0:00" />
+                        <event eventID="39501474" type="cross" normalTime="102:16" addedTime="0:00" />
+                        <event eventID="39501477" type="shot off target" normalTime="103:29" addedTime="0:00" />
+                        <event eventID="39501492" type="assist" normalTime="105:36" addedTime="0:00" />
+                        <event eventID="39501508" type="offside" normalTime="112:15" addedTime="0:00" />
+                        <event eventID="39501512" type="foul" normalTime="113:35" addedTime="0:00" />
+                        <event eventID="39501530" type="foul" normalTime="118:59" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="612903">
+                    <firstName>Martin</firstName>
+                    <lastName>Zubimendi</lastName>
+                    <fullName>Martin Zubimendi</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>18</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>26:42</timeOnPitch>
+                    <events>
+                        <event eventID="39501460" type="substitution" normalTime="98:17" addedTime="0:00" />
+                        <event eventID="39501550" type="clearance" normalTime="120:00" addedTime="0:20" />
+                    </events>
+                </player>
+                <player playerID="617995">
+                    <firstName>Pedro</firstName>
+                    <lastName>Gonzalez</lastName>
+                    <fullName>Pedro Gonzalez</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>20</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>72:09</timeOnPitch>
+                    <events>
+                        <event eventID="39501340" type="substitution" normalTime="61:12" addedTime="0:00" />
+                        <event eventID="39501373" type="clearance" normalTime="72:31" addedTime="0:00" />
+                        <event eventID="39501384" type="free kick" normalTime="75:26" addedTime="0:00" />
+                        <event eventID="39501385" type="shot on target" normalTime="76:12" addedTime="0:00" />
+                        <event eventID="39501445" type="foul" normalTime="92:54" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="684886">
+                    <firstName>Victor</firstName>
+                    <lastName>Munoz</lastName>
+                    <fullName>Victor Munoz</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>25</shirtNumber>
+                    <position>Striker</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>0:00</timeOnPitch>
+                    <events />
+                </player>
+                <player playerID="568533">
+                    <firstName>Borja</firstName>
+                    <lastName>Iglesias</lastName>
+                    <fullName>Borja Iglesias</fullName>
+                    <nationality>Spanish</nationality>
+                    <shirtNumber>26</shirtNumber>
+                    <position>Striker</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>0:00</timeOnPitch>
+                    <events />
+                </player>
+            </players>
+        </homeTeam>
+        <awayTeam teamID="965" teamName="Argentina" teamColour="#66CCFF" managerID="101738" manager="Lionel Scaloni" formation="4-4-2" shotsOn="0" shotsOff="2" fouls="23" corners="4" offsides="1" bookings="5" dismissals="1">
+            <staff>
+                <member staffID="101738" position="Manager" name="Lionel Scaloni" />
+            </staff>
+            <players>
+                <player playerID="390335">
+                    <firstName>Emiliano</firstName>
+                    <lastName>Martinez</lastName>
+                    <fullName>Emiliano Martinez</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>23</shirtNumber>
+                    <position>Goal Keeper</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>137:21</timeOnPitch>
+                    <events>
+                        <event eventID="39501198" type="save" normalTime="4:17" addedTime="0:00" />
+                        <event eventID="39501231" type="free kick" normalTime="20:06" addedTime="0:00" />
+                        <event eventID="39501251" type="goal kick" normalTime="30:46" addedTime="0:00" />
+                        <event eventID="39501275" type="save" normalTime="38:32" addedTime="0:00" />
+                        <event eventID="39501287" type="goal kick" normalTime="44:19" addedTime="0:00" />
+                        <event eventID="39501297" type="save" normalTime="45:43" addedTime="0:00" />
+                        <event eventID="39501345" type="goal kick" normalTime="62:43" addedTime="0:00" />
+                        <event eventID="39501349" type="save" normalTime="63:25" addedTime="0:00" />
+                        <event eventID="39501355" type="clearance" normalTime="64:48" addedTime="0:00" />
+                        <event eventID="39501366" type="save" normalTime="66:23" addedTime="0:00" />
+                        <event eventID="39501386" type="save" normalTime="76:12" addedTime="0:00" />
+                        <event eventID="39501389" type="save" normalTime="76:51" addedTime="0:00" />
+                        <event eventID="39501398" type="save" normalTime="80:29" addedTime="0:00" />
+                        <event eventID="39501410" type="goal kick" normalTime="87:02" addedTime="0:00" />
+                        <event eventID="39501415" type="goal kick" normalTime="89:24" addedTime="0:00" />
+                        <event eventID="39501429" type="save" normalTime="90:00" addedTime="2:17" />
+                        <event eventID="39501437" type="save" normalTime="90:00" addedTime="7:58" />
+                        <event eventID="39501442" type="free kick" normalTime="91:59" addedTime="0:00" />
+                        <event eventID="39501448" type="save" normalTime="92:46" addedTime="0:00" />
+                        <event eventID="39501450" type="goal kick" normalTime="93:50" addedTime="0:00" />
+                        <event eventID="39501463" type="free kick" normalTime="98:47" addedTime="0:00" />
+                        <event eventID="39501473" type="goal kick" normalTime="101:47" addedTime="0:00" />
+                        <event eventID="39501476" type="goal kick" normalTime="102:46" addedTime="0:00" />
+                        <event eventID="39501509" type="free kick" normalTime="112:47" addedTime="0:00" />
+                        <event eventID="39501523" type="goal kick" normalTime="115:54" addedTime="0:00" />
+                        <event eventID="39501551" type="free kick" normalTime="120:00" addedTime="4:57" />
+                    </events>
+                </player>
+                <player playerID="563492">
+                    <firstName>Gonzalo</firstName>
+                    <lastName>Montiel</lastName>
+                    <fullName>Gonzalo Montiel</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>4</shirtNumber>
+                    <position>Defender</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>61:17</timeOnPitch>
+                    <events>
+                        <event eventID="39501194" type="foul" normalTime="3:36" addedTime="0:00" />
+                        <event eventID="39501200" type="clearance" normalTime="6:38" addedTime="0:00" />
+                        <event eventID="39501228" type="throw in" normalTime="19:08" addedTime="0:00" />
+                        <event eventID="39501234" type="throw in" normalTime="21:15" addedTime="0:00" />
+                        <event eventID="39501254" type="clearance" normalTime="31:43" addedTime="0:00" />
+                        <event eventID="39501290" type="throw in" normalTime="45:00" addedTime="0:52" />
+                        <event eventID="39501303" type="throw in" normalTime="49:00" addedTime="0:00" />
+                        <event eventID="39501327" type="substitution" normalTime="57:17" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="569500">
+                    <firstName>Cristian</firstName>
+                    <lastName>Romero</lastName>
+                    <fullName>Cristian Romero</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>13</shirtNumber>
+                    <position>Defender</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>73:44</timeOnPitch>
+                    <events>
+                        <event eventID="39501233" type="free kick" normalTime="20:56" addedTime="0:00" />
+                        <event eventID="39501262" type="free kick" normalTime="35:07" addedTime="0:00" />
+                        <event eventID="39501293" type="free kick" normalTime="45:00" addedTime="2:53" />
+                        <event eventID="39501306" type="free kick" normalTime="49:53" addedTime="0:00" />
+                        <event eventID="39501320" type="free kick" normalTime="53:52" addedTime="0:00" />
+                        <event eventID="39501347" type="clearance" normalTime="63:06" addedTime="0:00" />
+                        <event eventID="39501368" type="substitution-injury" normalTime="69:44" addedTime="0:00" />
+                        <event eventID="39501431" type="booking" normalTime="90:00" addedTime="1:12" />
+                    </events>
+                </player>
+                <player playerID="571225">
+                    <firstName>Lisandro</firstName>
+                    <lastName>Martinez</lastName>
+                    <fullName>Lisandro Martinez</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>6</shirtNumber>
+                    <position>Defender</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>43:45</timeOnPitch>
+                    <events>
+                        <event eventID="39501204" type="free kick" normalTime="8:15" addedTime="0:00" />
+                        <event eventID="39501211" type="clearance" normalTime="11:21" addedTime="0:00" />
+                        <event eventID="39501270" type="clearance" normalTime="37:20" addedTime="0:00" />
+                        <event eventID="39501279" type="foul" normalTime="40:05" addedTime="0:00" />
+                        <event eventID="39501281" type="booking" normalTime="40:07" addedTime="0:00" />
+                        <event eventID="39501286" type="substitution-injury" normalTime="43:45" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="439385">
+                    <firstName>Nicolas</firstName>
+                    <lastName>Tagliafico</lastName>
+                    <fullName>Nicolas Tagliafico</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>3</shirtNumber>
+                    <position>Defender</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>137:21</timeOnPitch>
+                    <events>
+                        <event eventID="39501205" type="throw in" normalTime="8:40" addedTime="0:00" />
+                        <event eventID="39501207" type="throw in" normalTime="9:29" addedTime="0:00" />
+                        <event eventID="39501208" type="throw in" normalTime="10:18" addedTime="0:00" />
+                        <event eventID="39501214" type="clearance" normalTime="12:23" addedTime="0:00" />
+                        <event eventID="39501224" type="throw in" normalTime="17:25" addedTime="0:00" />
+                        <event eventID="39501225" type="foul" normalTime="17:56" addedTime="0:00" />
+                        <event eventID="39501247" type="foul" normalTime="28:24" addedTime="0:00" />
+                        <event eventID="39501263" type="throw in" normalTime="35:32" addedTime="0:00" />
+                        <event eventID="39501264" type="foul" normalTime="35:41" addedTime="0:00" />
+                        <event eventID="39501288" type="throw in" normalTime="44:46" addedTime="0:00" />
+                        <event eventID="39501314" type="throw in" normalTime="53:10" addedTime="0:00" />
+                        <event eventID="39501341" type="throw in" normalTime="61:37" addedTime="0:00" />
+                        <event eventID="39501359" type="clearance" normalTime="65:27" addedTime="0:00" />
+                        <event eventID="39501361" type="clearance" normalTime="65:41" addedTime="0:00" />
+                        <event eventID="39501393" type="throw in" normalTime="78:35" addedTime="0:00" />
+                        <event eventID="39501505" type="foul" normalTime="110:59" addedTime="0:00" />
+                        <event eventID="39501540" type="foul" normalTime="120:00" addedTime="2:36" />
+                    </events>
+                </player>
+                <player playerID="505309">
+                    <firstName>Rodrigo</firstName>
+                    <lastName>De Paul</lastName>
+                    <fullName>Rodrigo De Paul</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>7</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>73:48</timeOnPitch>
+                    <events>
+                        <event eventID="39501221" type="free kick" normalTime="16:20" addedTime="0:00" />
+                        <event eventID="39501238" type="clearance" normalTime="22:44" addedTime="0:00" />
+                        <event eventID="39501257" type="free kick" normalTime="33:14" addedTime="0:00" />
+                        <event eventID="39501278" type="cross" normalTime="39:59" addedTime="0:00" />
+                        <event eventID="39501309" type="free kick" normalTime="50:37" addedTime="0:00" />
+                        <event eventID="39501370" type="substitution" normalTime="69:48" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="610842">
+                    <firstName>Enzo</firstName>
+                    <lastName>Fernandez</lastName>
+                    <fullName>Enzo Fernandez</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>24</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>96:27</timeOnPitch>
+                    <events>
+                        <event eventID="39501242" type="free kick" normalTime="27:13" addedTime="0:00" />
+                        <event eventID="39501334" type="block" normalTime="60:38" addedTime="0:00" />
+                        <event eventID="39501336" type="clearance" normalTime="60:44" addedTime="0:00" />
+                        <event eventID="39501402" type="booking" normalTime="81:58" addedTime="0:00" />
+                        <event eventID="39501404" type="foul" normalTime="83:51" addedTime="0:00" />
+                        <event eventID="39501426" type="foul" normalTime="90:00" addedTime="2:26" />
+                        <event eventID="39501430" type="dismissal" normalTime="90:00" addedTime="2:27" />
+                    </events>
+                </player>
+                <player playerID="592482">
+                    <firstName>Alexis</firstName>
+                    <lastName>Mac Allister</lastName>
+                    <fullName>Alexis Mac Allister</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>20</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>137:21</timeOnPitch>
+                    <events>
+                        <event eventID="39501192" type="free kick" normalTime="1:37" addedTime="0:00" />
+                        <event eventID="39501216" type="foul" normalTime="13:53" addedTime="0:00" />
+                        <event eventID="39501244" type="hand ball" normalTime="27:31" addedTime="0:00" />
+                        <event eventID="39501351" type="clearance" normalTime="64:21" addedTime="0:00" />
+                        <event eventID="39501363" type="clearance" normalTime="66:14" addedTime="0:00" />
+                        <event eventID="39501501" type="foul" normalTime="110:21" addedTime="0:00" />
+                        <event eventID="39501503" type="booking" normalTime="110:24" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="591418">
+                    <firstName>Nicolas</firstName>
+                    <lastName>Gonzalez</lastName>
+                    <fullName>Nicolas Gonzalez</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>15</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>45:01</timeOnPitch>
+                    <events>
+                        <event eventID="39501235" type="offside" normalTime="21:25" addedTime="0:00" />
+                        <event eventID="39501295" type="substitution" normalTime="45:01" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="306834">
+                    <firstName>Lionel</firstName>
+                    <lastName>Messi</lastName>
+                    <fullName>Lionel Messi</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>10</shirtNumber>
+                    <position>Striker</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>137:21</timeOnPitch>
+                    <events>
+                        <event eventID="39501300" type="corner" normalTime="47:37" addedTime="0:00" />
+                        <event eventID="39501422" type="free kick" normalTime="90:00" addedTime="1:46" />
+                        <event eventID="39501465" type="foul" normalTime="99:38" addedTime="0:00" />
+                        <event eventID="39501517" type="cross" normalTime="114:27" addedTime="0:00" />
+                        <event eventID="39501519" type="corner" normalTime="114:38" addedTime="0:00" />
+                        <event eventID="39501520" type="cross" normalTime="114:43" addedTime="0:00" />
+                        <event eventID="39501524" type="shot off target" normalTime="116:23" addedTime="0:00" />
+                        <event eventID="39501532" type="free kick" normalTime="119:34" addedTime="0:00" />
+                        <event eventID="39501534" type="corner" normalTime="120:00" addedTime="0:18" />
+                        <event eventID="39501535" type="corner" normalTime="120:00" addedTime="0:57" />
+                        <event eventID="39501547" type="free kick" normalTime="120:00" addedTime="3:40" />
+                    </events>
+                </player>
+                <player playerID="608034">
+                    <firstName>Julian</firstName>
+                    <lastName>Alvarez</lastName>
+                    <fullName>Julian Alvarez</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>9</shirtNumber>
+                    <position>Striker</position>
+                    <substitute>No</substitute>
+                    <rating />
+                    <timeOnPitch>113:41</timeOnPitch>
+                    <events>
+                        <event eventID="39501258" type="foul" normalTime="33:26" addedTime="0:00" />
+                        <event eventID="39501271" type="foul" normalTime="37:30" addedTime="0:00" />
+                        <event eventID="39501321" type="foul" normalTime="55:04" addedTime="0:00" />
+                        <event eventID="39501612" type="clearance" normalTime="60:41" addedTime="0:00" />
+                        <event eventID="39501444" type="clearance" normalTime="92:33" addedTime="0:00" />
+                        <event eventID="39501472" type="substitution" normalTime="101:19" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="514191">
+                    <firstName>Juan</firstName>
+                    <lastName>Musso</lastName>
+                    <fullName>Juan Musso</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>1</shirtNumber>
+                    <position>Goal Keeper</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>0:00</timeOnPitch>
+                    <events />
+                </player>
+                <player playerID="490712">
+                    <firstName>Geronimo</firstName>
+                    <lastName>Rulli</lastName>
+                    <fullName>Geronimo Rulli</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>12</shirtNumber>
+                    <position>Goal Keeper</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>0:00</timeOnPitch>
+                    <events />
+                </player>
+                <player playerID="568505">
+                    <firstName>Marcos</firstName>
+                    <lastName>Senesi</lastName>
+                    <fullName>Marcos Senesi</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>2</shirtNumber>
+                    <position>Defender</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>23:40</timeOnPitch>
+                    <events>
+                        <event eventID="39501472" type="substitution" normalTime="101:19" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="535607">
+                    <firstName>Leandro</firstName>
+                    <lastName>Paredes</lastName>
+                    <fullName>Leandro Paredes</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>5</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>88:20</timeOnPitch>
+                    <events>
+                        <event eventID="39501295" type="substitution" normalTime="45:01" addedTime="0:00" />
+                        <event eventID="39501310" type="foul" normalTime="51:02" addedTime="0:00" />
+                        <event eventID="39501312" type="booking" normalTime="51:16" addedTime="0:00" />
+                        <event eventID="39501317" type="free kick" normalTime="53:31" addedTime="0:00" />
+                        <event eventID="39501330" type="foul" normalTime="59:02" addedTime="0:00" />
+                        <event eventID="39501353" type="clearance" normalTime="64:28" addedTime="0:00" />
+                        <event eventID="39501382" type="foul" normalTime="75:08" addedTime="0:00" />
+                        <event eventID="39501433" type="foul" normalTime="90:00" addedTime="5:55" />
+                        <event eventID="39501449" type="free kick" normalTime="93:07" addedTime="0:00" />
+                        <event eventID="39501479" type="block" normalTime="103:29" addedTime="0:00" />
+                        <event eventID="39501495" type="free kick" normalTime="108:03" addedTime="0:00" />
+                        <event eventID="39501511" type="free kick" normalTime="113:22" addedTime="0:00" />
+                        <event eventID="39501514" type="free kick" normalTime="114:02" addedTime="0:00" />
+                        <event eventID="39501528" type="throw in" normalTime="118:39" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="639719">
+                    <firstName>Valentin</firstName>
+                    <lastName>Barco</lastName>
+                    <fullName>Valentin Barco</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>8</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>0:00</timeOnPitch>
+                    <events />
+                </player>
+                <player playerID="547789">
+                    <firstName>Giovani</firstName>
+                    <lastName>Lo Celso</lastName>
+                    <fullName>Giovani Lo Celso</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>11</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>0:00</timeOnPitch>
+                    <events />
+                </player>
+                <player playerID="564928">
+                    <firstName>Exequiel</firstName>
+                    <lastName>Palacios</lastName>
+                    <fullName>Exequiel Palacios</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>14</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>0:00</timeOnPitch>
+                    <events />
+                </player>
+                <player playerID="603939">
+                    <firstName>Thiago</firstName>
+                    <lastName>Almada</lastName>
+                    <fullName>Thiago Almada</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>16</shirtNumber>
+                    <position>Midfielder</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>0:00</timeOnPitch>
+                    <events />
+                </player>
+                <player playerID="640794">
+                    <firstName>Giuliano</firstName>
+                    <lastName>Simeone</lastName>
+                    <fullName>Giuliano Simeone</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>17</shirtNumber>
+                    <position>Striker</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>63:33</timeOnPitch>
+                    <events>
+                        <event eventID="39501370" type="substitution" normalTime="69:48" addedTime="0:00" />
+                        <event eventID="39501399" type="foul" normalTime="80:39" addedTime="0:00" />
+                        <event eventID="39501451" type="foul" normalTime="93:54" addedTime="0:00" />
+                        <event eventID="39501487" type="foul" normalTime="105:00" addedTime="2:52" />
+                        <event eventID="39501536" type="shot off target" normalTime="120:00" addedTime="1:03" />
+                    </events>
+                </player>
+                <player playerID="649522">
+                    <firstName>Nicolas</firstName>
+                    <lastName>Paz</lastName>
+                    <fullName>Nicolas Paz</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>18</shirtNumber>
+                    <position>Striker</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>0:00</timeOnPitch>
+                    <events />
+                </player>
+                <player playerID="386174">
+                    <firstName>Nicolas</firstName>
+                    <lastName>Otamendi</lastName>
+                    <fullName>Nicolas Otamendi</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>19</shirtNumber>
+                    <position>Defender</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>93:36</timeOnPitch>
+                    <events>
+                        <event eventID="39501286" type="substitution" normalTime="43:45" addedTime="0:00" />
+                        <event eventID="39501328" type="goal kick" normalTime="57:36" addedTime="0:00" />
+                        <event eventID="39501342" type="foul" normalTime="61:44" addedTime="0:00" />
+                        <event eventID="39501411" type="clearance" normalTime="88:08" addedTime="0:00" />
+                        <event eventID="39501419" type="free kick" normalTime="90:00" addedTime="0:23" />
+                        <event eventID="39501464" type="clearance" normalTime="99:33" addedTime="0:00" />
+                        <event eventID="39501482" type="clearance" normalTime="105:00" addedTime="0:44" />
+                        <event eventID="39501496" type="clearance" normalTime="108:31" addedTime="0:00" />
+                        <event eventID="39501498" type="throw in" normalTime="109:16" addedTime="0:00" />
+                    </events>
+                </player>
+                <player playerID="633208">
+                    <firstName>Jose</firstName>
+                    <lastName>Lopez</lastName>
+                    <fullName>Jose Lopez</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>21</shirtNumber>
+                    <position>Striker</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>0:00</timeOnPitch>
+                    <events />
+                </player>
+                <player playerID="566656">
+                    <firstName>Lautaro</firstName>
+                    <lastName>Martinez</lastName>
+                    <fullName>Lautaro Martinez</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>22</shirtNumber>
+                    <position>Striker</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>0:00</timeOnPitch>
+                    <events />
+                </player>
+                <player playerID="582185">
+                    <firstName>Facundo</firstName>
+                    <lastName>Medina</lastName>
+                    <fullName>Facundo Medina</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>25</shirtNumber>
+                    <position>Defender</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>63:37</timeOnPitch>
+                    <events>
+                        <event eventID="39501368" type="substitution" normalTime="69:44" addedTime="0:00" />
+                        <event eventID="39501374" type="goal kick" normalTime="74:00" addedTime="0:00" />
+                        <event eventID="39501613" type="clearance" normalTime="76:39" addedTime="0:00" />
+                        <event eventID="39501412" type="clearance" normalTime="80:28" addedTime="0:00" />
+                        <event eventID="39501458" type="clearance" normalTime="94:22" addedTime="0:00" />
+                        <event eventID="39501480" type="throw in" normalTime="104:33" addedTime="0:00" />
+                        <event eventID="39501481" type="throw in" normalTime="104:49" addedTime="0:00" />
+                        <event eventID="39501484" type="throw in" normalTime="105:00" addedTime="1:57" />
+                        <event eventID="39501486" type="throw in" normalTime="105:00" addedTime="2:50" />
+                        <event eventID="39501526" type="cross" normalTime="118:32" addedTime="0:00" />
+                        <event eventID="39501539" type="throw in" normalTime="120:00" addedTime="2:14" />
+                        <event eventID="39501543" type="clearance" normalTime="120:00" addedTime="3:16" />
+                        <event eventID="39501544" type="clearance" normalTime="120:00" addedTime="3:20" />
+                    </events>
+                </player>
+                <player playerID="568047">
+                    <firstName>Nahuel</firstName>
+                    <lastName>Molina</lastName>
+                    <fullName>Nahuel Molina</fullName>
+                    <nationality>Argentinian</nationality>
+                    <shirtNumber>26</shirtNumber>
+                    <position>Defender</position>
+                    <substitute>Yes</substitute>
+                    <rating />
+                    <timeOnPitch>76:04</timeOnPitch>
+                    <events>
+                        <event eventID="39501327" type="substitution" normalTime="57:17" addedTime="0:00" />
+                        <event eventID="39501357" type="block" normalTime="64:51" addedTime="0:00" />
+                        <event eventID="39501372" type="throw in" normalTime="71:15" addedTime="0:00" />
+                        <event eventID="39501380" type="clearance" normalTime="75:03" addedTime="0:00" />
+                        <event eventID="39501391" type="clearance" normalTime="77:01" addedTime="0:00" />
+                        <event eventID="39501416" type="throw in" normalTime="89:58" addedTime="0:00" />
+                        <event eventID="39501469" type="clearance" normalTime="100:21" addedTime="0:00" />
+                    </events>
+                </player>
+            </players>
+        </awayTeam>
+    </teams>
+</match>

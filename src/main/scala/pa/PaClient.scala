@@ -34,6 +34,8 @@ trait PaClient { self: Http =>
 
   def lineUp(id: String)(implicit context: ExecutionContext): Future[LineUp] = get(s"/match/lineUps/$apiKey/$id").map(interceptErrors).map(parseLineUp)
 
+  def lineUpEnhanced(id: String)(implicit context: ExecutionContext): Future[LineUpEnhanced] = get(s"/match/lineUpsEnhanced/$apiKey/$id").map(interceptErrors).map(parseLineUpEnhanced)
+
   def matchDay(date: LocalDate)(implicit context: ExecutionContext): Future[List[MatchDay]] =
     get(s"/competitions/matchDay/$apiKey/${date.format(formatter)}").map(interceptErrors).map(parseMatchDay)
   def matchDay(competitionId: String, date: LocalDate)(implicit context: ExecutionContext): Future[List[MatchDay]] =
