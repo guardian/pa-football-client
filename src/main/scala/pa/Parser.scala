@@ -108,7 +108,8 @@ object Parser {
       event \> "whereFrom",
       event \> "whereTo",
       event \> "distance",
-      event \> "outcome"
+      event \> "outcome",
+      (event \@@ "deleted") map ("true"==), // Option[Boolean]
     )
 
     def parseIsResult(isResult: NodeSeq) = isResult.text == "Yes"

@@ -47,11 +47,12 @@ case class MatchEvent(
   whereFrom: Option[String],
   whereTo: Option[String],
   distance: Option[String],
-  outcome: Option[String]
+  outcome: Option[String],
+  deleted: Option[Boolean] = None
 ) {
 
   val isGoal = outcome.exists(_ == "Goal")
-
+  val isDeleted = deleted.exists(_ == true)
 }
 
 case class MatchStats(interval: Int, homePossession: Int, homeTeam: TeamStats, awayTeam: TeamStats) {
