@@ -31,4 +31,18 @@ class EventsTest extends AnyFlatSpec with Matchers with OptionValues {
       Symbol("addedTime") (Some("2:05"))
     )
   }
+
+  it should "load match events with new field that are not yet supported" in {
+    val theMatch = Await.result(StubClient.matchEvents("3888466"), 10.seconds).get
+
+    theMatch.events.length should be(3)
+
+
+    val event = theMatch.events.find(_.id.contains("22306972")).value
+
+    event should have(
+      Symbol("eventType") ("goal"),
+      Symbol("eventTime") (Some("87")),
+    )
+  }
 }
