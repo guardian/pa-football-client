@@ -199,7 +199,10 @@ case class LineUpEvent(
 case class LineUpEventEnhanced (
   eventID: String,
   eventType: String,
-  normalTime: String, // maybe add a comment describing what this means
+   // This is the match time without any added time,
+  // i.e. if an event happened in added time it would still be 90.
+  // The excess added time is stored in addedTime.
+  normalTime: String,
   addedTime: String
 )
 
