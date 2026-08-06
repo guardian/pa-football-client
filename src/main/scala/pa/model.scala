@@ -196,6 +196,16 @@ case class LineUpEvent(
   matchTime: String
 )
 
+case class LineUpEventEnhanced (
+  eventID: String,
+  eventType: String,
+   // This is the match time without any added time,
+  // i.e. if an event happened in added time it would still be 90.
+  // The excess added time is stored in addedTime.
+  normalTime: String,
+  addedTime: String
+)
+
 case class LineUpTeam (
   id: String,
   name: String,
@@ -212,6 +222,22 @@ case class LineUpTeam (
   players: Seq[LineUpPlayer]
 ) extends FootballTeam
 
+case class LineUpTeamEnhanced (
+  id: String,
+  name: String,
+  teamColour: String,
+  manager: Official,
+  formation: String,
+  shotsOn: Int,
+  shotsOff: Int,
+  fouls: Int,
+  corners: Int,
+  offsides: Int,
+  bookings: Int,
+  dismissals: Int,
+  players: Seq[LineUpPlayerEnhanced]
+) extends FootballTeam
+
 case class LineUpPlayer(
   id: String,
   name: String,
@@ -225,7 +251,24 @@ case class LineUpPlayer(
   events: Seq[LineUpEvent]
 ) extends Person
 
+case class LineUpPlayerEnhanced(
+ id: String,
+ name: String,
+ firstName: String,
+ lastName: String,
+ shirtNumber: String,
+ position: String,
+ substitute: Boolean,
+ rating: Option[Int],
+ timeOnPitch: String,
+ events: Seq[LineUpEventEnhanced]
+) extends Person
+
 case class LineUp(homeTeam: LineUpTeam, awayTeam: LineUpTeam, homeTeamPossession: Int) {
+  lazy val awayTeamPossession = 100 - homeTeamPossession
+}
+
+case class LineUpEnhanced(homeTeam: LineUpTeamEnhanced, awayTeam: LineUpTeamEnhanced, homeTeamPossession: Int) {
   lazy val awayTeamPossession = 100 - homeTeamPossession
 }
 
