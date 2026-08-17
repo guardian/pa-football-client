@@ -98,6 +98,7 @@ object Parser {
     def parseEvent(event: NodeSeq) = MatchEvent(
       event \@ "eventID",
       event \@ "teamID",
+      event \@ "status", // "active" or "deleted"
       event \> "eventType",
       event \> "matchTime",
       event \> "eventTime",
@@ -108,8 +109,7 @@ object Parser {
       event \> "whereFrom",
       event \> "whereTo",
       event \> "distance",
-      event \> "outcome",
-      (event \@@ "deleted") map ("true"==), // Option[Boolean]
+      event \> "outcome"
     )
 
     def parseIsResult(isResult: NodeSeq) = isResult.text == "Yes"
