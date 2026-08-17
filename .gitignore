@@ -10,3 +10,4 @@ test-results/
 .metals/
 metals.sbt
 .tool-versions
+.carabiner
