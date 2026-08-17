@@ -147,6 +147,7 @@ object Parser {
     def parseEvent(event: NodeSeq) = MatchEvent(
       event \@ "eventID",
       event \@ "teamID",
+      event \@ "status", // "active" or "deleted"
       event \> "eventType",
       event \> "matchTime",
       event \> "eventTime",

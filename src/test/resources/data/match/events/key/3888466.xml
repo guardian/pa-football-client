@@ -63,5 +63,58 @@
             <distance>6</distance>
             <outcome />
         </event>
+        <event teamID="999" eventID="223069721" status="deleted">
+            <eventType>goal</eventType>
+            <matchTime>(87)</matchTime>
+            <eventTime>87</eventTime>
+            <normalTime>86:26</normalTime>
+            <addedTime>0:00</addedTime>
+            <players>
+                <player1 playerID="307009" teamID="999" teamName="Spain">Gerard Pique</player1>
+                <player2 playerID="" teamID="" teamName="" />
+            </players>
+            <reason />
+            <how>Head</how>
+            <whereFrom>Right 6 Yard</whereFrom>
+            <whereTo>Right Low</whereTo>
+            <type />
+            <distance>6</distance>
+            <outcome />
+        </event>
+        <event teamID="999" eventID="223069722">
+            <matchTime>(87)</matchTime>
+            <eventTime>87</eventTime>
+            <normalTime>86:26</normalTime>
+            <addedTime>0:00</addedTime>
+            <players>
+                <player1 playerID="307009" teamID="999" teamName="Spain">Gerard Pique</player1>
+                <player2 playerID="" teamID="" teamName="" />
+            </players>
+            <reason />
+            <how>Head</how>
+            <whereFrom>Right 6 Yard</whereFrom>
+            <whereTo>Right Low</whereTo>
+            <type />
+            <distance>6</distance>
+            <outcome />
+        </event>
+        <event teamID="999" eventID="223069723"  status="foobar">
+            <eventType>goal</eventType>
+            <matchTime>(87)</matchTime>
+            <eventTime>87</eventTime>
+            <normalTime>86:26</normalTime>
+            <addedTime>0:00</addedTime>
+            <players>
+                <player1 playerID="307009" teamID="999" teamName="Spain">Gerard Pique</player1>
+                <player2 playerID="" teamID="" teamName="" />
+            </players>
+            <reason />
+            <how>Head</how>
+            <whereFrom>Right 6 Yard</whereFrom>
+            <whereTo>Right Low</whereTo>
+            <type />
+            <distance>6</distance>
+            <outcome />
+        </event>
     </events>
 </matchEvents>

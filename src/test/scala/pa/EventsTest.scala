@@ -35,7 +35,7 @@ class EventsTest extends AnyFlatSpec with Matchers with OptionValues {
   it should "load match events with new field that are not yet supported" in {
     val theMatch = Await.result(StubClient.matchEvents("3888466"), 10.seconds).get
 
-    theMatch.events.length should be(3)
+    theMatch.events.length should be(6)
 
 
     val event = theMatch.events.find(_.id.contains("22306972")).value
@@ -44,5 +44,27 @@ class EventsTest extends AnyFlatSpec with Matchers with OptionValues {
       Symbol("eventType") ("goal"),
       Symbol("eventTime") (Some("87")),
     )
+  }
+
+  it should "parse the status flag on match events" in {
+    val theMatch = Await.result(StubClient.matchEvents("3888466"), 10.seconds).get
+
+    def event(id: String) = theMatch.events.find(_.id == Some(id)).value
+
+    // status="active" -> active
+    event("22306972").status should be(Some("active"))
+    event("22306972").isDeleted should be(false)
+
+    // status="deleted" -> deleted
+    event("223069721").status should be(Some("deleted"))
+    event("223069721").isDeleted should be(true)
+
+    // attribute missing -> active
+    event("223069722").status should be(None)
+    event("223069722").isDeleted should be(false)
+
+    // attribute unknown string -> active
+    event("223069723").status should be(Some("foobar"))
+    event("223069723").isDeleted should be(false)
   }
 }
